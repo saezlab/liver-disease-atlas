@@ -521,38 +521,34 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4502dfacd09a0e05ffa691159ebb0481772995atargetblanke4502dfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/e4502dfacd09a0e05ffa691159ebb0481772995a" target="_blank">e4502df</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree0390ccffdfa0a52305e5320a41eea06e73514772targetblank0390ccfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/0390ccffdfa0a52305e5320a41eea06e73514772" target="_blank">0390ccf</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4502dfacd09a0e05ffa691159ebb0481772995atargetblanke4502dfa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree0390ccffdfa0a52305e5320a41eea06e73514772targetblank0390ccfa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/e4502dfacd09a0e05ffa691159ebb0481772995a" target="_blank">e4502df</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/0390ccffdfa0a52305e5320a41eea06e73514772" target="_blank">0390ccf</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
     Ignored:    .Rproj.user/
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    data/annotation/
     Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    external_software/.DS_Store
+    Ignored:    external_software/README.html
+    Ignored:    external_software/stem/.DS_Store
     Ignored:    output/mouse-chronic-ccl4/
     Ignored:    renv/library/
     Ignored:    renv/staging/
-
-Untracked files:
-    Untracked:  code/annotation/
-
-Unstaged changes:
-    Modified:   code/utils-plots.R
-    Modified:   code/utils-wrapper.R
-    Modified:   renv.lock
 
 </code></pre>
 <p>
@@ -591,6 +587,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d88ada1282a9d4166450d7ccc3171d4e767e5f13/analysis/mouse-chronic-ccl4.Rmd" target="_blank">d88ada1</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+add stem analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/mouse-chronic-ccl4.html" target="_blank">c73e126</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -666,6 +696,8 @@ library(edgeR)
 library(biobroom)
 #&gt; Warning: package &#39;biobroom&#39; was built under R version 4.0.3
 
+library(janitor)
+
 library(AachenColorPalette)
 library(cowplot)
 library(lemon)
@@ -710,7 +742,7 @@ pca_result &lt;- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
 #&gt;            &gt; rows total       36
 
 plot_pca(pca_result, feature = &quot;time&quot;) +
-  my_theme()</code></pre>
+  my_theme(fsize = fz)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_raw_data-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_raw_data-1">
@@ -750,7 +782,7 @@ christianholland
 </div>
 </div>
 <pre class="r"><code>plot_pca(pca_result, feature = &quot;treatment&quot;) +
-  my_theme()</code></pre>
+  my_theme(fsize = fz)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_raw_data-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_raw_data-2">
@@ -826,7 +858,7 @@ saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
 
 ### PC1 vs PC2
 plot_pca(pca_result, feature = &quot;time&quot;) +
-  my_theme()</code></pre>
+  my_theme(fsize = fz)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_norm_data-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_norm_data-1">
@@ -867,7 +899,7 @@ christianholland
 </div>
 <pre class="r"><code>
 plot_pca(pca_result, feature = &quot;treatment&quot;) +
-  my_theme()</code></pre>
+  my_theme(fsize = fz)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_norm_data-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_norm_data-2">
@@ -992,10 +1024,147 @@ saveRDS(deg_df, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
 df %&gt;%
   filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
   plot_volcano() +
-  my_theme(grid = &quot;y&quot;)
+  my_theme(grid = &quot;y&quot;, fsize = fz)
 #&gt; filter: removed 138,042 rows (75%), 46,014 rows remaining
 #&gt; rename: renamed one variable (p)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/volcano_plots-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-volcano_plots-1">
+Past versions of volcano_plots-1.png
+</button>
+</p>
+<div id="fig-volcano_plots-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/figure/mouse-chronic-ccl4.Rmd/volcano_plots-1.png" target="_blank">c73e126</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="clusters-of-temporal-expression-profiles-with-stem" class="section level2">
+<h2>Clusters of temporal expression profiles with STEM</h2>
+<div id="prepare-input" class="section level3">
+<h3>Prepare input</h3>
+<pre class="r"><code># prepare input for stem analysis
+df = readRDS(here(output_path,&quot;limma_result.rds&quot;))
+
+stem_inputs = df %&gt;%
+  filter(contrast_reference %in% c(&quot;pure_ccl4&quot;)) %&gt;%
+  mutate(class = str_c(&quot;Month &quot;, parse_number(as.character(contrast)))) %&gt;%
+  mutate(class = factor(class, levels = c(&quot;Month 2&quot;, &quot;Month 6&quot;, &quot;Month 12&quot;))) %&gt;%
+  select(gene, class, logFC, contrast_reference)
+#&gt; filter: removed 138,042 rows (75%), 46,014 rows remaining
+#&gt; mutate: new variable &#39;class&#39; (character) with 3 unique values and 0% NA
+#&gt; mutate: converted &#39;class&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (contrast, statistic, pval, fdr, regulation)
+  
+stem_inputs %&gt;%
+  select(-contrast_reference) %&gt;%
+  pivot_wider(names_from = class, values_from = logFC) %&gt;% 
+  write_delim(here(output_path, &quot;stem/input/pure_ccl4.txt&quot;), delim = &quot;\t&quot;)
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; pivot_wider: reorganized (class, logFC) into (Month 2, Month 6, Month 12) [was 46014x3, now 15338x4]</code></pre>
+</div>
+<div id="run-stem" class="section level3">
+<h3>Run STEM</h3>
+<pre class="r"><code># execute stem
+stem_res = run_stem(here(output_path, &quot;stem&quot;), clear_output = T)
+#&gt; 
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; cols(
+#&gt;   gene = col_character(),
+#&gt;   `Month 2` = col_double(),
+#&gt;   `Month 6` = col_double(),
+#&gt;   `Month 12` = col_double()
+#&gt; )
+#&gt; distinct: no rows removed
+#&gt; mutate: new variable &#39;gene&#39; (character) with 15,338 unique values and 0% NA
+#&gt; distinct: no rows removed
+#&gt; 
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; cols(
+#&gt;   gene = col_character(),
+#&gt;   SPOT = col_character(),
+#&gt;   Profile = col_double(),
+#&gt;   `0` = col_double(),
+#&gt;   `Month 2` = col_double(),
+#&gt;   `Month 6` = col_double(),
+#&gt;   `Month 12` = col_double()
+#&gt; )
+#&gt; mutate: new variable &#39;key&#39; (character) with one unique value and 0% NA
+#&gt; select: dropped one variable (spot)
+#&gt; gather: reorganized (x0, month_2, month_6, month_12) into (time, value) [was 3193x7, now 12772x5]
+#&gt; mutate: converted &#39;time&#39; from character to double (0 new NA)
+#&gt; 
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; cols(
+#&gt;   `Profile ID` = col_double(),
+#&gt;   `Profile Model` = col_character(),
+#&gt;   `Cluster (-1 non-significant)` = col_double(),
+#&gt;   `# Genes Assigned` = col_double(),
+#&gt;   `# Gene Expected` = col_double(),
+#&gt;   `p-value` = col_double()
+#&gt; )
+#&gt; mutate: new variable &#39;key&#39; (character) with one unique value and 0% NA
+#&gt; select: renamed 4 variables (profile, y_coords, size, p) and dropped 2 variables
+#&gt; Joining, by = c(&quot;profile&quot;, &quot;key&quot;)
+#&gt; inner_join: added 3 columns (y_coords, size, p)
+#&gt;             &gt; rows only in x  (     0)
+#&gt;             &gt; rows only in y  (     0)
+#&gt;             &gt; matched rows     12,772
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total       12,772
+#&gt; inner_join: added one column (symbol)
+#&gt;             &gt; rows only in x  (     0)
+#&gt;             &gt; rows only in y  (12,145)
+#&gt;             &gt; matched rows     12,772
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total       12,772
+#&gt; transmute: dropped one variable (symbol)
+#&gt;            changed 12,644 values (99%) of &#39;gene&#39; (0 new NA)
+
+saveRDS(stem_res, here(output_path, &quot;stem_result.rds&quot;))
+
+stem_res %&gt;%
+  filter(p &lt;= 0.05) %&gt;%
+  filter(key == &quot;pure_ccl4&quot;) %&gt;%
+  distinct() %&gt;%
+  plot_stem_profiles(model_profile = F) +
+  labs(x = &quot;Time in Month&quot;, y=&quot;logFC&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz)
+#&gt; filter: removed 3,080 rows (24%), 9,692 rows remaining
+#&gt; filter: no rows removed
+#&gt; distinct: no rows removed
+#&gt; group_by: 4 grouping variables (key, profile, p, time)
+#&gt; `summarise()` regrouping output by &#39;key&#39;, &#39;profile&#39;, &#39;p&#39; (override with `.groups` argument)
+#&gt; ungroup: no grouping variables</code></pre>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/run_stem-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="translation-to-hgnc-symbols" class="section level2">
@@ -1050,12 +1219,12 @@ saveRDS(mapped_df, here(output_path, &quot;limma_result_hs.rds&quot;))</code></p
 #&gt; 
 #&gt; other attached packages:
 #&gt;  [1] lemon_0.4.5              cowplot_1.1.0            AachenColorPalette_1.1.2
-#&gt;  [4] biobroom_1.22.0          broom_0.7.3              edgeR_3.32.0            
-#&gt;  [7] limma_3.46.0             here_1.0.1               tidylog_1.0.2           
-#&gt; [10] forcats_0.5.0            stringr_1.4.0            dplyr_1.0.2             
-#&gt; [13] purrr_0.3.4              readr_1.4.0              tidyr_1.1.2             
-#&gt; [16] tibble_3.0.4             ggplot2_3.3.2            tidyverse_1.3.0         
-#&gt; [19] workflowr_1.6.2         
+#&gt;  [4] janitor_2.0.1            biobroom_1.22.0          broom_0.7.3             
+#&gt;  [7] edgeR_3.32.0             limma_3.46.0             here_1.0.1              
+#&gt; [10] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
+#&gt; [13] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
+#&gt; [16] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
+#&gt; [19] tidyverse_1.3.0          workflowr_1.6.2         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
 #&gt;  [1] Biobase_2.50.0      httr_1.4.2          viridisLite_0.3.0  
@@ -1063,23 +1232,24 @@ saveRDS(mapped_df, here(output_path, &quot;limma_result_hs.rds&quot;))</code></p
 #&gt;  [7] renv_0.12.3         cellranger_1.1.0    yaml_2.2.1         
 #&gt; [10] pillar_1.4.7        backports_1.2.1     lattice_0.20-41    
 #&gt; [13] glue_1.4.2          digest_0.6.27       promises_1.1.1     
-#&gt; [16] rvest_0.3.6         colorspace_2.0-0    htmltools_0.5.0    
-#&gt; [19] httpuv_1.5.4        plyr_1.8.6          clisymbols_1.2.0   
-#&gt; [22] pkgconfig_2.0.3     haven_2.3.1         scales_1.1.1       
-#&gt; [25] whisker_0.4         later_1.1.0.1       git2r_0.27.1       
-#&gt; [28] farver_2.0.3        generics_0.1.0      ellipsis_0.3.1     
-#&gt; [31] withr_2.3.0         BiocGenerics_0.36.0 cli_2.2.0          
-#&gt; [34] magrittr_2.0.1      crayon_1.3.4        readxl_1.3.1       
-#&gt; [37] evaluate_0.14       fs_1.5.0            fansi_0.4.1        
-#&gt; [40] xml2_1.3.2          tools_4.0.2         hms_0.5.3          
-#&gt; [43] lifecycle_0.2.0     munsell_0.5.0       reprex_0.3.0       
-#&gt; [46] locfit_1.5-9.4      compiler_4.0.2      rlang_0.4.9        
-#&gt; [49] grid_4.0.2          rstudioapi_0.13     labeling_0.4.2     
-#&gt; [52] rmarkdown_2.6       gtable_0.3.0        DBI_1.1.0          
-#&gt; [55] R6_2.5.0            gridExtra_2.3       lubridate_1.7.9.2  
-#&gt; [58] knitr_1.30          rprojroot_2.0.2     stringi_1.5.3      
-#&gt; [61] parallel_4.0.2      Rcpp_1.0.5          vctrs_0.3.6        
-#&gt; [64] dbplyr_2.0.0        tidyselect_1.1.0    xfun_0.19</code></pre>
+#&gt; [16] rvest_0.3.6         snakecase_0.11.0    colorspace_2.0-0   
+#&gt; [19] plyr_1.8.6          htmltools_0.5.0     httpuv_1.5.4       
+#&gt; [22] clisymbols_1.2.0    pkgconfig_2.0.3     haven_2.3.1        
+#&gt; [25] scales_1.1.1        whisker_0.4         later_1.1.0.1      
+#&gt; [28] git2r_0.27.1        farver_2.0.3        generics_0.1.0     
+#&gt; [31] ellipsis_0.3.1      withr_2.3.0         BiocGenerics_0.36.0
+#&gt; [34] cli_2.2.0           magrittr_2.0.1      crayon_1.3.4       
+#&gt; [37] readxl_1.3.1        evaluate_0.14       fs_1.5.0           
+#&gt; [40] fansi_0.4.1         xml2_1.3.2          tools_4.0.2        
+#&gt; [43] hms_0.5.3           lifecycle_0.2.0     munsell_0.5.0      
+#&gt; [46] reprex_0.3.0        locfit_1.5-9.4      compiler_4.0.2     
+#&gt; [49] rlang_0.4.9         grid_4.0.2          rstudioapi_0.13    
+#&gt; [52] labeling_0.4.2      rmarkdown_2.6       gtable_0.3.0       
+#&gt; [55] DBI_1.1.0           R6_2.5.0            gridExtra_2.3      
+#&gt; [58] lubridate_1.7.9.2   knitr_1.30          rprojroot_2.0.2    
+#&gt; [61] stringi_1.5.3       parallel_4.0.2      Rcpp_1.0.5         
+#&gt; [64] vctrs_0.3.6         dbplyr_2.0.0        tidyselect_1.1.0   
+#&gt; [67] xfun_0.19</code></pre>
 </div>
 </div>
 
