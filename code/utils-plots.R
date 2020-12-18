@@ -80,10 +80,11 @@ plot_volcano = function(df, ...) {
     rename(p = any_of(c("pval", "p", "p-value", "p.value"))) %>%
     ggplot(aes(x=logFC, y=-log10(p), color=regulation, alpha = regulation)) +
     geom_point() +
-    facet_rep_wrap(~contrast, ...) +
+    lemon::facet_rep_wrap(~contrast, ...) +
     labs(x="logFC", y=expression(-log['10']*"(p-value)")) +
-    scale_color_manual(values = aachen_color(c("red", "blue", "black50")),
-                       drop = F) +
+    scale_color_manual(values = AachenColorPalette::aachen_color(
+      c("red", "blue", "black50")
+      ),drop = F) +
     scale_alpha_manual(values = c(0.7,0.7,0.2), guide ="none", drop=F)
 }
 
@@ -117,7 +118,7 @@ plot_phist = function(df, facet_var = NULL, ...) {
       facet_var = str_c(facet_var, collapse = "+")
     }
     p = p +
-      facet_rep_wrap(as.formula(str_c("~", facet_var)), ...)
+      lemon::facet_rep_wrap(as.formula(str_c("~", facet_var)), ...)
     }
    return(p)
   }
@@ -162,8 +163,8 @@ plot_venn_diagram = function(tables = list(), collage = TRUE) {
           lty = "blank",
           cex = 1,
           fontfamily = rep("sans", 3),
-          fill = aachen_color(c("purple", "petrol")),
-          cat.col = aachen_color(c("purple", "petrol")),
+          fill = AachenColorPalette::aachen_color(c("purple", "petrol")),
+          cat.col = AachenColorPalette::aachen_color(c("purple", "petrol")),
           cat.cex = 1.1,
           cat.fontfamily = rep("sans", 2)
         ) %>%
@@ -221,8 +222,10 @@ plot_venn_diagram = function(tables = list(), collage = TRUE) {
           lty = "blank",
           cex = 1,
           fontfamily = rep("sans", 7),
-          fill = aachen_color(c("purple", "petrol", "red")),
-          cat.col = aachen_color(c("purple", "petrol", "red")),
+          fill = AachenColorPalette::aachen_color(c("purple", "petrol",
+                                                    "red")),
+          cat.col = AachenColorPalette::aachen_color(c("purple", "petrol",
+                                                       "red")),
           cat.cex = 1.1,
           cat.fontfamily = rep("sans", 3)
         ) %>%
@@ -278,23 +281,7 @@ plot_upset = function(tables = list(),
   return(plot)
 }
 
-plot_heatmap = function(mat, colors = c(aachen_color("blue"), "white", aachen_color("green")),
-                        options = list()) {
 
-  abs_max = max(abs(max(mat)), abs(min(mat)))
-  col_fun = circlize::colorRamp2(
-    c(-abs_max, 0, abs_max),
-    colors
-  )
-
-  hmap = exec(ComplexHeatmap::Heatmap,
-              !!!options,
-              matrix = as.matrix(mat), col = col_fun)
-  gghmap = grid::grid.grabExpr(draw(hmap)) %>%
-    ggpubr::as_ggplot()
-
-  return(gghmap)
-}
 
 #' Plot of temporal expression profiles from stem analysis
 #'
@@ -354,11 +341,13 @@ plot_stem_profiles = function(df, p_cutoff = 0.05, model_profile = F,
     geom_hline(yintercept = 0) +
     geom_line(alpha = 0.05) +
     geom_line(data = profile_summary, aes(x=time, y=m), inherit.aes = F,
-              color = aachen_color("green"), size=0.5) +
+              color = AachenColorPalette::aachen_color("green"), size=0.5) +
     geom_errorbar(data = profile_summary, aes(x=time, y=m, ymin = lower,
                                               ymax = upper),
-                  inherit.aes = F, color = aachen_color("green"), size=0.55, width=0.25) +
-    facet_rep_wrap(~profile, scales = "free", ...) +
+                  inherit.aes = F,
+                  color = AachenColorPalette::aachen_color("green"),
+                  size=0.55, width=0.25) +
+    lemon::facet_rep_wrap(~profile, scales = "free", ...) +
     # my_theme(grid = "no") +
     scale_x_continuous(breaks = unique(df$time)) +
     labs(x="Time", y="logFC")  +
@@ -376,7 +365,8 @@ plot_stem_profiles = function(df, p_cutoff = 0.05, model_profile = F,
 
     p = p +
       geom_line(data = profile_stem_summary, aes(x=time, y=y_coords),
-                inherit.aes = F, color = aachen_color("blue"), size=1)
+                inherit.aes = F,
+                color = AachenColorPalette::aachen_color("blue"), size=1)
   }
   return(p)
 }
@@ -526,7 +516,7 @@ plot_top_genes = function(data, class, fontsize, ...) {
       breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))
     ) +
     theme(legend.position = "none") +
-    scale_fill_manual(values = aachen_color("red")) +
+    scale_fill_manual(values = AachenColorPalette::aachen_color("red")) +
     my_theme(grid = "no", fsize = fz) +
     geom_text(aes(label = stars), vjust = +0.75, hjust = 1.5,
               color = "white", size = fontsize/(14/5)) +
@@ -543,7 +533,7 @@ plot_top_genes = function(data, class, fontsize, ...) {
     ) +
     scale_y_discrete(position = "right") +
     theme(legend.position = "none") +
-    scale_fill_manual(values = aachen_color("blue")) +
+    scale_fill_manual(values = AachenColorPalette::aachen_color("blue")) +
     my_theme(grid = "no", fsize = fz) +
     geom_text(aes(label = stars), vjust = +0.75, hjust = -0.5,
               color = "white", size = fontsize/(14/5)) +
@@ -560,8 +550,9 @@ plot_go_rank_density = function(df) {
     theme(axis.text.y = element_blank(),
           axis.ticks.y = element_blank(),
           legend.position = "top") +
-    labs(x=str_wrap("GO term ranking based on p-value"), y="Density", color =NULL) +
-    facet_rep_wrap(~regulation, scales = "free", drop = T) +
+    labs(x=str_wrap("GO term ranking based on p-value"), y="Density",
+         color =NULL) +
+    lemon::facet_rep_wrap(~regulation, scales = "free", drop = T) +
     scale_x_continuous(breaks = function(x) as.numeric(
       gsub("^0", 1, unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))))
     )
