@@ -13,4 +13,6 @@ analysis/site_libs
 data/**/*.rds
 data/**/*.xlsx
 data/**/*.txt
+
 output/**/*.rds
+output/**/*.txt
