@@ -9,8 +9,8 @@ editor_options:
 
 ```{r chunk_setup, include = FALSE}
 knitr::opts_chunk$set(
-    collapse = TRUE,
-    comment = "#>"
+  collapse = TRUE,
+  comment = "#>"
 )
 ```
 
@@ -25,6 +25,11 @@ library(tidylog)
 library(here)
 
 library(edgeR)
+library(biobroom)
+
+library(AachenColorPalette)
+library(cowplot)
+library(lemon)
 
 options("tidylog.display" = list(print))
 source(here("code/utils-rnaseq.R"))
@@ -35,28 +40,28 @@ source(here("code/utils-plots.R"))
 ## Analysis specific options
 ```{r analysis_specific_options}
 # i/o
-data_path = "data/mouse-chronic-ccl4"
-output_path = "output/mouse-chronic-ccl4"
-figure_path = "output/mouse-chronic-ccl4/figures"
+data_path <- "data/mouse-chronic-ccl4"
+output_path <- "output/mouse-chronic-ccl4"
+figure_path <- "output/mouse-chronic-ccl4/figures"
 
 # graphical parameters
 # fontsize
-fz = 9
+fz <- 9
 ```
 
 ## Preliminary exploratory analysis
 ### PCA of raw data
 ```{r pca_raw_data}
-count_matrix = readRDS(here(data_path, "count_matrix.rds"))
-meta = readRDS(here(data_path, "meta_data.rds"))
+count_matrix <- readRDS(here(data_path, "count_matrix.rds"))
+meta <- readRDS(here(data_path, "meta_data.rds"))
 
-stopifnot(colnames(count_matrix) ==  meta$sample)
+stopifnot(colnames(count_matrix) == meta$sample)
 
 # remove constant expressed genes and transform to log2 scale
-preprocessed_count_matrix = preprocess_count_matrix(count_matrix)
+preprocessed_count_matrix <- preprocess_count_matrix(count_matrix)
 
 
-pca_result = do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
+pca_result <- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
 
 plot_pca(pca_result, feature = "time") +
   my_theme()
@@ -67,25 +72,25 @@ plot_pca(pca_result, feature = "treatment") +
 ## Data processing
 ### Normalization
 ```{r normalization}
-count_matrix = readRDS(here(data_path, "count_matrix.rds"))
-meta = readRDS(here(data_path, "meta_data.rds"))
+count_matrix <- readRDS(here(data_path, "count_matrix.rds"))
+meta <- readRDS(here(data_path, "meta_data.rds"))
 
 stopifnot(meta$sample == colnames(count_matrix))
 
-dge_obj = DGEList(count_matrix, group = meta$group)
+dge_obj <- DGEList(count_matrix, group = meta$group)
 
 # filter low read counts, TMM normalization and logCPM transformation
-norm = voom_normalization(dge_obj)
+norm <- voom_normalization(dge_obj)
 
 saveRDS(norm, here(output_path, "normalized_expression.rds"))
 ```
 
 ### PCA of normalized data
 ```{r pca_norm_data}
-expr = readRDS(here(output_path, "normalized_expression.rds"))
-meta = readRDS(here(data_path, "meta_data.rds"))
+expr <- readRDS(here(output_path, "normalized_expression.rds"))
+meta <- readRDS(here(data_path, "meta_data.rds"))
 
-pca_result = do_pca(expr, meta, top_n_var_genes = 1000)
+pca_result <- do_pca(expr, meta, top_n_var_genes = 1000)
 
 saveRDS(pca_result, here(output_path, "pca_result.rds"))
 
@@ -95,4 +100,96 @@ plot_pca(pca_result, feature = "time") +
 
 plot_pca(pca_result, feature = "treatment") +
   my_theme()
+```
+
+## Differential gene expression analysis
+### Running limma
+```{r running_limma}
+# load expression and meta data
+expr <- readRDS(here(output_path, "normalized_expression.rds"))
+meta <- readRDS(here(data_path, "meta_data.rds"))
+
+stopifnot(colnames(expr) == meta$sample)
+
+# build design matrix
+design <- model.matrix(~ 0 + group, data = meta)
+rownames(design) <- meta$sample
+colnames(design) <- levels(meta$group)
+
+# define contrasts
+contrasts <- makeContrasts(
+  # effect of olive oil
+  oil_2m_vs_0m = oil.2 - wt,
+  oil_12m_vs_0m = oil.12 - wt,
+  oil_12m_vs_2m = oil.12 - oil.2,
+
+  # treatment vs control ignoring the effect of oil
+  ccl_2m_vs_0m = ccl4.2 - wt,
+  ccl_6m_vs_0m = ccl4.6 - wt,
+  ccl_12m_vs_0m = ccl4.12 - wt,
+
+  # treatment vs control regressing out the effect of oil
+  pure_ccl_2m_vs_0m = (ccl4.2 - wt) - (oil.2 - wt),
+  pure_ccl_6m_vs_0m = (ccl4.6 - wt) - ((oil.2 + oil.12) / 2 - wt),
+  pure_ccl_12m_vs_0m = (ccl4.12 - wt) - (oil.12 - wt),
+
+  # consecutive time point comparison
+  consec_12m_vs_6m = ccl4.12 - ccl4.6,
+  consec_12m_vs_2m = ccl4.12 - ccl4.2,
+  # consec_48w_vs_8w_2 = (ccl4.48 - oil.48) - (ccl4.8 - oil.8),
+  consec_6m_vs_2m = ccl4.6 - ccl4.2,
+  levels = design
+)
+
+limma_result <- run_limma(expr, design, contrasts) %>%
+  assign_deg()
+
+deg_df <- limma_result %>%
+  mutate(contrast = factor(contrast, levels = c(
+    "ccl_2m_vs_0m", "ccl_6m_vs_0m",
+    "ccl_12m_vs_0m",
+    "pure_ccl_2m_vs_0m",
+    "pure_ccl_6m_vs_0m",
+    "pure_ccl_12m_vs_0m",
+    "consec_6m_vs_2m",
+    "consec_12m_vs_2m",
+    "consec_12m_vs_6m",
+    "oil_2m_vs_0m", "oil_12m_vs_0m",
+    "oil_12m_vs_2m"
+  ))) %>%
+  mutate(contrast_reference = case_when(
+    str_detect(contrast, "oil") ~ "oil",
+    str_detect(contrast, "^pure_ccl") ~ "pure_ccl4",
+    str_detect(contrast, "^ccl") ~ "ccl4",
+    str_detect(contrast, "consec") ~ "consec"
+  ))
+
+saveRDS(deg_df, here(output_path, "limma_result.rds"))
+```
+
+### Volcano plots
+```{r volcano_plots}
+df <- readRDS(here(output_path, "limma_result.rds"))
+
+df %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  plot_volcano() +
+  my_theme(grid = "y")
+```
+
+
+## Translation to HGNC symbols
+For later comparisons to human data the mouse gene symbols are mapped to their human orthologs
+```{r translate_to_hgnc_symbols}
+df <- readRDS(here(output_path, "limma_result.rds"))
+
+mapped_df <- df %>%
+  translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc") %>%
+  drop_na() %>%
+  # for duplicated genes, keep the one with the highest absolute logFC
+  group_by(contrast_reference, contrast, gene) %>%
+  slice_max(order_by = abs(logFC), n = 1, with_ties = F) %>%
+  ungroup()
+
+saveRDS(mapped_df, here(output_path, "limma_result_hs.rds"))
 ```

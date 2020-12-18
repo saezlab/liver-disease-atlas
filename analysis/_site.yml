@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  - text: "Mouse models"
+    menu:
+    - text: "Chronic CCl4 mouse model"
+      href: mouse-chronic-ccl4.html
 output:
   workflowr::wflow_html:
     toc: yes
