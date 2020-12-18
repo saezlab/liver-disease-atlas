@@ -27,6 +27,8 @@ library(here)
 library(edgeR)
 library(biobroom)
 
+library(janitor)
+
 library(AachenColorPalette)
 library(cowplot)
 library(lemon)
@@ -64,9 +66,9 @@ preprocessed_count_matrix <- preprocess_count_matrix(count_matrix)
 pca_result <- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
 
 plot_pca(pca_result, feature = "time") +
-  my_theme()
+  my_theme(fsize = fz)
 plot_pca(pca_result, feature = "treatment") +
-  my_theme()
+  my_theme(fsize = fz)
 ```
 
 ## Data processing
@@ -96,10 +98,10 @@ saveRDS(pca_result, here(output_path, "pca_result.rds"))
 
 ### PC1 vs PC2
 plot_pca(pca_result, feature = "time") +
-  my_theme()
+  my_theme(fsize = fz)
 
 plot_pca(pca_result, feature = "treatment") +
-  my_theme()
+  my_theme(fsize = fz)
 ```
 
 ## Differential gene expression analysis
@@ -174,9 +176,42 @@ df <- readRDS(here(output_path, "limma_result.rds"))
 df %>%
   filter(contrast_reference == "pure_ccl4") %>%
   plot_volcano() +
-  my_theme(grid = "y")
+  my_theme(grid = "y", fsize = fz)
 ```
 
+## Clusters of temporal expression profiles with STEM
+### Prepare input
+```{r prepare_stem_input}
+# prepare input for stem analysis
+df = readRDS(here(output_path,"limma_result.rds"))
+
+stem_inputs = df %>%
+  filter(contrast_reference %in% c("pure_ccl4")) %>%
+  mutate(class = str_c("Month ", parse_number(as.character(contrast)))) %>%
+  mutate(class = factor(class, levels = c("Month 2", "Month 6", "Month 12"))) %>%
+  select(gene, class, logFC, contrast_reference)
+  
+stem_inputs %>%
+  select(-contrast_reference) %>%
+  pivot_wider(names_from = class, values_from = logFC) %>% 
+  write_delim(here(output_path, "stem/input/pure_ccl4.txt"), delim = "\t")
+```
+
+### Run STEM
+```{r run_stem}
+# execute stem
+stem_res = run_stem(here(output_path, "stem"), clear_output = T)
+
+saveRDS(stem_res, here(output_path, "stem_result.rds"))
+
+stem_res %>%
+  filter(p <= 0.05) %>%
+  filter(key == "pure_ccl4") %>%
+  distinct() %>%
+  plot_stem_profiles(model_profile = F) +
+  labs(x = "Time in Month", y="logFC") +
+  my_theme(grid = "y", fsize = fz)
+```
 
 ## Translation to HGNC symbols
 For later comparisons to human data the mouse gene symbols are mapped to their human orthologs
