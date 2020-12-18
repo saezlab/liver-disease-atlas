@@ -1,0 +1,98 @@
+---
+title: "mouse-chronic-ccl4"
+author: "christianholland"
+date: "2020-12-18"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r chunk_setup, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>"
+)
+```
+
+## Introduction
+TODO
+
+## Libraries and sources
+These libraries and sources are used in this analysis 
+```{r libraries_and_sources, message=F}
+library(tidyverse)
+library(tidylog)
+library(here)
+
+library(edgeR)
+
+options("tidylog.display" = list(print))
+source(here("code/utils-rnaseq.R"))
+source(here("code/utils-wrapper.R"))
+source(here("code/utils-plots.R"))
+```
+
+## Analysis specific options
+```{r analysis_specific_options}
+# i/o
+data_path = "data/mouse-chronic-ccl4"
+output_path = "output/mouse-chronic-ccl4"
+figure_path = "output/mouse-chronic-ccl4/figures"
+
+# graphical parameters
+# fontsize
+fz = 9
+```
+
+## Preliminary exploratory analysis
+### PCA of raw data
+```{r pca_raw_data}
+count_matrix = readRDS(here(data_path, "count_matrix.rds"))
+meta = readRDS(here(data_path, "meta_data.rds"))
+
+stopifnot(colnames(count_matrix) ==  meta$sample)
+
+# remove constant expressed genes and transform to log2 scale
+preprocessed_count_matrix = preprocess_count_matrix(count_matrix)
+
+
+pca_result = do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
+
+plot_pca(pca_result, feature = "time") +
+  my_theme()
+plot_pca(pca_result, feature = "treatment") +
+  my_theme()
+```
+
+## Data processing
+### Normalization
+```{r normalization}
+count_matrix = readRDS(here(data_path, "count_matrix.rds"))
+meta = readRDS(here(data_path, "meta_data.rds"))
+
+stopifnot(meta$sample == colnames(count_matrix))
+
+dge_obj = DGEList(count_matrix, group = meta$group)
+
+# filter low read counts, TMM normalization and logCPM transformation
+norm = voom_normalization(dge_obj)
+
+saveRDS(norm, here(output_path, "normalized_expression.rds"))
+```
+
+### PCA of normalized data
+```{r pca_norm_data}
+expr = readRDS(here(output_path, "normalized_expression.rds"))
+meta = readRDS(here(data_path, "meta_data.rds"))
+
+pca_result = do_pca(expr, meta, top_n_var_genes = 1000)
+
+saveRDS(pca_result, here(output_path, "pca_result.rds"))
+
+### PC1 vs PC2
+plot_pca(pca_result, feature = "time") +
+  my_theme()
+
+plot_pca(pca_result, feature = "treatment") +
+  my_theme()
+```
