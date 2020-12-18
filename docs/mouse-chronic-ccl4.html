@@ -379,6 +379,18 @@ div.tocify {
 <li>
   <a href="license.html">License</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mouse models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -418,7 +430,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-18
+<strong>Last updated:</strong> 2020-12-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -509,16 +521,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree261f1a4389dd35353ef5619e4f184ae778137e69targetblank261f1a4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/261f1a4389dd35353ef5619e4f184ae778137e69" target="_blank">261f1a4</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4502dfacd09a0e05ffa691159ebb0481772995atargetblanke4502dfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/e4502dfacd09a0e05ffa691159ebb0481772995a" target="_blank">e4502df</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree261f1a4389dd35353ef5619e4f184ae778137e69targetblank261f1a4a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4502dfacd09a0e05ffa691159ebb0481772995atargetblanke4502dfa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/261f1a4389dd35353ef5619e4f184ae778137e69" target="_blank">261f1a4</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/e4502dfacd09a0e05ffa691159ebb0481772995a" target="_blank">e4502df</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -528,18 +540,18 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
+    Ignored:    data/annotation/
+    Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    output/mouse-chronic-ccl4/
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
 Untracked files:
-    Untracked:  code/mouse-chronic-ccl4/
-    Untracked:  code/utils-plots.R
-    Untracked:  code/utils-rnaseq.R
-    Untracked:  code/utils-wrapper.R
-    Untracked:  data/mouse-chronic-ccl4/
-    Untracked:  output/mouse-chronic-ccl4/
+    Untracked:  code/annotation/
 
 Unstaged changes:
+    Modified:   code/utils-plots.R
+    Modified:   code/utils-wrapper.R
     Modified:   renv.lock
 
 </code></pre>
@@ -584,6 +596,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/e4502dfacd09a0e05ffa691159ebb0481772995a/analysis/mouse-chronic-ccl4.Rmd" target="_blank">e4502df</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Start my new project
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/7bb9aabe6b561f25945051f912a51c735be785dc/docs/mouse-chronic-ccl4.html" target="_blank">7bb9aab</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/261f1a4389dd35353ef5619e4f184ae778137e69/analysis/mouse-chronic-ccl4.Rmd" target="_blank">261f1a4</a>
 </td>
 <td>
@@ -617,6 +663,12 @@ library(here)
 library(edgeR)
 #&gt; Warning: package &#39;edgeR&#39; was built under R version 4.0.3
 #&gt; Warning: package &#39;limma&#39; was built under R version 4.0.3
+library(biobroom)
+#&gt; Warning: package &#39;biobroom&#39; was built under R version 4.0.3
+
+library(AachenColorPalette)
+library(cowplot)
+library(lemon)
 
 options(&quot;tidylog.display&quot; = list(print))
 source(here(&quot;code/utils-rnaseq.R&quot;))
@@ -626,30 +678,30 @@ source(here(&quot;code/utils-plots.R&quot;))</code></pre>
 <div id="analysis-specific-options" class="section level2">
 <h2>Analysis specific options</h2>
 <pre class="r"><code># i/o
-data_path = &quot;data/mouse-chronic-ccl4&quot;
-output_path = &quot;output/mouse-chronic-ccl4&quot;
-figure_path = &quot;output/mouse-chronic-ccl4/figures&quot;
+data_path &lt;- &quot;data/mouse-chronic-ccl4&quot;
+output_path &lt;- &quot;output/mouse-chronic-ccl4&quot;
+figure_path &lt;- &quot;output/mouse-chronic-ccl4/figures&quot;
 
 # graphical parameters
 # fontsize
-fz = 9</code></pre>
+fz &lt;- 9</code></pre>
 </div>
 <div id="preliminary-exploratory-analysis" class="section level2">
 <h2>Preliminary exploratory analysis</h2>
 <div id="pca-of-raw-data" class="section level3">
 <h3>PCA of raw data</h3>
-<pre class="r"><code>count_matrix = readRDS(here(data_path, &quot;count_matrix.rds&quot;))
-meta = readRDS(here(data_path, &quot;meta_data.rds&quot;))
+<pre class="r"><code>count_matrix &lt;- readRDS(here(data_path, &quot;count_matrix.rds&quot;))
+meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 
-stopifnot(colnames(count_matrix) ==  meta$sample)
+stopifnot(colnames(count_matrix) == meta$sample)
 
 # remove constant expressed genes and transform to log2 scale
-preprocessed_count_matrix = preprocess_count_matrix(count_matrix)
+preprocessed_count_matrix &lt;- preprocess_count_matrix(count_matrix)
 #&gt; Discarding 7711 genes 
 #&gt; Keeping 24833 genes
 
 
-pca_result = do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
+pca_result &lt;- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
 #&gt; left_join: added 3 columns (time, treatment, group)
 #&gt;            &gt; rows only in x    0
 #&gt;            &gt; rows only in y  ( 0)
@@ -660,24 +712,98 @@ pca_result = do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
 plot_pca(pca_result, feature = &quot;time&quot;) +
   my_theme()</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_raw_data-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_raw_data-1">
+Past versions of pca_raw_data-1.png
+</button>
+</p>
+<div id="fig-pca_raw_data-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_raw_data-1.png" target="_blank">7bb9aab</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>plot_pca(pca_result, feature = &quot;treatment&quot;) +
   my_theme()</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_raw_data-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_raw_data-2">
+Past versions of pca_raw_data-2.png
+</button>
+</p>
+<div id="fig-pca_raw_data-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_raw_data-2.png" target="_blank">7bb9aab</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="data-processing" class="section level2">
 <h2>Data processing</h2>
 <div id="normalization" class="section level3">
 <h3>Normalization</h3>
-<pre class="r"><code>count_matrix = readRDS(here(data_path, &quot;count_matrix.rds&quot;))
-meta = readRDS(here(data_path, &quot;meta_data.rds&quot;))
+<pre class="r"><code>count_matrix &lt;- readRDS(here(data_path, &quot;count_matrix.rds&quot;))
+meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 
 stopifnot(meta$sample == colnames(count_matrix))
 
-dge_obj = DGEList(count_matrix, group = meta$group)
+dge_obj &lt;- DGEList(count_matrix, group = meta$group)
 
 # filter low read counts, TMM normalization and logCPM transformation
-norm = voom_normalization(dge_obj)
+norm &lt;- voom_normalization(dge_obj)
 #&gt; Discarding 17206 genes 
 #&gt; Keeping 15338 genes
 
@@ -685,10 +811,10 @@ saveRDS(norm, here(output_path, &quot;normalized_expression.rds&quot;))</code></
 </div>
 <div id="pca-of-normalized-data" class="section level3">
 <h3>PCA of normalized data</h3>
-<pre class="r"><code>expr = readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
-meta = readRDS(here(data_path, &quot;meta_data.rds&quot;))
+<pre class="r"><code>expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
+meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 
-pca_result = do_pca(expr, meta, top_n_var_genes = 1000)
+pca_result &lt;- do_pca(expr, meta, top_n_var_genes = 1000)
 #&gt; left_join: added 3 columns (time, treatment, group)
 #&gt;            &gt; rows only in x    0
 #&gt;            &gt; rows only in y  ( 0)
@@ -702,10 +828,204 @@ saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
 plot_pca(pca_result, feature = &quot;time&quot;) +
   my_theme()</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_norm_data-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_norm_data-1">
+Past versions of pca_norm_data-1.png
+</button>
+</p>
+<div id="fig-pca_norm_data-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_norm_data-1.png" target="_blank">7bb9aab</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 plot_pca(pca_result, feature = &quot;treatment&quot;) +
   my_theme()</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca_norm_data-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_norm_data-2">
+Past versions of pca_norm_data-2.png
+</button>
+</p>
+<div id="fig-pca_norm_data-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_norm_data-2.png" target="_blank">7bb9aab</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="differential-gene-expression-analysis" class="section level2">
+<h2>Differential gene expression analysis</h2>
+<div id="running-limma" class="section level3">
+<h3>Running limma</h3>
+<pre class="r"><code># load expression and meta data
+expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
+meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
+
+stopifnot(colnames(expr) == meta$sample)
+
+# build design matrix
+design &lt;- model.matrix(~ 0 + group, data = meta)
+rownames(design) &lt;- meta$sample
+colnames(design) &lt;- levels(meta$group)
+
+# define contrasts
+contrasts &lt;- makeContrasts(
+  # effect of olive oil
+  oil_2m_vs_0m = oil.2 - wt,
+  oil_12m_vs_0m = oil.12 - wt,
+  oil_12m_vs_2m = oil.12 - oil.2,
+
+  # treatment vs control ignoring the effect of oil
+  ccl_2m_vs_0m = ccl4.2 - wt,
+  ccl_6m_vs_0m = ccl4.6 - wt,
+  ccl_12m_vs_0m = ccl4.12 - wt,
+
+  # treatment vs control regressing out the effect of oil
+  pure_ccl_2m_vs_0m = (ccl4.2 - wt) - (oil.2 - wt),
+  pure_ccl_6m_vs_0m = (ccl4.6 - wt) - ((oil.2 + oil.12) / 2 - wt),
+  pure_ccl_12m_vs_0m = (ccl4.12 - wt) - (oil.12 - wt),
+
+  # consecutive time point comparison
+  consec_12m_vs_6m = ccl4.12 - ccl4.6,
+  consec_12m_vs_2m = ccl4.12 - ccl4.2,
+  # consec_48w_vs_8w_2 = (ccl4.48 - oil.48) - (ccl4.8 - oil.8),
+  consec_6m_vs_2m = ccl4.6 - ccl4.2,
+  levels = design
+)
+
+limma_result &lt;- run_limma(expr, design, contrasts) %&gt;%
+  assign_deg()
+#&gt; Warning: `tbl_df()` is deprecated as of dplyr 1.0.0.
+#&gt; Please use `tibble::as_tibble()` instead.
+#&gt; This warning is displayed once every 8 hours.
+#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.
+#&gt; select: renamed 3 variables (contrast, logFC, pval) and dropped one variable
+#&gt; group_by: one grouping variable (contrast)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 115,674 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: new variable &#39;regulation&#39; (character) with 3 unique values and 0% NA
+#&gt; mutate: converted &#39;regulation&#39; from character to factor (0 new NA)
+
+deg_df &lt;- limma_result %&gt;%
+  mutate(contrast = factor(contrast, levels = c(
+    &quot;ccl_2m_vs_0m&quot;, &quot;ccl_6m_vs_0m&quot;,
+    &quot;ccl_12m_vs_0m&quot;,
+    &quot;pure_ccl_2m_vs_0m&quot;,
+    &quot;pure_ccl_6m_vs_0m&quot;,
+    &quot;pure_ccl_12m_vs_0m&quot;,
+    &quot;consec_6m_vs_2m&quot;,
+    &quot;consec_12m_vs_2m&quot;,
+    &quot;consec_12m_vs_6m&quot;,
+    &quot;oil_2m_vs_0m&quot;, &quot;oil_12m_vs_0m&quot;,
+    &quot;oil_12m_vs_2m&quot;
+  ))) %&gt;%
+  mutate(contrast_reference = case_when(
+    str_detect(contrast, &quot;oil&quot;) ~ &quot;oil&quot;,
+    str_detect(contrast, &quot;^pure_ccl&quot;) ~ &quot;pure_ccl4&quot;,
+    str_detect(contrast, &quot;^ccl&quot;) ~ &quot;ccl4&quot;,
+    str_detect(contrast, &quot;consec&quot;) ~ &quot;consec&quot;
+  ))
+#&gt; mutate: changed 0 values (0%) of &#39;contrast&#39; (0 new NA)
+#&gt; mutate: new variable &#39;contrast_reference&#39; (character) with 4 unique values and 0% NA
+
+saveRDS(deg_df, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
+</div>
+<div id="volcano-plots" class="section level3">
+<h3>Volcano plots</h3>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+df %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  plot_volcano() +
+  my_theme(grid = &quot;y&quot;)
+#&gt; filter: removed 138,042 rows (75%), 46,014 rows remaining
+#&gt; rename: renamed one variable (p)</code></pre>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/volcano_plots-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="translation-to-hgnc-symbols" class="section level2">
+<h2>Translation to HGNC symbols</h2>
+<p>For later comparisons to human data the mouse gene symbols are mapped to their human orthologs</p>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+mapped_df &lt;- df %&gt;%
+  translate_gene_ids(from = &quot;symbol_mgi&quot;, to = &quot;symbol_hgnc&quot;) %&gt;%
+  drop_na() %&gt;%
+  # for duplicated genes, keep the one with the highest absolute logFC
+  group_by(contrast_reference, contrast, gene) %&gt;%
+  slice_max(order_by = abs(logFC), n = 1, with_ties = F) %&gt;%
+  ungroup()
+#&gt; select: dropped 6 variables (ensembl_mgi, ensembl_v_mgi, entrez_mgi, ensembl_hgnc, ensembl_v_hgnc, …)
+#&gt; drop_na: removed 1,905 rows (6%), 30,461 rows remaining
+#&gt; rename: renamed one variable (symbol_mgi)
+#&gt; left_join: added one column (symbol_hgnc)
+#&gt;            &gt; rows only in x    22,992
+#&gt;            &gt; rows only in y  ( 16,094)
+#&gt;            &gt; matched rows     172,404    (includes duplicates)
+#&gt;            &gt;                 =========
+#&gt;            &gt; rows total       195,396
+#&gt; select: renamed one variable (gene) and dropped one variable
+#&gt; drop_na: removed 22,992 rows (12%), 172,404 rows remaining
+#&gt; group_by: 3 grouping variables (contrast_reference, contrast, gene)
+#&gt; slice_max (grouped): removed 11,328 rows (7%), 161,076 rows remaining
+#&gt; ungroup: no grouping variables
+
+saveRDS(mapped_df, here(output_path, &quot;limma_result_hs.rds&quot;))</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -729,29 +1049,37 @@ plot_pca(pca_result, feature = &quot;treatment&quot;) +
 #&gt; [1] stats     graphics  grDevices datasets  utils     methods   base     
 #&gt; 
 #&gt; other attached packages:
-#&gt;  [1] edgeR_3.32.0    limma_3.46.0    here_1.0.1      tidylog_1.0.2  
-#&gt;  [5] forcats_0.5.0   stringr_1.4.0   dplyr_1.0.2     purrr_0.3.4    
-#&gt;  [9] readr_1.4.0     tidyr_1.1.2     tibble_3.0.4    ggplot2_3.3.2  
-#&gt; [13] tidyverse_1.3.0 workflowr_1.6.2
+#&gt;  [1] lemon_0.4.5              cowplot_1.1.0            AachenColorPalette_1.1.2
+#&gt;  [4] biobroom_1.22.0          broom_0.7.3              edgeR_3.32.0            
+#&gt;  [7] limma_3.46.0             here_1.0.1               tidylog_1.0.2           
+#&gt; [10] forcats_0.5.0            stringr_1.4.0            dplyr_1.0.2             
+#&gt; [13] purrr_0.3.4              readr_1.4.0              tidyr_1.1.2             
+#&gt; [16] tibble_3.0.4             ggplot2_3.3.2            tidyverse_1.3.0         
+#&gt; [19] workflowr_1.6.2         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] Rcpp_1.0.5        locfit_1.5-9.4    lubridate_1.7.9.2 lattice_0.20-41  
-#&gt;  [5] clisymbols_1.2.0  assertthat_0.2.1  rprojroot_2.0.2   digest_0.6.27    
-#&gt;  [9] R6_2.5.0          cellranger_1.1.0  backports_1.2.1   reprex_0.3.0     
-#&gt; [13] evaluate_0.14     httr_1.4.2        pillar_1.4.7      rlang_0.4.9      
-#&gt; [17] readxl_1.3.1      rstudioapi_0.13   whisker_0.4       rmarkdown_2.6    
-#&gt; [21] labeling_0.4.2    munsell_0.5.0     broom_0.7.3       compiler_4.0.2   
-#&gt; [25] httpuv_1.5.4      modelr_0.1.8      xfun_0.19         pkgconfig_2.0.3  
-#&gt; [29] htmltools_0.5.0   tidyselect_1.1.0  viridisLite_0.3.0 fansi_0.4.1      
-#&gt; [33] crayon_1.3.4      dbplyr_2.0.0      withr_2.3.0       later_1.1.0.1    
-#&gt; [37] grid_4.0.2        jsonlite_1.7.2    gtable_0.3.0      lifecycle_0.2.0  
-#&gt; [41] DBI_1.1.0         git2r_0.27.1      magrittr_2.0.1    scales_1.1.1     
-#&gt; [45] cli_2.2.0         stringi_1.5.3     farver_2.0.3      renv_0.12.3      
-#&gt; [49] fs_1.5.0          promises_1.1.1    xml2_1.3.2        ellipsis_0.3.1   
-#&gt; [53] generics_0.1.0    vctrs_0.3.6       cowplot_1.1.0     tools_4.0.2      
-#&gt; [57] glue_1.4.2        hms_0.5.3         yaml_2.2.1        colorspace_2.0-0 
-#&gt; [61] rvest_0.3.6       knitr_1.30        haven_2.3.1</code></pre>
-</div>
+#&gt;  [1] Biobase_2.50.0      httr_1.4.2          viridisLite_0.3.0  
+#&gt;  [4] jsonlite_1.7.2      modelr_0.1.8        assertthat_0.2.1   
+#&gt;  [7] renv_0.12.3         cellranger_1.1.0    yaml_2.2.1         
+#&gt; [10] pillar_1.4.7        backports_1.2.1     lattice_0.20-41    
+#&gt; [13] glue_1.4.2          digest_0.6.27       promises_1.1.1     
+#&gt; [16] rvest_0.3.6         colorspace_2.0-0    htmltools_0.5.0    
+#&gt; [19] httpuv_1.5.4        plyr_1.8.6          clisymbols_1.2.0   
+#&gt; [22] pkgconfig_2.0.3     haven_2.3.1         scales_1.1.1       
+#&gt; [25] whisker_0.4         later_1.1.0.1       git2r_0.27.1       
+#&gt; [28] farver_2.0.3        generics_0.1.0      ellipsis_0.3.1     
+#&gt; [31] withr_2.3.0         BiocGenerics_0.36.0 cli_2.2.0          
+#&gt; [34] magrittr_2.0.1      crayon_1.3.4        readxl_1.3.1       
+#&gt; [37] evaluate_0.14       fs_1.5.0            fansi_0.4.1        
+#&gt; [40] xml2_1.3.2          tools_4.0.2         hms_0.5.3          
+#&gt; [43] lifecycle_0.2.0     munsell_0.5.0       reprex_0.3.0       
+#&gt; [46] locfit_1.5-9.4      compiler_4.0.2      rlang_0.4.9        
+#&gt; [49] grid_4.0.2          rstudioapi_0.13     labeling_0.4.2     
+#&gt; [52] rmarkdown_2.6       gtable_0.3.0        DBI_1.1.0          
+#&gt; [55] R6_2.5.0            gridExtra_2.3       lubridate_1.7.9.2  
+#&gt; [58] knitr_1.30          rprojroot_2.0.2     stringi_1.5.3      
+#&gt; [61] parallel_4.0.2      Rcpp_1.0.5          vctrs_0.3.6        
+#&gt; [64] dbplyr_2.0.0        tidyselect_1.1.0    xfun_0.19</code></pre>
 </div>
 </div>
 
