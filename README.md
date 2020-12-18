@@ -1,5 +1,9 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # meta-liver
 
-A [workflowr][] project.
+<!-- badges: start -->
+<!-- badges: end -->
 
-[workflowr]: https://github.com/jdblischak/workflowr
+The goal of meta-liver is to …
