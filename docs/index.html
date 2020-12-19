@@ -23,6 +23,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -311,11 +313,40 @@ $(document).ready(function () {
     <li>
       <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
     </li>
+    <li>
+      <a href="mouse-acute-apap.html">Acute APAP mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-ccl4.html">Acute CCl4 mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-bdl.html">Acute BDL mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-ph.html">Acute PH mouse model</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Patient cohorts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mouse-acute-ph.html">blabla</a>
+    </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/saezlab/meta-liver">
+    <span class="fas fa-github"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -381,38 +412,49 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4502dfacd09a0e05ffa691159ebb0481772995atargetblanke4502dfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/e4502dfacd09a0e05ffa691159ebb0481772995a" target="_blank">e4502df</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree78a25d5d1882aa788f0a75a6b2f9753d203c3d76targetblank78a25d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/78a25d5d1882aa788f0a75a6b2f9753d203c3d76" target="_blank">78a25d5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4502dfacd09a0e05ffa691159ebb0481772995atargetblanke4502dfa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree78a25d5d1882aa788f0a75a6b2f9753d203c3d76targetblank78a25d5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/e4502dfacd09a0e05ffa691159ebb0481772995a" target="_blank">e4502df</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/78a25d5d1882aa788f0a75a6b2f9753d203c3d76" target="_blank">78a25d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/mouse-acute-apap_cache/
+    Ignored:    analysis/mouse-acute-bdl_cache/
+    Ignored:    analysis/mouse-acute-ccl4_cache/
+    Ignored:    analysis/mouse-acute-ph_cache/
+    Ignored:    analysis/mouse-chronic-ccl4_cache/
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    data/annotation/
+    Ignored:    data/mouse-acute-apap/
+    Ignored:    data/mouse-acute-bdl/
+    Ignored:    data/mouse-acute-ccl4/
+    Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    external_software/.DS_Store
+    Ignored:    external_software/README.html
+    Ignored:    external_software/stem/.DS_Store
+    Ignored:    output/.DS_Store
+    Ignored:    output/mouse-acute-apap/
+    Ignored:    output/mouse-acute-bdl/
+    Ignored:    output/mouse-acute-ccl4/
+    Ignored:    output/mouse-acute-ph/
     Ignored:    output/mouse-chronic-ccl4/
     Ignored:    renv/library/
     Ignored:    renv/staging/
-
-Untracked files:
-    Untracked:  code/annotation/
-
-Unstaged changes:
-    Modified:   code/utils-plots.R
-    Modified:   code/utils-wrapper.R
-    Modified:   renv.lock
 
 </code></pre>
 <p>
@@ -451,6 +493,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/index.html" target="_blank">c73e126</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
