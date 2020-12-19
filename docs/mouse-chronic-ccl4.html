@@ -395,6 +395,9 @@ div.tocify {
     <li>
       <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
     </li>
+    <li>
+      <a href="mouse-acute-apap.html">Acute APAP mouse model</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -541,16 +544,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed516e6fc3243600f69162271164c501531b0dfdbtargetblankd516e6fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/d516e6fc3243600f69162271164c501531b0dfdb" target="_blank">d516e6f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree50f8a682ece8c239d15feba059139c3106748856targetblank50f8a68a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/50f8a682ece8c239d15feba059139c3106748856" target="_blank">50f8a68</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed516e6fc3243600f69162271164c501531b0dfdbtargetblankd516e6fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree50f8a682ece8c239d15feba059139c3106748856targetblank50f8a68a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/d516e6fc3243600f69162271164c501531b0dfdb" target="_blank">d516e6f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/50f8a682ece8c239d15feba059139c3106748856" target="_blank">50f8a68</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -560,6 +563,7 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/mouse-acute-apap_cache/
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    data/annotation/
@@ -567,11 +571,21 @@ Ignored files:
     Ignored:    external_software/.DS_Store
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
+    Ignored:    output/.DS_Store
+    Ignored:    output/mouse-acute-apap/
     Ignored:    output/mouse-chronic-ccl4/
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
+Untracked files:
+    Untracked:  analysis/mouse-acute-apap.Rmd
+    Untracked:  code/utils-microarray.R
+    Untracked:  code/utils-utils.R
+    Untracked:  data/mouse-acute-apap/
+
 Unstaged changes:
+    Modified:   analysis/_site.yml
+    Deleted:    code/utils-wrapper.R
     Modified:   renv.lock
 
 </code></pre>
@@ -611,6 +625,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/50f8a682ece8c239d15feba059139c3106748856/analysis/mouse-chronic-ccl4.Rmd" target="_blank">50f8a68</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+minor changes
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/6f071f7f5eec32cd24a575b4778016e60f77b032/docs/mouse-chronic-ccl4.html" target="_blank">6f071f7</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -811,7 +859,7 @@ library(patchwork)
 
 options(&quot;tidylog.display&quot; = list(print))
 source(here(&quot;code/utils-rnaseq.R&quot;))
-source(here(&quot;code/utils-wrapper.R&quot;))
+source(here(&quot;code/utils-utils.R&quot;))
 source(here(&quot;code/utils-plots.R&quot;))</code></pre>
 </div>
 <div id="global-variables-for-this-analysis" class="section level2">
@@ -820,7 +868,6 @@ source(here(&quot;code/utils-plots.R&quot;))</code></pre>
 <pre class="r"><code># i/o
 data_path &lt;- &quot;data/mouse-chronic-ccl4&quot;
 output_path &lt;- &quot;output/mouse-chronic-ccl4&quot;
-figure_path &lt;- &quot;output/mouse-chronic-ccl4/figures&quot;
 
 # graphical parameters
 # fontsize
@@ -883,12 +930,16 @@ meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 count_matrix %&gt;%
   tdy(&quot;gene&quot;, &quot;sample&quot;, &quot;count&quot;, meta) %&gt;%
   arrange(treatment) %&gt;%
-  ggplot(aes(x = fct_reorder(sample, as.numeric(treatment)), y=log10(count+1), 
-             group = sample, fill = treatment)) +
+  ggplot(aes(
+    x = fct_reorder(sample, as.numeric(treatment)), y = log10(count + 1),
+    group = sample, fill = treatment
+  )) +
   geom_violin() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-        legend.position = &quot;top&quot;) +
-  labs(x=NULL) +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    legend.position = &quot;top&quot;
+  ) +
+  labs(x = NULL) +
   my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; gather: reorganized (I00001, I00002, I00003, I00004, I00005, …) into (sample, count) [was 32544x37, now 1171584x3]
 #&gt; left_join: added 3 columns (time, treatment, group)
@@ -958,7 +1009,7 @@ pca_result &lt;- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 1000)
 #&gt;            &gt;                 ====
 #&gt;            &gt; rows total       36
 
-plot_pca(pca_result, feature = &quot;time&quot;) + 
+plot_pca(pca_result, feature = &quot;time&quot;) +
   plot_pca(pca_result, feature = &quot;treatment&quot;) &amp;
   my_theme(fsize = fz)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca-raw-data-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1036,7 +1087,7 @@ pca_result &lt;- do_pca(expr, meta, top_n_var_genes = 1000)
 
 saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
 
-plot_pca(pca_result, feature = &quot;time&quot;) + 
+plot_pca(pca_result, feature = &quot;time&quot;) +
   plot_pca(pca_result, feature = &quot;treatment&quot;) &amp;
   my_theme(fsize = fz)</code></pre>
 <p><img src="figure/mouse-chronic-ccl4.Rmd/pca-norm-data-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1210,13 +1261,13 @@ christianholland
 </div>
 <div id="time-series-clustering" class="section level2">
 <h2>Time series clustering</h2>
-<p>Here we cluster the gene expression trajectories using the <a href="http://www.cs.cmu.edu/~jernst/stem/">STEM</a> software. The cluster algorithm is descibed <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191">here</a>.</p>
+<p>Gene expression trajectories are clustered using the <a href="http://www.cs.cmu.edu/~jernst/stem/">STEM</a> software. The cluster algorithm is described <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191">here</a>.</p>
 <div id="prepare-input" class="section level3">
 <h3>Prepare input</h3>
 <pre class="r"><code># prepare input for stem analysis
-df = readRDS(here(output_path,&quot;limma_result.rds&quot;))
+df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
 
-stem_inputs = df %&gt;%
+stem_inputs &lt;- df %&gt;%
   filter(contrast_reference %in% c(&quot;pure_ccl4&quot;)) %&gt;%
   mutate(class = str_c(&quot;Month &quot;, parse_number(as.character(contrast)))) %&gt;%
   mutate(class = factor(class, levels = c(&quot;Month 2&quot;, &quot;Month 6&quot;, &quot;Month 12&quot;))) %&gt;%
@@ -1225,19 +1276,19 @@ stem_inputs = df %&gt;%
 #&gt; mutate: new variable &#39;class&#39; (character) with 3 unique values and 0% NA
 #&gt; mutate: converted &#39;class&#39; from character to factor (0 new NA)
 #&gt; select: dropped 5 variables (contrast, statistic, pval, fdr, regulation)
-  
+
 stem_inputs %&gt;%
   select(-contrast_reference) %&gt;%
-  pivot_wider(names_from = class, values_from = logFC) %&gt;% 
+  pivot_wider(names_from = class, values_from = logFC) %&gt;%
   write_delim(here(output_path, &quot;stem/input/pure_ccl4.txt&quot;), delim = &quot;\t&quot;)
 #&gt; select: dropped one variable (contrast_reference)
 #&gt; pivot_wider: reorganized (class, logFC) into (Month 2, Month 6, Month 12) [was 46014x3, now 15338x4]</code></pre>
 </div>
 <div id="run-stem" class="section level3">
 <h3>Run STEM</h3>
-<p>STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are displayed.</p>
+<p>STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are visualized.</p>
 <pre class="r"><code># execute stem
-stem_res = run_stem(here(output_path, &quot;stem&quot;), clear_output = T)
+stem_res &lt;- run_stem(here(output_path, &quot;stem&quot;), clear_output = T)
 #&gt; 
 #&gt; ── Column specification ────────────────────────────────────────────────────────
 #&gt; cols(
@@ -1299,7 +1350,7 @@ stem_res %&gt;%
   filter(key == &quot;pure_ccl4&quot;) %&gt;%
   distinct() %&gt;%
   plot_stem_profiles(model_profile = F) +
-  labs(x = &quot;Time in Month&quot;, y=&quot;logFC&quot;) +
+  labs(x = &quot;Time in Month&quot;, y = &quot;logFC&quot;) +
   my_theme(grid = &quot;y&quot;, fsize = fz)
 #&gt; filter: removed 3,080 rows (24%), 9,692 rows remaining
 #&gt; filter: no rows removed
