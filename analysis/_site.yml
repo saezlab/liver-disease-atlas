@@ -11,15 +11,16 @@ navbar:
     href: license.html
   - text: Mouse models
     menu:
-    - text: Chronic CCl4 mouse model
+    - text: "Chronic CCl4 mouse model"
       href: mouse-chronic-ccl4.html
-    - text: Acute APAP mouse model
+    - text: "Acute APAP mouse model"
       href: mouse-acute-apap.html
-    - text: Acute CCl4 mouse model
+    - text: "Acute CCl4 mouse model"
       href: mouse-acute-ccl4.html
+    - text: "Acute BDL mouse model"
+      href: mouse-acute-bdl.html
   right:
   - icon: fa-github
-    text: Source code
     href: https://github.com/saezlab/meta-liver
 output:
   workflowr::wflow_html:
