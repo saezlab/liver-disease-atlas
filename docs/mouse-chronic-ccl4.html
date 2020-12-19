@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="christianholland" />
+<meta name="author" content="Christian H. Holland" />
 
 <meta name="date" content="2020-12-18" />
 
-<title>mouse-chronic-ccl4</title>
+<title>Chronic CCl4 mouse model</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -26,6 +26,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -271,6 +272,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -401,10 +405,18 @@ div.tocify {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">mouse-chronic-ccl4</h1>
-<h4 class="author">christianholland</h4>
+
+<h1 class="title toc-ignore">Chronic CCl4 mouse model</h1>
+<h4 class="author">Christian H. Holland</h4>
 <h4 class="date">2020-12-18</h4>
 
 </div>
@@ -412,7 +424,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -421,7 +433,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -433,7 +445,7 @@ div.tocify {
 <strong>Last updated:</strong> 2020-12-19
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -497,12 +509,69 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
 </p>
 </div>
-<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div id="strongCachestrongdetected" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+The following chunks had caches available:
+<ul>
+<li>
+count-distribution
+</li>
+<li>
+lib-size
+</li>
+<li>
+normalization
+</li>
+<li>
+pca_norm_data
+</li>
+<li>
+pca_raw_data
+</li>
+<li>
+pca-norm-data
+</li>
+<li>
+pca-raw-data
+</li>
+<li>
+prepare_stem_input
+</li>
+<li>
+prepare-stem-input
+</li>
+<li>
+run_stem
+</li>
+<li>
+run-stem
+</li>
+<li>
+running_limma
+</li>
+<li>
+running-limma
+</li>
+<li>
+session-info-chunk-inserted-by-workflowr
+</li>
+<li>
+translate_to_hgnc_symbols
+</li>
+<li>
+translate-to-hgnc-symbols
+</li>
+<li>
+volcano_plots
+</li>
+<li>
+volcano-plots
+</li>
+</ul>
+<p>To ensure reproducibility of the results, delete the cache directory <code>mouse-chronic-ccl4_cache</code> and re-run the analysis. To have workflowr automatically delete the cache directory prior to building the file, set <code>delete_cache = TRUE</code> when running <code>wflow_build()</code> or <code>wflow_publish()</code>.</p>
 </div>
 </div>
 </div>
@@ -521,16 +590,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree0390ccffdfa0a52305e5320a41eea06e73514772targetblank0390ccfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/0390ccffdfa0a52305e5320a41eea06e73514772" target="_blank">0390ccf</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreef6b3eed0087381c7d7e31d0668b4657af08e4828targetblankf6b3eeda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/f6b3eed0087381c7d7e31d0668b4657af08e4828" target="_blank">f6b3eed</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree0390ccffdfa0a52305e5320a41eea06e73514772targetblank0390ccfa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreef6b3eed0087381c7d7e31d0668b4657af08e4828targetblankf6b3eeda" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/0390ccffdfa0a52305e5320a41eea06e73514772" target="_blank">0390ccf</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/f6b3eed0087381c7d7e31d0668b4657af08e4828" target="_blank">f6b3eed</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -538,7 +607,9 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/mouse-chronic-ccl4_cache/
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    data/annotation/
@@ -549,6 +620,9 @@ Ignored files:
     Ignored:    output/mouse-chronic-ccl4/
     Ignored:    renv/library/
     Ignored:    renv/staging/
+
+Unstaged changes:
+    Modified:   renv.lock
 
 </code></pre>
 <p>
@@ -587,6 +661,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f6b3eed0087381c7d7e31d0668b4657af08e4828/analysis/mouse-chronic-ccl4.Rmd" target="_blank">f6b3eed</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+wflow_publish(“analysis/mouse-chronic-ccl4.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/c12deea6dd850a705e652c04883a266ff9746057/docs/mouse-chronic-ccl4.html" target="_blank">c12deea</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Added stem analysis
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -681,34 +789,33 @@ Start my new project
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>TODO</p>
+<p>Here we analysis a mouse model of CCl4 induced chronic liver disease. The transcriptomic profiles were measured at time point 0, 2, 6, and 12 month. For time point 2 and 12 month matched oil controls are available.</p>
 </div>
 <div id="libraries-and-sources" class="section level2">
 <h2>Libraries and sources</h2>
-<p>These libraries and sources are used in this analysis</p>
+<p>These libraries and sources are used for this analysis.</p>
 <pre class="r"><code>library(tidyverse)
 library(tidylog)
 library(here)
 
 library(edgeR)
-#&gt; Warning: package &#39;edgeR&#39; was built under R version 4.0.3
-#&gt; Warning: package &#39;limma&#39; was built under R version 4.0.3
 library(biobroom)
-#&gt; Warning: package &#39;biobroom&#39; was built under R version 4.0.3
 
 library(janitor)
 
 library(AachenColorPalette)
 library(cowplot)
 library(lemon)
+library(patchwork)
 
 options(&quot;tidylog.display&quot; = list(print))
 source(here(&quot;code/utils-rnaseq.R&quot;))
 source(here(&quot;code/utils-wrapper.R&quot;))
 source(here(&quot;code/utils-plots.R&quot;))</code></pre>
 </div>
-<div id="analysis-specific-options" class="section level2">
-<h2>Analysis specific options</h2>
+<div id="global-variables-for-this-analysis" class="section level2">
+<h2>Global variables for this analysis</h2>
+<p>Definition of global variables that are used throught the entire analysis.</p>
 <pre class="r"><code># i/o
 data_path &lt;- &quot;data/mouse-chronic-ccl4&quot;
 output_path &lt;- &quot;output/mouse-chronic-ccl4&quot;
@@ -720,8 +827,43 @@ fz &lt;- 9</code></pre>
 </div>
 <div id="preliminary-exploratory-analysis" class="section level2">
 <h2>Preliminary exploratory analysis</h2>
+<div id="library-size" class="section level3">
+<h3>Library size</h3>
+<p>Barplot of the library size (total counts) for each of the samples.</p>
+<pre class="r"><code>count_matrix &lt;- readRDS(here(data_path, &quot;count_matrix.rds&quot;))
+
+plot_libsize(count_matrix) +
+  my_theme(fsize = fz)</code></pre>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/lib-size-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="count-distribution" class="section level3">
+<h3>Count distribution</h3>
+<p>Violin plots of the raw read counts for each of the samples.</p>
+<pre class="r"><code>count_matrix &lt;- readRDS(here(data_path, &quot;count_matrix.rds&quot;))
+meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
+
+count_matrix %&gt;%
+  tdy(&quot;gene&quot;, &quot;sample&quot;, &quot;count&quot;, meta) %&gt;%
+  arrange(treatment) %&gt;%
+  ggplot(aes(x = fct_reorder(sample, as.numeric(treatment)), y=log10(count+1), 
+             group = sample, fill = treatment)) +
+  geom_violin() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        legend.position = &quot;top&quot;) +
+  labs(x=NULL) +
+  my_theme(grid = &quot;no&quot;, fsize = fz)
+#&gt; gather: reorganized (I00001, I00002, I00003, I00004, I00005, …) into (sample, count) [was 32544x37, now 1171584x3]
+#&gt; left_join: added 3 columns (time, treatment, group)
+#&gt;            &gt; rows only in x           0
+#&gt;            &gt; rows only in y  (        0)
+#&gt;            &gt; matched rows     1,171,584
+#&gt;            &gt;                 ===========
+#&gt;            &gt; rows total       1,171,584</code></pre>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/count-distribution-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <div id="pca-of-raw-data" class="section level3">
 <h3>PCA of raw data</h3>
+<p>PCA plot of raw read counts contextualized based on the time point and treatment. Before gene with a constant expression across all samples are removed and count values are transformed to log2 scale. Only the top 1000 most variable genes are used as features.</p>
 <pre class="r"><code>count_matrix &lt;- readRDS(here(data_path, &quot;count_matrix.rds&quot;))
 meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 
@@ -733,7 +875,7 @@ preprocessed_count_matrix &lt;- preprocess_count_matrix(count_matrix)
 #&gt; Keeping 24833 genes
 
 
-pca_result &lt;- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
+pca_result &lt;- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 1000)
 #&gt; left_join: added 3 columns (time, treatment, group)
 #&gt;            &gt; rows only in x    0
 #&gt;            &gt; rows only in y  ( 0)
@@ -741,92 +883,17 @@ pca_result &lt;- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
 #&gt;            &gt;                 ====
 #&gt;            &gt; rows total       36
 
-plot_pca(pca_result, feature = &quot;time&quot;) +
+plot_pca(pca_result, feature = &quot;time&quot;) + 
+  plot_pca(pca_result, feature = &quot;treatment&quot;) &amp;
   my_theme(fsize = fz)</code></pre>
-<p><img src="figure/mouse-chronic-ccl4.Rmd/pca_raw_data-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_raw_data-1">
-Past versions of pca_raw_data-1.png
-</button>
-</p>
-<div id="fig-pca_raw_data-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_raw_data-1.png" target="_blank">7bb9aab</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>plot_pca(pca_result, feature = &quot;treatment&quot;) +
-  my_theme(fsize = fz)</code></pre>
-<p><img src="figure/mouse-chronic-ccl4.Rmd/pca_raw_data-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_raw_data-2">
-Past versions of pca_raw_data-2.png
-</button>
-</p>
-<div id="fig-pca_raw_data-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_raw_data-2.png" target="_blank">7bb9aab</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/pca-raw-data-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-processing" class="section level2">
 <h2>Data processing</h2>
 <div id="normalization" class="section level3">
 <h3>Normalization</h3>
+<p>Raw read counts are normalized by first filtering out lowly expressed genes, TMM normalization and finally logCPM transformation.</p>
 <pre class="r"><code>count_matrix &lt;- readRDS(here(data_path, &quot;count_matrix.rds&quot;))
 meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 
@@ -843,6 +910,7 @@ saveRDS(norm, here(output_path, &quot;normalized_expression.rds&quot;))</code></
 </div>
 <div id="pca-of-normalized-data" class="section level3">
 <h3>PCA of normalized data</h3>
+<p>PCA plot of normalized expression data contextualized based on the time point and treatment. Only the top 1000 most variable genes are used as features.</p>
 <pre class="r"><code>expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
 meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
 
@@ -856,94 +924,17 @@ pca_result &lt;- do_pca(expr, meta, top_n_var_genes = 1000)
 
 saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
 
-### PC1 vs PC2
-plot_pca(pca_result, feature = &quot;time&quot;) +
+plot_pca(pca_result, feature = &quot;time&quot;) + 
+  plot_pca(pca_result, feature = &quot;treatment&quot;) &amp;
   my_theme(fsize = fz)</code></pre>
-<p><img src="figure/mouse-chronic-ccl4.Rmd/pca_norm_data-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_norm_data-1">
-Past versions of pca_norm_data-1.png
-</button>
-</p>
-<div id="fig-pca_norm_data-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_norm_data-1.png" target="_blank">7bb9aab</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>
-plot_pca(pca_result, feature = &quot;treatment&quot;) +
-  my_theme(fsize = fz)</code></pre>
-<p><img src="figure/mouse-chronic-ccl4.Rmd/pca_norm_data-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca_norm_data-2">
-Past versions of pca_norm_data-2.png
-</button>
-</p>
-<div id="fig-pca_norm_data-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/7bb9aabe6b561f25945051f912a51c735be785dc/docs/figure/mouse-chronic-ccl4.Rmd/pca_norm_data-2.png" target="_blank">7bb9aab</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/pca-norm-data-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="differential-gene-expression-analysis" class="section level2">
 <h2>Differential gene expression analysis</h2>
 <div id="running-limma" class="section level3">
 <h3>Running limma</h3>
+<p>Differential gene expression analysis via limma with the aim to identify the effect of CCl4 intoxication while regression out the effect of the oil.</p>
 <pre class="r"><code># load expression and meta data
 expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
 meta &lt;- readRDS(here(data_path, &quot;meta_data.rds&quot;))
@@ -1019,6 +1010,7 @@ saveRDS(deg_df, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
 </div>
 <div id="volcano-plots" class="section level3">
 <h3>Volcano plots</h3>
+<p>Volcano plots visualizing the effect of CCl4 on gene expression.</p>
 <pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
 
 df %&gt;%
@@ -1027,48 +1019,12 @@ df %&gt;%
   my_theme(grid = &quot;y&quot;, fsize = fz)
 #&gt; filter: removed 138,042 rows (75%), 46,014 rows remaining
 #&gt; rename: renamed one variable (p)</code></pre>
-<p><img src="figure/mouse-chronic-ccl4.Rmd/volcano_plots-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-volcano_plots-1">
-Past versions of volcano_plots-1.png
-</button>
-</p>
-<div id="fig-volcano_plots-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/figure/mouse-chronic-ccl4.Rmd/volcano_plots-1.png" target="_blank">c73e126</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-19
-</td>
-</tr>
-</tbody>
-</table>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/volcano-plots-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-</div>
-</div>
-<div id="clusters-of-temporal-expression-profiles-with-stem" class="section level2">
-<h2>Clusters of temporal expression profiles with STEM</h2>
+<div id="time-series-clustering" class="section level2">
+<h2>Time series clustering</h2>
+<p>Here we cluster the gene expression trajectories using the <a href="http://www.cs.cmu.edu/~jernst/stem/">STEM</a> software. The cluster algorithm is descibed <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191">here</a>.</p>
 <div id="prepare-input" class="section level3">
 <h3>Prepare input</h3>
 <pre class="r"><code># prepare input for stem analysis
@@ -1093,6 +1049,7 @@ stem_inputs %&gt;%
 </div>
 <div id="run-stem" class="section level3">
 <h3>Run STEM</h3>
+<p>STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are displayed.</p>
 <pre class="r"><code># execute stem
 stem_res = run_stem(here(output_path, &quot;stem&quot;), clear_output = T)
 #&gt; 
@@ -1164,12 +1121,12 @@ stem_res %&gt;%
 #&gt; group_by: 4 grouping variables (key, profile, p, time)
 #&gt; `summarise()` regrouping output by &#39;key&#39;, &#39;profile&#39;, &#39;p&#39; (override with `.groups` argument)
 #&gt; ungroup: no grouping variables</code></pre>
-<p><img src="figure/mouse-chronic-ccl4.Rmd/run_stem-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/mouse-chronic-ccl4.Rmd/run-stem-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="translation-to-hgnc-symbols" class="section level2">
 <h2>Translation to HGNC symbols</h2>
-<p>For later comparisons to human data the mouse gene symbols are mapped to their human orthologs</p>
+<p>For later comparisons to human data the mouse gene symbols are mapped to their human orthologs.</p>
 <pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
 
 mapped_df &lt;- df %&gt;%
@@ -1218,13 +1175,13 @@ saveRDS(mapped_df, here(output_path, &quot;limma_result_hs.rds&quot;))</code></p
 #&gt; [1] stats     graphics  grDevices datasets  utils     methods   base     
 #&gt; 
 #&gt; other attached packages:
-#&gt;  [1] lemon_0.4.5              cowplot_1.1.0            AachenColorPalette_1.1.2
-#&gt;  [4] janitor_2.0.1            biobroom_1.22.0          broom_0.7.3             
-#&gt;  [7] edgeR_3.32.0             limma_3.46.0             here_1.0.1              
-#&gt; [10] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
-#&gt; [13] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
-#&gt; [16] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
-#&gt; [19] tidyverse_1.3.0          workflowr_1.6.2         
+#&gt;  [1] patchwork_1.1.1          lemon_0.4.5              cowplot_1.1.0           
+#&gt;  [4] AachenColorPalette_1.1.2 janitor_2.0.1            biobroom_1.22.0         
+#&gt;  [7] broom_0.7.3              edgeR_3.32.0             limma_3.46.0            
+#&gt; [10] here_1.0.1               tidylog_1.0.2            forcats_0.5.0           
+#&gt; [13] stringr_1.4.0            dplyr_1.0.2              purrr_0.3.4             
+#&gt; [16] readr_1.4.0              tidyr_1.1.2              tibble_3.0.4            
+#&gt; [19] ggplot2_3.3.2            tidyverse_1.3.0          workflowr_1.6.2         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
 #&gt;  [1] Biobase_2.50.0      httr_1.4.2          viridisLite_0.3.0  
@@ -1244,12 +1201,12 @@ saveRDS(mapped_df, here(output_path, &quot;limma_result_hs.rds&quot;))</code></p
 #&gt; [43] hms_0.5.3           lifecycle_0.2.0     munsell_0.5.0      
 #&gt; [46] reprex_0.3.0        locfit_1.5-9.4      compiler_4.0.2     
 #&gt; [49] rlang_0.4.9         grid_4.0.2          rstudioapi_0.13    
-#&gt; [52] labeling_0.4.2      rmarkdown_2.6       gtable_0.3.0       
-#&gt; [55] DBI_1.1.0           R6_2.5.0            gridExtra_2.3      
-#&gt; [58] lubridate_1.7.9.2   knitr_1.30          rprojroot_2.0.2    
-#&gt; [61] stringi_1.5.3       parallel_4.0.2      Rcpp_1.0.5         
-#&gt; [64] vctrs_0.3.6         dbplyr_2.0.0        tidyselect_1.1.0   
-#&gt; [67] xfun_0.19</code></pre>
+#&gt; [52] labeling_0.4.2      rmarkdown_2.6       codetools_0.2-16   
+#&gt; [55] gtable_0.3.0        DBI_1.1.0           R6_2.5.0           
+#&gt; [58] gridExtra_2.3       lubridate_1.7.9.2   knitr_1.30         
+#&gt; [61] rprojroot_2.0.2     stringi_1.5.3       parallel_4.0.2     
+#&gt; [64] Rcpp_1.0.5          vctrs_0.3.6         dbplyr_2.0.0       
+#&gt; [67] tidyselect_1.1.0    xfun_0.19</code></pre>
 </div>
 </div>
 
@@ -1302,6 +1259,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
