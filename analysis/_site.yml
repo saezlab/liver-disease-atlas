@@ -19,6 +19,12 @@ navbar:
       href: mouse-acute-ccl4.html
     - text: "Acute BDL mouse model"
       href: mouse-acute-bdl.html
+    - text: "Acute PH mouse model"
+      href: mouse-acute-ph.html
+  - text: Patient cohorts
+    menu:
+      - text: "blabla"
+        href: mouse-acute-ph.html
   right:
   - icon: fa-github
     href: https://github.com/saezlab/meta-liver
