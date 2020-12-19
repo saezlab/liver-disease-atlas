@@ -1,25 +1,29 @@
 ---
-title: "mouse-chronic-ccl4"
-author: "christianholland"
+title: "Chronic CCl4 mouse model"
+author: "Christian H. Holland"
 date: "2020-12-18"
-output: workflowr::wflow_html
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
 editor_options:
   chunk_output_type: console
 ---
 
-```{r chunk_setup, include = FALSE}
+```{r chunk-setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  autodep = TRUE,
+  cache = TRUE
 )
 ```
 
 ## Introduction
-TODO
+Here we analysis a mouse model of CCl4 induced chronic liver disease. The transcriptomic profiles were measured at time point 0, 2, 6, and 12 month. For time point 2 and 12 month matched oil controls are available. 
 
 ## Libraries and sources
-These libraries and sources are used in this analysis 
-```{r libraries_and_sources, message=F}
+These libraries and sources are used for this analysis.
+```{r libs-and-src, message=FALSE, warning=FALSE, cache=FALSE}
 library(tidyverse)
 library(tidylog)
 library(here)
@@ -32,6 +36,7 @@ library(janitor)
 library(AachenColorPalette)
 library(cowplot)
 library(lemon)
+library(patchwork)
 
 options("tidylog.display" = list(print))
 source(here("code/utils-rnaseq.R"))
@@ -39,8 +44,9 @@ source(here("code/utils-wrapper.R"))
 source(here("code/utils-plots.R"))
 ```
 
-## Analysis specific options
-```{r analysis_specific_options}
+## Global variables for this analysis
+Definition of global variables that are used throught the entire analysis.
+```{r analysis-specific-params, cache=FALSE}
 # i/o
 data_path <- "data/mouse-chronic-ccl4"
 output_path <- "output/mouse-chronic-ccl4"
@@ -52,8 +58,36 @@ fz <- 9
 ```
 
 ## Preliminary exploratory analysis
+### Library size
+Barplot of the library size (total counts) for each of the samples.
+```{r lib-size}
+count_matrix <- readRDS(here(data_path, "count_matrix.rds"))
+
+plot_libsize(count_matrix) +
+  my_theme(fsize = fz)
+```
+
+### Count distribution
+Violin plots of the raw read counts for each of the samples.
+```{r "count-distribution"}
+count_matrix <- readRDS(here(data_path, "count_matrix.rds"))
+meta <- readRDS(here(data_path, "meta_data.rds"))
+
+count_matrix %>%
+  tdy("gene", "sample", "count", meta) %>%
+  arrange(treatment) %>%
+  ggplot(aes(x = fct_reorder(sample, as.numeric(treatment)), y=log10(count+1), 
+             group = sample, fill = treatment)) +
+  geom_violin() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        legend.position = "top") +
+  labs(x=NULL) +
+  my_theme(grid = "no", fsize = fz)
+```
+
 ### PCA of raw data
-```{r pca_raw_data}
+PCA plot of raw read counts contextualized based on the time point and treatment. Before gene with a constant expression across all samples are removed and count values are transformed to log2 scale. Only the top 1000 most variable genes are used as features.
+```{r pca-raw-data}
 count_matrix <- readRDS(here(data_path, "count_matrix.rds"))
 meta <- readRDS(here(data_path, "meta_data.rds"))
 
@@ -63,16 +97,16 @@ stopifnot(colnames(count_matrix) == meta$sample)
 preprocessed_count_matrix <- preprocess_count_matrix(count_matrix)
 
 
-pca_result <- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 2000)
+pca_result <- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 1000)
 
-plot_pca(pca_result, feature = "time") +
-  my_theme(fsize = fz)
-plot_pca(pca_result, feature = "treatment") +
+plot_pca(pca_result, feature = "time") + 
+  plot_pca(pca_result, feature = "treatment") &
   my_theme(fsize = fz)
 ```
 
 ## Data processing
 ### Normalization
+Raw read counts are normalized by first filtering out lowly expressed genes, TMM normalization and finally logCPM transformation.
 ```{r normalization}
 count_matrix <- readRDS(here(data_path, "count_matrix.rds"))
 meta <- readRDS(here(data_path, "meta_data.rds"))
@@ -88,7 +122,8 @@ saveRDS(norm, here(output_path, "normalized_expression.rds"))
 ```
 
 ### PCA of normalized data
-```{r pca_norm_data}
+PCA plot of normalized expression data contextualized based on the time point and treatment. Only the top 1000 most variable genes are used as features.
+```{r pca-norm-data}
 expr <- readRDS(here(output_path, "normalized_expression.rds"))
 meta <- readRDS(here(data_path, "meta_data.rds"))
 
@@ -96,17 +131,15 @@ pca_result <- do_pca(expr, meta, top_n_var_genes = 1000)
 
 saveRDS(pca_result, here(output_path, "pca_result.rds"))
 
-### PC1 vs PC2
-plot_pca(pca_result, feature = "time") +
-  my_theme(fsize = fz)
-
-plot_pca(pca_result, feature = "treatment") +
+plot_pca(pca_result, feature = "time") + 
+  plot_pca(pca_result, feature = "treatment") &
   my_theme(fsize = fz)
 ```
 
 ## Differential gene expression analysis
 ### Running limma
-```{r running_limma}
+Differential gene expression analysis via limma with the aim to identify the effect of CCl4 intoxication while regression out the effect of the oil.
+```{r running-limma}
 # load expression and meta data
 expr <- readRDS(here(output_path, "normalized_expression.rds"))
 meta <- readRDS(here(data_path, "meta_data.rds"))
@@ -170,7 +203,8 @@ saveRDS(deg_df, here(output_path, "limma_result.rds"))
 ```
 
 ### Volcano plots
-```{r volcano_plots}
+Volcano plots visualizing the effect of CCl4 on gene expression.
+```{r volcano-plots}
 df <- readRDS(here(output_path, "limma_result.rds"))
 
 df %>%
@@ -179,9 +213,11 @@ df %>%
   my_theme(grid = "y", fsize = fz)
 ```
 
-## Clusters of temporal expression profiles with STEM
+## Time series clustering
+Here we cluster the gene expression trajectories using the [STEM](http://www.cs.cmu.edu/~jernst/stem/) software. The cluster algorithm is descibed [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191).
+
 ### Prepare input
-```{r prepare_stem_input}
+```{r prepare-stem-input}
 # prepare input for stem analysis
 df = readRDS(here(output_path,"limma_result.rds"))
 
@@ -198,7 +234,8 @@ stem_inputs %>%
 ```
 
 ### Run STEM
-```{r run_stem}
+STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are displayed.
+```{r run-stem}
 # execute stem
 stem_res = run_stem(here(output_path, "stem"), clear_output = T)
 
@@ -214,8 +251,8 @@ stem_res %>%
 ```
 
 ## Translation to HGNC symbols
-For later comparisons to human data the mouse gene symbols are mapped to their human orthologs
-```{r translate_to_hgnc_symbols}
+For later comparisons to human data the mouse gene symbols are mapped to their human orthologs.
+```{r translate-to-hgnc-symbols}
 df <- readRDS(here(output_path, "limma_result.rds"))
 
 mapped_df <- df %>%
