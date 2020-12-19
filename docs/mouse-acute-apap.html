@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Christian H. Holland" />
+
+<meta name="date" content="2020-12-19" />
+
+<title>Acute APAP mouse model</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">meta-liver</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mouse models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-apap.html">Acute APAP mouse model</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/saezlab/meta-liver">
+    <span class="fas fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Acute APAP mouse model</h1>
+<h4 class="author">Christian H. Holland</h4>
+<h4 class="date">2020-12-19</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-12-19
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201218code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201218)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201218code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201218)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree8954d604305d874fa36ff70d361f4735049667dftargetblank8954d60a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/8954d604305d874fa36ff70d361f4735049667df" target="_blank">8954d60</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree8954d604305d874fa36ff70d361f4735049667dftargetblank8954d60a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/8954d604305d874fa36ff70d361f4735049667df" target="_blank">8954d60</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    code/.DS_Store
+    Ignored:    data/.DS_Store
+    Ignored:    data/annotation/
+    Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    external_software/.DS_Store
+    Ignored:    external_software/README.html
+    Ignored:    external_software/stem/.DS_Store
+    Ignored:    output/.DS_Store
+    Ignored:    output/mouse-acute-apap/
+    Ignored:    output/mouse-chronic-ccl4/
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
+
+Untracked files:
+    Untracked:  code/utils-microarray.R
+    Untracked:  code/utils-utils.R
+    Untracked:  data/mouse-acute-apap/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Deleted:    code/utils-wrapper.R
+    Modified:   renv.lock
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/mouse-acute-apap.Rmd</code>) and HTML (<code>docs/mouse-acute-apap.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/8954d604305d874fa36ff70d361f4735049667df/analysis/mouse-acute-apap.Rmd" target="_blank">8954d60</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+added apap analysis
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Here we analysis a mouse model of APAP induced acute liver damage. The transcriptomic profiles were measured at different time points ranging from 1 hour to 16 days.</p>
+</div>
+<div id="libraries-and-sources" class="section level2">
+<h2>Libraries and sources</h2>
+<p>These libraries and sources are used for this analysis.</p>
+<pre class="r"><code>library(mouse4302.db)
+
+library(tidyverse)
+library(tidylog)
+library(here)
+
+library(oligo)
+library(annotate)
+library(limma)
+library(biobroom)
+
+library(janitor)
+
+library(AachenColorPalette)
+library(cowplot)
+library(lemon)
+library(patchwork)
+
+options(&quot;tidylog.display&quot; = list(print))
+source(here(&quot;code/utils-microarray.R&quot;))
+source(here(&quot;code/utils-utils.R&quot;))
+source(here(&quot;code/utils-plots.R&quot;))</code></pre>
+</div>
+<div id="global-variables-for-this-analysis" class="section level2">
+<h2>Global variables for this analysis</h2>
+<p>Definition of global variables that are used throughout the entire analysis.</p>
+<pre class="r"><code># i/o
+data_path &lt;- &quot;data/mouse-acute-apap&quot;
+output_path &lt;- &quot;output/mouse-acute-apap&quot;
+
+# graphical parameters
+# fontsize
+fz &lt;- 9</code></pre>
+</div>
+<div id="data-processing" class="section level2">
+<h2>Data processing</h2>
+<div id="load-.cel-files-and-quality-control" class="section level3">
+<h3>Load .CEL files and quality control</h3>
+<p>The array quality is controlled based on the relative log expression values (RLE) and the normalized unscaled standard errors (NUSE).</p>
+<pre class="r"><code># load cel files and check quality
+platforms &lt;- readRDS(here(&quot;data/annotation/platforms.rds&quot;))
+raw_eset &lt;- list.celfiles(here(data_path), listGzipped = T, full.names = T) %&gt;%
+  read.celfiles() %&gt;%
+  ma_qc() # Discarding in total 1 arrays: 6h_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/12h_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/12h_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/12h_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/12h_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/12h_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/16d_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/16d_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/16d_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/16d_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/16d_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1d_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1d_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1d_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1d_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1d_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1h_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1h_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1h_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1h_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/1h_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/2d_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/2d_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/2d_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/2d_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/2d_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/4d_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/4d_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/4d_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/4d_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/4d_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6d_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6d_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6d_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6d_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6d_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6h_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6h_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6h_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6h_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/6h_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/8d_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/8d_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/8d_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/8d_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/8d_m5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/control_m1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/control_m2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/control_m3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/control_m4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-apap/control_m5_(Mouse430_2).CEL</code></pre>
+</div>
+<div id="normalization-and-probe-annotation" class="section level3">
+<h3>Normalization and probe annotation</h3>
+<p>Probe intensities are normalized with the <code>rma()</code> function. Probes are annotated with MGI symbols.</p>
+<pre class="r"><code>eset &lt;- rma(raw_eset)
+#&gt; Background correcting
+#&gt; Normalizing
+#&gt; Calculating Expression
+
+# annotate microarray probes with mgi symbols
+expr &lt;- ma_annotate(eset, platforms)
+colnames(expr) &lt;- str_c(&quot;sample&quot;,
+  str_remove(colnames(expr), &quot;_\\(Mouse430_2\\).CEL&quot;),
+  sep = &quot;_&quot;
+)
+
+# save normalized expression
+saveRDS(expr, here(output_path, &quot;normalized_expression.rds&quot;))</code></pre>
+</div>
+<div id="build-meta-data" class="section level3">
+<h3>Build meta data</h3>
+<p>Meta information are parsed from the sample names.</p>
+<pre class="r"><code># build meta data
+meta &lt;- colnames(expr) %&gt;%
+  enframe(name = NULL, value = &quot;sample&quot;) %&gt;%
+  separate(sample, into = c(&quot;tmp&quot;, &quot;key&quot;, &quot;rep&quot;), remove = F) %&gt;%
+  dplyr::select(-tmp) %&gt;%
+  mutate(
+    rep = parse_number(rep),
+    time = parse_number(key)
+  ) %&gt;%
+  mutate(time = case_when(
+    str_detect(key, &quot;d&quot;) ~ time * 24,
+    str_detect(key, &quot;h&quot;) ~ time,
+    str_detect(key, &quot;control&quot;) ~ 0
+  )) %&gt;%
+  mutate(time = ordered(time)) %&gt;%
+  mutate(group = case_when(
+    str_detect(key, &quot;d&quot;) ~ str_c(&quot;d&quot;, parse_number(key)),
+    str_detect(key, &quot;h&quot;) ~ str_c(&quot;h&quot;, parse_number(key)),
+    str_detect(key, &quot;control&quot;) ~ key
+  )) %&gt;%
+  mutate(group = factor(group, levels = c(
+    &quot;control&quot;, &quot;h1&quot;, &quot;h6&quot;, &quot;h12&quot;, &quot;d1&quot;, &quot;d2&quot;,
+    &quot;d4&quot;, &quot;d6&quot;, &quot;d8&quot;, &quot;d16&quot;
+  )))
+#&gt; mutate: converted &#39;rep&#39; from character to double (0 new NA)
+#&gt;         new variable &#39;time&#39; (double) with 8 unique values and 10% NA
+#&gt; mutate: changed 35 values (71%) of &#39;time&#39; (5 fewer NA)
+#&gt; mutate: converted &#39;time&#39; from double to ordered factor (0 new NA)
+#&gt; mutate: new variable &#39;group&#39; (character) with 10 unique values and 0% NA
+#&gt; mutate: converted &#39;group&#39; from character to factor (0 new NA)
+
+# save meta data
+saveRDS(meta, here(output_path, &quot;meta_data.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="exploratory-analysis" class="section level2">
+<h2>Exploratory analysis</h2>
+<div id="pca-of-normalized-data" class="section level3">
+<h3>PCA of normalized data</h3>
+<p>PCA plot of normalized expression data contextualized based on the time point. Only the top 1000 most variable genes are used as features.</p>
+<pre class="r"><code>expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
+meta &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;))
+
+pca_result &lt;- do_pca(expr, meta, top_n_var_genes = 1000)
+#&gt; left_join: added 4 columns (key, rep, time, group)
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     49
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       49
+
+saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
+
+plot_pca(pca_result, feature = &quot;time&quot;) +
+  my_theme()</code></pre>
+<p><img src="figure/mouse-acute-apap.Rmd/pca-norm-data-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="differential-gene-expression-analysis" class="section level2">
+<h2>Differential gene expression analysis</h2>
+<div id="running-limma" class="section level3">
+<h3>Running limma</h3>
+<p>Differential gene expression analysis via limma with the aim to identify the effect of APAP intoxication for the different time points.</p>
+<pre class="r"><code># load expression and meta data
+expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
+meta &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;))
+
+stopifnot(colnames(expr) == meta$sample)
+
+# build design matrix
+design &lt;- model.matrix(~ 0 + group, data = meta)
+rownames(design) &lt;- meta$sample
+colnames(design) &lt;- levels(meta$group)
+
+# define contrasts
+contrasts &lt;- makeContrasts(
+  # effect of apap treatment
+  apap_1h_vs_0h = h1 - control,
+  apap_6h_vs_0h = h6 - control,
+  apap_12h_vs_0h = h12 - control,
+  apap_24h_vs_0h = d1 - control,
+  apap_48h_vs_0h = d2 - control,
+  apap_96h_vs_0h = d4 - control,
+  apap_144h_vs_0h = d6 - control,
+  apap_192h_vs_0h = d8 - control,
+  apap_384h_vs_0h = d16 - control,
+
+  # consecutive time point comparison
+  consec_1h_vs_0h = h1 - control,
+  consec_6h_vs_1h = h6 - h1,
+  consec_12h_vs_6h = h12 - h6,
+  consec_24h_vs_12h = d1 - h12,
+  consec_48h_vs_24h = d2 - d1,
+  consec_96h_vs_48h = d4 - d2,
+  consec_144h_vs_96h = d6 - d4,
+  consec_192h_vs_144h = d8 - d6,
+  consec_384h_vs_192h = d16 - d8,
+  levels = design
+)
+
+limma_result &lt;- run_limma(expr, design, contrasts) %&gt;%
+  assign_deg()
+#&gt; select: renamed 3 variables (contrast, logFC, pval) and dropped one variable
+#&gt; group_by: one grouping variable (contrast)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 133,804 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: new variable &#39;regulation&#39; (character) with 3 unique values and 0% NA
+#&gt; mutate: converted &#39;regulation&#39; from character to factor (0 new NA)
+
+deg_df &lt;- limma_result %&gt;%
+  mutate(contrast = factor(contrast, levels = c(
+    &quot;apap_1h_vs_0h&quot;, &quot;apap_6h_vs_0h&quot;, &quot;apap_12h_vs_0h&quot;, &quot;apap_24h_vs_0h&quot;,
+    &quot;apap_48h_vs_0h&quot;, &quot;apap_96h_vs_0h&quot;, &quot;apap_144h_vs_0h&quot;, &quot;apap_192h_vs_0h&quot;,
+    &quot;apap_384h_vs_0h&quot;,
+    &quot;consec_1h_vs_0h&quot;, &quot;consec_6h_vs_1h&quot;, &quot;consec_12h_vs_6h&quot;, 
+    &quot;consec_24h_vs_12h&quot;, &quot;consec_48h_vs_24h&quot;, &quot;consec_96h_vs_48h&quot;, 
+    &quot;consec_144h_vs_96h&quot;, &quot;consec_192h_vs_144h&quot;, &quot;consec_384h_vs_192h&quot;
+  ))) %&gt;%
+  mutate(contrast_reference = case_when(
+    str_detect(contrast, &quot;apap&quot;) ~ &quot;apap&quot;,
+    str_detect(contrast, &quot;consec&quot;) ~ &quot;consec&quot;
+  ))
+#&gt; mutate: changed 0 values (0%) of &#39;contrast&#39; (0 new NA)
+#&gt; mutate: new variable &#39;contrast_reference&#39; (character) with 2 unique values and 0% NA
+
+saveRDS(deg_df, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
+</div>
+<div id="volcano-plots" class="section level3">
+<h3>Volcano plots</h3>
+<p>Volcano plots visualizing the effect of APAP on gene expression.</p>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+df %&gt;%
+  filter(contrast_reference == &quot;apap&quot;) %&gt;%
+  plot_volcano() +
+  my_theme(grid = &quot;y&quot;, fsize = fz)
+#&gt; filter: removed 184,266 rows (50%), 184,266 rows remaining
+#&gt; rename: renamed one variable (p)</code></pre>
+<p><img src="figure/mouse-acute-apap.Rmd/volcano-plots-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="time-series-clustering" class="section level2">
+<h2>Time series clustering</h2>
+<p>Gene expression trajectories are clustered using the <a href="http://www.cs.cmu.edu/~jernst/stem/">STEM</a> software. The cluster algorithm is described <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191">here</a>.</p>
+<div id="prepare-input" class="section level3">
+<h3>Prepare input</h3>
+<pre class="r"><code># prepare input for stem analysis
+df = readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+stem_inputs = df %&gt;%
+  mutate(class = str_c(&quot;Hour &quot;, parse_number(as.character(contrast)))) %&gt;%
+  mutate(class = factor(class, levels = unique(.$class))) %&gt;%
+  select(gene, class, logFC, contrast_reference)
+#&gt; mutate: new variable &#39;class&#39; (character) with 9 unique values and 0% NA
+#&gt; mutate: converted &#39;class&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (contrast, statistic, pval, fdr, regulation)
+  
+stem_inputs %&gt;%
+  filter(contrast_reference == &quot;apap&quot;) %&gt;%
+  select(-contrast_reference) %&gt;%
+  pivot_wider(names_from = class, values_from = logFC) %&gt;% 
+  write_delim(here(output_path, &quot;stem/input/apap.txt&quot;), delim = &quot;\t&quot;)
+#&gt; filter: removed 184,266 rows (50%), 184,266 rows remaining
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; pivot_wider: reorganized (class, logFC) into (Hour 1, Hour 6, Hour 12, Hour 24, Hour 48, …) [was 184266x3, now 20474x10]</code></pre>
+</div>
+<div id="run-stem" class="section level3">
+<h3>Run STEM</h3>
+<p>STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are visualized.</p>
+<pre class="r"><code># execute stem
+stem_res &lt;- run_stem(here(output_path, &quot;stem&quot;), clear_output = T)
+#&gt; distinct: no rows removed
+#&gt; mutate: new variable &#39;gene&#39; (character) with 20,474 unique values and 0% NA
+#&gt; distinct: no rows removed
+#&gt; mutate: new variable &#39;key&#39; (character) with one unique value and 0% NA
+#&gt; select: dropped one variable (spot)
+#&gt; gather: reorganized (x0, hour_1, hour_6, hour_12, hour_24, …) into (time, value) [was 2527x13, now 25270x5]
+#&gt; mutate: converted &#39;time&#39; from character to double (0 new NA)
+#&gt; mutate: new variable &#39;key&#39; (character) with one unique value and 0% NA
+#&gt; select: renamed 4 variables (profile, y_coords, size, p) and dropped 2 variables
+#&gt; inner_join: added 3 columns (y_coords, size, p)
+#&gt;             &gt; rows only in x  (     0)
+#&gt;             &gt; rows only in y  (     0)
+#&gt;             &gt; matched rows     25,270
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total       25,270
+#&gt; inner_join: added one column (symbol)
+#&gt;             &gt; rows only in x  (     0)
+#&gt;             &gt; rows only in y  (17,947)
+#&gt;             &gt; matched rows     25,270
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total       25,270
+#&gt; transmute: dropped one variable (symbol)
+#&gt;            changed 25,040 values (99%) of &#39;gene&#39; (0 new NA)
+
+saveRDS(stem_res, here(output_path, &quot;stem_result.rds&quot;))
+
+stem_res %&gt;%
+  filter(p &lt;= 0.05) %&gt;%
+  filter(key == &quot;apap&quot;) %&gt;%
+  distinct() %&gt;%
+  plot_stem_profiles(model_profile = F, ncol = 2) +
+  labs(x = &quot;Time in Hours&quot;, y = &quot;logFC&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz)
+#&gt; filter: removed 4,900 rows (19%), 20,370 rows remaining
+#&gt; filter: no rows removed
+#&gt; distinct: no rows removed
+#&gt; group_by: 4 grouping variables (key, profile, p, time)
+#&gt; ungroup: no grouping variables</code></pre>
+<p><img src="figure/mouse-acute-apap.Rmd/run-stem-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()
+#&gt; R version 4.0.2 (2020-06-22)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Mojave 10.14.5
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] parallel  stats4    stats     graphics  grDevices datasets  utils    
+#&gt; [8] methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] pd.mouse430.2_3.12.0     DBI_1.1.0                RSQLite_2.2.1           
+#&gt;  [4] patchwork_1.1.1          lemon_0.4.5              cowplot_1.1.0           
+#&gt;  [7] AachenColorPalette_1.1.2 janitor_2.0.1            biobroom_1.22.0         
+#&gt; [10] broom_0.7.3              limma_3.46.0             annotate_1.68.0         
+#&gt; [13] XML_3.99-0.5             oligo_1.54.1             Biostrings_2.58.0       
+#&gt; [16] XVector_0.30.0           oligoClasses_1.52.0      here_1.0.1              
+#&gt; [19] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
+#&gt; [22] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
+#&gt; [25] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
+#&gt; [28] tidyverse_1.3.0          mouse4302.db_3.2.3       org.Mm.eg.db_3.12.0     
+#&gt; [31] AnnotationDbi_1.52.0     IRanges_2.24.1           S4Vectors_0.28.1        
+#&gt; [34] Biobase_2.50.0           BiocGenerics_0.36.0      workflowr_1.6.2         
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] colorspace_2.0-0            ellipsis_0.3.1             
+#&gt;  [3] rprojroot_2.0.2             snakecase_0.11.0           
+#&gt;  [5] GenomicRanges_1.42.0        fs_1.5.0                   
+#&gt;  [7] rstudioapi_0.13             farver_2.0.3               
+#&gt;  [9] affyio_1.60.0               bit64_4.0.5                
+#&gt; [11] fansi_0.4.1                 lubridate_1.7.9.2          
+#&gt; [13] xml2_1.3.2                  codetools_0.2-16           
+#&gt; [15] splines_4.0.2               knitr_1.30                 
+#&gt; [17] jsonlite_1.7.2              dbplyr_2.0.0               
+#&gt; [19] BiocManager_1.30.10         compiler_4.0.2             
+#&gt; [21] httr_1.4.2                  backports_1.2.1            
+#&gt; [23] assertthat_0.2.1            Matrix_1.2-18              
+#&gt; [25] cli_2.2.0                   later_1.1.0.1              
+#&gt; [27] htmltools_0.5.0             tools_4.0.2                
+#&gt; [29] gtable_0.3.0                glue_1.4.2                 
+#&gt; [31] GenomeInfoDbData_1.2.4      affxparser_1.62.0          
+#&gt; [33] Rcpp_1.0.5                  cellranger_1.1.0           
+#&gt; [35] vctrs_0.3.6                 preprocessCore_1.52.0      
+#&gt; [37] iterators_1.0.13            xfun_0.19                  
+#&gt; [39] rvest_0.3.6                 lifecycle_0.2.0            
+#&gt; [41] renv_0.12.3                 zlibbioc_1.36.0            
+#&gt; [43] scales_1.1.1                clisymbols_1.2.0           
+#&gt; [45] hms_0.5.3                   promises_1.1.1             
+#&gt; [47] MatrixGenerics_1.2.0        SummarizedExperiment_1.20.0
+#&gt; [49] yaml_2.2.1                  gridExtra_2.3              
+#&gt; [51] memoise_1.1.0               stringi_1.5.3              
+#&gt; [53] foreach_1.5.1               GenomeInfoDb_1.26.2        
+#&gt; [55] rlang_0.4.9                 pkgconfig_2.0.3            
+#&gt; [57] bitops_1.0-6                matrixStats_0.57.0         
+#&gt; [59] evaluate_0.14               lattice_0.20-41            
+#&gt; [61] labeling_0.4.2              bit_4.0.4                  
+#&gt; [63] tidyselect_1.1.0            plyr_1.8.6                 
+#&gt; [65] magrittr_2.0.1              R6_2.5.0                   
+#&gt; [67] generics_0.1.0              DelayedArray_0.16.0        
+#&gt; [69] pillar_1.4.7                haven_2.3.1                
+#&gt; [71] whisker_0.4                 withr_2.3.0                
+#&gt; [73] RCurl_1.98-1.2              modelr_0.1.8               
+#&gt; [75] crayon_1.3.4                rmarkdown_2.6              
+#&gt; [77] grid_4.0.2                  readxl_1.3.1               
+#&gt; [79] blob_1.2.1                  git2r_0.27.1               
+#&gt; [81] reprex_0.3.0                digest_0.6.27              
+#&gt; [83] xtable_1.8-4                ff_4.0.4                   
+#&gt; [85] httpuv_1.5.4                munsell_0.5.0              
+#&gt; [87] viridisLite_0.3.0</code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
