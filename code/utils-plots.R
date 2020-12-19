@@ -17,7 +17,7 @@ my_theme = function(grid = NULL, fsize = 11) {
           legend.text = element_text(size=fsize),
           legend.title = element_text(size = fsize),
           strip.background = element_rect(colour = "white", fill="white"),
-          strip.text.x  = element_text(size=fsize)
+          strip.text  = element_text(size=fsize)
     )
 }
 
@@ -499,7 +499,7 @@ make_gsea_plot = function(signature, geneset, gene_level_stat, ...) {
 plot_top_genes = function(data, class, fontsize, ...) {
 
   max_logfc = data %>%
-    slice_max(order_by = abs(logFC), 1) %>%
+    slice_max(order_by = abs(logFC), n = 1) %>%
     pull(logFC) %>%
     abs()
 
