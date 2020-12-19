@@ -45,7 +45,7 @@ source(here("code/utils-plots.R"))
 ```
 
 ## Global variables for this analysis
-Definition of global variables that are used throught the entire analysis.
+Definition of global variables that are used throughout the entire analysis.
 ```{r analysis-specific-params, cache=FALSE}
 # i/o
 data_path <- "data/mouse-chronic-ccl4"
