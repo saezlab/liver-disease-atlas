@@ -15,6 +15,8 @@ navbar:
       href: mouse-chronic-ccl4.html
     - text: Acute APAP mouse model
       href: mouse-acute-apap.html
+    - text: Acute CCl4 mouse model
+      href: mouse-acute-ccl4.html
   right:
   - icon: fa-github
     text: Source code
