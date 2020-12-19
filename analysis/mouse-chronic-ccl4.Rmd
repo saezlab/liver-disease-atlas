@@ -40,7 +40,7 @@ library(patchwork)
 
 options("tidylog.display" = list(print))
 source(here("code/utils-rnaseq.R"))
-source(here("code/utils-wrapper.R"))
+source(here("code/utils-utils.R"))
 source(here("code/utils-plots.R"))
 ```
 
@@ -50,7 +50,6 @@ Definition of global variables that are used throughout the entire analysis.
 # i/o
 data_path <- "data/mouse-chronic-ccl4"
 output_path <- "output/mouse-chronic-ccl4"
-figure_path <- "output/mouse-chronic-ccl4/figures"
 
 # graphical parameters
 # fontsize
@@ -76,12 +75,16 @@ meta <- readRDS(here(data_path, "meta_data.rds"))
 count_matrix %>%
   tdy("gene", "sample", "count", meta) %>%
   arrange(treatment) %>%
-  ggplot(aes(x = fct_reorder(sample, as.numeric(treatment)), y=log10(count+1), 
-             group = sample, fill = treatment)) +
+  ggplot(aes(
+    x = fct_reorder(sample, as.numeric(treatment)), y = log10(count + 1),
+    group = sample, fill = treatment
+  )) +
   geom_violin() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-        legend.position = "top") +
-  labs(x=NULL) +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    legend.position = "top"
+  ) +
+  labs(x = NULL) +
   my_theme(grid = "no", fsize = fz)
 ```
 
@@ -99,7 +102,7 @@ preprocessed_count_matrix <- preprocess_count_matrix(count_matrix)
 
 pca_result <- do_pca(preprocessed_count_matrix, meta, top_n_var_genes = 1000)
 
-plot_pca(pca_result, feature = "time") + 
+plot_pca(pca_result, feature = "time") +
   plot_pca(pca_result, feature = "treatment") &
   my_theme(fsize = fz)
 ```
@@ -131,7 +134,7 @@ pca_result <- do_pca(expr, meta, top_n_var_genes = 1000)
 
 saveRDS(pca_result, here(output_path, "pca_result.rds"))
 
-plot_pca(pca_result, feature = "time") + 
+plot_pca(pca_result, feature = "time") +
   plot_pca(pca_result, feature = "treatment") &
   my_theme(fsize = fz)
 ```
@@ -214,30 +217,30 @@ df %>%
 ```
 
 ## Time series clustering
-Here we cluster the gene expression trajectories using the [STEM](http://www.cs.cmu.edu/~jernst/stem/) software. The cluster algorithm is descibed [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191).
+Gene expression trajectories are clustered using the [STEM](http://www.cs.cmu.edu/~jernst/stem/) software. The cluster algorithm is described [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191).
 
 ### Prepare input
 ```{r prepare-stem-input}
 # prepare input for stem analysis
-df = readRDS(here(output_path,"limma_result.rds"))
+df <- readRDS(here(output_path, "limma_result.rds"))
 
-stem_inputs = df %>%
+stem_inputs <- df %>%
   filter(contrast_reference %in% c("pure_ccl4")) %>%
   mutate(class = str_c("Month ", parse_number(as.character(contrast)))) %>%
   mutate(class = factor(class, levels = c("Month 2", "Month 6", "Month 12"))) %>%
   select(gene, class, logFC, contrast_reference)
-  
+
 stem_inputs %>%
   select(-contrast_reference) %>%
-  pivot_wider(names_from = class, values_from = logFC) %>% 
+  pivot_wider(names_from = class, values_from = logFC) %>%
   write_delim(here(output_path, "stem/input/pure_ccl4.txt"), delim = "\t")
 ```
 
 ### Run STEM
-STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are displayed.
+STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are visualized.
 ```{r run-stem}
 # execute stem
-stem_res = run_stem(here(output_path, "stem"), clear_output = T)
+stem_res <- run_stem(here(output_path, "stem"), clear_output = T)
 
 saveRDS(stem_res, here(output_path, "stem_result.rds"))
 
@@ -246,7 +249,7 @@ stem_res %>%
   filter(key == "pure_ccl4") %>%
   distinct() %>%
   plot_stem_profiles(model_profile = F) +
-  labs(x = "Time in Month", y="logFC") +
+  labs(x = "Time in Month", y = "logFC") +
   my_theme(grid = "y", fsize = fz)
 ```
 
