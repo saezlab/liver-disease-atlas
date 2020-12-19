@@ -1,7 +1,7 @@
-name: "meta-liver"
+name: meta-liver
 output_dir: ../docs
 navbar:
-  title: "meta-liver"
+  title: meta-liver
   left:
   - text: Home
     href: index.html
@@ -9,10 +9,14 @@ navbar:
     href: about.html
   - text: License
     href: license.html
-  - text: "Mouse models"
+  - text: Mouse models
     menu:
-    - text: "Chronic CCl4 mouse model"
+    - text: Chronic CCl4 mouse model
       href: mouse-chronic-ccl4.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/saezlab/meta-liver
 output:
   workflowr::wflow_html:
     toc: yes
