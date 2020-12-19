@@ -21,6 +21,10 @@ navbar:
       href: mouse-acute-bdl.html
     - text: "Acute PH mouse model"
       href: mouse-acute-ph.html
+    - text: "Acute LPS mouse model"
+      href: mouse-acute-lps.html
+    - text: "Acute Tunicamycin mouse model"
+      href: mouse-acute-tunicamycin.html
   - text: Patient cohorts
     menu:
       - text: "blabla"
