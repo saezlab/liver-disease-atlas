@@ -13,7 +13,8 @@ analysis/site_libs
 data/**/*.rds
 data/**/*.xlsx
 data/**/*.txt
-data/**/*pure_ccl4
+data/**/stem
+data/**/*.CEL
 
 output/**/*.rds
 output/**/*.txt
