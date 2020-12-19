@@ -229,6 +229,6 @@ stem_res %>%
   filter(key == "bdl") %>%
   distinct() %>%
   plot_stem_profiles(model_profile = F, ncol = 2) +
-  labs(x = "Time in Hours", y = "logFC") +
+  labs(x = "Time in Days", y = "logFC") +
   my_theme(grid = "y", fsize = fz)
 ```

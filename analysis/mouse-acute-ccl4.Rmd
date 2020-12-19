@@ -142,7 +142,7 @@ plot_pca(pca_result, feature = "time") +
 
 ## Differential gene expression analysis
 ### Running limma
-Differential gene expression analysis via limma with the aim to identify the effect of APAP intoxication for the different time points.
+Differential gene expression analysis via limma with the aim to identify the effect of CCl4 intoxication for the different time points.
 ```{r running-limma}
 # load expression and meta data
 expr <- readRDS(here(output_path, "normalized_expression.rds"))
@@ -193,7 +193,7 @@ saveRDS(deg_df, here(output_path, "limma_result.rds"))
 ```
 
 ### Volcano plots
-Volcano plots visualizing the effect of APAP on gene expression.
+Volcano plots visualizing the effect of CCl4 on gene expression.
 ```{r volcano-plots}
 df <- readRDS(here(output_path, "limma_result.rds"))
 

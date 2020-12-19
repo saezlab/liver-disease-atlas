@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ## Introduction
-Here we analysis a mouse model of CCl4 induced chronic liver disease. The transcriptomic profiles were measured at time point 0, 2, 6, and 12 month. For time point 2 and 12 month matched oil controls are available. 
+Here we analysis a mouse model of CCl4 induced chronic liver disease. The transcriptomic profiles were measured at time point 0, 2, 6, and 12 month. For the time points 2 and 12 month time-matched oil controls are available. 
 
 ## Libraries and sources
 These libraries and sources are used for this analysis.
@@ -44,8 +44,7 @@ source(here("code/utils-utils.R"))
 source(here("code/utils-plots.R"))
 ```
 
-## Global variables for this analysis
-Definition of global variables that are used throughout the entire analysis.
+Definition of global variables that are used throughout this analysis.
 ```{r analysis-specific-params, cache=FALSE}
 # i/o
 data_path <- "data/mouse-chronic-ccl4"
