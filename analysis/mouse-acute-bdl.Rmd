@@ -36,8 +36,11 @@ library(oligo)
 library(annotate)
 library(limma)
 library(biobroom)
+library(progeny)
+library(dorothea)
 
 library(janitor)
+library(msigdf) # remotes::install_github("ToledoEM/msigdf@v7.1")
 
 library(AachenColorPalette)
 library(cowplot)
@@ -231,4 +234,27 @@ stem_res %>%
   plot_stem_profiles(model_profile = F, ncol = 2) +
   labs(x = "Time in Days", y = "logFC") +
   my_theme(grid = "y", fsize = fz)
+```
+
+### Cluster characterization
+STEM clusters are characterized by GO terms, [PROGENy's](http://saezlab.github.io/progeny/) pathways and [DoRothEA's](http://saezlab.github.io/dorothea/) TFs. As statistic over-representation analysis is used.
+```{r cluster-characterization}
+stem_res = readRDS(here(output_path, "stem_result.rds"))
+
+signatures = stem_res %>%
+  filter(p <= 0.05) %>%
+  distinct(profile, gene, p_profile = p)
+
+genesets = load_genesets() %>%
+  filter(confidence %in% c(NA,"A", "B", "C")) 
+
+ora_res = signatures %>%
+  nest(sig = c(-profile)) %>%
+  dplyr::mutate(ora = sig %>% map(run_ora,  sets = genesets, min_size = 10,
+                           options = list(alternative = "greater"), 
+                           background_n = 20000)) %>%
+  select(-sig) %>%
+  unnest(ora)
+
+saveRDS(ora_res, here(output_path, "stem_characterization.rds"))
 ```
