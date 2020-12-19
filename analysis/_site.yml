@@ -25,10 +25,10 @@ navbar:
       href: mouse-acute-lps.html
     - text: "Acute Tunicamycin mouse model"
       href: mouse-acute-tunicamycin.html
-  - text: Patient cohorts
+  - text: Meta analysis
     menu:
-      - text: "blabla"
-        href: mouse-acute-ph.html
+      - text: "Chronic vs. acute"
+        href: meta-analysis-chronic-vs-acute.html
   right:
   - icon: fa-github
     href: https://github.com/saezlab/meta-liver
