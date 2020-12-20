@@ -295,7 +295,11 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -335,6 +339,30 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Patient cohorts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="human-hoang-nafld.html">NAFLD - Hoang et al.</a>
+    </li>
+    <li>
+      <a href="human-diehl-nafld.html">NAFLD - Diehl et al.</a>
+    </li>
+    <li>
+      <a href="human-ramnath-fibrosis.html">Fibrosis - Ramnath et al.</a>
+    </li>
+    <li>
+      <a href="human-hampe13-nash.html">NASH - Hampe et al. '13</a>
+    </li>
+    <li>
+      <a href="human-hampe13-misc.html">Misc - Hampe et al. '14</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Meta analysis
      
     <span class="caret"></span>
@@ -348,9 +376,17 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/saezlab/meta-liver">
-    <span class="fas fa-github"></span>
+  <a href="https://zenodo.org/record/xxx">
+    <span class="fas fa-database"></span>
      
+    Get required data
+  </a>
+</li>
+<li>
+  <a href="https://github.com/saezlab/meta-liver">
+    <span class="fab fa-github"></span>
+     
+    Source code
   </a>
 </li>
       </ul>
@@ -418,16 +454,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree5b3c417e918e02360af7b990a064f1d4088d324atargetblank5b3c417a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/5b3c417e918e02360af7b990a064f1d4088d324a" target="_blank">5b3c417</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreebc5a3e60331a6eaaac5938ee7c4ce37b9430ec7dtargetblankbc5a3e6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d" target="_blank">bc5a3e6</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree5b3c417e918e02360af7b990a064f1d4088d324atargetblank5b3c417a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreebc5a3e60331a6eaaac5938ee7c4ce37b9430ec7dtargetblankbc5a3e6a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/5b3c417e918e02360af7b990a064f1d4088d324a" target="_blank">5b3c417</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d" target="_blank">bc5a3e6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -437,6 +473,11 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/human-diehl-nafld_cache/
+    Ignored:    analysis/human-hampe13-nash_cache/
+    Ignored:    analysis/human-hampe14-misc_cache/
+    Ignored:    analysis/human-hoang-nafld_cache/
+    Ignored:    analysis/human-ramnath-fibrosis_cache/
     Ignored:    analysis/meta-analysis-chronic-vs-acute_cache/
     Ignored:    analysis/mouse-acute-apap_cache/
     Ignored:    analysis/mouse-acute-bdl_cache/
@@ -448,9 +489,13 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    data/.DS_Store
     Ignored:    data/annotation/
+    Ignored:    data/human-diehl-nafld/
+    Ignored:    data/human-hampe13-nash/
+    Ignored:    data/human-hampe14-misc/
+    Ignored:    data/human-hoang-nafld/
+    Ignored:    data/human-ramnath-fibrosis/
     Ignored:    data/mouse-acute-apap/
     Ignored:    data/mouse-acute-bdl/
-    Ignored:    data/mouse-acute-ccl4/
     Ignored:    data/mouse-acute-lps/
     Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-acute-tunicamycin/
@@ -459,6 +504,11 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    output/.DS_Store
+    Ignored:    output/human-diehl-nafld/
+    Ignored:    output/human-hampe13-nash/
+    Ignored:    output/human-hampe14-misc/
+    Ignored:    output/human-hoang-nafld/
+    Ignored:    output/human-ramnath-fibrosis/
     Ignored:    output/meta-chronic-vs-acute/
     Ignored:    output/mouse-acute-apap/
     Ignored:    output/mouse-acute-bdl/
@@ -469,6 +519,15 @@ Ignored files:
     Ignored:    output/mouse-chronic-ccl4/
     Ignored:    renv/library/
     Ignored:    renv/staging/
+
+Untracked files:
+    Untracked:  code/human-ramnath-fibrosis/
+    Untracked:  data/mouse-acute-ccl4/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/meta-analysis-chronic-vs-acute.Rmd
+    Modified:   code/human-hoang-nafld/preprocessing.R
 
 </code></pre>
 <p>
@@ -507,6 +566,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/d8ff438f82338095a8e8d4da32a977b9d8e44c24/docs/index.html" target="_blank">d8ff438</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
