@@ -214,7 +214,7 @@ plot_venn_diagram = function(tables = list(), collage = TRUE) {
           length()
 
         grid.newpage()
-        draw.triple.venn(
+        p = draw.triple.venn(
           area1 = a1, area2 = a2, area3 = a3,
           n12 = a12, n23 = a23, n13 = a13,
           n123 = a123,
@@ -236,7 +236,8 @@ plot_venn_diagram = function(tables = list(), collage = TRUE) {
   }
 
   if (collage) {
-    return(plot_grid(plotlist = plots))
+    pp = plot_grid(plotlist = plots)
+    return(pp)
   } else {
     return(plots)
   }
