@@ -116,7 +116,7 @@ saveRDS(combined_contrasts, here(output_path, "limma_result.rds"))
 
 ## Interstudy analysis of acute mouse models
 ### Mutual similarity of differential expressed genes
-This analysis computes the similarity of differential expressed genes for specific contrast of the acute mouse models. Similarity is measured by the Jaccard Index.
+This analysis computes the similarity of differential expressed genes for specific contrast of the acute mouse models. Similarity is measured with the Jaccard Index.
 ```{r deg-similarity}
 # select specific contrasts from the acute mouse models
 contrast_of_interest <- c(
@@ -198,7 +198,7 @@ gsea_res_top %>%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
   geom_tile() +
   geom_text(aes(label = label)) +
-  facet_rep_wrap(~direction, scales = "free") +
+  facet_wrap(~direction) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_gradient2() +
   my_theme(fsize = fz, grid = "no") +
@@ -206,9 +206,10 @@ gsea_res_top %>%
 ```
 
 ## Construction of unified acute and chronic genes
+In this analysis we want to identify genes specific for  chronic or acute liver damage and genes that are deregulated in both scenarios.
 ### Acute
 #### Pool of differential expressed genes in acute mouse models
-Filter for differential expressed genes of the acute mouse model. Visual inspection suggest that the differential expressed genes are consistently regulated across the acute mouse models.
+Filter for differential expressed genes of the acute mouse models. Visual inspection suggest that the differential expressed genes are consistently regulated across the acute mouse models.
 ```{r acute-pool}
 contrasts <- readRDS(here(output_path, "limma_result.rds")) %>%
   assign_deg(fdr_cutoff = 1e-4)
@@ -235,7 +236,8 @@ acute_gene_pool %>%
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   ) +
-  labs(y = "Genes", x = NULL)
+  labs(y = "Genes", x = NULL) +
+  my_theme(grid = "no", fsize = fz)
 
 saveRDS(acute_gene_pool, here(output_path, "acute_gene_pool.rds"))
 ```
@@ -284,7 +286,8 @@ chronic_gene_pool %>%
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   ) +
-  labs(y = "Genes", x = NULL)
+  labs(y = "Genes", x = NULL) +
+  my_theme(grid = "no", fsize = fz)
 
 saveRDS(chronic_gene_pool, here(output_path, "chronic_gene_pool.rds"))
 ```
@@ -326,11 +329,11 @@ v <- draw.pairwise.venn(
   area1 = a1, area2 = a2, cross.area = ca,
   category = c("acute", "chronic"),
   lty = "blank",
-  cex = 1,
+  cex = 1/12*fz,
   fontfamily = rep("sans", 3),
   fill = aachen_color(c("purple", "petrol")),
   cat.col = aachen_color(c("purple", "petrol")),
-  cat.cex = 1.1,
+  cat.cex = 1/12*(fz+1),
   cat.fontfamily = rep("sans", 2)
 )
 ```
@@ -417,7 +420,7 @@ mat_exclusive_chronic_genes <- ranked_exclusive_chronic_genes %>%
 Heatmap(t(mat_exclusive_chronic_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
   name = "logFC",
   row_gap = unit(2.5, "mm"),
   border = T,
@@ -427,7 +430,6 @@ Heatmap(t(mat_exclusive_chronic_genes),
 
 ### Common
 Common genes are ranked based on a metric that prioritize genes that have a high consensus chronic gene-level statistic and at the same are time consistently regulated in the same direction as in the chronic scenario in selected acute contrasts. 
-
 ```{r rank-common-genes}
 common_genes <- readRDS(here(output_path, "gene_membership.rds")) %>%
   filter(membership == "common" & class == "chronic") %>%
@@ -481,7 +483,7 @@ mat_common_genes <- ranked_common_genes %>%
 Heatmap(t(mat_common_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
   name = "logFC",
   row_gap = unit(2.5, "mm"),
   border = T,
@@ -546,7 +548,7 @@ mat_exclusive_acute_genes <- ranked_exclusive_acute_genes %>%
 Heatmap(t(mat_exclusive_acute_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
   name = "logFC",
   row_gap = unit(2.5, "mm"),
   border = T,
