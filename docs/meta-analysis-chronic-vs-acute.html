@@ -570,16 +570,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreec78e88389929df94c6790585a37c4cf7798d04f8targetblankc78e883a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/c78e88389929df94c6790585a37c4cf7798d04f8" target="_blank">c78e883</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeb313cb16d25836f4ecb6b5c5e423a439e559aedetargetblankb313cb1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/b313cb16d25836f4ecb6b5c5e423a439e559aede" target="_blank">b313cb1</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreec78e88389929df94c6790585a37c4cf7798d04f8targetblankc78e883a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeb313cb16d25836f4ecb6b5c5e423a439e559aedetargetblankb313cb1a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/c78e88389929df94c6790585a37c4cf7798d04f8" target="_blank">c78e883</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/b313cb16d25836f4ecb6b5c5e423a439e559aede" target="_blank">b313cb1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -658,6 +658,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/b313cb16d25836f4ecb6b5c5e423a439e559aede/analysis/meta-analysis-chronic-vs-acute.Rmd" target="_blank">b313cb1</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+<td>
+wflow_publish(“analysis/meta-analysis-chronic-vs-acute.Rmd”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/meta-analysis-chronic-vs-acute.html" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -811,7 +845,7 @@ saveRDS(combined_contrasts, here(output_path, &quot;limma_result.rds&quot;))</co
 <h2>Interstudy analysis of acute mouse models</h2>
 <div id="mutual-similarity-of-differential-expressed-genes" class="section level3">
 <h3>Mutual similarity of differential expressed genes</h3>
-<p>This analysis computes the similarity of differential expressed genes for specific contrast of the acute mouse models. Similarity is measured by the Jaccard Index.</p>
+<p>This analysis computes the similarity of differential expressed genes for specific contrast of the acute mouse models. Similarity is measured with the Jaccard Index.</p>
 <pre class="r"><code># select specific contrasts from the acute mouse models
 contrast_of_interest &lt;- c(
   &quot;treat_vs_ctrl&quot;, &quot;inLiver_lps_vs_ctrl&quot;,
@@ -859,6 +893,43 @@ j %&gt;%
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   my_theme(fsize = fz, grid = &quot;no&quot;)</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/deg-similarity-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-deg-similarity-1">
+Past versions of deg-similarity-1.png
+</button>
+</p>
+<div id="fig-deg-similarity-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/deg-similarity-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="mutual-enrichment-of-differential-expressed-genes" class="section level3">
 <h3>Mutual enrichment of differential expressed genes</h3>
@@ -930,22 +1001,55 @@ gsea_res_top %&gt;%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
   geom_tile() +
   geom_text(aes(label = label)) +
-  facet_rep_wrap(~direction, scales = &quot;free&quot;) +
+  facet_wrap(~direction) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_gradient2() +
   my_theme(fsize = fz, grid = &quot;no&quot;) +
   labs(x = &quot;Signature&quot;, y = &quot;Gene set&quot;)
 #&gt; mutate: new variable &#39;label&#39; (character) with 3 unique values and 0% NA</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/mututal-enrichment-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mututal-enrichment-degs-1">
+Past versions of mututal-enrichment-degs-1.png
+</button>
+</p>
+<div id="fig-mututal-enrichment-degs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/mututal-enrichment-degs-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="construction-of-unified-acute-and-chronic-genes" class="section level2">
 <h2>Construction of unified acute and chronic genes</h2>
-<div id="acute" class="section level3">
-<h3>Acute</h3>
-<div id="pool-of-differential-expressed-genes-in-acute-mouse-models" class="section level4">
-<h4>Pool of differential expressed genes in acute mouse models</h4>
-<p>Filter for differential expressed genes of the acute mouse model. Visual inspection suggest that the differential expressed genes are consistently regulated across the acute mouse models.</p>
+<p>In this analysis we want to identify genes specific for chronic or acute liver damage and genes that are deregulated in both scenarios. ### Acute #### Pool of differential expressed genes in acute mouse models Filter for differential expressed genes of the acute mouse models. Visual inspection suggest that the differential expressed genes are consistently regulated across the acute mouse models.</p>
 <pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
   assign_deg(fdr_cutoff = 1e-4)
 #&gt; mutate: converted &#39;regulation&#39; from factor to character (0 new NA)
@@ -976,12 +1080,49 @@ acute_gene_pool %&gt;%
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   ) +
-  labs(y = &quot;Genes&quot;, x = NULL)
+  labs(y = &quot;Genes&quot;, x = NULL) +
+  my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; mutate: changed 28 values (&lt;1%) of &#39;statistic&#39; (0 new NA)</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/acute-pool-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-acute-pool-1">
+Past versions of acute-pool-1.png
+</button>
+</p>
+<div id="fig-acute-pool-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/acute-pool-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 saveRDS(acute_gene_pool, here(output_path, &quot;acute_gene_pool.rds&quot;))</code></pre>
-</div>
 <div id="unify-acute-genes" class="section level4">
 <h4>Unify acute genes</h4>
 <p>Acute genes are unified and a median t-statistic is computed for each gene.</p>
@@ -1000,7 +1141,6 @@ acute_gene_union &lt;- acute_gene_pool %&gt;%
 #&gt; distinct: no rows removed
 
 saveRDS(acute_gene_union, here(output_path, &quot;union_acute_geneset.rds&quot;))</code></pre>
-</div>
 </div>
 <div id="chronic" class="section level3">
 <h3>Chronic</h3>
@@ -1034,9 +1174,47 @@ chronic_gene_pool %&gt;%
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   ) +
-  labs(y = &quot;Genes&quot;, x = NULL)
+  labs(y = &quot;Genes&quot;, x = NULL) +
+  my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; mutate: changed one value (&lt;1%) of &#39;statistic&#39; (0 new NA)</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/chronic-pool-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-chronic-pool-1">
+Past versions of chronic-pool-1.png
+</button>
+</p>
+<div id="fig-chronic-pool-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/chronic-pool-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 saveRDS(chronic_gene_pool, here(output_path, &quot;chronic_gene_pool.rds&quot;))</code></pre>
 </div>
@@ -1082,14 +1260,51 @@ v &lt;- draw.pairwise.venn(
   area1 = a1, area2 = a2, cross.area = ca,
   category = c(&quot;acute&quot;, &quot;chronic&quot;),
   lty = &quot;blank&quot;,
-  cex = 1,
+  cex = 1/12*fz,
   fontfamily = rep(&quot;sans&quot;, 3),
   fill = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;)),
   cat.col = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;)),
-  cat.cex = 1.1,
+  cat.cex = 1/12*(fz+1),
   cat.fontfamily = rep(&quot;sans&quot;, 2)
 )</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/overlap-unified-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-overlap-unified-genes-1">
+Past versions of overlap-unified-genes-1.png
+</button>
+</p>
+<div id="fig-overlap-unified-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/overlap-unified-genes-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="assign-membership-to-each-gene" class="section level3">
 <h3>Assign membership to each gene</h3>
@@ -1201,13 +1416,50 @@ mat_exclusive_chronic_genes &lt;- ranked_exclusive_chronic_genes %&gt;%
 Heatmap(t(mat_exclusive_chronic_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
   name = &quot;logFC&quot;,
   row_gap = unit(2.5, &quot;mm&quot;),
   border = T,
   row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
 )</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/vis-exclusive-chronic-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-exclusive-chronic-genes-1">
+Past versions of vis-exclusive-chronic-genes-1.png
+</button>
+</p>
+<div id="fig-vis-exclusive-chronic-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/vis-exclusive-chronic-genes-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="common" class="section level3">
 <h3>Common</h3>
@@ -1288,13 +1540,50 @@ mat_common_genes &lt;- ranked_common_genes %&gt;%
 Heatmap(t(mat_common_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
   name = &quot;logFC&quot;,
   row_gap = unit(2.5, &quot;mm&quot;),
   border = T,
   row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
 )</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/vis-common-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-common-genes-1">
+Past versions of vis-common-genes-1.png
+</button>
+</p>
+<div id="fig-vis-common-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/vis-common-genes-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="exclusive-acute" class="section level3">
 <h3>Exclusive acute</h3>
@@ -1375,13 +1664,50 @@ mat_exclusive_acute_genes &lt;- ranked_exclusive_acute_genes %&gt;%
 Heatmap(t(mat_exclusive_acute_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
   name = &quot;logFC&quot;,
   row_gap = unit(2.5, &quot;mm&quot;),
   border = T,
   row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
 )</code></pre>
 <p><img src="figure/meta-analysis-chronic-vs-acute.Rmd/vis-exclusive-acute-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-exclusive-acute-genes-1">
+Past versions of vis-exclusive-acute-genes-1.png
+</button>
+</p>
+<div id="fig-vis-exclusive-acute-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/meta-analysis-chronic-vs-acute.Rmd/vis-exclusive-acute-genes-1.png" target="_blank">bea437a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="characterization-of-exclusive-and-common-genes" class="section level2">
