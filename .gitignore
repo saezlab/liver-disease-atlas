@@ -17,6 +17,7 @@ data/**/stem
 data/**/*.CEL
 data/**/*.CEL.gz
 data/**/*.csv
+data/**/*.png
 
 output/**/*.rds
 output/**/*.txt
