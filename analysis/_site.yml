@@ -5,6 +5,7 @@ navbar:
   left:
   - text: Home
     href: index.html
+    icon: fas fa-home
   - text: About
     href: about.html
   - text: License
@@ -25,12 +26,28 @@ navbar:
       href: mouse-acute-lps.html
     - text: "Acute Tunicamycin mouse model"
       href: mouse-acute-tunicamycin.html
+  - text: Patient cohorts
+    menu:
+      - text: "NAFLD - Hoang et al."
+        href: human-hoang-nafld.html
+      - text: "NAFLD - Diehl et al."
+        href: human-diehl-nafld.html
+      - text: "Fibrosis - Ramnath et al."
+        href: human-ramnath-fibrosis.html
+      - text: "NASH - Hampe et al. '13"
+        href: human-hampe13-nash.html
+      - text: "Misc - Hampe et al. '14"
+        href: human-hampe13-misc.html
   - text: Meta analysis
     menu:
       - text: "Chronic vs. acute"
         href: meta-analysis-chronic-vs-acute.html
   right:
-  - icon: fa-github
+  - text: "Get required data"
+    href: https://zenodo.org/record/xxx
+    icon: fas fa-database
+  - text: "Source code"
+    icon: fab fa-github
     href: https://github.com/saezlab/meta-liver
 output:
   workflowr::wflow_html:
