@@ -6,10 +6,6 @@ navbar:
   - text: Home
     href: index.html
     icon: fas fa-home
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
   - text: Mouse models
     menu:
     - text: "Chronic CCl4 mouse model"
@@ -43,7 +39,7 @@ navbar:
       - text: "Chronic vs. acute"
         href: meta-analysis-chronic-vs-acute.html
   right:
-  - text: "Get required data"
+  - text: "Get data"
     href: https://zenodo.org/record/xxx
     icon: fas fa-database
   - text: "Source code"
