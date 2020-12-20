@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Christian H. Holland" />
+
+<meta name="date" content="2020-12-19" />
+
+<title>Meta analysis comparing chronic and acute mouse models</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">meta-liver</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mouse models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-apap.html">Acute APAP mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-ccl4.html">Acute CCl4 mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-bdl.html">Acute BDL mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-ph.html">Acute PH mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-lps.html">Acute LPS mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-tunicamycin.html">Acute Tunicamycin mouse model</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Patient cohorts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="human-hoang-nafld.html">NAFLD - Hoang et al.</a>
+    </li>
+    <li>
+      <a href="human-diehl-nafld.html">NAFLD - Diehl et al.</a>
+    </li>
+    <li>
+      <a href="human-ramnath-fibrosis.html">Fibrosis - Ramnath et al.</a>
+    </li>
+    <li>
+      <a href="human-hampe13-nash.html">NASH - Hampe et al. '13</a>
+    </li>
+    <li>
+      <a href="human-hampe13-misc.html">Misc - Hampe et al. '14</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="meta-chronic-vs-acute.html">Chronic vs. acute</a>
+    </li>
+    <li>
+      <a href="meta-mouse-vs-human.html">Mouse vs. human</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://zenodo.org/record/xxx">
+    <span class="fas fa-database"></span>
+     
+    Get data
+  </a>
+</li>
+<li>
+  <a href="https://github.com/saezlab/meta-liver">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Meta analysis comparing chronic and acute mouse models</h1>
+<h4 class="author">Christian H. Holland</h4>
+<h4 class="date">2020-12-19</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-12-20
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201218code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201218)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201218code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201218)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreea7e9e57a8de9c520a2e2b37b8f68c9f3eb2396ddtargetblanka7e9e57a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/a7e9e57a8de9c520a2e2b37b8f68c9f3eb2396dd" target="_blank">a7e9e57</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreea7e9e57a8de9c520a2e2b37b8f68c9f3eb2396ddtargetblanka7e9e57a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/a7e9e57a8de9c520a2e2b37b8f68c9f3eb2396dd" target="_blank">a7e9e57</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/human-diehl-nafld_cache/
+    Ignored:    analysis/human-hampe13-nash_cache/
+    Ignored:    analysis/human-hampe14-misc_cache/
+    Ignored:    analysis/human-hoang-nafld_cache/
+    Ignored:    analysis/human-ramnath-fibrosis_cache/
+    Ignored:    analysis/meta-mouse-vs-human_cache/
+    Ignored:    analysis/mouse-acute-apap_cache/
+    Ignored:    analysis/mouse-acute-bdl_cache/
+    Ignored:    analysis/mouse-acute-ccl4_cache/
+    Ignored:    analysis/mouse-acute-lps_cache/
+    Ignored:    analysis/mouse-acute-ph_cache/
+    Ignored:    analysis/mouse-acute-tunicamycin_cache/
+    Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    code/.DS_Store
+    Ignored:    code/README.html
+    Ignored:    data/.DS_Store
+    Ignored:    data/README.html
+    Ignored:    data/annotation/
+    Ignored:    data/human-diehl-nafld/
+    Ignored:    data/human-hampe13-nash/
+    Ignored:    data/human-hampe14-misc/
+    Ignored:    data/human-hoang-nafld/
+    Ignored:    data/human-ramnath-fibrosis/
+    Ignored:    data/meta-chronic-vs-acute/
+    Ignored:    data/meta-mouse-vs-human/
+    Ignored:    data/mouse-acute-apap/
+    Ignored:    data/mouse-acute-bdl/
+    Ignored:    data/mouse-acute-ccl4/
+    Ignored:    data/mouse-acute-lps/
+    Ignored:    data/mouse-acute-ph/
+    Ignored:    data/mouse-acute-tunicamycin/
+    Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    external_software/.DS_Store
+    Ignored:    external_software/README.html
+    Ignored:    external_software/stem/.DS_Store
+    Ignored:    output/.DS_Store
+    Ignored:    output/README.html
+    Ignored:    output/human-diehl-nafld/
+    Ignored:    output/human-hampe13-nash/
+    Ignored:    output/human-hampe14-misc/
+    Ignored:    output/human-hoang-nafld/
+    Ignored:    output/human-ramnath-fibrosis/
+    Ignored:    output/meta-chronic-vs-acute/
+    Ignored:    output/meta-mouse-vs-human/
+    Ignored:    output/mouse-acute-apap/
+    Ignored:    output/mouse-acute-bdl/
+    Ignored:    output/mouse-acute-ccl4/
+    Ignored:    output/mouse-acute-lps/
+    Ignored:    output/mouse-acute-ph/
+    Ignored:    output/mouse-acute-tunicamycin/
+    Ignored:    output/mouse-chronic-ccl4/
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
+
+Untracked files:
+    Untracked:  analysis/meta-mouse-vs-human.Rmd
+
+Unstaged changes:
+    Deleted:    analysis/meta-analysis-chronic-vs-acute.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/meta-chronic-vs-acute.Rmd</code>) and HTML (<code>docs/meta-chronic-vs-acute.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/a7e9e57a8de9c520a2e2b37b8f68c9f3eb2396dd/analysis/meta-chronic-vs-acute.Rmd" target="_blank">a7e9e57</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+<td>
+complete analyses
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Here we integrate various acute liver damage mouse models with the chronic CCl4 mouse model to identify chronic exclusively and commonly regulated genes.</p>
+</div>
+<div id="libraries-and-sources" class="section level2">
+<h2>Libraries and sources</h2>
+<p>These libraries and sources are used for this analysis.</p>
+<pre class="r"><code>library(tidyverse)
+library(tidylog)
+library(here)
+
+library(fgsea)
+library(dorothea)
+library(progeny)
+library(biobroom)
+
+library(circlize)
+library(AachenColorPalette)
+library(lemon)
+library(VennDiagram)
+library(ComplexHeatmap)
+
+library(msigdf) # remotes::install_github(&quot;ToledoEM/msigdf@v7.1&quot;)
+
+options(&quot;tidylog.display&quot; = list(print))
+source(here(&quot;code/utils-utils.R&quot;))
+source(here(&quot;code/utils-plots.R&quot;))</code></pre>
+<p>Definition of global variables that are used throughout this analysis.</p>
+<pre class="r"><code># i/o
+data_path &lt;- &quot;data/meta-chronic-vs-acute&quot;
+output_path &lt;- &quot;output/meta-chronic-vs-acute&quot;
+
+# graphical parameters
+# fontsize
+fz &lt;- 9
+# color function for heatmaps
+col_fun &lt;- colorRamp2(
+  c(-4, 0, 4),
+  c(aachen_color(&quot;blue&quot;), &quot;white&quot;, aachen_color(&quot;red&quot;))
+)</code></pre>
+</div>
+<div id="merging-data-of-all-mouse-models" class="section level2">
+<h2>Merging data of all mouse models</h2>
+<div id="merging-contrasts" class="section level3">
+<h3>Merging contrasts</h3>
+<p>Contrasts from all available mouse models are merged into a single object.</p>
+<pre class="r"><code># acute
+tun &lt;- readRDS(here(&quot;output/mouse-acute-tunicamycin/limma_result.rds&quot;)) %&gt;%
+  mutate(treatment = &quot;tunicamycin&quot;, source = &quot;wek&quot;, class = &quot;acute&quot;)
+#&gt; mutate: new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+lps &lt;- readRDS(here(&quot;output/mouse-acute-lps/limma_result.rds&quot;)) %&gt;%
+  filter(contrast == &quot;inLiver_lps_vs_ctrl&quot;) %&gt;%
+  mutate(treatment = &quot;lps&quot;, source = &quot;godoy&quot;, class = &quot;acute&quot;)
+#&gt; filter: removed 143,563 rows (88%), 20,509 rows remaining
+#&gt; mutate: new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+acute_ccl4 &lt;- readRDS(here(&quot;output/mouse-acute-ccl4/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;ccl4&quot;) %&gt;%
+  select(-contrast_reference) %&gt;%
+  mutate(treatment = &quot;ccl4&quot;, source = &quot;godoy&quot;, class = &quot;acute&quot;)
+#&gt; filter: removed 164,072 rows (50%), 164,072 rows remaining
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; mutate: new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+ph &lt;- readRDS(here(&quot;output/mouse-acute-ph/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;hepatec&quot;) %&gt;%
+  select(-contrast_reference) %&gt;%
+  mutate(treatment = &quot;ph&quot;, source = &quot;godoy&quot;, class = &quot;acute&quot;)
+#&gt; filter: removed 225,599 rows (50%), 225,599 rows remaining
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; mutate: new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+apap &lt;- readRDS(here(&quot;output/mouse-acute-apap/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;apap&quot;) %&gt;%
+  select(-contrast_reference) %&gt;%
+  mutate(treatment = &quot;apap&quot;, source = &quot;ghallab&quot;, class = &quot;acute&quot;)
+#&gt; filter: removed 184,581 rows (50%), 184,581 rows remaining
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; mutate: new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+bdl &lt;- readRDS(here(&quot;output/mouse-acute-bdl/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;bdl&quot;) %&gt;%
+  select(-contrast_reference) %&gt;%
+  mutate(treatment = &quot;bdl&quot;, source = &quot;ghallab&quot;, class = &quot;acute&quot;)
+#&gt; filter: removed 215,676 rows (69%), 95,856 rows remaining
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; mutate: new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+# chronic
+chronic_ccl4 &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  select(-contrast_reference) %&gt;%
+  mutate(
+    source = &quot;ghallab&quot;, class = &quot;chronic&quot;,
+    treatment = &quot;pure_ccl4&quot;
+  )
+#&gt; filter: removed 138,042 rows (75%), 46,014 rows remaining
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; mutate: new variable &#39;source&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
+#&gt;         new variable &#39;treatment&#39; (character) with one unique value and 0% NA
+
+combined_contrasts &lt;- bind_rows(
+  tun, lps, acute_ccl4, apap,
+  ph, bdl, chronic_ccl4
+) %&gt;%
+  mutate(contrast = as_factor(contrast))
+#&gt; mutate: no changes
+
+saveRDS(combined_contrasts, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="gene-coverage" class="section level2">
+<h2>Gene coverage</h2>
+<p>Barplot showing the gene coverage of the acute and chronic mouse models.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  distinct(gene, treatment, source, class) %&gt;% 
+  count(treatment, source, class)
+#&gt; distinct: removed 615,293 rows (81%), 141,846 rows remaining
+#&gt; count: now 7 rows and 4 columns, ungrouped
+
+contrasts %&gt;%
+  ggplot(aes(x = n, fct_reorder(interaction(class, treatment, sep = &quot;_&quot;), n),
+             group = class)) +
+  geom_col() +
+  labs(x=&quot;Gene coverage&quot;, y=NULL) +
+  my_theme(grid = &quot;x&quot;, fsize = fz) </code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/gene-coverage-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="time-point-of-maximal-liver-damage" class="section level2">
+<h2>Time point of maximal liver damage</h2>
+<p>Here we identify for the acute CCl4, APAP and PH mouse model the time point with the strongest deregulated gene expression profile, based on PCA space. This time point is considered the time point of maximal liver damage.</p>
+<pre class="r"><code>pca_result_ccl4 = readRDS(here(&quot;output/mouse-acute-ccl4/pca_result.rds&quot;)) %&gt;%
+  pluck(&quot;coords&quot;) %&gt;%
+  select(sample, PC1, time) %&gt;%
+  mutate(treatment_abbr = &quot;CCl4&quot;,
+         time = as.character(time))
+#&gt; select: dropped 48 variables (PC2, PC3, PC4, PC5, PC6, …)
+#&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
+#&gt;         new variable &#39;treatment_abbr&#39; (character) with one unique value and 0% NA
+
+pca_result_apap = readRDS(here(&quot;output/mouse-acute-apap/pca_result.rds&quot;)) %&gt;%
+  pluck(&quot;coords&quot;) %&gt;%
+  select(sample, PC1, time) %&gt;%
+  mutate(treatment_abbr = &quot;APAP&quot;,
+         time = as.character(time))
+#&gt; select: dropped 51 variables (PC2, PC3, PC4, PC5, PC6, …)
+#&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
+#&gt;         new variable &#39;treatment_abbr&#39; (character) with one unique value and 0% NA
+
+pca_result_ph = readRDS(here(&quot;output/mouse-acute-ph/pca_result.rds&quot;)) %&gt;%
+  pluck(&quot;coords&quot;) %&gt;%
+  select(sample, PC1, time) %&gt;%
+  mutate(treatment_abbr = &quot;PH&quot;,
+         time = as.character(round(24*as.numeric(as.character(time)), 0)))
+#&gt; select: dropped 56 variables (PC2, PC3, PC4, PC5, PC6, …)
+#&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
+#&gt;         new variable &#39;treatment_abbr&#39; (character) with one unique value and 0% NA
+
+pca_result = bind_rows(pca_result_ccl4, pca_result_apap, pca_result_ph) %&gt;%
+  mutate(time = ordered(as.numeric(time))) %&gt;%
+  arrange(treatment_abbr, time)
+#&gt; mutate: converted &#39;time&#39; from character to ordered factor (0 new NA)
+
+pca_dist = pca_result %&gt;%
+  group_by(time, treatment_abbr) %&gt;%
+  summarise(mean_pc1_coord = mean(PC1)) %&gt;%
+  ungroup() %&gt;%
+  arrange(treatment_abbr) %&gt;%
+  mutate(control_coord = case_when(time == 0 ~ mean_pc1_coord)) %&gt;%
+  fill(control_coord) %&gt;%
+  mutate(dist = abs(mean_pc1_coord -control_coord)) %&gt;%
+  group_by(treatment_abbr) %&gt;%
+  mutate(max = case_when(dist == max(dist) ~ &quot;yes&quot;,
+                         TRUE ~ &quot;no&quot;)) %&gt;%
+  ungroup() %&gt;%
+  filter(time != 0) 
+#&gt; group_by: 2 grouping variables (time, treatment_abbr)
+#&gt; summarise: now 31 rows and 3 columns, one group variable remaining (time)
+#&gt; ungroup: no grouping variables
+#&gt; mutate: new variable &#39;control_coord&#39; (double) with 4 unique values and 90% NA
+#&gt; fill: changed 28 values (90%) of &#39;control_coord&#39; (28 fewer NA)
+#&gt; mutate: new variable &#39;dist&#39; (double) with 29 unique values and 0% NA
+#&gt; group_by: one grouping variable (treatment_abbr)
+#&gt; mutate (grouped): new variable &#39;max&#39; (character) with 2 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; filter: removed 3 rows (10%), 28 rows remaining
+
+saveRDS(pca_dist, here(output_path, &quot;pca_dist.rds&quot;))
+
+pca_dist %&gt;%
+  ggplot(aes(x=time, y=dist, fill=max)) +
+  geom_col() +
+  my_theme(grid = &quot;y&quot;, fsize = fz) +
+  scale_fill_manual(values = aachen_color(c(&quot;black50&quot;, &quot;green&quot;))) +
+  labs(x = &quot;Time in hours&quot;, 
+       y = &quot;Absolute mean distance to control along PC1&quot;) +
+  theme(legend.position = &quot;none&quot;,
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_rep_wrap(~treatment_abbr, scales = &quot;free&quot;)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/time-point-max-liver-damage-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="interstudy-analysis-of-acute-mouse-models" class="section level2">
+<h2>Interstudy analysis of acute mouse models</h2>
+<div id="mutual-similarity-of-differential-expressed-genes" class="section level3">
+<h3>Mutual similarity of differential expressed genes</h3>
+<p>This analysis computes the similarity of differential expressed genes for specific contrast of the acute mouse models. Similarity is measured with the Jaccard Index.</p>
+<pre class="r"><code># select specific contrasts from the acute mouse models
+contrast_of_interest &lt;- c(
+  &quot;treat_vs_ctrl&quot;, &quot;inLiver_lps_vs_ctrl&quot;,
+  &quot;ccl_24h_vs_0h&quot;, &quot;apap_24h_vs_0h&quot;, &quot;ph_0.5d&quot;,
+  &quot;bdl_vs_sham_1d&quot;
+)
+
+contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  filter(contrast %in% contrast_of_interest)
+#&gt; filter: removed 630,631 rows (83%), 126,508 rows remaining
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+mat_top &lt;- contrasts %&gt;%
+  group_by(contrast, treatment, source, class) %&gt;%
+  top_n(500, abs(statistic)) %&gt;%
+  mutate(key = row_number()) %&gt;%
+  ungroup() %&gt;%
+  unite(geneset, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene, key) %&gt;%
+  untdy(key, geneset, gene)
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 123,508 rows (98%), 3,000 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 500 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 3000x3, now 500x7]
+
+# usage of jaccard index for balanced set sizes
+j &lt;- set_similarity(mat_top, measure = &quot;jaccard&quot;, tidy = T)
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+
+saveRDS(j, here(output_path, &quot;gene_set_similarity.rds&quot;))
+
+j %&gt;%
+  ggplot(aes(x = set1, y = set2, fill = similarity)) +
+  geom_tile(color = &quot;black&quot;) +
+  scale_fill_gradient(low = &quot;white&quot;, high = aachen_color(&quot;green&quot;)) +
+  labs(x = NULL, y = NULL, fill = &quot;Jaccard\nIndex&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  my_theme(fsize = fz, grid = &quot;no&quot;)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/deg-similarity-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="mutual-enrichment-of-differential-expressed-genes" class="section level3">
+<h3>Mutual enrichment of differential expressed genes</h3>
+<p>This analysis explores whether the top differential expressed genes of specific contrasts of the acute mouse models are consistently regulated across the acute mouse models.</p>
+<pre class="r"><code># select specific contrasts from the acute mouse models
+contrast_of_interest &lt;- c(
+  &quot;treat_vs_ctrl&quot;, &quot;inLiver_lps_vs_ctrl&quot;,
+  &quot;ccl_24h_vs_0h&quot;, &quot;apap_24h_vs_0h&quot;, &quot;ph_0.5d&quot;,
+  &quot;bdl_vs_sham_1d&quot;
+)
+
+contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  filter(contrast %in% contrast_of_interest)
+#&gt; filter: removed 630,631 rows (83%), 126,508 rows remaining
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+genesets_top &lt;- contrasts %&gt;%
+  mutate(direction = case_when(
+    sign(statistic) &gt;= 0 ~ &quot;up&quot;,
+    sign(statistic) &lt; 0 ~ &quot;down&quot;
+  )) %&gt;%
+  group_by(class, source, treatment, contrast, direction) %&gt;%
+  top_n(500, abs(statistic)) %&gt;%
+  ungroup() %&gt;%
+  unite(geneset, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
+  unite(geneset, geneset, direction, sep = &quot;|&quot;) %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene)
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 120,508 rows (95%), 6,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+
+# construct signature matrix/data frame
+signature_df &lt;- contrasts %&gt;%
+  unite(signature, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
+  mutate(signature = as_factor(signature)) %&gt;%
+  untdy(&quot;gene&quot;, &quot;signature&quot;, &quot;statistic&quot;)
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt; select: dropped 4 variables (logFC, pval, fdr, regulation)
+#&gt; spread: reorganized (signature, statistic) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 126508x3, now 26627x7]
+
+# run gsea
+set.seed(123)
+gsea_res_top &lt;- run_gsea(signature_df, genesets_top, tidy = T) %&gt;%
+  separate(geneset, into = c(&quot;geneset&quot;, &quot;direction&quot;), sep = &quot;[|]&quot;) %&gt;%
+  mutate(
+    signature = as_factor(signature),
+    geneset = as_factor(geneset)
+  )
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 5,988 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+
+saveRDS(gsea_res_top, here(output_path, &quot;interstudy_enrichment.rds&quot;))
+
+gsea_res_top %&gt;%
+  mutate(label = gtools::stars.pval(padj)) %&gt;%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_wrap(~direction) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_gradient2() +
+  my_theme(fsize = fz, grid = &quot;no&quot;) +
+  labs(x = &quot;Signature&quot;, y = &quot;Gene set&quot;)
+#&gt; mutate: new variable &#39;label&#39; (character) with 3 unique values and 0% NA</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/mututal-enrichment-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="construction-of-unified-acute-and-chronic-genes" class="section level2">
+<h2>Construction of unified acute and chronic genes</h2>
+<p>In this analysis we want to identify genes specific for chronic or acute liver damage and genes that are deregulated in both scenarios. ### Acute #### Pool of differential expressed genes in acute mouse models Filter for differential expressed genes of the acute mouse models. Visual inspection suggest that the differential expressed genes are consistently regulated across the acute mouse models.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  assign_deg(fdr_cutoff = 1e-4)
+#&gt; mutate: converted &#39;regulation&#39; from factor to character (0 new NA)
+#&gt; mutate: converted &#39;regulation&#39; from character to factor (0 new NA)
+
+acute_gene_pool &lt;- contrasts %&gt;%
+  filter(class == &quot;acute&quot;) %&gt;%
+  filter(regulation != &quot;ns&quot;) %&gt;%
+  # remove late bdl time point as this could already be a chronic damage
+  filter(contrast != &quot;bdl_vs_sham_21d&quot;)
+#&gt; filter: removed 46,014 rows (6%), 711,125 rows remaining
+#&gt; filter: removed 701,602 rows (99%), 9,523 rows remaining
+#&gt; filter: removed 771 rows (8%), 8,752 rows remaining
+
+acute_gene_pool %&gt;%
+  mutate(statistic = case_when(
+    statistic &gt;= 25 ~ 25,
+    TRUE ~ statistic
+  )) %&gt;%
+  ggplot(aes(
+    x = contrast, y = fct_reorder(gene, statistic, mean),
+    fill = statistic
+  )) +
+  geom_tile() +
+  scale_fill_gradient2() +
+  theme(
+    axis.text.x = element_text(angle = 90),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) +
+  labs(y = &quot;Genes&quot;, x = NULL) +
+  my_theme(grid = &quot;no&quot;, fsize = fz)
+#&gt; mutate: changed 28 values (&lt;1%) of &#39;statistic&#39; (0 new NA)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/acute-pool-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+saveRDS(acute_gene_pool, here(output_path, &quot;acute_gene_pool.rds&quot;))</code></pre>
+<div id="unify-acute-genes" class="section level4">
+<h4>Unify acute genes</h4>
+<p>Acute genes are unified and a median t-statistic is computed for each gene.</p>
+<pre class="r"><code>acute_gene_pool &lt;- readRDS(here(output_path, &quot;acute_gene_pool.rds&quot;))
+
+acute_gene_union &lt;- acute_gene_pool %&gt;%
+  group_by(gene) %&gt;%
+  summarise(
+    m = mean(sign(statistic)), n = n(),
+    median_statistic = median(statistic),
+    median_logFC = median(logFC)
+  ) %&gt;%
+  distinct(gene, median_statistic, median_logFC)
+#&gt; group_by: one grouping variable (gene)
+#&gt; summarise: now 3,363 rows and 5 columns, ungrouped
+#&gt; distinct: no rows removed
+
+saveRDS(acute_gene_union, here(output_path, &quot;union_acute_geneset.rds&quot;))</code></pre>
+</div>
+<div id="chronic" class="section level3">
+<h3>Chronic</h3>
+<div id="pool-of-differential-expressed-genes-in-chronic-mouse-model" class="section level4">
+<h4>Pool of differential expressed genes in chronic mouse model</h4>
+<p>Filter for differential expressed genes of the chronic mouse model. Visual inspection suggest that the differential expressed genes are consistently regulated across the chronic contrasts.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  assign_deg(fdr_cutoff = 1e-4)
+#&gt; mutate: converted &#39;regulation&#39; from factor to character (0 new NA)
+#&gt; mutate: converted &#39;regulation&#39; from character to factor (0 new NA)
+
+chronic_gene_pool &lt;- contrasts %&gt;%
+  filter(class == &quot;chronic&quot;) %&gt;%
+  filter(regulation != &quot;ns&quot;)
+#&gt; filter: removed 711,125 rows (94%), 46,014 rows remaining
+#&gt; filter: removed 44,457 rows (97%), 1,557 rows remaining
+
+chronic_gene_pool %&gt;%
+  mutate(statistic = case_when(
+    statistic &gt;= 25 ~ 25,
+    TRUE ~ statistic
+  )) %&gt;%
+  ggplot(aes(
+    x = contrast, y = fct_reorder(gene, statistic, mean),
+    fill = statistic
+  )) +
+  geom_tile() +
+  scale_fill_gradient2() +
+  theme(
+    axis.text.x = element_text(angle = 90),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) +
+  labs(y = &quot;Genes&quot;, x = NULL) +
+  my_theme(grid = &quot;no&quot;, fsize = fz)
+#&gt; mutate: changed one value (&lt;1%) of &#39;statistic&#39; (0 new NA)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/chronic-pool-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+saveRDS(chronic_gene_pool, here(output_path, &quot;chronic_gene_pool.rds&quot;))</code></pre>
+</div>
+<div id="unify-chronic-genes" class="section level4">
+<h4>Unify chronic genes</h4>
+<p>Chronic genes are unified and a median t-statistic is computed for each gene.</p>
+<pre class="r"><code>chronic_gene_pool &lt;- readRDS(here(output_path, &quot;chronic_gene_pool.rds&quot;))
+
+chronic_gene_union &lt;- chronic_gene_pool %&gt;%
+  group_by(gene) %&gt;%
+  summarise(
+    m = mean(sign(statistic)), n = n(),
+    median_statistic = median(statistic),
+    median_logFC = median(logFC)
+  ) %&gt;%
+  distinct(gene, median_statistic, median_logFC)
+#&gt; group_by: one grouping variable (gene)
+#&gt; summarise: now 1,420 rows and 5 columns, ungrouped
+#&gt; distinct: no rows removed
+
+saveRDS(chronic_gene_union, here(output_path, &quot;union_chronic_geneset.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="overlap-of-unified-gene-sets" class="section level3">
+<h3>Overlap of unified gene sets</h3>
+<p>Venn diagram showing the overlap of unified chronic and acute genes.</p>
+<pre class="r"><code>acute_gene_union &lt;- readRDS(here(output_path, &quot;union_acute_geneset.rds&quot;)) %&gt;%
+  mutate(class = &quot;acute&quot;)
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+chronic_gene_union &lt;- readRDS(here(output_path, &quot;union_chronic_geneset.rds&quot;)) %&gt;%
+  mutate(class = &quot;chronic&quot;)
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+a1 &lt;- acute_gene_union %&gt;% nrow()
+a2 &lt;- chronic_gene_union %&gt;% nrow()
+ca &lt;- intersect(
+  acute_gene_union %&gt;% pull(gene),
+  chronic_gene_union %&gt;% pull(gene)
+) %&gt;%
+  length()
+
+v &lt;- draw.pairwise.venn(
+  area1 = a1, area2 = a2, cross.area = ca,
+  category = c(&quot;acute&quot;, &quot;chronic&quot;),
+  lty = &quot;blank&quot;,
+  cex = 1/12*fz,
+  fontfamily = rep(&quot;sans&quot;, 3),
+  fill = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;)),
+  cat.col = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;)),
+  cat.cex = 1/12*(fz+1),
+  cat.fontfamily = rep(&quot;sans&quot;, 2)
+)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/overlap-unified-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="assign-membership-to-each-gene" class="section level3">
+<h3>Assign membership to each gene</h3>
+<p>Genes are assigned a membership: i) exclusive chronic, ii) exclusive acute, iii) common.</p>
+<pre class="r"><code>acute_gene_union &lt;- readRDS(here(output_path, &quot;union_acute_geneset.rds&quot;)) %&gt;%
+  mutate(class = &quot;acute&quot;)
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+chronic_gene_union &lt;- readRDS(here(output_path, &quot;union_chronic_geneset.rds&quot;)) %&gt;%
+  mutate(class = &quot;chronic&quot;)
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+# assign membership to the genes
+m &lt;- bind_rows(acute_gene_union, chronic_gene_union) %&gt;%
+  add_count(gene) %&gt;%
+  mutate(membership = case_when(
+    n == 2 ~ &quot;common&quot;,
+    n == 1 &amp; class == &quot;acute&quot; ~ &quot;acute&quot;,
+    n == 1 &amp; class == &quot;chronic&quot; ~ &quot;chronic&quot;
+  )) %&gt;%
+  dplyr::select(-n)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 2 unique values and 0% NA
+#&gt; mutate: new variable &#39;membership&#39; (character) with 3 unique values and 0% NA
+
+saveRDS(m, here(output_path, &quot;gene_membership.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="extraction-of-top-exclusive-and-common-genes" class="section level2">
+<h2>Extraction of top exclusive and common genes</h2>
+<p>For each membership class the the genes are ranked and the top genes are visualized.</p>
+<div id="exclusive-chronic" class="section level3">
+<h3>Exclusive chronic</h3>
+<p>Exclusive chronic genes are ranked based on a metric that prioritizes genes that have a high consensus chronic gene-level statistic and at the same time are consistently not deregulated in selected acute contrasts.</p>
+<pre class="r"><code>exclusive_chronic_genes &lt;- readRDS(here(output_path, &quot;gene_membership.rds&quot;)) %&gt;%
+  filter(membership == &quot;chronic&quot; &amp; class == &quot;chronic&quot;) %&gt;%
+  distinct(gene, chronic_statistic = median_statistic)
+#&gt; filter: removed 3,949 rows (83%), 834 rows remaining
+#&gt; distinct: no rows removed
+
+contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+acute_contrasts &lt;- c(
+  &quot;treat_vs_ctrl&quot;,
+  &quot;inLiver_lps_vs_ctrl&quot;,
+  &quot;ccl_8h_vs_0h&quot;, &quot;ccl_24h_vs_0h&quot;, &quot;ccl_48h_vs_0h&quot;,
+  &quot;apap_12h_vs_0h&quot;, &quot;apap_24h_vs_0h&quot;, &quot;apap_48h_vs_0h&quot;,
+  &quot;ph_0.5d&quot;, &quot;ph_1d&quot;, &quot;ph_2d&quot;,
+  &quot;bdl_vs_sham_1d&quot;
+)
+
+df &lt;- contrasts %&gt;%
+  filter(contrast %in% acute_contrasts) %&gt;%
+  inner_join(exclusive_chronic_genes, by = &quot;gene&quot;) %&gt;%
+  group_by(gene, chronic_statistic) %&gt;%
+  summarise(acute_statistic = median(statistic), var = var(statistic), n = n()) %&gt;%
+  ungroup()
+#&gt; filter: removed 507,577 rows (67%), 249,562 rows remaining
+#&gt; inner_join: added one column (chronic_statistic)
+#&gt;             &gt; rows only in x  (241,782)
+#&gt;             &gt; rows only in y  (    127)
+#&gt;             &gt; matched rows       7,780
+#&gt;             &gt;                 =========
+#&gt;             &gt; rows total         7,780
+#&gt; group_by: 2 grouping variables (gene, chronic_statistic)
+#&gt; summarise: now 707 rows and 5 columns, one group variable remaining (gene)
+#&gt; ungroup: no grouping variables
+
+ranked_exclusive_chronic_genes &lt;- df %&gt;%
+  # consider only genes that are available in at least in 5 acute contrasts
+  filter(n &gt;= 5) %&gt;%
+  # compute empirical metric that maximizes if the chronic statistic is high,
+  # and the acute statistic and variance is low
+  mutate(importance = chronic_statistic * (1 / acute_statistic) * sqrt(1 / var)) %&gt;%
+  arrange(-abs(importance), -chronic_statistic) %&gt;%
+  mutate(rank = row_number())
+#&gt; filter: removed 63 rows (9%), 644 rows remaining
+#&gt; mutate: new variable &#39;importance&#39; (double) with 644 unique values and 0% NA
+#&gt; mutate: new variable &#39;rank&#39; (integer) with 644 unique values and 0% NA
+
+saveRDS(
+  ranked_exclusive_chronic_genes,
+  here(output_path, &quot;ranked_exclusive_chronic_genes.rds&quot;)
+)</code></pre>
+<p>Extraction of the top 100 exclusive chronic genes. Their expression in acute and chronic mouse models is visualized in a heatmap.</p>
+<pre class="r"><code>ranked_exclusive_chronic_genes &lt;- readRDS(
+  here(output_path, &quot;ranked_exclusive_chronic_genes.rds&quot;)
+)
+
+mat_exclusive_chronic_genes &lt;- ranked_exclusive_chronic_genes %&gt;%
+  filter(rank &lt;= 100) %&gt;%
+  left_join(contrasts) %&gt;%
+  filter(contrast %in% acute_contrasts | treatment == &quot;pure_ccl4&quot;) %&gt;%
+  mutate(gene = as_factor(gene)) %&gt;%
+  select(gene, contrast, logFC) %&gt;%
+  untdy(&quot;gene&quot;, &quot;contrast&quot;, &quot;logFC&quot;) %&gt;%
+  as.matrix()
+#&gt; filter: removed 544 rows (84%), 100 rows remaining
+#&gt; left_join: added 9 columns (contrast, logFC, statistic, pval, fdr, …)
+#&gt;            &gt; rows only in x         0
+#&gt;            &gt; rows only in y  (753,439)
+#&gt;            &gt; matched rows       3,700    (includes duplicates)
+#&gt;            &gt;                 =========
+#&gt;            &gt; rows total         3,700
+#&gt; filter: removed 2,200 rows (59%), 1,500 rows remaining
+#&gt; mutate: converted &#39;gene&#39; from character to factor (0 new NA)
+#&gt; select: dropped 13 variables (chronic_statistic, acute_statistic, var, n, importance, …)
+#&gt; select: no changes
+#&gt; spread: reorganized (contrast, logFC) into (treat_vs_ctrl, inLiver_lps_vs_ctrl, ccl_8h_vs_0h, ccl_24h_vs_0h, ccl_48h_vs_0h, …) [was 1500x3, now 100x16]
+
+Heatmap(t(mat_exclusive_chronic_genes),
+  col = col_fun,
+  cluster_rows = F, cluster_columns = T,
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  name = &quot;logFC&quot;,
+  row_gap = unit(2.5, &quot;mm&quot;),
+  border = T,
+  row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
+)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/vis-exclusive-chronic-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="common" class="section level3">
+<h3>Common</h3>
+<p>Common genes are ranked based on a metric that prioritize genes that have a high consensus chronic gene-level statistic and at the same are time consistently regulated in the same direction as in the chronic scenario in selected acute contrasts.</p>
+<pre class="r"><code>common_genes &lt;- readRDS(here(output_path, &quot;gene_membership.rds&quot;)) %&gt;%
+  filter(membership == &quot;common&quot; &amp; class == &quot;chronic&quot;) %&gt;%
+  distinct(gene, chronic_statistic = median_statistic)
+#&gt; filter: removed 4,197 rows (88%), 586 rows remaining
+#&gt; distinct: no rows removed
+
+contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+acute_contrasts &lt;- c(
+  &quot;treat_vs_ctrl&quot;,
+  &quot;inLiver_lps_vs_ctrl&quot;,
+  &quot;ccl_8h_vs_0h&quot;, &quot;ccl_24h_vs_0h&quot;, &quot;ccl_48h_vs_0h&quot;,
+  &quot;apap_12h_vs_0h&quot;, &quot;apap_24h_vs_0h&quot;, &quot;apap_48h_vs_0h&quot;,
+  &quot;ph_0.5d&quot;, &quot;ph_1d&quot;, &quot;ph_2d&quot;,
+  &quot;bdl_vs_sham_1d&quot;
+)
+
+df &lt;- contrasts %&gt;%
+  filter(contrast %in% acute_contrasts) %&gt;%
+  inner_join(common_genes, by = &quot;gene&quot;) %&gt;%
+  group_by(gene, chronic_statistic) %&gt;%
+  summarise(acute_statistic = median(statistic), var = var(statistic), n = n()) %&gt;%
+  ungroup()
+#&gt; filter: removed 507,577 rows (67%), 249,562 rows remaining
+#&gt; inner_join: added one column (chronic_statistic)
+#&gt;             &gt; rows only in x  (242,682)
+#&gt;             &gt; rows only in y  (      0)
+#&gt;             &gt; matched rows       6,880
+#&gt;             &gt;                 =========
+#&gt;             &gt; rows total         6,880
+#&gt; group_by: 2 grouping variables (gene, chronic_statistic)
+#&gt; summarise: now 586 rows and 5 columns, one group variable remaining (gene)
+#&gt; ungroup: no grouping variables
+
+ranked_common_genes &lt;- df %&gt;%
+  # consider only genes that are available in at least in 5 acute contrasts
+  filter(n &gt;= 5) %&gt;%
+  # compute empirical metric that maximizes if the chronic and acute statistic
+  # is high and acute variance is low
+  mutate(importance = chronic_statistic * acute_statistic * sqrt(1 / var)) %&gt;%
+  arrange(-abs(importance), -chronic_statistic) %&gt;%
+  mutate(rank = row_number(-importance))
+#&gt; filter: removed 13 rows (2%), 573 rows remaining
+#&gt; mutate: new variable &#39;importance&#39; (double) with 573 unique values and 0% NA
+#&gt; mutate: new variable &#39;rank&#39; (integer) with 573 unique values and 0% NA
+
+saveRDS(ranked_common_genes, here(output_path, &quot;ranked_common_genes.rds&quot;))</code></pre>
+<p>Extraction of the top 100 common genes. Their expression in acute and chronic mouse models is visualized in a heatmap.</p>
+<pre class="r"><code>ranked_common_genes &lt;- readRDS(
+  here(output_path, &quot;ranked_common_genes.rds&quot;)
+)
+
+mat_common_genes &lt;- ranked_common_genes %&gt;%
+  filter(rank &lt;= 100) %&gt;%
+  left_join(contrasts) %&gt;%
+  filter(contrast %in% acute_contrasts | treatment == &quot;pure_ccl4&quot;) %&gt;%
+  mutate(gene = as_factor(gene)) %&gt;%
+  select(gene, contrast, logFC) %&gt;%
+  untdy(&quot;gene&quot;, &quot;contrast&quot;, &quot;logFC&quot;) %&gt;%
+  as.matrix()
+#&gt; filter: removed 473 rows (83%), 100 rows remaining
+#&gt; left_join: added 9 columns (contrast, logFC, statistic, pval, fdr, …)
+#&gt;            &gt; rows only in x         0
+#&gt;            &gt; rows only in y  (753,447)
+#&gt;            &gt; matched rows       3,692    (includes duplicates)
+#&gt;            &gt;                 =========
+#&gt;            &gt; rows total         3,692
+#&gt; filter: removed 2,194 rows (59%), 1,498 rows remaining
+#&gt; mutate: converted &#39;gene&#39; from character to factor (0 new NA)
+#&gt; select: dropped 13 variables (chronic_statistic, acute_statistic, var, n, importance, …)
+#&gt; select: no changes
+#&gt; spread: reorganized (contrast, logFC) into (treat_vs_ctrl, inLiver_lps_vs_ctrl, ccl_8h_vs_0h, ccl_24h_vs_0h, ccl_48h_vs_0h, …) [was 1498x3, now 100x16]
+
+Heatmap(t(mat_common_genes),
+  col = col_fun,
+  cluster_rows = F, cluster_columns = T,
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  name = &quot;logFC&quot;,
+  row_gap = unit(2.5, &quot;mm&quot;),
+  border = T,
+  row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
+)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/vis-common-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="exclusive-acute" class="section level3">
+<h3>Exclusive acute</h3>
+<p>Exclusive acute genes are ranked based on a metric that prioritize genes that have a high consensus acute gene-level statistic and at the same time are consistently not deregulated in the chronic contrasts.</p>
+<pre class="r"><code>exclusive_acute_genes &lt;- readRDS(here(output_path, &quot;gene_membership.rds&quot;)) %&gt;%
+  filter(membership == &quot;acute&quot; &amp; class == &quot;acute&quot;) %&gt;%
+  distinct(gene, acute_statistic = median_statistic)
+#&gt; filter: removed 2,006 rows (42%), 2,777 rows remaining
+#&gt; distinct: no rows removed
+
+contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+acute_contrasts &lt;- c(
+  &quot;treat_vs_ctrl&quot;,
+  &quot;inLiver_lps_vs_ctrl&quot;,
+  &quot;ccl_8h_vs_0h&quot;, &quot;ccl_24h_vs_0h&quot;, &quot;ccl_48h_vs_0h&quot;,
+  &quot;apap_12h_vs_0h&quot;, &quot;apap_24h_vs_0h&quot;, &quot;apap_48h_vs_0h&quot;,
+  &quot;ph_0.5d&quot;, &quot;ph_1d&quot;, &quot;ph_2d&quot;,
+  &quot;bdl_vs_sham_1d&quot;
+)
+
+df &lt;- contrasts %&gt;%
+  filter(treatment == &quot;pure_ccl4&quot;) %&gt;%
+  inner_join(exclusive_acute_genes, by = &quot;gene&quot;) %&gt;%
+  group_by(gene, acute_statistic) %&gt;%
+  summarise(chronic_statistic = median(statistic), var = var(statistic), n = n()) %&gt;%
+  ungroup()
+#&gt; filter: removed 711,125 rows (94%), 46,014 rows remaining
+#&gt; inner_join: added one column (acute_statistic)
+#&gt;             &gt; rows only in x  (38,391)
+#&gt;             &gt; rows only in y  (   236)
+#&gt;             &gt; matched rows      7,623
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total        7,623
+#&gt; group_by: 2 grouping variables (gene, acute_statistic)
+#&gt; summarise: now 2,541 rows and 5 columns, one group variable remaining (gene)
+#&gt; ungroup: no grouping variables
+
+ranked_exclusive_acute_genes &lt;- df %&gt;%
+  # compute empirical metric that maximizes if the acute statistic is high,
+  # and the chronic statistic and variance is low
+  mutate(importance = (1 / chronic_statistic) * acute_statistic * sqrt(1 / var)) %&gt;%
+  arrange(-abs(importance), -acute_statistic) %&gt;%
+  mutate(rank = row_number())
+#&gt; mutate: new variable &#39;importance&#39; (double) with 2,541 unique values and 0% NA
+#&gt; mutate: new variable &#39;rank&#39; (integer) with 2,541 unique values and 0% NA
+
+saveRDS(
+  ranked_exclusive_acute_genes,
+  here(output_path, &quot;ranked_exclusive_acute_genes.rds&quot;)
+)</code></pre>
+<p>Extraction of the top 100 exclusive acute genes. Their expression in acute and chronic mouse models is visualized in a heatmap.</p>
+<pre class="r"><code>ranked_exclusive_acute_genes &lt;- readRDS(
+  here(output_path, &quot;ranked_exclusive_acute_genes.rds&quot;)
+)
+
+mat_exclusive_acute_genes &lt;- ranked_exclusive_acute_genes %&gt;%
+  filter(rank &lt;= 100) %&gt;%
+  left_join(contrasts) %&gt;%
+  filter(contrast %in% acute_contrasts | treatment == &quot;pure_ccl4&quot;) %&gt;%
+  mutate(gene = as_factor(gene)) %&gt;%
+  select(gene, contrast, logFC) %&gt;%
+  untdy(&quot;gene&quot;, &quot;contrast&quot;, &quot;logFC&quot;) %&gt;%
+  as.matrix()
+#&gt; filter: removed 2,441 rows (96%), 100 rows remaining
+#&gt; left_join: added 9 columns (contrast, logFC, statistic, pval, fdr, …)
+#&gt;            &gt; rows only in x         0
+#&gt;            &gt; rows only in y  (753,455)
+#&gt;            &gt; matched rows       3,684    (includes duplicates)
+#&gt;            &gt;                 =========
+#&gt;            &gt; rows total         3,684
+#&gt; filter: removed 2,188 rows (59%), 1,496 rows remaining
+#&gt; mutate: converted &#39;gene&#39; from character to factor (0 new NA)
+#&gt; select: dropped 13 variables (acute_statistic, chronic_statistic, var, n, importance, …)
+#&gt; select: no changes
+#&gt; spread: reorganized (contrast, logFC) into (treat_vs_ctrl, inLiver_lps_vs_ctrl, ccl_8h_vs_0h, ccl_24h_vs_0h, ccl_48h_vs_0h, …) [was 1496x3, now 100x16]
+
+Heatmap(t(mat_exclusive_acute_genes),
+  col = col_fun,
+  cluster_rows = F, cluster_columns = T,
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  name = &quot;logFC&quot;,
+  row_gap = unit(2.5, &quot;mm&quot;),
+  border = T,
+  row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
+)</code></pre>
+<p><img src="figure/meta-chronic-vs-acute.Rmd/vis-exclusive-acute-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="characterization-of-exclusive-and-common-genes" class="section level2">
+<h2>Characterization of exclusive and common genes</h2>
+<p>All exclusive chronic, exclusive acute and common genes are characterized GO terms, <a href="http://saezlab.github.io/progeny/">PROGENy’s</a> pathways and <a href="http://saezlab.github.io/dorothea/">DoRothEA’s</a> TFs. As statistic over-representation analysis is used.</p>
+<pre class="r"><code>exclusive_chronic_genes &lt;- readRDS(
+  here(output_path, &quot;ranked_exclusive_chronic_genes.rds&quot;)
+) %&gt;%
+  select(gene, statistic = chronic_statistic, rank) %&gt;%
+  mutate(class = &quot;chronic&quot;)
+#&gt; select: renamed one variable (statistic) and dropped 4 variables
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+exclusive_acute_genes &lt;- readRDS(
+  here(output_path, &quot;ranked_exclusive_acute_genes.rds&quot;)
+) %&gt;%
+  select(gene, statistic = acute_statistic, rank) %&gt;%
+  mutate(class = &quot;acute&quot;)
+#&gt; select: renamed one variable (statistic) and dropped 4 variables
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+common_genes &lt;- readRDS(here(output_path, &quot;ranked_common_genes.rds&quot;)) %&gt;%
+  filter(sign(chronic_statistic) == sign(acute_statistic)) %&gt;%
+  select(gene, statistic = chronic_statistic, rank) %&gt;%
+  mutate(class = &quot;common&quot;)
+#&gt; filter: removed 93 rows (16%), 480 rows remaining
+#&gt; select: renamed one variable (statistic) and dropped 4 variables
+#&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
+
+signatures &lt;- bind_rows(
+  exclusive_chronic_genes, exclusive_acute_genes,
+  common_genes
+) %&gt;%
+  mutate(regulation = ifelse(statistic &gt;= 0, &quot;up&quot;, &quot;down&quot;))
+#&gt; mutate: new variable &#39;regulation&#39; (character) with 2 unique values and 0% NA
+
+# load gene sets of GO terms, pathways, tfs)
+genesets &lt;- load_genesets() %&gt;%
+  filter(confidence %in% c(NA,&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)) 
+#&gt; filter: removed 2,340,732 rows (80%), 597,560 rows remaining
+#&gt; select: renamed one variable (gene) and dropped 2 variables
+#&gt; mutate: new variable &#39;group&#39; (character) with one unique value and 0% NA
+#&gt; gather: reorganized (Androgen, EGFR, Estrogen, Hypoxia, JAK-STAT, …) into (geneset, weight) [was 1299x15, now 18186x3]
+#&gt; filter: removed 16,785 rows (92%), 1,401 rows remaining
+#&gt; select: dropped one variable (weight)
+#&gt; mutate: new variable &#39;group&#39; (character) with one unique value and 0% NA
+#&gt; select: renamed 2 variables (geneset, gene) and dropped one variable
+#&gt; mutate: new variable &#39;group&#39; (character) with one unique value and 0% NA
+#&gt; filter: removed 396,818 rows (39%), 612,694 rows remaining
+
+# run over-representation analysis
+ora_res &lt;- signatures %&gt;%
+  nest(sig = c(-class, -regulation)) %&gt;%
+  dplyr::mutate(ora = sig %&gt;% map(run_ora,
+    sets = genesets, min_size = 10,
+    options = list(alternative = &quot;greater&quot;),
+    background_n = 20000
+  )) %&gt;%
+  select(-sig) %&gt;%
+  unnest(ora)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 643 unique values and 0% NA
+#&gt; filter: removed 13,996 rows (2%), 598,698 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; mutate: new variable &#39;contingency_table&#39; (list) with 1,609 unique values and 0% NA
+#&gt; mutate: new variable &#39;stat&#39; (list) with 1,503 unique values and 0% NA
+#&gt; group_by: one grouping variable (group)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 838 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 643 unique values and 0% NA
+#&gt; filter: removed 13,996 rows (2%), 598,698 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; mutate: new variable &#39;contingency_table&#39; (list) with 1,215 unique values and 0% NA
+#&gt; mutate: new variable &#39;stat&#39; (list) with 990 unique values and 0% NA
+#&gt; group_by: one grouping variable (group)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 494 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 643 unique values and 0% NA
+#&gt; filter: removed 13,996 rows (2%), 598,698 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; mutate: new variable &#39;contingency_table&#39; (list) with 2,137 unique values and 0% NA
+#&gt; mutate: new variable &#39;stat&#39; (list) with 2,098 unique values and 0% NA
+#&gt; group_by: one grouping variable (group)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 1,516 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 643 unique values and 0% NA
+#&gt; filter: removed 13,996 rows (2%), 598,698 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; mutate: new variable &#39;contingency_table&#39; (list) with 1,638 unique values and 0% NA
+#&gt; mutate: new variable &#39;stat&#39; (list) with 1,536 unique values and 0% NA
+#&gt; group_by: one grouping variable (group)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 424 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 643 unique values and 0% NA
+#&gt; filter: removed 13,996 rows (2%), 598,698 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; mutate: new variable &#39;contingency_table&#39; (list) with 1,530 unique values and 0% NA
+#&gt; mutate: new variable &#39;stat&#39; (list) with 1,393 unique values and 0% NA
+#&gt; group_by: one grouping variable (group)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 956 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 643 unique values and 0% NA
+#&gt; filter: removed 13,996 rows (2%), 598,698 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; mutate: new variable &#39;contingency_table&#39; (list) with 1,252 unique values and 0% NA
+#&gt; mutate: new variable &#39;stat&#39; (list) with 998 unique values and 0% NA
+#&gt; group_by: one grouping variable (group)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 544 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; select: dropped one variable (sig)
+
+saveRDS(ora_res, here(output_path, &quot;exclusive_genes_characterization.rds&quot;))</code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()
+#&gt; R version 4.0.2 (2020-06-22)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Mojave 10.14.5
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] grid      stats     graphics  grDevices datasets  utils     methods  
+#&gt; [8] base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] msigdf_7.1               ComplexHeatmap_2.4.3     VennDiagram_1.6.20      
+#&gt;  [4] futile.logger_1.4.3      lemon_0.4.5              AachenColorPalette_1.1.2
+#&gt;  [7] circlize_0.4.11          biobroom_1.20.0          broom_0.7.3             
+#&gt; [10] progeny_1.10.0           dorothea_1.0.1           fgsea_1.14.0            
+#&gt; [13] here_1.0.1               tidylog_1.0.2            forcats_0.5.0           
+#&gt; [16] stringr_1.4.0            dplyr_1.0.2              purrr_0.3.4             
+#&gt; [19] readr_1.4.0              tidyr_1.1.2              tibble_3.0.4            
+#&gt; [22] ggplot2_3.3.2            tidyverse_1.3.0          workflowr_1.6.2         
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] fs_1.5.0             lubridate_1.7.9.2    RColorBrewer_1.1-2  
+#&gt;  [4] httr_1.4.2           rprojroot_2.0.2      tools_4.0.2         
+#&gt;  [7] backports_1.2.1      R6_2.5.0             DBI_1.1.0           
+#&gt; [10] BiocGenerics_0.34.0  colorspace_2.0-0     GetoptLong_1.0.5    
+#&gt; [13] withr_2.3.0          tidyselect_1.1.0     gridExtra_2.3       
+#&gt; [16] compiler_4.0.2       git2r_0.27.1         cli_2.2.0           
+#&gt; [19] rvest_0.3.6          Biobase_2.48.0       formatR_1.7         
+#&gt; [22] xml2_1.3.2           labeling_0.4.2       scales_1.1.1        
+#&gt; [25] digest_0.6.27        rmarkdown_2.6        pkgconfig_2.0.3     
+#&gt; [28] htmltools_0.5.0      bcellViper_1.24.0    dbplyr_2.0.0        
+#&gt; [31] rlang_0.4.9          GlobalOptions_0.1.2  readxl_1.3.1        
+#&gt; [34] rstudioapi_0.13      farver_2.0.3         shape_1.4.5         
+#&gt; [37] generics_0.1.0       jsonlite_1.7.2       gtools_3.8.2        
+#&gt; [40] BiocParallel_1.22.0  magrittr_2.0.1       Matrix_1.2-18       
+#&gt; [43] Rcpp_1.0.5           munsell_0.5.0        fansi_0.4.1         
+#&gt; [46] lifecycle_0.2.0      stringi_1.5.3        whisker_0.4         
+#&gt; [49] yaml_2.2.1           plyr_1.8.6           parallel_4.0.2      
+#&gt; [52] promises_1.1.1       ggrepel_0.9.0        crayon_1.3.4        
+#&gt; [55] lattice_0.20-41      cowplot_1.1.0        haven_2.3.1         
+#&gt; [58] hms_0.5.3            knitr_1.30           pillar_1.4.7        
+#&gt; [61] rjson_0.2.20         codetools_0.2-16     clisymbols_1.2.0    
+#&gt; [64] futile.options_1.0.1 fastmatch_1.1-0      reprex_0.3.0        
+#&gt; [67] glue_1.4.2           evaluate_0.14        lambda.r_1.2.4      
+#&gt; [70] data.table_1.13.4    renv_0.12.3          modelr_0.1.8        
+#&gt; [73] png_0.1-7            vctrs_0.3.6          httpuv_1.5.4        
+#&gt; [76] cellranger_1.1.0     gtable_0.3.0         clue_0.3-58         
+#&gt; [79] assertthat_0.2.1     xfun_0.19            later_1.1.0.1       
+#&gt; [82] cluster_2.1.0        ellipsis_0.3.1</code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
