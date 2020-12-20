@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Christian H. Holland" />
+
+<meta name="date" content="2020-12-19" />
+
+<title>Meta anlaysis of patients cohort and chronic CCl4 mouse model</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">meta-liver</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mouse models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-apap.html">Acute APAP mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-ccl4.html">Acute CCl4 mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-bdl.html">Acute BDL mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-ph.html">Acute PH mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-lps.html">Acute LPS mouse model</a>
+    </li>
+    <li>
+      <a href="mouse-acute-tunicamycin.html">Acute Tunicamycin mouse model</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Patient cohorts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="human-hoang-nafld.html">NAFLD - Hoang et al.</a>
+    </li>
+    <li>
+      <a href="human-diehl-nafld.html">NAFLD - Diehl et al.</a>
+    </li>
+    <li>
+      <a href="human-ramnath-fibrosis.html">Fibrosis - Ramnath et al.</a>
+    </li>
+    <li>
+      <a href="human-hampe13-nash.html">NASH - Hampe et al. '13</a>
+    </li>
+    <li>
+      <a href="human-hampe13-misc.html">Misc - Hampe et al. '14</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="meta-chronic-vs-acute.html">Chronic vs. acute</a>
+    </li>
+    <li>
+      <a href="meta-mouse-vs-human.html">Mouse vs. human</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://zenodo.org/record/xxx">
+    <span class="fas fa-database"></span>
+     
+    Get data
+  </a>
+</li>
+<li>
+  <a href="https://github.com/saezlab/meta-liver">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Meta anlaysis of patients cohort and chronic CCl4 mouse model</h1>
+<h4 class="author">Christian H. Holland</h4>
+<h4 class="date">2020-12-19</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-12-20
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201218code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201218)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201218code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201218)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee686c2a615345f43572458e1b2ec2ff4801e5ce3targetblanke686c2aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/e686c2a615345f43572458e1b2ec2ff4801e5ce3" target="_blank">e686c2a</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee686c2a615345f43572458e1b2ec2ff4801e5ce3targetblanke686c2aa" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/e686c2a615345f43572458e1b2ec2ff4801e5ce3" target="_blank">e686c2a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/human-diehl-nafld_cache/
+    Ignored:    analysis/human-hampe13-nash_cache/
+    Ignored:    analysis/human-hampe14-misc_cache/
+    Ignored:    analysis/human-hoang-nafld_cache/
+    Ignored:    analysis/human-ramnath-fibrosis_cache/
+    Ignored:    analysis/meta-chronic-vs-acute_cache/
+    Ignored:    analysis/mouse-acute-apap_cache/
+    Ignored:    analysis/mouse-acute-bdl_cache/
+    Ignored:    analysis/mouse-acute-ccl4_cache/
+    Ignored:    analysis/mouse-acute-lps_cache/
+    Ignored:    analysis/mouse-acute-ph_cache/
+    Ignored:    analysis/mouse-acute-tunicamycin_cache/
+    Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    code/.DS_Store
+    Ignored:    code/README.html
+    Ignored:    data/.DS_Store
+    Ignored:    data/README.html
+    Ignored:    data/annotation/
+    Ignored:    data/human-diehl-nafld/
+    Ignored:    data/human-hampe13-nash/
+    Ignored:    data/human-hampe14-misc/
+    Ignored:    data/human-hoang-nafld/
+    Ignored:    data/human-ramnath-fibrosis/
+    Ignored:    data/meta-chronic-vs-acute/
+    Ignored:    data/meta-mouse-vs-human/
+    Ignored:    data/mouse-acute-apap/
+    Ignored:    data/mouse-acute-bdl/
+    Ignored:    data/mouse-acute-ccl4/
+    Ignored:    data/mouse-acute-lps/
+    Ignored:    data/mouse-acute-ph/
+    Ignored:    data/mouse-acute-tunicamycin/
+    Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    external_software/.DS_Store
+    Ignored:    external_software/README.html
+    Ignored:    external_software/stem/.DS_Store
+    Ignored:    output/.DS_Store
+    Ignored:    output/README.html
+    Ignored:    output/human-diehl-nafld/
+    Ignored:    output/human-hampe13-nash/
+    Ignored:    output/human-hampe14-misc/
+    Ignored:    output/human-hoang-nafld/
+    Ignored:    output/human-ramnath-fibrosis/
+    Ignored:    output/meta-chronic-vs-acute/
+    Ignored:    output/meta-mouse-vs-human/
+    Ignored:    output/mouse-acute-apap/
+    Ignored:    output/mouse-acute-bdl/
+    Ignored:    output/mouse-acute-ccl4/
+    Ignored:    output/mouse-acute-lps/
+    Ignored:    output/mouse-acute-ph/
+    Ignored:    output/mouse-acute-tunicamycin/
+    Ignored:    output/mouse-chronic-ccl4/
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
+
+Unstaged changes:
+    Deleted:    analysis/meta-analysis-chronic-vs-acute.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/meta-mouse-vs-human.Rmd</code>) and HTML (<code>docs/meta-mouse-vs-human.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/e686c2a615345f43572458e1b2ec2ff4801e5ce3/analysis/meta-mouse-vs-human.Rmd" target="_blank">e686c2a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+<td>
+complete analyses
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Here we integrate various patient cohorts of chronic liver diseases with the chronic CCl4 mouse model to identify consistently deregulated genes in mouse and human.</p>
+</div>
+<div id="libraries-and-sources" class="section level2">
+<h2>Libraries and sources</h2>
+<p>These libraries and sources are used for this analysis.</p>
+<pre class="r"><code>library(tidyverse)
+library(tidylog)
+library(here)
+
+library(fgsea)
+library(dorothea)
+library(progeny)
+library(biobroom)
+
+library(circlize)
+library(AachenColorPalette)
+library(lemon)
+library(VennDiagram)
+library(ComplexHeatmap)
+library(gridExtra)
+library(cowplot)
+library(ggpubr)
+
+library(msigdf) # remotes::install_github(&quot;ToledoEM/msigdf@v7.1&quot;)
+library(gtools)
+
+options(&quot;tidylog.display&quot; = list(print))
+source(here(&quot;code/utils-utils.R&quot;))
+source(here(&quot;code/utils-plots.R&quot;))</code></pre>
+<p>Definition of global variables that are used throughout this analysis.</p>
+<pre class="r"><code># i/o
+data_path &lt;- &quot;data/meta-mouse-vs-human&quot;
+output_path &lt;- &quot;output/meta-mouse-vs-human&quot;
+
+# graphical parameters
+# fontsize
+fz &lt;- 9
+# color function for heatmaps
+col_fun &lt;- colorRamp2(
+  c(-4, 0, 4),
+  c(aachen_color(&quot;blue&quot;), &quot;white&quot;, aachen_color(&quot;red&quot;))
+)</code></pre>
+</div>
+<div id="merging-data-of-all-mouse-models" class="section level2">
+<h2>Merging data of all mouse models</h2>
+<div id="merging-contrasts" class="section level3">
+<h3>Merging contrasts</h3>
+<p>Contrasts from all available patient cohorts are merged into a single object.</p>
+<pre class="r"><code># acute
+diehl &lt;- readRDS(here(&quot;output/human-diehl-nafld/limma_result.rds&quot;)) %&gt;%
+  mutate(phenotype = &quot;nafld&quot;, 
+         source = &quot;diehl&quot;)
+
+hoang &lt;- readRDS(here(&quot;output/human-hoang-nafld/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;stage_0&quot;) %&gt;%
+  mutate(phenotype = &quot;nafld&quot;,
+         source = &quot;hoang&quot;)
+#&gt; filter: no rows removed
+
+hampe13 &lt;- readRDS(here(&quot;output/human-hampe13-nash/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;control&quot;) %&gt;%
+  mutate(phenotype = &quot;nash&quot;,
+         source = &quot;hampe13&quot;)
+#&gt; filter: no rows removed
+
+hampe14 &lt;- readRDS(here(&quot;output/human-hampe14-misc/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;control&quot;) %&gt;%
+  mutate(phenotype = &quot;omni&quot;,
+         source = &quot;hampe14&quot;)
+#&gt; filter: no rows removed
+
+ramnath &lt;- readRDS(here(&quot;output/human-ramnath-fibrosis/limma_result.rds&quot;)) %&gt;%
+  mutate(phenotype = &quot;fibrosis&quot;,
+         source = &quot;ramnath&quot;)
+
+combined_contrasts &lt;- bind_rows(diehl, ramnath, hoang, hampe13, 
+                               hampe14) %&gt;%
+  select(-contrast_reference) %&gt;%
+  mutate(contrast = as_factor(contrast)) %&gt;%
+  assign_deg() %&gt;%
+  # phenotypes related to obesity are removed
+  filter(phenotype != &quot;obesity&quot;) %&gt;%
+  filter(!str_detect(contrast, &quot;obese&quot;))
+#&gt; select: dropped one variable (contrast_reference)
+#&gt; filter: no rows removed
+#&gt; filter: removed 37,642 rows (13%), 257,688 rows remaining
+
+saveRDS(combined_contrasts, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="gene-coverage" class="section level2">
+<h2>Gene coverage</h2>
+<p>Barplot showing the gene coverage of the patient cohorts.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  distinct(gene, phenotype, source) %&gt;% 
+  count(phenotype, source)
+#&gt; distinct: removed 167,964 rows (65%), 89,724 rows remaining
+#&gt; count: now 5 rows and 3 columns, ungrouped
+
+contrasts %&gt;%
+  ggplot(aes(x = n, fct_reorder(interaction(source, phenotype, sep = &quot;_&quot;), n),
+             group = source)) +
+  geom_col() +
+  labs(x=&quot;Gene coverage&quot;, y=NULL) +
+  my_theme(grid = &quot;x&quot;, fsize = fz) </code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="number-of-differential-expressed-genes" class="section level2">
+<h2>Number of differential expressed genes</h2>
+<p>Barplot showing the number of differentially expressed genes for each contrast.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+combined_contrasts %&gt;%
+  filter(regulation != &quot;ns&quot;) %&gt;%
+  count(contrast, source, regulation) %&gt;%
+  ggplot(aes(y=interaction(source, contrast), x=n, fill = regulation)) +
+  geom_col(position=position_dodge()) +
+  labs(y=NULL, y=&quot;Number of degs&quot;) +
+  my_theme(grid = &quot;x&quot;, fsize = fz)
+#&gt; filter: removed 255,692 rows (99%), 1,996 rows remaining
+#&gt; count: now 26 rows and 4 columns, ungrouped</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="interstudy-analysis-of-patient-cohorts" class="section level2">
+<h2>Interstudy analysis of patient cohorts</h2>
+<div id="mutual-similarity-of-differential-expressed-genes" class="section level3">
+<h3>Mutual similarity of differential expressed genes</h3>
+<p>This analysis computes the similarity of differential expressed genes for all contrasts of the patient cohorts. Similarity is measured with the Jaccard Index.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+mat_top = contrasts %&gt;%
+  group_by(contrast, phenotype, source) %&gt;%
+  top_n(500, abs(statistic)) %&gt;%
+  mutate(key = row_number()) %&gt;%
+  ungroup() %&gt;%
+  unite(geneset, source, phenotype, contrast, sep=&quot;-&quot;) %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene, key) %&gt;%
+  untdy(key, geneset, gene)
+#&gt; top_n (grouped): removed 250,188 rows (97%), 7,500 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (diehl-nafld-advanced_vs_mild, ramnath-fibrosis-hcv_adv_vs_early, ramnath-fibrosis-nafld_adv_vs_early, hoang-nafld-stage_1_vs_0, hoang-nafld-stage_2_vs_0, …) [was 7500x3, now 500x16]
+
+# usage of jaccard index for balanced set sizes
+j = set_similarity(mat_top, measure = &quot;jaccard&quot;, tidy=T)
+#&gt; gather: reorganized (diehl-nafld-advanced_vs_mild, ramnath-fibrosis-hcv_adv_vs_early, ramnath-fibrosis-nafld_adv_vs_early, hoang-nafld-stage_1_vs_0, hoang-nafld-stage_2_vs_0, …) into (set2, similarity) [was 15x16, now 225x3]
+#&gt; drop_na: removed 105 rows (47%), 120 rows remaining
+#&gt; filter: removed 15 rows (12%), 105 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+
+saveRDS(j, here(output_path, &quot;gene_set_similarity.rds&quot;))
+
+j %&gt;%
+  ggplot(aes(x = set1, y = set2, fill = similarity)) +
+  geom_tile(color = &quot;black&quot;) +
+  scale_fill_gradient(low = &quot;white&quot;, high = aachen_color(&quot;green&quot;)) +
+  labs(x = NULL, y = NULL, fill = &quot;Jaccard\nIndex&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  my_theme(fsize = fz, grid = &quot;no&quot;)</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/deg-similarity-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="mutual-enrichment-of-differential-expressed-genes" class="section level3">
+<h3>Mutual enrichment of differential expressed genes</h3>
+<p>This analysis explores whether the top differential expressed genes of specific contrasts of the acute mouse models are consistently regulated across the acute mouse models.</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+genesets_top = contrasts %&gt;%
+  mutate(direction = case_when(sign(statistic) &gt;= 0 ~ &quot;up&quot;,
+                               sign(statistic) &lt; 0 ~ &quot;down&quot;)) %&gt;%
+  group_by(source, phenotype, contrast, direction) %&gt;%
+  top_n(500, abs(statistic)) %&gt;%
+  ungroup() %&gt;%
+  unite(geneset, source, phenotype, contrast, sep = &quot;-&quot;) %&gt;%
+  unite(geneset, geneset, direction, sep = &quot;|&quot;) %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene)
+#&gt; top_n (grouped): removed 242,688 rows (94%), 15,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+
+# construct signature matrix/data frame
+signature_df = contrasts %&gt;% 
+  unite(signature, source, phenotype, contrast, sep = &quot;-&quot;) %&gt;%
+  mutate(signature = as_factor(signature)) %&gt;%
+  untdy(&quot;gene&quot;, &quot;signature&quot;, &quot;statistic&quot;)
+#&gt; select: dropped 4 variables (logFC, pval, fdr, regulation)
+#&gt; spread: reorganized (signature, statistic) into (diehl-nafld-advanced_vs_mild, ramnath-fibrosis-hcv_adv_vs_early, ramnath-fibrosis-nafld_adv_vs_early, hoang-nafld-stage_1_vs_0, hoang-nafld-stage_2_vs_0, …) [was 257688x3, now 24107x16]
+
+# run gsea
+set.seed(123)
+gsea_res_top = run_gsea(signature_df, genesets_top, tidy=T) %&gt;%
+  separate(geneset, into = c(&quot;geneset&quot;, &quot;direction&quot;), sep = &quot;[|]&quot;) %&gt;%
+  mutate(signature = as_factor(signature),
+         geneset = as_factor(geneset)) 
+#&gt; summarise: now 30 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 14,970 rows (&gt;99%), 30 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x     0
+#&gt;            &gt; rows only in y  (  0)
+#&gt;            &gt; matched rows     450
+#&gt;            &gt;                 =====
+#&gt;            &gt; rows total       450
+
+saveRDS(gsea_res_top, here(output_path, &quot;interstudy_enrichment.rds&quot;))
+
+gsea_res_top %&gt;%
+  mutate(label = stars.pval(padj)) %&gt;%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_wrap(~direction) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_gradient2() +
+  my_theme(fsize = fz, grid = &quot;no&quot;) +
+  labs(x = &quot;Signature&quot;, y = &quot;Gene set&quot;)</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="comparison-of-mouse-and-human-data" class="section level2">
+<h2>Comparison of mouse and human data</h2>
+<p>With this analysis we check whether the top differential expressed human genes have the same direction of regulation in the chronic mouse model. ## Enrichment of human gene sets in mouse signatures</p>
+<pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+chronic_mouse = readRDS(
+  here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&quot;)
+  ) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;)
+#&gt; filter: removed 120,807 rows (75%), 40,269 rows remaining
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+genesets_top = contrasts %&gt;%
+  mutate(direction = case_when(sign(statistic) &gt;= 0 ~ &quot;up&quot;,
+                               sign(statistic) &lt; 0 ~ &quot;down&quot;)) %&gt;%
+  group_by(source, phenotype, contrast, direction) %&gt;%
+  top_n(500, abs(statistic)) %&gt;%
+  ungroup() %&gt;%
+  unite(geneset, source, phenotype, contrast, sep = &quot;-&quot;) %&gt;%
+  unite(geneset, geneset, direction, sep = &quot;|&quot;) %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene)
+#&gt; top_n (grouped): removed 242,688 rows (94%), 15,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+
+signature_df = chronic_mouse %&gt;%
+  untdy(&quot;gene&quot;, &quot;contrast&quot;, &quot;statistic&quot;)
+#&gt; select: dropped 5 variables (logFC, pval, fdr, regulation, contrast_reference)
+#&gt; spread: reorganized (contrast, statistic) into (pure_ccl_2m_vs_0m, pure_ccl_6m_vs_0m, pure_ccl_12m_vs_0m) [was 40269x3, now 13423x4]
+
+# run gsea
+set.seed(123)
+gsea_res_top = run_gsea(signature_df, genesets_top, tidy=T) %&gt;%
+  separate(geneset, into = c(&quot;geneset&quot;, &quot;direction&quot;), sep = &quot;[|]&quot;) %&gt;%
+  separate(geneset, into = c(&quot;source&quot;, &quot;phenotype&quot;, &quot;contrast&quot;), sep = &quot;-&quot;, remove = F) %&gt;%
+  mutate(signature = as_factor(signature),
+         geneset = as_factor(geneset),
+         time = parse_number(as.character(signature)))
+#&gt; summarise: now 30 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 14,970 rows (&gt;99%), 30 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     90
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       90
+
+saveRDS(gsea_res_top, here(output_path, &quot;gsea_res.rds&quot;))
+
+gsea_res_top %&gt;%
+  mutate(label = stars.pval(padj)) %&gt;%
+  ggplot(aes(x=signature, y=geneset, fill=ES)) +
+  geom_tile() +
+  geom_text(aes(label = label), size = fz/(14/5), vjust = 1) +
+  facet_wrap(~direction, ncol = 2) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.line = element_blank(),
+        axis.ticks = element_blank()) +
+  scale_fill_gradient2(low = aachen_color(&quot;blue&quot;), mid = &quot;white&quot;, 
+                       high = aachen_color(&quot;red&quot;)) +
+  my_theme(grid = &quot;no&quot;, fsize = fz) +
+  labs(x=&quot;Signature&quot;, y=&quot;Gene Set&quot;, fill = &quot;ES&quot;) +
+  guides(fill=guide_colorbar(title=&quot;ES&quot;))</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="leading-edge-extraction" class="section level2">
+<h2>Leading edge extraction</h2>
+<p>The enrichment of human genes sets in mouse signatures reveals that there is a set of genes which is significantly consistently deregulated in mouse and human. To identify these genes we extract the leading edge genes from the enrichment analysis.</p>
+<pre class="r"><code>gsea_res = readRDS(here(output_path, &quot;gsea_res.rds&quot;))
+
+# extract leading edges from significant and correctly directed enrichments
+leading_edges = gsea_res %&gt;%
+  filter(padj &lt;= 0.05 &amp; 
+           (direction == &quot;up&quot; &amp; ES &gt;= 0) | (direction == &quot;down&quot; &amp; ES &lt; 0)) %&gt;%
+  unnest(leadingEdge) %&gt;%
+  rename(gene = leadingEdge)
+#&gt; filter: removed 12 rows (13%), 78 rows remaining
+#&gt; rename: renamed one variable (gene)
+
+saveRDS(leading_edges, here(output_path, &quot;individual_le.rds&quot;))
+
+# for each study a union of leading edges is build across all contrast per time 
+# point
+# subsequently we count how often a gene appears per time and direction 
+# (max 5 times because we have 5 studies in total)
+# filter for those leading edges that appear in at least three studies
+unified_le = leading_edges %&gt;%
+  distinct(signature, direction, time, source, phenotype, gene) %&gt;%
+  count(signature, time, gene, direction, sort = T, name = &quot;n_studies&quot;) %&gt;%
+  filter(n_studies &gt;= 3) 
+#&gt; distinct: removed 3,923 rows (32%), 8,316 rows remaining
+#&gt; count: now 6,080 rows and 5 columns, ungrouped
+#&gt; filter: removed 5,632 rows (93%), 448 rows remaining
+
+# overlap of unified and consistent leading per time point
+unified_le %&gt;%
+  rename(regulation = direction) %&gt;%
+  mutate(class = str_c(&quot;Month &quot;, time)) %&gt;%
+  group_split(class) %&gt;%
+  plot_venn_diagram()
+#&gt; rename: renamed one variable (regulation)
+#&gt; distinct: removed 157 rows (99%), one row remaining
+#&gt; distinct: removed 124 rows (99%), one row remaining
+#&gt; distinct: removed 164 rows (99%), one row remaining
+#&gt; count: now 2 rows and 2 columns, ungrouped
+#&gt; count: now 2 rows and 2 columns, ungrouped
+#&gt; count: now 2 rows and 2 columns, ungrouped
+#&gt; filter: removed one row (50%), one row remaining
+#&gt; filter: removed one row (50%), one row remaining
+#&gt; filter: removed one row (50%), one row remaining
+#&gt; filter: removed 73 rows (46%), 85 rows remaining
+#&gt; filter: removed 48 rows (38%), 77 rows remaining
+#&gt; filter: removed 48 rows (38%), 77 rows remaining
+#&gt; filter: removed 68 rows (41%), 97 rows remaining
+#&gt; filter: removed 73 rows (46%), 85 rows remaining
+#&gt; filter: removed 68 rows (41%), 97 rows remaining
+#&gt; filter: removed 73 rows (46%), 85 rows remaining
+#&gt; filter: removed 48 rows (38%), 77 rows remaining
+#&gt; filter: removed 68 rows (41%), 97 rows remaining</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; filter: removed one row (50%), one row remaining
+#&gt; filter: removed one row (50%), one row remaining
+#&gt; filter: removed one row (50%), one row remaining
+#&gt; filter: removed 85 rows (54%), 73 rows remaining
+#&gt; filter: removed 77 rows (62%), 48 rows remaining
+#&gt; filter: removed 77 rows (62%), 48 rows remaining
+#&gt; filter: removed 97 rows (59%), 68 rows remaining
+#&gt; filter: removed 85 rows (54%), 73 rows remaining
+#&gt; filter: removed 97 rows (59%), 68 rows remaining
+#&gt; filter: removed 85 rows (54%), 73 rows remaining
+#&gt; filter: removed 77 rows (62%), 48 rows remaining
+#&gt; filter: removed 97 rows (59%), 68 rows remaining</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-2.png" width="672" style="display: block; margin: auto;" /><img src="figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+saveRDS(unified_le, here(output_path, &quot;leading_edges.rds&quot;))</code></pre>
+<div id="heatmap-of-leading-edge-genes" class="section level3">
+<h3>Heatmap of leading edge genes</h3>
+<pre class="r"><code># load leading edge genes and human and mouse contrasts
+le = readRDS(here(output_path, &quot;leading_edges.rds&quot;))
+contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+chronic_mouse = readRDS(
+  here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&quot;)
+  ) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;)
+#&gt; filter: removed 120,807 rows (75%), 40,269 rows remaining
+
+
+# filter mouse and human genes for leading edge genes
+c = chronic_mouse %&gt;%
+  inner_join(le, by=&quot;gene&quot;) %&gt;%
+  mutate(class = &quot;chronic&quot;) %&gt;%
+  select(gene, contrast, logFC, class)
+#&gt; inner_join: added 4 columns (signature, time, direction, n_studies)
+#&gt;             &gt; rows only in x  (39,585)
+#&gt;             &gt; rows only in y  (     0)
+#&gt;             &gt; matched rows      1,344    (includes duplicates)
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total        1,344
+#&gt; select: dropped 9 variables (statistic, pval, fdr, regulation, contrast_reference, …)
+
+h = contrasts %&gt;%
+  inner_join(le, by=&quot;gene&quot;) %&gt;%
+  mutate(class = &quot;human&quot;) %&gt;%
+  unite(contrast, source, phenotype, contrast, sep=&quot;-&quot;) %&gt;%
+  select(gene, contrast, logFC, class)
+#&gt; inner_join: added 4 columns (signature, time, direction, n_studies)
+#&gt;             &gt; rows only in x  (254,285)
+#&gt;             &gt; rows only in y  (      0)
+#&gt;             &gt; matched rows       6,681    (includes duplicates)
+#&gt;             &gt;                 =========
+#&gt;             &gt; rows total         6,681
+#&gt; select: dropped 8 variables (statistic, pval, fdr, regulation, signature, …)
+
+df = bind_rows(c, h) %&gt;%
+  mutate(contrast = as_factor(contrast)) %&gt;%
+  distinct()
+#&gt; distinct: removed 3,938 rows (49%), 4,087 rows remaining
+
+# assign a rank for each gene based on absolute mean logfc
+df_ranked = df %&gt;%
+  group_by(gene) %&gt;%
+  summarise(mean_logfc = mean(logFC)) %&gt;%
+  transmute(gene, rank = row_number(-abs(mean_logfc))) %&gt;%
+  inner_join(df, by=&quot;gene&quot;)
+#&gt; summarise: now 228 rows and 2 columns, ungrouped
+#&gt; transmute: dropped one variable (mean_logfc)
+#&gt;            new variable &#39;rank&#39; (integer) with 228 unique values and 0% NA
+#&gt; inner_join: added 3 columns (contrast, logFC, class)
+#&gt;             &gt; rows only in x  (    0)
+#&gt;             &gt; rows only in y  (    0)
+#&gt;             &gt; matched rows     4,087    (includes duplicates)
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total       4,087
+
+saveRDS(df_ranked, here(output_path, &quot;consistent_genes.rds&quot;))
+
+mat = df_ranked %&gt;%
+  filter(rank &lt;= 100) %&gt;%
+  distinct(gene, contrast, logFC) %&gt;%
+  untdy(feature = &quot;gene&quot;, key = &quot;contrast&quot;,value = &quot;logFC&quot;) %&gt;%
+  as.matrix()
+#&gt; filter: removed 2,297 rows (56%), 1,790 rows remaining
+#&gt; distinct: no rows removed
+#&gt; select: no changes
+#&gt; spread: reorganized (contrast, logFC) into (pure_ccl_2m_vs_0m, pure_ccl_6m_vs_0m, pure_ccl_12m_vs_0m, diehl-nafld-advanced_vs_mild, ramnath-fibrosis-hcv_adv_vs_early, …) [was 1790x3, now 100x19]
+
+ComplexHeatmap::Heatmap(t(as.matrix(mat)), 
+                        col = col_fun,
+                        cluster_rows = F, 
+                        cluster_columns = T, 
+                        row_names_gp = gpar(fontsize = fz),column_names_gp = gpar(fontsize = fz-4),
+                        name = &quot;logFC&quot;,
+                        row_gap = unit(2.5, &quot;mm&quot;),
+                        border = T,
+                        row_split = c(rep(&quot;Mouse&quot;,3), rep(&quot;Human&quot;, 15)))</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/le-visualization-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="characterization-of-leading-edge-genes" class="section level3">
+<h3>Characterization of leading edge genes</h3>
+<p>Up and down-regulated leading edge genes are characterized with GO terms, <a href="http://saezlab.github.io/progeny/">PROGENy’s</a> pathways and <a href="http://saezlab.github.io/dorothea/">DoRothEA’s</a> TFs. As statistic over-representation analysis is used.</p>
+<pre class="r"><code>signatures = readRDS(here(output_path, &quot;leading_edges.rds&quot;)) %&gt;%
+  distinct(gene, direction)
+#&gt; distinct: removed 220 rows (49%), 228 rows remaining
+
+genesets = load_genesets(organism = &quot;human&quot;) %&gt;%
+  filter(confidence %in% c(NA,&quot;A&quot;, &quot;B&quot;, &quot;C&quot;))
+#&gt; filter: removed 2,643,412 rows (80%), 662,851 rows remaining
+#&gt; select: renamed one variable (gene) and dropped 2 variables
+#&gt; gather: reorganized (Androgen, EGFR, Estrogen, Hypoxia, JAK-STAT, …) into (geneset, weight) [was 1301x15, now 18214x3]
+#&gt; filter: removed 16,814 rows (92%), 1,400 rows remaining
+#&gt; select: dropped one variable (weight)
+#&gt; select: renamed 2 variables (geneset, gene) and dropped one variable
+#&gt; filter: removed 472,718 rows (41%), 678,284 rows remaining
+
+ora_res = signatures %&gt;%
+  nest(sig = -c(direction)) %&gt;%
+  dplyr::mutate(ora = sig %&gt;% map(run_ora,  sets = genesets, min_size = 10,
+                           options = list(alternative = &quot;greater&quot;), 
+                           background_n = 20000)) %&gt;%
+  select(-sig) %&gt;%
+  unnest(ora)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 671 unique values and 0% NA
+#&gt; filter: removed 13,277 rows (2%), 665,007 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; add_count: new variable &#39;n&#39; (integer) with 671 unique values and 0% NA
+#&gt; filter: removed 13,277 rows (2%), 665,007 rows remaining
+#&gt; select: dropped one variable (n)
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (set, conf.low, conf.high, method)
+#&gt; select: dropped one variable (sig)
+
+saveRDS(ora_res, here(output_path, &quot;leading_edges_characterization.rds&quot;))</code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()
+#&gt; R version 4.0.2 (2020-06-22)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Mojave 10.14.5
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] grid      stats     graphics  grDevices datasets  utils     methods  
+#&gt; [8] base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] gtools_3.8.2             msigdf_7.1               ggpubr_0.4.0            
+#&gt;  [4] cowplot_1.1.0            gridExtra_2.3            ComplexHeatmap_2.4.3    
+#&gt;  [7] VennDiagram_1.6.20       futile.logger_1.4.3      lemon_0.4.5             
+#&gt; [10] AachenColorPalette_1.1.2 circlize_0.4.11          biobroom_1.20.0         
+#&gt; [13] broom_0.7.3              progeny_1.10.0           dorothea_1.0.1          
+#&gt; [16] fgsea_1.14.0             here_1.0.1               tidylog_1.0.2           
+#&gt; [19] forcats_0.5.0            stringr_1.4.0            dplyr_1.0.2             
+#&gt; [22] purrr_0.3.4              readr_1.4.0              tidyr_1.1.2             
+#&gt; [25] tibble_3.0.4             ggplot2_3.3.2            tidyverse_1.3.0         
+#&gt; [28] workflowr_1.6.2         
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] colorspace_2.0-0     ggsignif_0.6.0       rjson_0.2.20        
+#&gt;  [4] ellipsis_0.3.1       rio_0.5.16           rprojroot_2.0.2     
+#&gt;  [7] GlobalOptions_0.1.2  fs_1.5.0             clue_0.3-58         
+#&gt; [10] rstudioapi_0.13      farver_2.0.3         ggrepel_0.9.0       
+#&gt; [13] fansi_0.4.1          lubridate_1.7.9.2    xml2_1.3.2          
+#&gt; [16] codetools_0.2-16     knitr_1.30           jsonlite_1.7.2      
+#&gt; [19] bcellViper_1.24.0    cluster_2.1.0        dbplyr_2.0.0        
+#&gt; [22] png_0.1-7            compiler_4.0.2       httr_1.4.2          
+#&gt; [25] backports_1.2.1      assertthat_0.2.1     Matrix_1.2-18       
+#&gt; [28] cli_2.2.0            later_1.1.0.1        formatR_1.7         
+#&gt; [31] htmltools_0.5.0      tools_4.0.2          gtable_0.3.0        
+#&gt; [34] glue_1.4.2           fastmatch_1.1-0      Rcpp_1.0.5          
+#&gt; [37] carData_3.0-4        Biobase_2.48.0       cellranger_1.1.0    
+#&gt; [40] vctrs_0.3.6          xfun_0.19            openxlsx_4.2.3      
+#&gt; [43] rvest_0.3.6          lifecycle_0.2.0      renv_0.12.3         
+#&gt; [46] rstatix_0.6.0        scales_1.1.1         clisymbols_1.2.0    
+#&gt; [49] hms_0.5.3            promises_1.1.1       parallel_4.0.2      
+#&gt; [52] lambda.r_1.2.4       RColorBrewer_1.1-2   yaml_2.2.1          
+#&gt; [55] curl_4.3             stringi_1.5.3        BiocGenerics_0.34.0 
+#&gt; [58] zip_2.1.1            BiocParallel_1.22.0  shape_1.4.5         
+#&gt; [61] rlang_0.4.9          pkgconfig_2.0.3      evaluate_0.14       
+#&gt; [64] lattice_0.20-41      labeling_0.4.2       tidyselect_1.1.0    
+#&gt; [67] plyr_1.8.6           magrittr_2.0.1       R6_2.5.0            
+#&gt; [70] generics_0.1.0       DBI_1.1.0            pillar_1.4.7        
+#&gt; [73] haven_2.3.1          whisker_0.4          foreign_0.8-80      
+#&gt; [76] withr_2.3.0          abind_1.4-5          modelr_0.1.8        
+#&gt; [79] crayon_1.3.4         car_3.0-10           futile.options_1.0.1
+#&gt; [82] rmarkdown_2.6        GetoptLong_1.0.5     readxl_1.3.1        
+#&gt; [85] data.table_1.13.4    git2r_0.27.1         reprex_0.3.0        
+#&gt; [88] digest_0.6.27        httpuv_1.5.4         munsell_0.5.0</code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
