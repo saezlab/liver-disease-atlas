@@ -37,7 +37,9 @@ navbar:
   - text: Meta analysis
     menu:
       - text: "Chronic vs. acute"
-        href: meta-analysis-chronic-vs-acute.html
+        href: meta-chronic-vs-acute.html
+      - text: "Mouse vs. human"
+        href: meta-mouse-vs-human.html
   right:
   - text: "Get data"
     href: https://zenodo.org/record/xxx
