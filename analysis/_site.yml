@@ -33,7 +33,7 @@ navbar:
       - text: "NASH - Hampe et al. '13"
         href: human-hampe13-nash.html
       - text: "Misc - Hampe et al. '14"
-        href: human-hampe13-misc.html
+        href: human-hampe14-misc.html
   - text: Meta analysis
     menu:
       - text: "Chronic vs. acute"
