@@ -8,19 +8,19 @@ navbar:
     icon: fas fa-home
   - text: Mouse models
     menu:
-    - text: "Chronic CCl4 mouse model"
+    - text: "CCl4 (chronic)"
       href: mouse-chronic-ccl4.html
-    - text: "Acute APAP mouse model"
+    - text: "APAP (acute)"
       href: mouse-acute-apap.html
-    - text: "Acute CCl4 mouse model"
+    - text: "CCl4 (acute)"
       href: mouse-acute-ccl4.html
-    - text: "Acute BDL mouse model"
+    - text: "BDL (acute)"
       href: mouse-acute-bdl.html
-    - text: "Acute PH mouse model"
+    - text: "PH (acute)"
       href: mouse-acute-ph.html
-    - text: "Acute LPS mouse model"
+    - text: "LPS (acute)"
       href: mouse-acute-lps.html
-    - text: "Acute Tunicamycin mouse model"
+    - text: "Tunicamycin (acute)"
       href: mouse-acute-tunicamycin.html
   - text: Patient cohorts
     menu:
