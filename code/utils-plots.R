@@ -16,6 +16,7 @@ my_theme = function(grid = NULL, fsize = 11) {
           axis.text = element_text(size=fsize),
           legend.text = element_text(size=fsize),
           legend.title = element_text(size = fsize),
+          plot.subtitle = element_text(size = fsize),
           strip.background = element_rect(colour = "white", fill="white"),
           strip.text  = element_text(size=fsize)
     )
@@ -545,7 +546,7 @@ plot_top_genes = function(data, class, fontsize, ...) {
 
 plot_go_rank_density = function(df) {
   df %>%
-    ggplot(aes(x=rank, colour=cluster)) +
+    ggplot(aes(x=rank, colour=description)) +
     stat_density(geom = "line", position = "identity") +
     geom_rug() +
     theme(axis.text.y = element_blank(),
@@ -561,7 +562,7 @@ plot_go_rank_density = function(df) {
 
 plot_wordcloud = function(df, fontsize = 9) {
   df %>%
-    ggplot(aes(label = word, size = n_across_cluster)) +
+    ggplot(aes(label = word, size = n)) +
     geom_text_wordcloud() +
     scale_size_area(max_size = fontsize/(14/5)) +
     theme(axis.line = element_blank())
