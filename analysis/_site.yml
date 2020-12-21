@@ -40,6 +40,10 @@ navbar:
         href: meta-chronic-vs-acute.html
       - text: "Mouse vs. human"
         href: meta-mouse-vs-human.html
+  - text: Figures
+    menu:
+      - text: "Studies overview (SFig. 1)"
+      - href: plot-study-overview.html
   right:
   - text: "Get data"
     href: https://zenodo.org/record/xxx
