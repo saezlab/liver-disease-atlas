@@ -40,6 +40,9 @@ library(AachenColorPalette)
 library(cowplot)
 library(lemon)
 library(patchwork)
+library(VennDiagram)
+library(gridExtra)
+library(ggpubr)
 
 options("tidylog.display" = list(print))
 source(here("code/utils-rnaseq.R"))
@@ -217,6 +220,49 @@ df %>%
   plot_volcano() +
   my_theme(grid = "y", fsize = fz)
 ```
+
+## Overlap of genes
+```{r gene-overlap}
+df <- readRDS(here(output_path, "limma_result.rds"))
+
+t = df %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  mutate(class = str_c("Month ", parse_number(as.character(contrast)))) %>%
+  select(-contrast_reference, -contrast) %>%
+  mutate(class = factor(class, levels = c("Month 2", "Month 6", "Month 12"))) %>%
+  group_split(class)
+
+plot_venn_diagram(t)
+```
+
+### Top genes of the overlap
+```{r top-genes-overlap}
+df <- readRDS(here(output_path, "limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  filter(regulation != "ns")
+  
+top_genes_ranked = df %>%
+  # filter for genes that are deregulated at all time points
+  group_by(gene, regulation) %>%
+  filter(n() == 3) %>%
+  summarise(mean_logfc = mean(logFC)) %>%
+  group_by(regulation) %>%
+  mutate(rank = row_number(-abs(mean_logfc))) %>%
+  ungroup()
+
+top_genes = df %>%
+  inner_join(top_genes_ranked, by=c("gene", "regulation"))
+
+top_genes %>%
+  filter(rank <= 5) %>%
+  ggplot(aes(x=fct_reorder(gene, mean_logfc), y=logFC, group = contrast, fill = contrast)) +
+  geom_col(position = "dodge") +
+  facet_rep_wrap(~regulation, ncol = 1, scales = "free") +
+  my_theme(grid = "y", fsize = fz) +
+  labs(x="Gene", y="logFC")
+  
+```
+
 
 ## Time series clustering
 Gene expression trajectories are clustered using the [STEM](http://www.cs.cmu.edu/~jernst/stem/) software. The cluster algorithm is described [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-191).
