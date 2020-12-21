@@ -43,7 +43,7 @@ navbar:
   - text: Figures
     menu:
       - text: "Studies overview (SFig. 1)"
-      - href: plot-study-overview.html
+        href: plot-study-overview.html
   right:
   - text: "Get data"
     href: https://zenodo.org/record/xxx
