@@ -29,6 +29,8 @@ These libraries and sources are used for this analysis.
 library(tidyverse)
 library(tidylog)
 library(here)
+library(tidytext)
+library(readxl)
 
 library(fgsea)
 library(dorothea)
@@ -40,6 +42,7 @@ library(AachenColorPalette)
 library(lemon)
 library(VennDiagram)
 library(ComplexHeatmap)
+library(ggwordcloud)
 
 library(msigdf) # remotes::install_github("ToledoEM/msigdf@v7.1")
 
@@ -112,6 +115,89 @@ combined_contrasts <- bind_rows(
   mutate(contrast = as_factor(contrast))
 
 saveRDS(combined_contrasts, here(output_path, "limma_result.rds"))
+```
+
+### Merging meta data
+Meta data from all available mouse models are merged into a single object.
+```{r "merging-meta-data"}
+# acute
+tun <- readRDS(here("output/mouse-acute-tunicamycin/meta_data.rds")) %>%
+  mutate(treatment = "tunicamycin", source = "wek", class = "acute")
+
+lps <- readRDS(here("output/mouse-acute-lps/meta_data.rds")) %>%
+  filter(origin == "liver") %>%
+  transmute(sample, group = case_when(treatment == "control" ~ "control",
+                                      TRUE ~ "treated")) %>%
+  mutate(treatment = "lps",
+         source = "godoy", 
+         class = "acute")
+
+acute_ccl4 <- readRDS(here("output/mouse-acute-ccl4/meta_data.rds")) %>%
+    mutate(group = case_when(time == 0 ~ "control",
+                           TRUE ~ "treated"),
+         treatment = "ccl4",
+         source = "godoy") %>%
+  select(sample, group, time, treatment, source) %>%
+  mutate(time = as.character(time),
+         class = "acute")
+
+ph <- readRDS(here("output/mouse-acute-ph/meta_data.rds")) %>%
+    mutate(group = case_when(time == 0 ~ "control",
+                           TRUE ~ "treated"),
+         treatment = "ph",
+         source = "godoy") %>%
+  select(-c(surgeon, year, mouse)) %>%
+  mutate(time = as.character(time),
+         class = "acute")
+
+apap <- readRDS(here("output/mouse-acute-apap/meta_data.rds")) %>%
+  mutate(group = case_when(time == 0 ~ "control",
+                           TRUE ~ "treated"),
+         treatment = "apap",
+         source = "ghallab") %>%
+  select(sample, group, time, treatment, source) %>%
+  mutate(time = as.character(time),
+         class = "acute")
+
+bdl <- readRDS(here("output/mouse-acute-bdl/meta_data.rds")) %>%
+  mutate(group = case_when(treatment == "sham" ~ "control",
+                           TRUE ~ "treated"),
+         treatment = "bdl",
+         source = "ghallab") %>%
+  select(-mouse) %>%
+  mutate(time = as.character(time),
+         class = "acute")
+
+# chronic
+chronic_ccl4 <- readRDS(here("data/mouse-chronic-ccl4/meta_data.rds")) %>%
+  mutate(group = case_when(treatment == "ccl4" ~ "treated",
+                           treatment %in% c("oil", "ctrl") ~ "control"),
+         treatment = "pure_ccl4",
+         source = "ghallab") %>%
+  select(sample, group, time, treatment, source) %>%
+  mutate(time = as.character(time),
+         class = "chronic")
+
+combined_meta_data = bind_rows(tun, lps, acute_ccl4, ph, apap, bdl, 
+                               chronic_ccl4)
+
+saveRDS(combined_meta_data, here(output_path, "meta_data.rds"))
+```
+
+## Number of mice
+Barplot showing number of mice per study.
+```{r mouse-number}
+df = readRDS(here(output_path, "meta_data.rds")) %>%
+  count(treatment, source, group, class)
+
+df %>%
+  ggplot(aes(
+    x = n, fct_reorder(interaction(treatment, class, sep = "_"), n),
+    group = group, fill = group
+    )) +
+  geom_col(position = "dodge") +
+  labs(x = "Number of mice", y = "Study") +
+  my_theme(grid = "x", fsize = fz)
 ```
 
 ## Gene coverage
@@ -279,6 +365,7 @@ gsea_res_top %>%
 
 ## Construction of unified acute and chronic genes
 In this analysis we want to identify genes specific for  chronic or acute liver damage and genes that are deregulated in both scenarios.
+
 ### Acute
 #### Pool of differential expressed genes in acute mouse models
 Filter for differential expressed genes of the acute mouse models. Visual inspection suggest that the differential expressed genes are consistently regulated across the acute mouse models.
@@ -670,4 +757,126 @@ ora_res <- signatures %>%
   unnest(ora)
 
 saveRDS(ora_res, here(output_path, "exclusive_genes_characterization.rds"))
+```
+
+## GO downstream analysis
+In this section significant GO terms are summarized in two different ways. i) Which words appear the most among the GO terms and ii) Position of members of manually created GO cluster in a ranked list of significant GO terms (based on p-value)
+
+### Text analysis
+GO terms are splitted into words and their frequency is counted.
+```{r}
+# list of words that will be ignored 
+stop_go_words = readRDS(here("data/annotation/stop_go_words.rds"))
+
+go_terms = readRDS(here(output_path, "exclusive_genes_characterization.rds")) %>%
+  filter(group == "go" & fdr <= 0.05) %>%
+  mutate(term = str_remove(geneset, "GO_"),
+           term = str_replace_all(term, "_", " "),
+           term = str_to_lower(term)) %>%
+  select(regulation, term, class)
+
+go_wordcounts = go_terms %>%
+  # glue words that should be treated as one
+  mutate(term = str_replace(term, "smooth muscle", "smoothmuscle"),
+         term = str_replace(term, "amino acid", "aminoacid"),
+         term = str_replace(term, "cell cycle", "cellcycle"),
+         term = str_replace(term, "endoplasmic reticulum stress", "endoplasmicreticulumstress"),
+         term = str_replace(term, "endoplasmic reticulum", "endoplasmicreticulum")
+         ) %>%
+  unnest_tokens(word, term) %>%
+  anti_join(stop_words, by="word") %>%
+  # correct for abbreviations
+  mutate(word = case_when(word == "er" ~ "endoplasmicreticulum",
+                          TRUE ~ word)) %>%
+  # remove words which are pure numbers 
+  filter(!str_detect(word, "^[0-9]+")) %>%
+  # count word frequency
+  count(class, regulation, word, sort = T) %>%
+  # dissect prior glued words
+  mutate(word = case_when(word =="smoothmuscle" ~ "smooth-muscle",
+                          word == "aminoacid" ~ "amino-acid",
+                          word == "cellcycle" ~ "cell-cycle",
+                          word == "endoplasmicreticulumstress" ~ "endoplasmic-reticulum-stress",
+                          word == "endoplasmicreticulum" ~ "endoplasmic-reticulum",
+                          TRUE ~ word)) %>%
+  # remove meaning less words
+  anti_join(stop_go_words, by="word") 
+
+saveRDS(go_wordcounts, here(output_path, "go_wordcounts.rds"))
+
+
+go_wordcounts %>%
+  group_by(class, regulation) %>%
+  slice_max(order_by = n, n = 15) %>%
+  ungroup() %>%
+  ggplot(aes(label = word, size = n)) +
+  geom_text_wordcloud() +
+  scale_size_area(max_size = fz/(14/5)) +
+  facet_grid(class~regulation) +
+  theme(axis.line = element_blank()) +
+  my_theme(grid = "no", fsize = fz)
+```
+
+### Cluster ranking
+Distribution of manually created GO-cluster.
+```{r go-cluster-ranking}
+go_cluster_mapping = tribble(
+  ~cluster, ~description,
+  4, "Proliferation",
+  5, "Metabolism",
+  6, "Migration",
+  7, "Development and Morphogenesis",
+  9, "ER stress",
+  10, "Proliferation",
+  11, "Metabolism"
+)
+
+go_cluster_chronic = read_excel(here(data_path, "manual_go_cluster_anno.xlsx"), 
+                                sheet = "chronic") %>%
+  mutate(class = "chronic")
+go_cluster_acute = read_excel(here(data_path, "manual_go_cluster_anno.xlsx"), 
+                              sheet = "acute") %>%
+  mutate(class = "acute")
+go_cluster_common = read_excel(here(data_path, "manual_go_cluster_anno.xlsx"), 
+                               sheet = "common") %>%
+  mutate(class = "common")
+
+go_cluster = bind_rows(go_cluster_chronic, go_cluster_acute, go_cluster_common) %>%
+  distinct(class, regulation, term, cluster) %>%
+  drop_na() %>%
+  inner_join(go_cluster_mapping)
+
+go_terms_ranking = readRDS(
+  here(output_path, "exclusive_genes_characterization.rds")
+  ) %>% 
+  mutate(term = str_remove(geneset, "GO_"),
+           term = str_replace_all(term, "_", " "),
+           term = str_to_lower(term)) %>%
+  filter(fdr <= 0.05) %>%
+  group_by(regulation, class) %>%
+  mutate(rank = row_number(p.value)) %>%
+  mutate(max_rank = max(rank)) %>%
+  ungroup() %>%
+  select(class, regulation, term, rank, max_rank)
+
+go_cluster_ranking = go_terms_ranking %>%
+  inner_join(go_cluster)
+
+saveRDS(go_cluster_ranking, here(output_path, "go_cluster_ranking.rds"))
+
+go_cluster_ranking %>%
+  mutate(regulation = as_factor(regulation)) %>%
+  ggplot(aes(x=rank, colour=description)) +
+  stat_density(geom = "line", position = "identity") +
+  geom_rug() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        legend.position = "top") +
+  labs(x=str_wrap("GO term ranking based on p-value"), y="Density",
+       color =NULL) +
+  facet_rep_wrap(~class+regulation, scales = "free", drop = T) +
+  scale_x_continuous(breaks = function(x) as.numeric(
+    gsub("^0", 1, unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))))
+  ) +
+  my_theme(grid = "no", fsize = fz)
 ```
