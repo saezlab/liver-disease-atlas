@@ -1,5 +1,5 @@
 ---
-title: "Acute APAP (Fig. 2)"
+title: "Acute PH (SFig. 2.4)"
 output: 
   workflowr::wflow_html:
     code_folding: hide
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ## Introduction
-Here we generate publication ready plots of the analysis of the acute APAP mouse model.
+Here we generate publication ready plots of the analysis of the acute PH mouse model.
 
 ## Libraries and sources
 These libraries and sources are used for this analysis.
@@ -40,8 +40,8 @@ source(here("code/utils-plots.R"))
 Definition of global variables that are used throughout this analysis.
 ```{r analysis-specific-params, cache=FALSE}
 # i/o
-data_path <- "data/mouse-acute-apap"
-output_path <- "output/mouse-acute-apap"
+data_path <- "data/mouse-acute-ph"
+output_path <- "output/mouse-acute-ph"
 
 # graphical parameters
 # fontsize
@@ -60,7 +60,7 @@ design
 ```
 
 ## Histology
-```{r histology}
+```{r histology, eval=FALSE, include=FALSE}
 histology <- ggdraw() +
   draw_image(here(data_path, "histology.png"))
 
@@ -68,11 +68,11 @@ histology
 ```
 
 ## Liver enyzmes
-```{r liver-enzymes}
+```{r liver-enzymes, eval=FALSE, include=FALSE}
 df <- read_csv2(here(data_path, "liver_enzymes.csv")) %>%
   mutate(time = fct_inorder(time)) %>%
-  pivot_longer(col = -c(time, enzyme), names_to = "mouse", values_to = "y") %>%
-  mutate(enzyme = factor(str_to_upper(enzyme), levels = c("ALT", "AST")))
+  pivot_longer(col = -c(time), names_to = "enzyme", values_to = "y") %>%
+  mutate(enzyme = factor(enzyme, levels = c("ALT", "AST")))
 
 df_summary <- df %>%
   group_by(time, enzyme) %>%
@@ -100,16 +100,18 @@ liver_enzymes
 pca_result <- readRDS(here(output_path, "pca_result.rds"))
 
 keys <- key_mm %>%
-  filter(treatment == "APAP" & class == "Acute") %>%
+  filter(treatment == "Partial Hepatectomy" & class == "Acute") %>%
   distinct(time = value, label = time_label2) %>%
   drop_na() %>%
   add_row(time = 0, label = "Control") %>%
-  mutate(time = ordered(time))
+  mutate(
+    time = ordered(time),
+    label = fct_reorder(label, as.numeric(time))
+  )
 
 pca_plot <- pca_result$coords %>%
-  arrange(time) %>%
+  mutate(time = ordered(round(as.numeric(as.character(time)) * 24, 0))) %>%
   inner_join(keys, by = "time") %>%
-  mutate(label = fct_inorder(label)) %>%
   ggplot(aes(x = PC1, y = PC2, color = label, label = label)) +
   geom_point() +
   labs(
@@ -118,14 +120,17 @@ pca_plot <- pca_result$coords %>%
     color = "Time"
   ) +
   my_theme(fsize = fz) +
-  theme(legend.position = "top",
-        legend.box.margin = margin(10, 0, -20, 0)) +
+  theme(
+    legend.position = "top",
+    legend.box.margin = margin(0, 0, 0, 0)
+  ) +
   scale_color_manual(values = aachen_color(c(
     "blue", "purple", "violet",
     "bordeaux", "red", "orange",
     "maygreen", "green", "turquoise",
-    "petrol"
-  )))
+    "petrol", "magenta", "black"
+  ))) +
+  guides(color = guide_legend(nrow = 2))
 
 pca_plot
 ```
@@ -133,7 +138,7 @@ pca_plot
 ## Volcano plot
 ```{r volcano-plot}
 df <- readRDS(here(output_path, "limma_result.rds")) %>%
-  filter(contrast_reference == "apap") %>%
+  filter(contrast_reference == "hepatec") %>%
   inner_join(key_mm, by = "contrast") %>%
   select(-contrast) %>%
   rename(contrast = time_label2) %>%
@@ -157,7 +162,7 @@ deg_count <- df %>%
   distinct(n, contrast, logFC, pval, regulation, value) %>%
   complete(contrast, nesting(regulation, logFC, pval), fill = list(n = 0))
 
-main_time <- c(12, 24, 48)
+main_time = c(12,24,48)
 # for main panel
 volcano_main <- df %>%
   filter(value %in% main_time) %>%
@@ -198,22 +203,21 @@ volcano_supp
 ## Top DEGs
 ```{r top-degs}
 df <- readRDS(here(output_path, "limma_result.rds")) %>%
-  filter(contrast_reference == "apap") %>%
+  filter(contrast_reference == "hepatec") %>%
   inner_join(key_mm) %>%
   select(-class) %>%
   rename(class = time_label2)
 
-top_genes_df <- df %>% 
-  filter(regulation != "ns") %>%
+top_genes_df <- df %>%
   group_by(class, sign(logFC)) %>%
-  slice_max(order_by = abs(logFC), n = 10, with_ties = F) %>%
-  ungroup() %>% 
+  slice_max(order_by = abs(statistic), n = 10, with_ties = F) %>%
+  ungroup() %>%
   nest(data = -c(class, value))
 
 plots <- top_genes_df %>%
   mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
 
-main_time <- c(12, 24, 48)
+main_time = c(12,24,48)
 
 # for main panel
 top_genes_main <- plots %>%
@@ -235,33 +239,14 @@ top_genes_supp
 
 ## Time series cluster
 ```{r ts-cluster}
-profile_label <- tribble(
-  ~profile, ~process,
-  "STEM ID: 14", "Stress response",
-  "STEM ID: 9", "Migration",
-  "STEM ID: 12", "Proliferation",
-  "STEM ID: 6", "Metabolism (1)",
-  "STEM ID: 11", "Metabolism (2)",
-  "STEM ID: 18", "Metabolism (3)",
-  "STEM ID: 8", "Metabolism (4)"
-) %>%
-  mutate(
-    profile = fct_inorder(profile),
-    process = coalesce(process, profile),
-    process = fct_inorder(process)
-  )
-
 stem_res <- readRDS(here(output_path, "stem_result.rds")) %>%
-  filter(key == "apap") %>%
+  filter(key == "hepatec") %>%
   filter(p <= 0.05) %>%
   mutate(profile = fct_reorder(str_c(
     "STEM ID: ",
     as.character(profile)
   ), p)) %>%
-  inner_join(profile_label, by = "profile") %>%
-  select(-profile) %>%
-  rename(profile = process) %>%
-  filter(!time %in% c(384, 192, 144))
+  filter(!time %in% c(168, 336, 672, 2016))
 
 # extract meta data of profiles
 profile_anno <- stem_res %>%
@@ -289,34 +274,35 @@ ts_cluster
 ```
 
 ## Collage
-### Figure 2
-```{r fig-2, fig.width=7.87, fig.height=11.69}
-fig2 <- (design + histology) /
-  ((liver_enzymes | pca_plot) + plot_layout(widths = c(1,3))) /
+### Supplementary Figure 2.4
+```{r s-fig-2-2, fig.width=7.87, fig.height=11.69}
+sfig2_4 <- (design + plot_spacer()) /
+  ((plot_spacer() | pca_plot) + plot_layout(widths = c(1, 3))) /
   ((volcano_main / top_genes_main)) /
   ts_cluster +
   plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c("A", "B", "C", "D", "E", "F", "", "", "",
-                                      "", "", "G"))) &
+  plot_annotation(tag_levels = list(c(
+    "A", "D", "E", "F", "", "", "", "", "", "G"
+  ))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
     legend.key.height = unit(11.5, "pt"),
     legend.key.width = unit(12.5, "pt")
   )
 
-fig2
+sfig2_4
 
-ggsave(here("figures/Figure 2.pdf"), fig2,
+ggsave(here("figures/Supplementary Figure 2.4.pdf"), sfig2_4,
   width = 21, height = 29.7, units = c("cm")
 )
-ggsave(here("figures/Figure 2.png"), fig2,
+ggsave(here("figures/Supplementary Figure 2.4.png"), sfig2_4,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
 
-### Supplementary Figure 2.1
-```{r s-fig-2-1, fig.width=7.87, fig.height=11.69}
-sfig2_1 <- (volcano_supp | top_genes_supp) +
+### Supplementary Figure 2.5
+```{r s-fig-2-3, fig.width=7.87, fig.height=11.69}
+sfig2_5 <- (volcano_supp | top_genes_supp) +
   plot_annotation(tag_levels = list(c("A", "B"))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
@@ -324,12 +310,12 @@ sfig2_1 <- (volcano_supp | top_genes_supp) +
     legend.key.width = unit(12.5, "pt")
   )
 
-sfig2_1
+sfig2_5
 
-ggsave(here("figures/Supplementary Figure 2.1.pdf"), sfig2_1,
+ggsave(here("figures/Supplementary Figure 2.5.pdf"), sfig2_5,
   width = 21, height = 29.7, units = c("cm")
 )
-ggsave(here("figures/Supplementary Figure 2.1.png"), sfig2_1,
+ggsave(here("figures/Supplementary Figure 2.5.png"), sfig2_5,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
