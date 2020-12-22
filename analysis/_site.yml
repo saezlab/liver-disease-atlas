@@ -44,6 +44,8 @@ navbar:
     menu:
       - text: "Studies overview (SFig. 1)"
         href: plot-study-overview.html
+      - text: "Chronic vs. acute (Fig. 3)"
+        href: plot-chronic-vs-acute.html
   right:
   - text: "Get data"
     href: https://zenodo.org/record/xxx
