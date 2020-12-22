@@ -454,14 +454,16 @@ div.tocify {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Meta analysis
+    Figures
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Studies overview (SFig. 1)</li>
     <li>
-      <a href="plot-study-overview.html"></a>
+      <a href="plot-study-overview.html">Studies overview (SFig. 1)</a>
+    </li>
+    <li>
+      <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
     </li>
   </ul>
 </li>
@@ -525,7 +527,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-21
+<strong>Last updated:</strong> 2020-12-22
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -616,16 +618,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee8798d3ebd848d9e8be8d923b0b827a0cf1b3cf4targetblanke8798d3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/e8798d3ebd848d9e8be8d923b0b827a0cf1b3cf4" target="_blank">e8798d3</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeee67260ffe9a7dbd73fa2d6b168f48c2f91d86adtargetblankee67260a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/ee67260ffe9a7dbd73fa2d6b168f48c2f91d86ad" target="_blank">ee67260</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee8798d3ebd848d9e8be8d923b0b827a0cf1b3cf4targetblanke8798d3a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeee67260ffe9a7dbd73fa2d6b168f48c2f91d86adtargetblankee67260a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/e8798d3ebd848d9e8be8d923b0b827a0cf1b3cf4" target="_blank">e8798d3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/ee67260ffe9a7dbd73fa2d6b168f48c2f91d86ad" target="_blank">ee67260</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -649,6 +651,8 @@ Ignored files:
     Ignored:    analysis/mouse-acute-ph_cache/
     Ignored:    analysis/mouse-acute-tunicamycin_cache/
     Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    analysis/plot-chronic-vs-acute_cache/
+    Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    data/.DS_Store
@@ -691,11 +695,12 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
+Untracked files:
+    Untracked:  analysis/plot-precision-recall.Rmd
+
 Unstaged changes:
     Modified:   analysis/_site.yml
-    Modified:   analysis/meta-chronic-vs-acute.Rmd
     Modified:   analysis/meta-mouse-vs-human.Rmd
-    Modified:   analysis/mouse-chronic-ccl4.Rmd
 
 </code></pre>
 <p>
@@ -734,6 +739,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/ee67260ffe9a7dbd73fa2d6b168f48c2f91d86ad/analysis/plot-study-overview.Rmd" target="_blank">ee67260</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-22
+</td>
+<td>
+fixed style
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/20b3ee29cdc833595f854b80b5cc8787669ee5f9/docs/plot-study-overview.html" target="_blank">20b3ee2</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -779,7 +818,7 @@ source(here(&quot;code/utils-plots.R&quot;))</code></pre>
 <p>Definition of global variables that are used throughout this analysis.</p>
 <pre class="r"><code># graphical parameters
 # fontsize
-fz &lt;- 9
+fz &lt;- 7
 # color function for heatmaps
 col_fun &lt;- colorRamp2(
   c(-4, 0, 4),
@@ -787,14 +826,14 @@ col_fun &lt;- colorRamp2(
 )
 
 # keys to annotate contrasts
-key_mm = readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.rds&quot;))
-key_hs = readRDS(here(&quot;data/meta-mouse-vs-human/contrast_annotation.rds&quot;))</code></pre>
+key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.rds&quot;))
+key_hs &lt;- readRDS(here(&quot;data/meta-mouse-vs-human/contrast_annotation.rds&quot;))</code></pre>
 </div>
 <div id="studied-individuals" class="section level2">
 <h2>Studied individuals</h2>
 <div id="mouse-models" class="section level3">
 <h3>Mouse models</h3>
-<pre class="r"><code>df = readRDS(here(&quot;output/meta-chronic-vs-acute/meta_data.rds&quot;)) %&gt;%
+<pre class="r"><code>df &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/meta_data.rds&quot;)) %&gt;%
   count(treatment, source, class, group) %&gt;%
   mutate(label = case_when(
     treatment == &quot;apap&quot; ~ &quot;APAP&quot;,
@@ -807,7 +846,7 @@ key_hs = readRDS(here(&quot;data/meta-mouse-vs-human/contrast_annotation.rds&quo
   )) %&gt;%
   mutate(group = str_to_title(group))
 
-stitle = df %&gt;%
+stitle &lt;- df %&gt;%
   group_by(group) %&gt;%
   tally(n) %&gt;%
   mutate(total = sum(n)) %&gt;%
@@ -815,31 +854,70 @@ stitle = df %&gt;%
   mutate(label = glue(&quot;Total: {total} ({Control}/{Treated})&quot;)) %&gt;%
   pull(label)
 
-num_mouse = df %&gt;%
+num_mouse &lt;- df %&gt;%
   ggplot(aes(
     x = n, fct_reorder(label, n),
     group = group, fill = group
-    )) +
+  )) +
   geom_col(position = &quot;dodge&quot;) +
-  labs(x = &quot;Number of mice&quot;, y = &quot;Study&quot;, subtitle = stitle, 
-       fill = NULL) +
+  labs(
+    x = &quot;Number of mice&quot;, y = &quot;Study&quot;, subtitle = stitle,
+    fill = NULL
+  ) +
   my_theme(grid = &quot;x&quot;, fsize = fz) +
   scale_fill_manual(values = aachen_color(c(&quot;blue75&quot;, &quot;red75&quot;)))
 
 num_mouse</code></pre>
 <p><img src="figure/plot-study-overview.Rmd/number-of-mice-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-number-of-mice-1">
+Past versions of number-of-mice-1.png
+</button>
+</p>
+<div id="fig-number-of-mice-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/20b3ee29cdc833595f854b80b5cc8787669ee5f9/docs/figure/plot-study-overview.Rmd/number-of-mice-1.png" target="_blank">20b3ee2</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="patient-cohorts" class="section level3">
 <h3>Patient cohorts</h3>
-<pre class="r"><code>keys = key_hs %&gt;%
+<pre class="r"><code>keys &lt;- key_hs %&gt;%
   distinct(source, phenotype, author2)
 
-df = readRDS(here(&quot;output/meta-mouse-vs-human/meta_data.rds&quot;)) %&gt;%
+df &lt;- readRDS(here(&quot;output/meta-mouse-vs-human/meta_data.rds&quot;)) %&gt;%
   inner_join(keys) %&gt;%
   count(author2, class) %&gt;%
   mutate(class = str_to_title(class))
 
-stitle = df %&gt;%
+stitle &lt;- df %&gt;%
   group_by(class) %&gt;%
   tally(n) %&gt;%
   mutate(total = sum(n)) %&gt;%
@@ -847,94 +925,220 @@ stitle = df %&gt;%
   mutate(label = glue(&quot;Total: {total} ({Control}/{Disease})&quot;)) %&gt;%
   pull(label)
 
-num_patient = df %&gt;%
+num_patient &lt;- df %&gt;%
   ggplot(aes(
     x = n, fct_reorder(author2, n),
     group = class, fill = class
-    )) +
+  )) +
   geom_col(position = &quot;dodge&quot;) +
-  labs(x = &quot;Number of patients&quot;, y = &quot;Study&quot;, subtitle = stitle, 
-       fill = NULL) +
+  labs(
+    x = &quot;Number of patients&quot;, y = &quot;Study&quot;, subtitle = stitle,
+    fill = NULL
+  ) +
   my_theme(grid = &quot;x&quot;, fsize = fz) +
   scale_fill_manual(values = aachen_color(c(&quot;blue75&quot;, &quot;red75&quot;)))
 
 num_patient</code></pre>
 <p><img src="figure/plot-study-overview.Rmd/number-of-patients-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-number-of-patients-1">
+Past versions of number-of-patients-1.png
+</button>
+</p>
+<div id="fig-number-of-patients-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/20b3ee29cdc833595f854b80b5cc8787669ee5f9/docs/figure/plot-study-overview.Rmd/number-of-patients-1.png" target="_blank">20b3ee2</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="gene-coverage" class="section level2">
 <h2>Gene coverage</h2>
 <div id="mouse-models-1" class="section level3">
 <h3>Mouse models</h3>
-<pre class="r"><code>keys = key_mm %&gt;%
+<pre class="r"><code>keys &lt;- key_mm %&gt;%
   distinct(contrast, treatment_abbr, class)
 
-mm = readRDS(here(&quot;output/meta-chronic-vs-acute/limma_result.rds&quot;)) %&gt;%
+mm &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/limma_result.rds&quot;)) %&gt;%
   select(-treatment, -class) %&gt;%
-  inner_join(keys, by=&quot;contrast&quot;) %&gt;%
+  inner_join(keys, by = &quot;contrast&quot;) %&gt;%
   distinct(gene, treatment_abbr, class) %&gt;%
   count(treatment_abbr, class) %&gt;%
   mutate(group = case_when(
     str_detect(treatment_abbr, &quot;CCl4&quot;) ~ str_c(treatment_abbr, &quot; (&quot;, class, &quot;)&quot;),
-    TRUE ~ as.character(treatment_abbr)))
+    TRUE ~ as.character(treatment_abbr)
+  ))
 
-gene_coverage_mm = mm %&gt;%
-  ggplot(aes(x = n, fct_reorder(group,n),  group = class)) +
+gene_coverage_mm &lt;- mm %&gt;%
+  ggplot(aes(x = n, fct_reorder(group, n), group = class)) +
   geom_col() +
-  geom_text(aes(x=n, y = fct_reorder(group, n), label = n), 
-            size = (fz-2)/(14/5), color = &quot;white&quot;, hjust = 1.5) +
-  labs(x=&quot;Gene coverage&quot;, y=NULL) +
+  geom_text(aes(x = n, y = fct_reorder(group, n), label = n),
+    size = (fz - 2) / (14 / 5), color = &quot;white&quot;, hjust = 1.5
+  ) +
+  labs(x = &quot;Gene coverage&quot;, y = NULL) +
   my_theme(grid = &quot;x&quot;, fsize = fz) +
-  theme(legend.position = &quot;top&quot;,
-        axis.line = element_blank(),
-        axis.ticks = element_blank()) +
+  theme(
+    legend.position = &quot;top&quot;,
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
   scale_x_continuous(labels = label_number_si())
 
 gene_coverage_mm</code></pre>
 <p><img src="figure/plot-study-overview.Rmd/gene-coverage-mm-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-gene-coverage-mm-1">
+Past versions of gene-coverage-mm-1.png
+</button>
+</p>
+<div id="fig-gene-coverage-mm-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/20b3ee29cdc833595f854b80b5cc8787669ee5f9/docs/figure/plot-study-overview.Rmd/gene-coverage-mm-1.png" target="_blank">20b3ee2</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="patient-cohorts-1" class="section level3">
 <h3>Patient cohorts</h3>
-<pre class="r"><code>keys = key_hs %&gt;%
+<pre class="r"><code>keys &lt;- key_hs %&gt;%
   distinct(contrast, source, phenotype, author2)
 
-hs = readRDS(here(&quot;output/meta-mouse-vs-human/limma_result.rds&quot;)) %&gt;%
+hs &lt;- readRDS(here(&quot;output/meta-mouse-vs-human/limma_result.rds&quot;)) %&gt;%
   inner_join(keys) %&gt;%
   distinct(gene, author2) %&gt;%
-  count(author2) 
+  count(author2)
 
-gene_coverage_hs = hs %&gt;%
-  ggplot(aes(x = n, fct_reorder(author2,n))) +
+gene_coverage_hs &lt;- hs %&gt;%
+  ggplot(aes(x = n, fct_reorder(author2, n))) +
   geom_col() +
-  geom_text(aes(x=n, y = fct_reorder(author2, n), label = n), 
-            size = (fz-2)/(14/5), color = &quot;white&quot;, hjust = 1.5) +
-  labs(x=&quot;Gene coverage&quot;, y=NULL) +
+  geom_text(aes(x = n, y = fct_reorder(author2, n), label = n),
+    size = (fz - 2) / (14 / 5), color = &quot;white&quot;, hjust = 1.5
+  ) +
+  labs(x = &quot;Gene coverage&quot;, y = NULL) +
   my_theme(grid = &quot;x&quot;, fsize = fz) +
-  theme(legend.position = &quot;top&quot;,
-        axis.line = element_blank(),
-        axis.ticks = element_blank()) +
+  theme(
+    legend.position = &quot;top&quot;,
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
   scale_x_continuous(labels = label_number_si())
 
 gene_coverage_hs</code></pre>
 <p><img src="figure/plot-study-overview.Rmd/gene-coverage-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-gene-coverage-hs-1">
+Past versions of gene-coverage-hs-1.png
+</button>
+</p>
+<div id="fig-gene-coverage-hs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/20b3ee29cdc833595f854b80b5cc8787669ee5f9/docs/figure/plot-study-overview.Rmd/gene-coverage-hs-1.png" target="_blank">20b3ee2</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
-<pre class="r"><code>p = (num_mouse + num_patient) / 
+<div id="supplementary-figure-0.1" class="section level3">
+<h3>Supplementary Figure 0.1</h3>
+<pre class="r"><code>sfig0_1 &lt;- (num_mouse + num_patient) /
   (gene_coverage_mm + gene_coverage_hs) +
   plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;))) &amp;
-  theme(plot.tag = element_text(size = fz+3, face = &quot;bold&quot;),
-        legend.key.height= unit(11.5, &#39;pt&#39;),
-        legend.key.width= unit(12.5, &#39;pt&#39;))
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  )
 
-p</code></pre>
-<p><img src="figure/plot-study-overview.Rmd/collage-1.png" width="672" style="display: block; margin: auto;" /></p>
+sfig0_1</code></pre>
+<p><img src="figure/plot-study-overview.Rmd/s-fig-0-1-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>
-ggsave(here(&quot;figures/Supplementary Figure 1.pdf&quot;), p,
-       width = 21, height = 10, units = c(&quot;cm&quot;))
-ggsave(here(&quot;figures/Supplementary Figure 1.png&quot;), p,
-       width = 21, height = 10, units = c(&quot;cm&quot;))</code></pre>
+ggsave(here(&quot;figures/Supplementary Figure 0.1.pdf&quot;), sfig0_1,
+  width = 21, height = 10, units = c(&quot;cm&quot;)
+)
+ggsave(here(&quot;figures/Supplementary Figure 0.1.png&quot;), sfig0_1,
+  width = 21, height = 10, units = c(&quot;cm&quot;)
+)</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -987,6 +1191,7 @@ ggsave(here(&quot;figures/Supplementary Figure 1.png&quot;), p,
 #&gt; [55] tools_4.0.2         hms_0.5.3           yaml_2.2.1         
 #&gt; [58] colorspace_2.0-0    rvest_0.3.6         knitr_1.30         
 #&gt; [61] haven_2.3.1</code></pre>
+</div>
 </div>
 </div>
 
