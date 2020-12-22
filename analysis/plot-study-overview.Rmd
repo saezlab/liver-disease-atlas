@@ -43,7 +43,7 @@ Definition of global variables that are used throughout this analysis.
 ```{r analysis-specific-params, cache=FALSE}
 # graphical parameters
 # fontsize
-fz <- 9
+fz <- 7
 # color function for heatmaps
 col_fun <- colorRamp2(
   c(-4, 0, 4),
@@ -51,14 +51,14 @@ col_fun <- colorRamp2(
 )
 
 # keys to annotate contrasts
-key_mm = readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
-key_hs = readRDS(here("data/meta-mouse-vs-human/contrast_annotation.rds"))
+key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
+key_hs <- readRDS(here("data/meta-mouse-vs-human/contrast_annotation.rds"))
 ```
 
 ## Studied individuals
 ### Mouse models
 ```{r number-of-mice}
-df = readRDS(here("output/meta-chronic-vs-acute/meta_data.rds")) %>%
+df <- readRDS(here("output/meta-chronic-vs-acute/meta_data.rds")) %>%
   count(treatment, source, class, group) %>%
   mutate(label = case_when(
     treatment == "apap" ~ "APAP",
@@ -71,7 +71,7 @@ df = readRDS(here("output/meta-chronic-vs-acute/meta_data.rds")) %>%
   )) %>%
   mutate(group = str_to_title(group))
 
-stitle = df %>%
+stitle <- df %>%
   group_by(group) %>%
   tally(n) %>%
   mutate(total = sum(n)) %>%
@@ -79,14 +79,16 @@ stitle = df %>%
   mutate(label = glue("Total: {total} ({Control}/{Treated})")) %>%
   pull(label)
 
-num_mouse = df %>%
+num_mouse <- df %>%
   ggplot(aes(
     x = n, fct_reorder(label, n),
     group = group, fill = group
-    )) +
+  )) +
   geom_col(position = "dodge") +
-  labs(x = "Number of mice", y = "Study", subtitle = stitle, 
-       fill = NULL) +
+  labs(
+    x = "Number of mice", y = "Study", subtitle = stitle,
+    fill = NULL
+  ) +
   my_theme(grid = "x", fsize = fz) +
   scale_fill_manual(values = aachen_color(c("blue75", "red75")))
 
@@ -95,15 +97,15 @@ num_mouse
 
 ### Patient cohorts
 ```{r number-of-patients}
-keys = key_hs %>%
+keys <- key_hs %>%
   distinct(source, phenotype, author2)
 
-df = readRDS(here("output/meta-mouse-vs-human/meta_data.rds")) %>%
+df <- readRDS(here("output/meta-mouse-vs-human/meta_data.rds")) %>%
   inner_join(keys) %>%
   count(author2, class) %>%
   mutate(class = str_to_title(class))
 
-stitle = df %>%
+stitle <- df %>%
   group_by(class) %>%
   tally(n) %>%
   mutate(total = sum(n)) %>%
@@ -111,14 +113,16 @@ stitle = df %>%
   mutate(label = glue("Total: {total} ({Control}/{Disease})")) %>%
   pull(label)
 
-num_patient = df %>%
+num_patient <- df %>%
   ggplot(aes(
     x = n, fct_reorder(author2, n),
     group = class, fill = class
-    )) +
+  )) +
   geom_col(position = "dodge") +
-  labs(x = "Number of patients", y = "Study", subtitle = stitle, 
-       fill = NULL) +
+  labs(
+    x = "Number of patients", y = "Study", subtitle = stitle,
+    fill = NULL
+  ) +
   my_theme(grid = "x", fsize = fz) +
   scale_fill_manual(values = aachen_color(c("blue75", "red75")))
 
@@ -128,28 +132,32 @@ num_patient
 ## Gene coverage
 ### Mouse models
 ```{r gene-coverage-mm}
-keys = key_mm %>%
+keys <- key_mm %>%
   distinct(contrast, treatment_abbr, class)
 
-mm = readRDS(here("output/meta-chronic-vs-acute/limma_result.rds")) %>%
+mm <- readRDS(here("output/meta-chronic-vs-acute/limma_result.rds")) %>%
   select(-treatment, -class) %>%
-  inner_join(keys, by="contrast") %>%
+  inner_join(keys, by = "contrast") %>%
   distinct(gene, treatment_abbr, class) %>%
   count(treatment_abbr, class) %>%
   mutate(group = case_when(
     str_detect(treatment_abbr, "CCl4") ~ str_c(treatment_abbr, " (", class, ")"),
-    TRUE ~ as.character(treatment_abbr)))
+    TRUE ~ as.character(treatment_abbr)
+  ))
 
-gene_coverage_mm = mm %>%
-  ggplot(aes(x = n, fct_reorder(group,n),  group = class)) +
+gene_coverage_mm <- mm %>%
+  ggplot(aes(x = n, fct_reorder(group, n), group = class)) +
   geom_col() +
-  geom_text(aes(x=n, y = fct_reorder(group, n), label = n), 
-            size = (fz-2)/(14/5), color = "white", hjust = 1.5) +
-  labs(x="Gene coverage", y=NULL) +
+  geom_text(aes(x = n, y = fct_reorder(group, n), label = n),
+    size = (fz - 2) / (14 / 5), color = "white", hjust = 1.5
+  ) +
+  labs(x = "Gene coverage", y = NULL) +
   my_theme(grid = "x", fsize = fz) +
-  theme(legend.position = "top",
-        axis.line = element_blank(),
-        axis.ticks = element_blank()) +
+  theme(
+    legend.position = "top",
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
   scale_x_continuous(labels = label_number_si())
 
 gene_coverage_mm
@@ -157,42 +165,50 @@ gene_coverage_mm
 
 ### Patient cohorts
 ```{r gene-coverage-hs}
-keys = key_hs %>%
+keys <- key_hs %>%
   distinct(contrast, source, phenotype, author2)
 
-hs = readRDS(here("output/meta-mouse-vs-human/limma_result.rds")) %>%
+hs <- readRDS(here("output/meta-mouse-vs-human/limma_result.rds")) %>%
   inner_join(keys) %>%
   distinct(gene, author2) %>%
-  count(author2) 
+  count(author2)
 
-gene_coverage_hs = hs %>%
-  ggplot(aes(x = n, fct_reorder(author2,n))) +
+gene_coverage_hs <- hs %>%
+  ggplot(aes(x = n, fct_reorder(author2, n))) +
   geom_col() +
-  geom_text(aes(x=n, y = fct_reorder(author2, n), label = n), 
-            size = (fz-2)/(14/5), color = "white", hjust = 1.5) +
-  labs(x="Gene coverage", y=NULL) +
+  geom_text(aes(x = n, y = fct_reorder(author2, n), label = n),
+    size = (fz - 2) / (14 / 5), color = "white", hjust = 1.5
+  ) +
+  labs(x = "Gene coverage", y = NULL) +
   my_theme(grid = "x", fsize = fz) +
-  theme(legend.position = "top",
-        axis.line = element_blank(),
-        axis.ticks = element_blank()) +
+  theme(
+    legend.position = "top",
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
   scale_x_continuous(labels = label_number_si())
 
 gene_coverage_hs
 ```
 
 ## Collage
-```{r collage}
-p = (num_mouse + num_patient) / 
+### Supplementary Figure 0.1
+```{r s-fig-0-1}
+sfig0_1 <- (num_mouse + num_patient) /
   (gene_coverage_mm + gene_coverage_hs) +
   plot_annotation(tag_levels = list(c("A", "B", "C", "D"))) &
-  theme(plot.tag = element_text(size = fz+3, face = "bold"),
-        legend.key.height= unit(11.5, 'pt'),
-        legend.key.width= unit(12.5, 'pt'))
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
 
-p
+sfig0_1
 
-ggsave(here("figures/Supplementary Figure 1.pdf"), p,
-       width = 21, height = 10, units = c("cm"))
-ggsave(here("figures/Supplementary Figure 1.png"), p,
-       width = 21, height = 10, units = c("cm"))
+ggsave(here("figures/Supplementary Figure 0.1.pdf"), sfig0_1,
+  width = 21, height = 10, units = c("cm")
+)
+ggsave(here("figures/Supplementary Figure 0.1.png"), sfig0_1,
+  width = 21, height = 10, units = c("cm")
+)
 ```
