@@ -18,6 +18,7 @@ data/**/*.CEL
 data/**/*.CEL.gz
 data/**/*.csv
 data/**/*.png
+data/**/*.pdf
 
 output/**/*.rds
 output/**/*.txt
