@@ -459,9 +459,11 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Studies overview (SFig. 1)</li>
     <li>
-      <a href="plot-study-overview.html"></a>
+      <a href="plot-study-overview.html">Studies overview (SFig. 1)</a>
+    </li>
+    <li>
+      <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
     </li>
   </ul>
 </li>
@@ -525,7 +527,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-21
+<strong>Last updated:</strong> 2020-12-22
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -616,16 +618,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeba489192cbcdd22f0be5f02d6ee20365bb7aa62etargetblankba48919a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/ba489192cbcdd22f0be5f02d6ee20365bb7aa62e" target="_blank">ba48919</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreef97eb55864265696bdc3226c4fcfd1e4e93d679atargetblankf97eb55a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/f97eb55864265696bdc3226c4fcfd1e4e93d679a" target="_blank">f97eb55</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeba489192cbcdd22f0be5f02d6ee20365bb7aa62etargetblankba48919a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreef97eb55864265696bdc3226c4fcfd1e4e93d679atargetblankf97eb55a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/ba489192cbcdd22f0be5f02d6ee20365bb7aa62e" target="_blank">ba48919</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/f97eb55864265696bdc3226c4fcfd1e4e93d679a" target="_blank">f97eb55</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -648,6 +650,8 @@ Ignored files:
     Ignored:    analysis/mouse-acute-ph_cache/
     Ignored:    analysis/mouse-acute-tunicamycin_cache/
     Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    analysis/plot-chronic-vs-acute_cache/
+    Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
@@ -691,8 +695,11 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
+Untracked files:
+    Untracked:  analysis/plot-precision-recall.Rmd
+
 Unstaged changes:
-    Modified:   analysis/mouse-chronic-ccl4.Rmd
+    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -731,6 +738,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f97eb55864265696bdc3226c4fcfd1e4e93d679a/analysis/meta-mouse-vs-human.Rmd" target="_blank">f97eb55</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-22
+</td>
+<td>
+added deg numbers of mouse models
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/meta-mouse-vs-human.html" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -913,7 +954,7 @@ hoang &lt;- readRDS(here(&quot;data/human-hoang-nafld/meta_data.rds&quot;)) %&gt
   mutate(
     phenotype = &quot;nafld&quot;,
     source = &quot;hoang&quot;
-  ) 
+  )
 #&gt; select: renamed one variable (group) and dropped 6 variables
 
 hampe13 &lt;- readRDS(here(&quot;output/human-hampe13-nash/meta_data.rds&quot;)) %&gt;%
@@ -947,9 +988,12 @@ combined_meta &lt;- bind_rows(
   # patients related to obesity are removed
   filter(group != &quot;obese&quot;) %&gt;%
   # assign whether patient is sick or healthy (control)
-  mutate(class = case_when(str_detect(
-    group, &quot;early|control|stage_0|mild&quot;) ~ &quot;control&quot;,
-    TRUE ~ &quot;disease&quot;))
+  mutate(class = case_when(
+    str_detect(
+      group, &quot;early|control|stage_0|mild&quot;
+    ) ~ &quot;control&quot;,
+    TRUE ~ &quot;disease&quot;
+  ))
 #&gt; filter: removed 51 rows (12%), 372 rows remaining
 
 saveRDS(combined_meta, here(output_path, &quot;meta_data.rds&quot;))</code></pre>
@@ -958,7 +1002,7 @@ saveRDS(combined_meta, here(output_path, &quot;meta_data.rds&quot;))</code></pre
 <div id="number-of-patients" class="section level2">
 <h2>Number of patients</h2>
 <p>Barplot showing number of patients per study.</p>
-<pre class="r"><code>df = readRDS(here(output_path, &quot;meta_data.rds&quot;)) %&gt;%
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;)) %&gt;%
   count(phenotype, source, class)
 #&gt; count: now 10 rows and 4 columns, ungrouped
 
@@ -966,11 +1010,48 @@ df %&gt;%
   ggplot(aes(
     x = n, fct_reorder(interaction(source, phenotype, sep = &quot;_&quot;), n),
     group = class, fill = class
-    )) +
+  )) +
   geom_col(position = &quot;dodge&quot;) +
   labs(x = &quot;Number of patients&quot;, y = &quot;Study&quot;) +
   my_theme(grid = &quot;x&quot;, fsize = fz)</code></pre>
 <p><img src="figure/meta-mouse-vs-human.Rmd/patient-number-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-patient-number-1">
+Past versions of patient-number-1.png
+</button>
+</p>
+<div id="fig-patient-number-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/patient-number-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gene-coverage" class="section level2">
 <h2>Gene coverage</h2>
@@ -1014,6 +1095,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
@@ -1043,6 +1135,43 @@ combined_contrasts %&gt;%
 #&gt; filter: removed 255,692 rows (99%), 1,996 rows remaining
 #&gt; count: now 26 rows and 4 columns, ungrouped</code></pre>
 <p><img src="figure/meta-mouse-vs-human.Rmd/deg-number-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-deg-number-1">
+Past versions of deg-number-1.png
+</button>
+</p>
+<div id="fig-deg-number-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/deg-number-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="interstudy-analysis-of-patient-cohorts" class="section level2">
 <h2>Interstudy analysis of patient cohorts</h2>
@@ -1648,44 +1777,51 @@ saveRDS(ora_res, here(output_path, &quot;leading_edges_characterization.rds&quot
 <div id="text-analysis" class="section level3">
 <h3>Text analysis</h3>
 <p>GO terms are splitted into words and their frequency is counted.</p>
-<pre class="r"><code># list of words that will be ignored 
-stop_go_words = readRDS(here(&quot;data/annotation/stop_go_words.rds&quot;))
+<pre class="r"><code># list of words that will be ignored
+stop_go_words &lt;- readRDS(here(&quot;data/annotation/stop_go_words.rds&quot;))
 
-go_terms = readRDS(here(output_path, &quot;leading_edges_characterization.rds&quot;)) %&gt;%
+go_terms &lt;- readRDS(here(output_path, &quot;leading_edges_characterization.rds&quot;)) %&gt;%
   filter(group == &quot;go&quot; &amp; fdr &lt;= 0.05) %&gt;%
-  mutate(term = str_remove(geneset, &quot;GO_&quot;),
-           term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
-           term = str_to_lower(term)) %&gt;%
+  mutate(
+    term = str_remove(geneset, &quot;GO_&quot;),
+    term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
+    term = str_to_lower(term)
+  ) %&gt;%
   select(regulation, term)
 #&gt; filter: removed 4,026 rows (90%), 441 rows remaining
 #&gt; select: dropped 8 variables (geneset, group, confidence, contingency_table, estimate, …)
 
-go_wordcounts = go_terms %&gt;%
+go_wordcounts &lt;- go_terms %&gt;%
   # glue words that should be treated as one
-  mutate(term = str_replace(term, &quot;smooth muscle&quot;, &quot;smoothmuscle&quot;),
-         term = str_replace(term, &quot;amino acid&quot;, &quot;aminoacid&quot;),
-         term = str_replace(term, &quot;cell cycle&quot;, &quot;cellcycle&quot;),
-         term = str_replace(term, &quot;endoplasmic reticulum stress&quot;, &quot;endoplasmicreticulumstress&quot;),
-         term = str_replace(term, &quot;endoplasmic reticulum&quot;, &quot;endoplasmicreticulum&quot;)
-         ) %&gt;%
+  mutate(
+    term = str_replace(term, &quot;smooth muscle&quot;, &quot;smoothmuscle&quot;),
+    term = str_replace(term, &quot;amino acid&quot;, &quot;aminoacid&quot;),
+    term = str_replace(term, &quot;cell cycle&quot;, &quot;cellcycle&quot;),
+    term = str_replace(term, &quot;endoplasmic reticulum stress&quot;, &quot;endoplasmicreticulumstress&quot;),
+    term = str_replace(term, &quot;endoplasmic reticulum&quot;, &quot;endoplasmicreticulum&quot;)
+  ) %&gt;%
   unnest_tokens(word, term) %&gt;%
-  anti_join(stop_words, by=&quot;word&quot;) %&gt;%
+  anti_join(stop_words, by = &quot;word&quot;) %&gt;%
   # correct for abbreviations
-  mutate(word = case_when(word == &quot;er&quot; ~ &quot;endoplasmicreticulum&quot;,
-                          TRUE ~ word)) %&gt;%
-  # remove words which are pure numbers 
+  mutate(word = case_when(
+    word == &quot;er&quot; ~ &quot;endoplasmicreticulum&quot;,
+    TRUE ~ word
+  )) %&gt;%
+  # remove words which are pure numbers
   filter(!str_detect(word, &quot;^[0-9]+&quot;)) %&gt;%
   # count word frequency
   count(regulation, word, sort = T) %&gt;%
   # dissect prior glued words
-  mutate(word = case_when(word ==&quot;smoothmuscle&quot; ~ &quot;smooth-muscle&quot;,
-                          word == &quot;aminoacid&quot; ~ &quot;amino-acid&quot;,
-                          word == &quot;cellcycle&quot; ~ &quot;cell-cycle&quot;,
-                          word == &quot;endoplasmicreticulumstress&quot; ~ &quot;endoplasmic-reticulum-stress&quot;,
-                          word == &quot;endoplasmicreticulum&quot; ~ &quot;endoplasmic-reticulum&quot;,
-                          TRUE ~ word)) %&gt;%
+  mutate(word = case_when(
+    word == &quot;smoothmuscle&quot; ~ &quot;smooth-muscle&quot;,
+    word == &quot;aminoacid&quot; ~ &quot;amino-acid&quot;,
+    word == &quot;cellcycle&quot; ~ &quot;cell-cycle&quot;,
+    word == &quot;endoplasmicreticulumstress&quot; ~ &quot;endoplasmic-reticulum-stress&quot;,
+    word == &quot;endoplasmicreticulum&quot; ~ &quot;endoplasmic-reticulum&quot;,
+    TRUE ~ word
+  )) %&gt;%
   # remove meaning less words
-  anti_join(stop_go_words, by=&quot;word&quot;) 
+  anti_join(stop_go_words, by = &quot;word&quot;)
 #&gt; anti_join: added no columns
 #&gt;            &gt; rows only in x   1,527
 #&gt;            &gt; rows only in y  (1,101)
@@ -1704,10 +1840,10 @@ go_wordcounts = go_terms %&gt;%
 saveRDS(go_wordcounts, here(output_path, &quot;go_wordcounts.rds&quot;))
 
 go_wordcounts %&gt;%
-  filter((regulation == &quot;up&quot; &amp; n&gt;4) | (regulation == &quot;down&quot; &amp; n &gt; 2)) %&gt;%
+  filter((regulation == &quot;up&quot; &amp; n &gt; 4) | (regulation == &quot;down&quot; &amp; n &gt; 2)) %&gt;%
   ggplot(aes(label = word, size = n)) +
   geom_text_wordcloud() +
-  scale_size_area(max_size = fz/(14/5)) +
+  scale_size_area(max_size = fz / (14 / 5)) +
   facet_wrap(~regulation) +
   theme(axis.line = element_blank()) +
   my_theme(grid = &quot;no&quot;, fsize = fz)
@@ -1737,6 +1873,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
@@ -1754,14 +1901,14 @@ christianholland
 <div id="cluster-ranking" class="section level3">
 <h3>Cluster ranking</h3>
 <p>Distribution of manually created GO-cluster.</p>
-<pre class="r"><code>go_cluster_mapping = tribble(
+<pre class="r"><code>go_cluster_mapping &lt;- tribble(
   ~cluster, ~description,
   1, &quot;Migration&quot;,
   2, &quot;Development and Morphogenesis&quot;,
   3, &quot;Metabolism&quot;
 )
 
-go_cluster = read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;)) %&gt;%
+go_cluster &lt;- read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;)) %&gt;%
   distinct(regulation, term, cluster) %&gt;%
   drop_na() %&gt;%
   inner_join(go_cluster_mapping)
@@ -1774,12 +1921,14 @@ go_cluster = read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;)
 #&gt;             &gt;                 =====
 #&gt;             &gt; rows total       192
 
-go_terms_ranking = readRDS(
+go_terms_ranking &lt;- readRDS(
   here(output_path, &quot;leading_edges_characterization.rds&quot;)
-  ) %&gt;% 
-  mutate(term = str_remove(geneset, &quot;GO_&quot;),
-           term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
-           term = str_to_lower(term)) %&gt;%
+) %&gt;%
+  mutate(
+    term = str_remove(geneset, &quot;GO_&quot;),
+    term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
+    term = str_to_lower(term)
+  ) %&gt;%
   filter(fdr &lt;= 0.05) %&gt;%
   group_by(regulation) %&gt;%
   mutate(rank = row_number(p.value)) %&gt;%
@@ -1790,7 +1939,7 @@ go_terms_ranking = readRDS(
 #&gt; ungroup: no grouping variables
 #&gt; select: dropped 8 variables (geneset, group, confidence, contingency_table, estimate, …)
 
-go_cluster_ranking = go_terms_ranking %&gt;%
+go_cluster_ranking &lt;- go_terms_ranking %&gt;%
   inner_join(go_cluster)
 #&gt; inner_join: added 2 columns (cluster, description)
 #&gt;             &gt; rows only in x  (292)
@@ -1806,6 +1955,43 @@ go_cluster_ranking %&gt;%
   plot_go_rank_density() +
   my_theme(grid = &quot;no&quot;, fsize = fz)</code></pre>
 <p><img src="figure/meta-mouse-vs-human.Rmd/go-cluster-ranking-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-go-cluster-ranking-1">
+Past versions of go-cluster-ranking-1.png
+</button>
+</p>
+<div id="fig-go-cluster-ranking-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/go-cluster-ranking-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="integration-of-published-chronic-mouse-models" class="section level2">
@@ -1832,9 +2018,9 @@ go_cluster_ranking %&gt;%
 #&gt; pivot_wider: reorganized (key, value) into (logfc, fdr) [was 27234x4, now 13617x4]
 
 # for late use mgi symbols are translated to hgnc
-teufel_genes_hs = teufel_genes %&gt;%
+teufel_genes_hs &lt;- teufel_genes %&gt;%
   translate_gene_ids(from = &quot;symbol_mgi&quot;, to = &quot;symbol_hgnc&quot;) %&gt;%
-  drop_na(gene) %&gt;% 
+  drop_na(gene) %&gt;%
   distinct() %&gt;%
   # in case of duplicated genes take the one with the higher logfc
   group_by(study, gene) %&gt;%
@@ -1858,6 +2044,46 @@ teufel_genes_hs = teufel_genes %&gt;%
 saveRDS(teufel_genes, here(output_path, &quot;teufel_genes.rds&quot;))
 saveRDS(teufel_genes_hs, here(output_path, &quot;teufel_genes_hs.rds&quot;))</code></pre>
 </div>
+<div id="chronic-mouse-models-in-numbers" class="section level3">
+<h3>Chronic mouse models in numbers</h3>
+<p>Number of differentially expressed genes per chronic mouse model.</p>
+<pre class="r"><code>teufel_genes &lt;- readRDS(here(output_path, &quot;teufel_genes.rds&quot;)) %&gt;%
+  assign_deg(effect_size_cutoff = log2(1.5), effect_size_id = logfc) %&gt;%
+  filter(regulation != &quot;ns&quot;)
+#&gt; filter: removed 11,046 rows (81%), 2,571 rows remaining
+chronic &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  assign_deg(effect_size_cutoff = log2(1.5)) %&gt;%
+  filter(regulation != &quot;ns&quot;)
+#&gt; filter: removed 138,042 rows (75%), 46,014 rows remaining
+#&gt; filter: removed 40,017 rows (87%), 5,997 rows remaining
+
+teufel_count &lt;- teufel_genes %&gt;%
+  count(study, regulation)
+#&gt; count: now 18 rows and 3 columns, ungrouped
+
+chronic_count &lt;- chronic %&gt;%
+  count(contrast, regulation) %&gt;%
+  rename(study = contrast)
+#&gt; count: now 6 rows and 3 columns, ungrouped
+#&gt; rename: renamed one variable (study)
+
+df &lt;- bind_rows(teufel_count, chronic_count)
+
+saveRDS(df, here(output_path, &quot;chronic_mouse_deg_numbers.rds&quot;))
+
+df %&gt;%
+  ggplot(aes(y = study, x = n, fill = regulation)) +
+  geom_col(position = &quot;dodge&quot;) +
+  labs(x = &quot;Number of differential expressed genes&quot;, y = NULL) +
+  scale_x_log10(
+    breaks = scales::trans_breaks(&quot;log10&quot;, function(x) 10^x),
+    labels = scales::trans_format(&quot;log10&quot;, scales::math_format(10^.x))
+  ) +
+  my_theme(grid = &quot;x&quot;, fsize = fz) +
+  annotation_logticks(sides = &quot;b&quot;)</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/vis-chronic-mm-gene-numbers-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <div id="build-gene-pool-for-human-etiology" class="section level3">
 <h3>Build gene pool for human etiology</h3>
 <p>For each human etiology (e.g. NAFLD) a union of differentially expressed genes in constructed.</p>
@@ -1877,7 +2103,7 @@ etiology_union &lt;- contrasts %&gt;%
   # how often is a gene-regulation pair reported per etiology
   count(gene, regulation, etiology) %&gt;%
   group_by(gene, etiology) %&gt;%
-  # extract this gene-regulation-etiology combination that is reported by more 
+  # extract this gene-regulation-etiology combination that is reported by more
   # contrasts
   # in case of ties take the first one (mostly up-regulation, first factor)
   slice_max(n, with_ties = FALSE) %&gt;%
@@ -1918,6 +2144,43 @@ upset(mat_up,
 )
 grid.text(&quot;Up&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz))</code></pre>
 <p><img src="figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-etiology-gene-numbers-1">
+Past versions of vis-etiology-gene-numbers-1.png
+</button>
+</p>
+<div id="fig-vis-etiology-gene-numbers-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 mat_down &lt;- df %&gt;%
   filter(regulation == &quot;down&quot;) %&gt;%
@@ -1936,6 +2199,43 @@ upset(mat_down,
 )
 grid.text(&quot;Down&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz))</code></pre>
 <p><img src="figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-etiology-gene-numbers-2">
+Past versions of vis-etiology-gene-numbers-2.png
+</button>
+</p>
+<div id="fig-vis-etiology-gene-numbers-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-2.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="precision-and-recall-of-mouse-models" class="section level3">
@@ -1947,7 +2247,7 @@ grid.text(&quot;Down&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz))</code>
   nest(hs_genes = c(gene))
 #&gt; filter: no rows removed
 
-teufel_genes = readRDS(here(output_path, &quot;teufel_genes_hs.rds&quot;)) %&gt;%
+teufel_genes &lt;- readRDS(here(output_path, &quot;teufel_genes_hs.rds&quot;)) %&gt;%
   filter(regulation != &quot;ns&quot;) %&gt;%
   mutate(class = &quot;teufel&quot;) %&gt;%
   distinct(gene, study, regulation, class)
@@ -1956,10 +2256,14 @@ teufel_genes = readRDS(here(output_path, &quot;teufel_genes_hs.rds&quot;)) %&gt;
 
 chronic &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&quot;)) %&gt;%
   filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
-  select(gene, contrast, logfc = logFC, fdr, regulation, 
-         source = contrast_reference) %&gt;%
-  assign_deg(fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5), 
-             effect_size_id = logfc) %&gt;%
+  select(gene, contrast,
+    logfc = logFC, fdr, regulation,
+    source = contrast_reference
+  ) %&gt;%
+  assign_deg(
+    fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5),
+    effect_size_id = logfc
+  ) %&gt;%
   filter(regulation != &quot;ns&quot;) %&gt;%
   mutate(class = &quot;chronic&quot;) %&gt;%
   distinct(gene, study = contrast, regulation, class)
@@ -1970,13 +2274,13 @@ chronic &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&q
 
 
 # merge gene pools of all chronic mouse models
-mm = bind_rows(teufel_genes, chronic)
+mm &lt;- bind_rows(teufel_genes, chronic)
 
-setup = mm %&gt;%
+setup &lt;- mm %&gt;%
   mutate(key = &quot;key&quot;) %&gt;%
   # rename(direction = regulation) %&gt;%
   nest(mm_genes = c(gene)) %&gt;%
-  inner_join(etiology_pool, by=c(&quot;key&quot;, &quot;regulation&quot;)) %&gt;%
+  inner_join(etiology_pool, by = c(&quot;key&quot;, &quot;regulation&quot;)) %&gt;%
   select(-key)
 #&gt; inner_join: added 2 columns (etiology, hs_genes)
 #&gt;             &gt; rows only in x  (  0)
@@ -1986,14 +2290,16 @@ setup = mm %&gt;%
 #&gt;             &gt; rows total       120
 #&gt; select: dropped one variable (key)
 
-pr = setup %&gt;%
+pr &lt;- setup %&gt;%
   mutate(metrics = pmap(., .f = function(mm_genes, hs_genes, ...) {
-    z = inner_join(mm_genes, hs_genes, by=&quot;gene&quot;)
-    
-    tibble(recall = nrow(z)/nrow(hs_genes),
-           recall_ratio = glue(&quot;{nrow(z)}/{nrow(hs_genes)}&quot;),
-           precision = nrow(z)/nrow(mm_genes),
-           precision_ratio = glue(&quot;{nrow(z)}/{nrow(mm_genes)}&quot;))
+    z &lt;- inner_join(mm_genes, hs_genes, by = &quot;gene&quot;)
+
+    tibble(
+      recall = nrow(z) / nrow(hs_genes),
+      recall_ratio = glue(&quot;{nrow(z)}/{nrow(hs_genes)}&quot;),
+      precision = nrow(z) / nrow(mm_genes),
+      precision_ratio = glue(&quot;{nrow(z)}/{nrow(mm_genes)}&quot;)
+    )
   })) %&gt;%
   unnest(metrics)
 #&gt; inner_join: added no columns
@@ -2721,18 +3027,55 @@ saveRDS(pr, here(output_path, &quot;precision_recall.rds&quot;))</code></pre>
 <div id="pr-scatter-plot" class="section level4">
 <h4>PR scatter plot</h4>
 <p>Scatter plot showing precision and recall for each chronic mouse model.</p>
-<pre class="r"><code>pr = readRDS(here(output_path, &quot;precision_recall.rds&quot;))
+<pre class="r"><code>pr &lt;- readRDS(here(output_path, &quot;precision_recall.rds&quot;))
 
 pr %&gt;%
-  ggplot(aes(x=recall, y=precision, label = study, color = study)) +
+  ggplot(aes(x = recall, y = precision, label = study, color = study)) +
   geom_point() +
-  facet_rep_grid(etiology~regulation) +
+  facet_rep_grid(etiology ~ regulation) +
   geom_abline(lty = &quot;dashed&quot;) +
   expand_limits(x = 0, y = 0) +
-  labs(x=&quot;Recall&quot;, y=&quot;Precision&quot;, color = &quot;Mouse model&quot;) +
+  labs(x = &quot;Recall&quot;, y = &quot;Precision&quot;, color = &quot;Mouse model&quot;) +
   my_theme(fsize = fz) +
   scale_color_viridis_d()</code></pre>
 <p><img src="figure/meta-mouse-vs-human.Rmd/pr-scatter-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pr-scatter-plot-1">
+Past versions of pr-scatter-plot-1.png
+</button>
+</p>
+<div id="fig-pr-scatter-plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/pr-scatter-plot-1.png" target="_blank">f8d8343</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-21
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
