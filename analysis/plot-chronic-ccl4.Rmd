@@ -1,0 +1,415 @@
+---
+title: "Chronic CCl4 (Fig. 1)"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r chunk-setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  autodep = TRUE,
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+## Introduction
+Here we generate publication ready plots of the analysis of the chronic CCl4 mouse model.
+
+## Libraries and sources
+These libraries and sources are used for this analysis.
+```{r libs-and-src, message=FALSE, warning=FALSE, cache=FALSE}
+library(tidyverse)
+library(tidylog)
+library(here)
+
+library(AachenColorPalette)
+library(cowplot)
+library(lemon)
+library(ggpubr)
+library(VennDiagram)
+library(grid)
+library(gridExtra)
+library(patchwork)
+
+source(here("code/utils-plots.R"))
+```
+
+Definition of global variables that are used throughout this analysis.
+```{r analysis-specific-params, cache=FALSE}
+# i/o
+data_path <- "data/mouse-chronic-ccl4"
+output_path <- "output/mouse-chronic-ccl4"
+
+# graphical parameters
+# fontsize
+fz <- 7
+
+# keys to annotate contrasts
+key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
+```
+
+## Design
+```{r design}
+design <- ggdraw() +
+  draw_image(here(data_path, "exp-design.pdf"))
+
+design
+```
+
+## Histology
+```{r histology}
+histology <- ggdraw() +
+  draw_image(here(data_path, "histology.png"))
+
+histology
+```
+
+## Liver enyzmes
+```{r liver-enzymes}
+df <- read_csv2(here(data_path, "liver_enzymes.csv")) %>%
+  mutate(time = fct_inorder(time)) %>%
+  pivot_longer(col = -c(time), names_to = "enzyme", values_to = "y") %>%
+  mutate(enzyme = factor(str_to_upper(enzyme), levels = c("ALT", "AST", "ALP")))
+
+df_summary <- df %>%
+  group_by(time, enzyme) %>%
+  summarise(mean_se(y)) %>%
+  ungroup()
+
+liver_enzymes <- df_summary %>%
+  ggplot(aes(x = time, y = y)) +
+  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  geom_col() +
+  facet_rep_wrap(~enzyme, scales = "free", ncol = 1) +
+  labs(x = NULL, y = "U/L") +
+  my_theme(grid = "y", fsize = fz) +
+  stat_compare_means(
+    data = df, label = "p.signif",
+    ref.group = "Control", hide.ns = T
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+liver_enzymes
+```
+
+## PCA
+```{r pca}
+pca_result <- readRDS(here(output_path, "pca_result.rds"))
+
+keys <- key_mm %>%
+  filter(treatment == "CCl4" & class == "Chronic") %>%
+  distinct(time = value, label = time_label2) %>%
+  drop_na() %>%
+  add_row(time = 0, label = "Control") %>%
+  mutate(time = ordered(time))
+
+pca_plot <- pca_result$coords %>%
+  arrange(time) %>%
+  inner_join(keys, by = "time") %>%
+  mutate(label = fct_inorder(label)) %>%
+  mutate(treatment = case_when(treatment == "oil" ~ "Oil",
+                               treatment == "ccl4" ~ "CCl4 + Oil",
+                               treatment == "ctrl" ~ "Control")) %>%
+  ggplot(aes(x=PC1, y=PC2, color=label, shape = treatment, label = label)) +
+  geom_point() +
+  labs(x = paste0("PC1", " (", pca_result$var[1], "%)"),
+       y = paste0("PC2", " (", pca_result$var[2], "%)"),
+       color = "Time", shape = "Treatment") +
+  my_theme(fsize  = fz) +
+  theme(legend.position = "top",
+        legend.box.margin = margin(10, 0, -20, 10)) +
+  scale_color_manual(values = aachen_color(c(
+    "violet", "bordeaux", "red", "orange"
+  )))
+
+pca_plot
+```
+
+## Volcano plot
+```{r volcano-plot}
+df <- readRDS(here(output_path, "limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  inner_join(key_mm, by = "contrast") %>%
+  select(-contrast) %>%
+  rename(contrast = time_label2) %>%
+  mutate(contrast = fct_drop(contrast)) %>%
+  mutate(regulation = fct_recode(regulation,
+    Up = "up", Down = "down",
+    n.s. = "ns"
+  ))
+
+deg_count <- df %>%
+  add_count(contrast, regulation) %>%
+  filter(regulation != "n.s.") %>%
+  mutate(regulation = fct_drop(regulation)) %>%
+  mutate(
+    logFC = case_when(
+      regulation == "Up" ~ 0.75 * max(logFC),
+      regulation == "Down" ~ 0.75 * min(logFC)
+    ),
+    pval = 0.4
+  ) %>%
+  distinct(n, contrast, logFC, pval, regulation, value) %>%
+  complete(contrast, nesting(regulation, logFC, pval), fill = list(n = 0))
+
+volcano <- df %>%
+  plot_volcano(ncol = 1) +
+  geom_text(
+    data = filter(deg_count),
+    aes(y = pval, label = n), size = fz / (14 / 5),
+    hjust = "inward", vjust = "inward",
+    show.legend = F
+  ) +
+  theme(
+    legend.position = "top",
+    legend.box.margin = margin(-10, 0, -10, 0)
+  ) +
+  labs(color = "Regulation") +
+  my_theme(grid = "y", fsize = fz)
+
+volcano
+```
+
+## Top DEGs
+```{r top-degs}
+df <- readRDS(here(output_path, "limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  inner_join(key_mm) %>%
+  select(-class) %>%
+  rename(class = time_label2)
+
+top_genes_df <- df %>% 
+  group_by(class, sign(logFC)) %>%
+  slice_max(order_by = abs(statistic), n = 10, with_ties = F) %>%
+  ungroup() %>% 
+  nest(data = -c(class, value))
+
+plots <- top_genes_df %>%
+  mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
+
+# for main panel
+top_genes <- plots %>%
+  pull(p) %>%
+  wrap_plots() +
+  plot_layout(ncol = 1)
+
+top_genes
+```
+
+
+## Gene overlap
+```{r gene-overlap}
+df <- readRDS(here(output_path, "limma_result.rds"))
+
+tables = df %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  mutate(class = str_c("Month ", parse_number(as.character(contrast)))) %>%
+  select(-contrast_reference, -contrast) %>%
+  mutate(class = factor(class, levels = c("Month 2", "Month 6", "Month 12"))) %>%
+  group_split(class)
+
+# extract labellers
+c1 = tables[[1]] %>% distinct(class) %>% pull() %>% as.character()
+c2 = tables[[2]] %>% distinct(class) %>% pull() %>% as.character()
+c3 = tables[[3]] %>% distinct(class) %>% pull() %>% as.character()
+
+t1 = tables[[1]] %>% count(regulation)
+t2 = tables[[2]] %>% count(regulation)
+t3 = tables[[3]] %>% count(regulation)
+    
+plots = c("up", "down") %>%
+  map(function(r) {
+    # set sizes of regulated genes
+    a1 = t1 %>% filter(regulation == r) %>% pull(n)
+    a2 = t2 %>% filter(regulation == r) %>% pull(n)
+    a3 = t3 %>% filter(regulation == r) %>% pull(n)
+    
+    a12 = purrr::reduce(
+      list(tables[[1]] %>% filter(regulation == r) %>% pull(gene),
+           tables[[2]] %>% filter(regulation == r) %>% pull(gene)),
+      intersect) %>%
+      length()
+    
+    a23 = purrr::reduce(
+      list(tables[[2]] %>% filter(regulation == r) %>% pull(gene),
+           tables[[3]] %>% filter(regulation == r) %>% pull(gene)),
+      intersect) %>% 
+      length()
+    
+    a13 = purrr::reduce(
+      list(tables[[1]] %>% filter(regulation == r) %>% pull(gene),
+           tables[[3]] %>% filter(regulation == r) %>% pull(gene)),
+      intersect) %>% 
+      length()
+    
+    a123 = purrr::reduce(
+      list(tables[[1]] %>% filter(regulation == r) %>% pull(gene),
+           tables[[2]] %>% filter(regulation == r) %>% pull(gene),
+           tables[[3]] %>% filter(regulation == r) %>% pull(gene)),
+      intersect) %>% 
+      length()
+    
+
+    
+    grid.newpage()
+    p = draw.triple.venn(
+      area1 = a1, area2 = a2, area3 = a3, 
+      n12 = a12, n23 = a23, n13 = a13, 
+      n123 = a123,
+      category = c(c1, c2, c3),
+      # lty = "blank",
+      cex = 1/12*fz,
+      fontfamily = rep("sans", 7),
+      # fill = aachen_color(c("purple", "petrol", "red")),
+      # cat.col = aachen_color(c("purple", "petrol", "red")),
+      cat.cex = 1/12*(fz+1),
+      cat.fontfamily = rep("sans", 3),
+      cat.pos = c(0,0,180),
+      cat.prompts = T
+    ) %>%
+      as_ggplot() %>%
+      grid.arrange(top = textGrob(str_to_title(r), gp=gpar(fontsize=fz, 
+                                             fontface = "bold")))
+  })
+
+gene_overlap = wrap_plots(plots)
+
+```
+
+## Top gene of overlap
+```{r top-genes-overlap}
+df = readRDS(here(output_path, "limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  inner_join(key_mm) %>%
+  select(-class) %>%
+  rename(class = time_label2) %>% 
+  filter(regulation != "ns") %>%
+  mutate(regulation = fct_inorder(str_to_title(regulation)))
+  
+top_genes_ranked = df %>%
+  # filter for genes that are deregulated at all time points
+  group_by(gene, regulation) %>%
+  filter(n() == 3) %>%
+  summarise(mean_logfc = mean(logFC)) %>%
+  group_by(regulation) %>%
+  mutate(rank = row_number(-abs(mean_logfc))) %>%
+  ungroup()
+
+top_genes_of_overlap = df %>%
+  inner_join(top_genes_ranked, by=c("gene", "regulation"))
+
+top_overlap_genes = top_genes_of_overlap %>%
+  filter(rank <= 5) %>%
+  ggplot(aes(x=fct_reorder(gene, mean_logfc), y=logFC, group = class, 
+             fill = class)) +
+  geom_col(position = "dodge") +
+  facet_rep_wrap(~regulation, ncol = 1, scales = "free") +
+  my_theme(grid = "y", fsize = fz) +
+  labs(x="Gene", y="logFC", fill = NULL) +
+  scale_fill_manual(values = aachen_color(c("maygreen", "green", "turquoise")))
+
+top_overlap_genes
+```
+
+## Time series cluster
+```{r ts-cluster}
+profile_label = tribble(
+  ~profile, ~process,
+  "STEM ID: 14", "Inflammation",
+  "STEM ID: 6", "Proliferation",
+  "STEM ID: 17", NA_character_,
+  "STEM ID: 12", NA_character_,
+  "STEM ID: 7", "Metabolism (1)",
+  "STEM ID: 9", "Metabolism (2)",
+  "STEM ID: 13", "ECM"
+) %>%
+  mutate(profile = fct_inorder(profile),
+         process = coalesce(process, profile),
+         process = fct_inorder(process))
+
+stem_res <- readRDS(here(output_path, "stem_result.rds")) %>%
+  filter(key == "pure_ccl4") %>%
+  filter(p <= 0.05) %>%
+  mutate(profile = fct_reorder(str_c(
+    "STEM ID: ",
+    as.character(profile)
+  ), p)) %>%
+  inner_join(profile_label, by = "profile") %>%
+  select(-profile) %>%
+  rename(profile = process)
+
+# extract meta data of profiles
+profile_anno <- stem_res %>%
+  group_by(key, profile, p) %>%
+  mutate(y = 1.2 * abs(max(value))) %>%
+  ungroup() %>%
+  mutate(max_time = max(time)) %>%
+  distinct(key, profile, p, size, y, max_time) %>%
+  mutate(label = str_c(size, " ", "genes"))
+
+ts_cluster <- stem_res %>%
+  plot_stem_profiles(model_profile = F, nrow = 2) +
+  labs(x = "Time in Months") +
+  geom_text(
+    data = profile_anno, aes(x = 0, y = y, label = label),
+    inherit.aes = F, size = fz / (14 / 5), hjust = "inward"
+  ) +
+  my_theme(grid = "no", fsize = fz) +
+  scale_x_continuous(
+    breaks = unique(stem_res$time),
+    guide = guide_axis(n.dodge = 1)
+  )
+
+ts_cluster
+```
+
+## Collage
+### Figure 1
+```{r fig-1, fig.width=7.87, fig.height=11.69}
+fig1 <- (design + histology) /
+  ((liver_enzymes | gene_overlap | top_overlap_genes) + 
+     plot_layout(widths = c(1,2,2))) /
+  ts_cluster +
+  plot_layout(height = c(1, 1, 1)) +
+  plot_annotation(tag_levels = list(c("A", "B", "C", "D", "", "E", "F"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+fig1
+
+ggsave(here("figures/Figure 1.pdf"), fig1,
+  width = 21, height = 29.7, units = c("cm")
+)
+ggsave(here("figures/Figure 1.png"), fig1,
+  width = 21, height = 29.7, units = c("cm")
+)
+```
+
+### Supplementary Figure 1.1
+```{r s-fig-1-1, fig.width=7.87, fig.height=11.69}
+sfig1_1 <- pca_plot / (volcano | top_genes) +
+  plot_annotation(tag_levels = list(c("A", "B", "C"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+sfig1_1
+
+ggsave(here("figures/Supplementary Figure 1.1.pdf"), sfig1_1,
+  width = 21, height = 29.7, units = c("cm")
+)
+ggsave(here("figures/Supplementary Figure 1.1.png"), sfig1_1,
+  width = 21, height = 29.7, units = c("cm")
+)
+```
