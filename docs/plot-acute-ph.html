@@ -11,7 +11,7 @@
 
 
 
-<title>Acute APAP (Fig. 2)</title>
+<title>Acute PH (SFig. 2.4)</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -510,7 +510,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Acute APAP (Fig. 2)</h1>
+<h1 class="title toc-ignore">Acute PH (SFig. 2.4)</h1>
 
 </div>
 
@@ -659,9 +659,9 @@ Ignored files:
     Ignored:    analysis/mouse-acute-ph_cache/
     Ignored:    analysis/mouse-acute-tunicamycin_cache/
     Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    analysis/plot-acute-apap_cache/
     Ignored:    analysis/plot-acute-bdl_cache/
     Ignored:    analysis/plot-acute-ccl4_cache/
-    Ignored:    analysis/plot-acute-ph_cache/
     Ignored:    analysis/plot-chronic-vs-acute_cache/
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
@@ -723,7 +723,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/plot-acute-apap.Rmd</code>) and HTML (<code>docs/plot-acute-apap.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/plot-acute-ph.Rmd</code>) and HTML (<code>docs/plot-acute-ph.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -752,7 +752,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/9cdd9956eb045fe8bab935ecf03b56bc5f325f94/analysis/plot-acute-apap.Rmd" target="_blank">9cdd995</a>
+<a href="https://github.com/saezlab/meta-liver/blob/9cdd9956eb045fe8bab935ecf03b56bc5f325f94/analysis/plot-acute-ph.Rmd" target="_blank">9cdd995</a>
 </td>
 <td>
 christianholland
@@ -764,40 +764,6 @@ christianholland
 Added plotting scripts for mouse models
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/plot-acute-apap.html" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/7ca5d396ba42320026337069df253c95ed9120fe/analysis/plot-acute-apap.Rmd" target="_blank">7ca5d39</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-<td>
-added plotting script for apap
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -807,7 +773,7 @@ added plotting script for apap
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Here we generate publication ready plots of the analysis of the acute APAP mouse model.</p>
+<p>Here we generate publication ready plots of the analysis of the acute PH mouse model.</p>
 </div>
 <div id="libraries-and-sources" class="section level2">
 <h2>Libraries and sources</h2>
@@ -825,8 +791,8 @@ library(patchwork)
 source(here(&quot;code/utils-plots.R&quot;))</code></pre>
 <p>Definition of global variables that are used throughout this analysis.</p>
 <pre class="r"><code># i/o
-data_path &lt;- &quot;data/mouse-acute-apap&quot;
-output_path &lt;- &quot;output/mouse-acute-apap&quot;
+data_path &lt;- &quot;data/mouse-acute-ph&quot;
+output_path &lt;- &quot;output/mouse-acute-ph&quot;
 
 # graphical parameters
 # fontsize
@@ -841,170 +807,31 @@ key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.r
   draw_image(here(data_path, &quot;exp-design.pdf&quot;))
 
 design</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/design-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-design-1">
-Past versions of design-1.png
-</button>
-</p>
-<div id="fig-design-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/design-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/design-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="histology" class="section level2">
 <h2>Histology</h2>
-<pre class="r"><code>histology &lt;- ggdraw() +
-  draw_image(here(data_path, &quot;histology.png&quot;))
-
-histology</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/histology-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-histology-1">
-Past versions of histology-1.png
-</button>
-</p>
-<div id="fig-histology-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/histology-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 <div id="liver-enyzmes" class="section level2">
 <h2>Liver enyzmes</h2>
-<pre class="r"><code>df &lt;- read_csv2(here(data_path, &quot;liver_enzymes.csv&quot;)) %&gt;%
-  mutate(time = fct_inorder(time)) %&gt;%
-  pivot_longer(col = -c(time, enzyme), names_to = &quot;mouse&quot;, values_to = &quot;y&quot;) %&gt;%
-  mutate(enzyme = factor(str_to_upper(enzyme), levels = c(&quot;ALT&quot;, &quot;AST&quot;)))
-
-df_summary &lt;- df %&gt;%
-  group_by(time, enzyme) %&gt;%
-  summarise(mean_se(y)) %&gt;%
-  ungroup()
-
-liver_enzymes &lt;- df_summary %&gt;%
-  ggplot(aes(x = time, y = y)) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
-  geom_col() +
-  facet_rep_wrap(~enzyme, scales = &quot;free&quot;, ncol = 1) +
-  labs(x = NULL, y = &quot;U/L&quot;) +
-  my_theme(grid = &quot;y&quot;, fsize = fz) +
-  stat_compare_means(
-    data = df, label = &quot;p.signif&quot;,
-    ref.group = &quot;Control&quot;, hide.ns = T
-  ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
-
-liver_enzymes</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/liver-enzymes-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-liver-enzymes-1">
-Past versions of liver-enzymes-1.png
-</button>
-</p>
-<div id="fig-liver-enzymes-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/liver-enzymes-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 <div id="pca" class="section level2">
 <h2>PCA</h2>
 <pre class="r"><code>pca_result &lt;- readRDS(here(output_path, &quot;pca_result.rds&quot;))
 
 keys &lt;- key_mm %&gt;%
-  filter(treatment == &quot;APAP&quot; &amp; class == &quot;Acute&quot;) %&gt;%
+  filter(treatment == &quot;Partial Hepatectomy&quot; &amp; class == &quot;Acute&quot;) %&gt;%
   distinct(time = value, label = time_label2) %&gt;%
   drop_na() %&gt;%
   add_row(time = 0, label = &quot;Control&quot;) %&gt;%
-  mutate(time = ordered(time))
+  mutate(
+    time = ordered(time),
+    label = fct_reorder(label, as.numeric(time))
+  )
 
 pca_plot &lt;- pca_result$coords %&gt;%
-  arrange(time) %&gt;%
+  mutate(time = ordered(round(as.numeric(as.character(time)) * 24, 0))) %&gt;%
   inner_join(keys, by = &quot;time&quot;) %&gt;%
-  mutate(label = fct_inorder(label)) %&gt;%
   ggplot(aes(x = PC1, y = PC2, color = label, label = label)) +
   geom_point() +
   labs(
@@ -1013,59 +840,25 @@ pca_plot &lt;- pca_result$coords %&gt;%
     color = &quot;Time&quot;
   ) +
   my_theme(fsize = fz) +
-  theme(legend.position = &quot;top&quot;,
-        legend.box.margin = margin(10, 0, -20, 0)) +
+  theme(
+    legend.position = &quot;top&quot;,
+    legend.box.margin = margin(0, 0, 0, 0)
+  ) +
   scale_color_manual(values = aachen_color(c(
     &quot;blue&quot;, &quot;purple&quot;, &quot;violet&quot;,
     &quot;bordeaux&quot;, &quot;red&quot;, &quot;orange&quot;,
     &quot;maygreen&quot;, &quot;green&quot;, &quot;turquoise&quot;,
-    &quot;petrol&quot;
-  )))
+    &quot;petrol&quot;, &quot;magenta&quot;, &quot;black&quot;
+  ))) +
+  guides(color = guide_legend(nrow = 2))
 
 pca_plot</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/pca-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca-1">
-Past versions of pca-1.png
-</button>
-</p>
-<div id="fig-pca-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/pca-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="volcano-plot" class="section level2">
 <h2>Volcano plot</h2>
 <pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
-  filter(contrast_reference == &quot;apap&quot;) %&gt;%
+  filter(contrast_reference == &quot;hepatec&quot;) %&gt;%
   inner_join(key_mm, by = &quot;contrast&quot;) %&gt;%
   select(-contrast) %&gt;%
   rename(contrast = time_label2) %&gt;%
@@ -1089,7 +882,7 @@ deg_count &lt;- df %&gt;%
   distinct(n, contrast, logFC, pval, regulation, value) %&gt;%
   complete(contrast, nesting(regulation, logFC, pval), fill = list(n = 0))
 
-main_time &lt;- c(12, 24, 48)
+main_time = c(12,24,48)
 # for main panel
 volcano_main &lt;- df %&gt;%
   filter(value %in% main_time) %&gt;%
@@ -1124,103 +917,28 @@ volcano_supp &lt;- df %&gt;%
   my_theme(grid = &quot;y&quot;, fsize = fz)
 
 volcano_main</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/volcano-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-volcano-plot-1">
-Past versions of volcano-plot-1.png
-</button>
-</p>
-<div id="fig-volcano-plot-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/volcano-plot-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/volcano-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>volcano_supp</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/volcano-plot-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-volcano-plot-2">
-Past versions of volcano-plot-2.png
-</button>
-</p>
-<div id="fig-volcano-plot-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/volcano-plot-2.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/volcano-plot-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="top-degs" class="section level2">
 <h2>Top DEGs</h2>
 <pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
-  filter(contrast_reference == &quot;apap&quot;) %&gt;%
+  filter(contrast_reference == &quot;hepatec&quot;) %&gt;%
   inner_join(key_mm) %&gt;%
   select(-class) %&gt;%
   rename(class = time_label2)
 
-top_genes_df &lt;- df %&gt;% 
-  filter(regulation != &quot;ns&quot;) %&gt;%
+top_genes_df &lt;- df %&gt;%
   group_by(class, sign(logFC)) %&gt;%
-  slice_max(order_by = abs(logFC), n = 10, with_ties = F) %&gt;%
-  ungroup() %&gt;% 
+  slice_max(order_by = abs(statistic), n = 10, with_ties = F) %&gt;%
+  ungroup() %&gt;%
   nest(data = -c(class, value))
 
 plots &lt;- top_genes_df %&gt;%
   mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
 
-main_time &lt;- c(12, 24, 48)
+main_time = c(12,24,48)
 
 # for main panel
 top_genes_main &lt;- plots %&gt;%
@@ -1237,113 +955,20 @@ top_genes_supp &lt;- plots %&gt;%
   plot_layout(ncol = 1)
 
 top_genes_main</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/top-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-top-degs-1">
-Past versions of top-degs-1.png
-</button>
-</p>
-<div id="fig-top-degs-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/top-degs-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/top-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>top_genes_supp</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/top-degs-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-top-degs-2">
-Past versions of top-degs-2.png
-</button>
-</p>
-<div id="fig-top-degs-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/top-degs-2.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/top-degs-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="time-series-cluster" class="section level2">
 <h2>Time series cluster</h2>
-<pre class="r"><code>profile_label &lt;- tribble(
-  ~profile, ~process,
-  &quot;STEM ID: 14&quot;, &quot;Stress response&quot;,
-  &quot;STEM ID: 9&quot;, &quot;Migration&quot;,
-  &quot;STEM ID: 12&quot;, &quot;Proliferation&quot;,
-  &quot;STEM ID: 6&quot;, &quot;Metabolism (1)&quot;,
-  &quot;STEM ID: 11&quot;, &quot;Metabolism (2)&quot;,
-  &quot;STEM ID: 18&quot;, &quot;Metabolism (3)&quot;,
-  &quot;STEM ID: 8&quot;, &quot;Metabolism (4)&quot;
-) %&gt;%
-  mutate(
-    profile = fct_inorder(profile),
-    process = coalesce(process, profile),
-    process = fct_inorder(process)
-  )
-
-stem_res &lt;- readRDS(here(output_path, &quot;stem_result.rds&quot;)) %&gt;%
-  filter(key == &quot;apap&quot;) %&gt;%
+<pre class="r"><code>stem_res &lt;- readRDS(here(output_path, &quot;stem_result.rds&quot;)) %&gt;%
+  filter(key == &quot;hepatec&quot;) %&gt;%
   filter(p &lt;= 0.05) %&gt;%
   mutate(profile = fct_reorder(str_c(
     &quot;STEM ID: &quot;,
     as.character(profile)
   ), p)) %&gt;%
-  inner_join(profile_label, by = &quot;profile&quot;) %&gt;%
-  select(-profile) %&gt;%
-  rename(profile = process) %&gt;%
-  filter(!time %in% c(384, 192, 144))
+  filter(!time %in% c(168, 336, 672, 2016))
 
 # extract meta data of profiles
 profile_anno &lt;- stem_res %&gt;%
@@ -1368,112 +993,39 @@ ts_cluster &lt;- stem_res %&gt;%
   )
 
 ts_cluster</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/ts-cluster-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-ts-cluster-1">
-Past versions of ts-cluster-1.png
-</button>
-</p>
-<div id="fig-ts-cluster-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/ts-cluster-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/plot-acute-ph.Rmd/ts-cluster-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
-<div id="figure-2" class="section level3">
-<h3>Figure 2</h3>
-<pre class="r"><code>fig2 &lt;- (design + histology) /
-  ((liver_enzymes | pca_plot) + plot_layout(widths = c(1,3))) /
+<div id="supplementary-figure-2.4" class="section level3">
+<h3>Supplementary Figure 2.4</h3>
+<pre class="r"><code>sfig2_4 &lt;- (design + plot_spacer()) /
+  ((plot_spacer() | pca_plot) + plot_layout(widths = c(1, 3))) /
   ((volcano_main / top_genes_main)) /
   ts_cluster +
   plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,
-                                      &quot;&quot;, &quot;&quot;, &quot;G&quot;))) &amp;
+  plot_annotation(tag_levels = list(c(
+    &quot;A&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;G&quot;
+  ))) &amp;
   theme(
     plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
     legend.key.height = unit(11.5, &quot;pt&quot;),
     legend.key.width = unit(12.5, &quot;pt&quot;)
   )
 
-fig2</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/fig-2-1.png" width="755.52" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fig-2-1">
-Past versions of fig-2-1.png
-</button>
-</p>
-<div id="fig-fig-2-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+sfig2_4</code></pre>
+<p><img src="figure/plot-acute-ph.Rmd/s-fig-2-2-1.png" width="755.52" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>
-ggsave(here(&quot;figures/Figure 2.pdf&quot;), fig2,
+ggsave(here(&quot;figures/Supplementary Figure 2.4.pdf&quot;), sfig2_4,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )
-ggsave(here(&quot;figures/Figure 2.png&quot;), fig2,
+ggsave(here(&quot;figures/Supplementary Figure 2.4.png&quot;), sfig2_4,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
 </div>
-<div id="supplementary-figure-2.1" class="section level3">
-<h3>Supplementary Figure 2.1</h3>
-<pre class="r"><code>sfig2_1 &lt;- (volcano_supp | top_genes_supp) +
+<div id="supplementary-figure-2.5" class="section level3">
+<h3>Supplementary Figure 2.5</h3>
+<pre class="r"><code>sfig2_5 &lt;- (volcano_supp | top_genes_supp) +
   plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;))) &amp;
   theme(
     plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
@@ -1481,50 +1033,13 @@ ggsave(here(&quot;figures/Figure 2.png&quot;), fig2,
     legend.key.width = unit(12.5, &quot;pt&quot;)
   )
 
-sfig2_1</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" width="755.52" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-s-fig-2-1-1">
-Past versions of s-fig-2-1-1.png
-</button>
-</p>
-<div id="fig-s-fig-2-1-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+sfig2_5</code></pre>
+<p><img src="figure/plot-acute-ph.Rmd/s-fig-2-3-1.png" width="755.52" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>
-ggsave(here(&quot;figures/Supplementary Figure 2.1.pdf&quot;), sfig2_1,
+ggsave(here(&quot;figures/Supplementary Figure 2.5.pdf&quot;), sfig2_5,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )
-ggsave(here(&quot;figures/Supplementary Figure 2.1.png&quot;), sfig2_1,
+ggsave(here(&quot;figures/Supplementary Figure 2.5.png&quot;), sfig2_5,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
 <br>
