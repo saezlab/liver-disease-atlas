@@ -140,7 +140,7 @@ hoang <- readRDS(here("data/human-hoang-nafld/meta_data.rds")) %>%
   mutate(
     phenotype = "nafld",
     source = "hoang"
-  ) 
+  )
 
 hampe13 <- readRDS(here("output/human-hampe13-nash/meta_data.rds")) %>%
   select(sample, group) %>%
@@ -170,9 +170,12 @@ combined_meta <- bind_rows(
   # patients related to obesity are removed
   filter(group != "obese") %>%
   # assign whether patient is sick or healthy (control)
-  mutate(class = case_when(str_detect(
-    group, "early|control|stage_0|mild") ~ "control",
-    TRUE ~ "disease"))
+  mutate(class = case_when(
+    str_detect(
+      group, "early|control|stage_0|mild"
+    ) ~ "control",
+    TRUE ~ "disease"
+  ))
 
 saveRDS(combined_meta, here(output_path, "meta_data.rds"))
 ```
@@ -180,14 +183,14 @@ saveRDS(combined_meta, here(output_path, "meta_data.rds"))
 ## Number of patients
 Barplot showing number of patients per study.
 ```{r patient-number}
-df = readRDS(here(output_path, "meta_data.rds")) %>%
+df <- readRDS(here(output_path, "meta_data.rds")) %>%
   count(phenotype, source, class)
 
 df %>%
   ggplot(aes(
     x = n, fct_reorder(interaction(source, phenotype, sep = "_"), n),
     group = class, fill = class
-    )) +
+  )) +
   geom_col(position = "dodge") +
   labs(x = "Number of patients", y = "Study") +
   my_theme(grid = "x", fsize = fz)
@@ -481,50 +484,57 @@ In this section significant GO terms are summarized in two different ways. i) Wh
 ### Text analysis
 GO terms are splitted into words and their frequency is counted.
 ```{r}
-# list of words that will be ignored 
-stop_go_words = readRDS(here("data/annotation/stop_go_words.rds"))
+# list of words that will be ignored
+stop_go_words <- readRDS(here("data/annotation/stop_go_words.rds"))
 
-go_terms = readRDS(here(output_path, "leading_edges_characterization.rds")) %>%
+go_terms <- readRDS(here(output_path, "leading_edges_characterization.rds")) %>%
   filter(group == "go" & fdr <= 0.05) %>%
-  mutate(term = str_remove(geneset, "GO_"),
-           term = str_replace_all(term, "_", " "),
-           term = str_to_lower(term)) %>%
+  mutate(
+    term = str_remove(geneset, "GO_"),
+    term = str_replace_all(term, "_", " "),
+    term = str_to_lower(term)
+  ) %>%
   select(regulation, term)
 
-go_wordcounts = go_terms %>%
+go_wordcounts <- go_terms %>%
   # glue words that should be treated as one
-  mutate(term = str_replace(term, "smooth muscle", "smoothmuscle"),
-         term = str_replace(term, "amino acid", "aminoacid"),
-         term = str_replace(term, "cell cycle", "cellcycle"),
-         term = str_replace(term, "endoplasmic reticulum stress", "endoplasmicreticulumstress"),
-         term = str_replace(term, "endoplasmic reticulum", "endoplasmicreticulum")
-         ) %>%
+  mutate(
+    term = str_replace(term, "smooth muscle", "smoothmuscle"),
+    term = str_replace(term, "amino acid", "aminoacid"),
+    term = str_replace(term, "cell cycle", "cellcycle"),
+    term = str_replace(term, "endoplasmic reticulum stress", "endoplasmicreticulumstress"),
+    term = str_replace(term, "endoplasmic reticulum", "endoplasmicreticulum")
+  ) %>%
   unnest_tokens(word, term) %>%
-  anti_join(stop_words, by="word") %>%
+  anti_join(stop_words, by = "word") %>%
   # correct for abbreviations
-  mutate(word = case_when(word == "er" ~ "endoplasmicreticulum",
-                          TRUE ~ word)) %>%
-  # remove words which are pure numbers 
+  mutate(word = case_when(
+    word == "er" ~ "endoplasmicreticulum",
+    TRUE ~ word
+  )) %>%
+  # remove words which are pure numbers
   filter(!str_detect(word, "^[0-9]+")) %>%
   # count word frequency
   count(regulation, word, sort = T) %>%
   # dissect prior glued words
-  mutate(word = case_when(word =="smoothmuscle" ~ "smooth-muscle",
-                          word == "aminoacid" ~ "amino-acid",
-                          word == "cellcycle" ~ "cell-cycle",
-                          word == "endoplasmicreticulumstress" ~ "endoplasmic-reticulum-stress",
-                          word == "endoplasmicreticulum" ~ "endoplasmic-reticulum",
-                          TRUE ~ word)) %>%
+  mutate(word = case_when(
+    word == "smoothmuscle" ~ "smooth-muscle",
+    word == "aminoacid" ~ "amino-acid",
+    word == "cellcycle" ~ "cell-cycle",
+    word == "endoplasmicreticulumstress" ~ "endoplasmic-reticulum-stress",
+    word == "endoplasmicreticulum" ~ "endoplasmic-reticulum",
+    TRUE ~ word
+  )) %>%
   # remove meaning less words
-  anti_join(stop_go_words, by="word") 
+  anti_join(stop_go_words, by = "word")
 
 saveRDS(go_wordcounts, here(output_path, "go_wordcounts.rds"))
 
 go_wordcounts %>%
-  filter((regulation == "up" & n>4) | (regulation == "down" & n > 2)) %>%
+  filter((regulation == "up" & n > 4) | (regulation == "down" & n > 2)) %>%
   ggplot(aes(label = word, size = n)) +
   geom_text_wordcloud() +
-  scale_size_area(max_size = fz/(14/5)) +
+  scale_size_area(max_size = fz / (14 / 5)) +
   facet_wrap(~regulation) +
   theme(axis.line = element_blank()) +
   my_theme(grid = "no", fsize = fz)
@@ -533,24 +543,26 @@ go_wordcounts %>%
 ### Cluster ranking
 Distribution of manually created GO-cluster.
 ```{r go-cluster-ranking}
-go_cluster_mapping = tribble(
+go_cluster_mapping <- tribble(
   ~cluster, ~description,
   1, "Migration",
   2, "Development and Morphogenesis",
   3, "Metabolism"
 )
 
-go_cluster = read_excel(here(data_path, "manual_go_cluster_anno.xlsx")) %>%
+go_cluster <- read_excel(here(data_path, "manual_go_cluster_anno.xlsx")) %>%
   distinct(regulation, term, cluster) %>%
   drop_na() %>%
   inner_join(go_cluster_mapping)
 
-go_terms_ranking = readRDS(
+go_terms_ranking <- readRDS(
   here(output_path, "leading_edges_characterization.rds")
-  ) %>% 
-  mutate(term = str_remove(geneset, "GO_"),
-           term = str_replace_all(term, "_", " "),
-           term = str_to_lower(term)) %>%
+) %>%
+  mutate(
+    term = str_remove(geneset, "GO_"),
+    term = str_replace_all(term, "_", " "),
+    term = str_to_lower(term)
+  ) %>%
   filter(fdr <= 0.05) %>%
   group_by(regulation) %>%
   mutate(rank = row_number(p.value)) %>%
@@ -558,7 +570,7 @@ go_terms_ranking = readRDS(
   ungroup() %>%
   select(regulation, term, rank, max_rank)
 
-go_cluster_ranking = go_terms_ranking %>%
+go_cluster_ranking <- go_terms_ranking %>%
   inner_join(go_cluster)
 
 saveRDS(go_cluster_ranking, here(output_path, "go_cluster_ranking.rds"))
@@ -591,9 +603,9 @@ teufel_genes <- read_excel(here(data_path, "TableS2_Teufel_clean.xlsx"),
   )))
 
 # for late use mgi symbols are translated to hgnc
-teufel_genes_hs = teufel_genes %>%
+teufel_genes_hs <- teufel_genes %>%
   translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc") %>%
-  drop_na(gene) %>% 
+  drop_na(gene) %>%
   distinct() %>%
   # in case of duplicated genes take the one with the higher logfc
   group_by(study, gene) %>%
@@ -602,6 +614,40 @@ teufel_genes_hs = teufel_genes %>%
 
 saveRDS(teufel_genes, here(output_path, "teufel_genes.rds"))
 saveRDS(teufel_genes_hs, here(output_path, "teufel_genes_hs.rds"))
+```
+
+### Chronic mouse models in numbers
+Number of differentially expressed genes per chronic mouse model.
+```{r vis-chronic-mm-gene-numbers}
+teufel_genes <- readRDS(here(output_path, "teufel_genes.rds")) %>%
+  assign_deg(effect_size_cutoff = log2(1.5), effect_size_id = logfc) %>%
+  filter(regulation != "ns")
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  assign_deg(effect_size_cutoff = log2(1.5)) %>%
+  filter(regulation != "ns")
+
+teufel_count <- teufel_genes %>%
+  count(study, regulation)
+
+chronic_count <- chronic %>%
+  count(contrast, regulation) %>%
+  rename(study = contrast)
+
+df <- bind_rows(teufel_count, chronic_count)
+
+saveRDS(df, here(output_path, "chronic_mouse_deg_numbers.rds"))
+
+df %>%
+  ggplot(aes(y = study, x = n, fill = regulation)) +
+  geom_col(position = "dodge") +
+  labs(x = "Number of differential expressed genes", y = NULL) +
+  scale_x_log10(
+    breaks = scales::trans_breaks("log10", function(x) 10^x),
+    labels = scales::trans_format("log10", scales::math_format(10^.x))
+  ) +
+  my_theme(grid = "x", fsize = fz) +
+  annotation_logticks(sides = "b")
 ```
 
 ### Build gene pool for human etiology
@@ -622,7 +668,7 @@ etiology_union <- contrasts %>%
   # how often is a gene-regulation pair reported per etiology
   count(gene, regulation, etiology) %>%
   group_by(gene, etiology) %>%
-  # extract this gene-regulation-etiology combination that is reported by more 
+  # extract this gene-regulation-etiology combination that is reported by more
   # contrasts
   # in case of ties take the first one (mostly up-regulation, first factor)
   slice_max(n, with_ties = FALSE) %>%
@@ -674,40 +720,46 @@ etiology_pool <- readRDS(here(output_path, "etiology_gene_sets.rds")) %>%
   mutate(key = "key") %>%
   nest(hs_genes = c(gene))
 
-teufel_genes = readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
+teufel_genes <- readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
   filter(regulation != "ns") %>%
   mutate(class = "teufel") %>%
   distinct(gene, study, regulation, class)
 
 chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
   filter(contrast_reference == "pure_ccl4") %>%
-  select(gene, contrast, logfc = logFC, fdr, regulation, 
-         source = contrast_reference) %>%
-  assign_deg(fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5), 
-             effect_size_id = logfc) %>%
+  select(gene, contrast,
+    logfc = logFC, fdr, regulation,
+    source = contrast_reference
+  ) %>%
+  assign_deg(
+    fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5),
+    effect_size_id = logfc
+  ) %>%
   filter(regulation != "ns") %>%
   mutate(class = "chronic") %>%
   distinct(gene, study = contrast, regulation, class)
 
 
 # merge gene pools of all chronic mouse models
-mm = bind_rows(teufel_genes, chronic)
+mm <- bind_rows(teufel_genes, chronic)
 
-setup = mm %>%
+setup <- mm %>%
   mutate(key = "key") %>%
   # rename(direction = regulation) %>%
   nest(mm_genes = c(gene)) %>%
-  inner_join(etiology_pool, by=c("key", "regulation")) %>%
+  inner_join(etiology_pool, by = c("key", "regulation")) %>%
   select(-key)
 
-pr = setup %>%
+pr <- setup %>%
   mutate(metrics = pmap(., .f = function(mm_genes, hs_genes, ...) {
-    z = inner_join(mm_genes, hs_genes, by="gene")
-    
-    tibble(recall = nrow(z)/nrow(hs_genes),
-           recall_ratio = glue("{nrow(z)}/{nrow(hs_genes)}"),
-           precision = nrow(z)/nrow(mm_genes),
-           precision_ratio = glue("{nrow(z)}/{nrow(mm_genes)}"))
+    z <- inner_join(mm_genes, hs_genes, by = "gene")
+
+    tibble(
+      recall = nrow(z) / nrow(hs_genes),
+      recall_ratio = glue("{nrow(z)}/{nrow(hs_genes)}"),
+      precision = nrow(z) / nrow(mm_genes),
+      precision_ratio = glue("{nrow(z)}/{nrow(mm_genes)}")
+    )
   })) %>%
   unnest(metrics)
 
@@ -717,16 +769,15 @@ saveRDS(pr, here(output_path, "precision_recall.rds"))
 #### PR scatter plot
 Scatter plot showing precision and recall for each chronic mouse model.
 ```{r pr-scatter-plot}
-pr = readRDS(here(output_path, "precision_recall.rds"))
+pr <- readRDS(here(output_path, "precision_recall.rds"))
 
 pr %>%
-  ggplot(aes(x=recall, y=precision, label = study, color = study)) +
+  ggplot(aes(x = recall, y = precision, label = study, color = study)) +
   geom_point() +
-  facet_rep_grid(etiology~regulation) +
+  facet_rep_grid(etiology ~ regulation) +
   geom_abline(lty = "dashed") +
   expand_limits(x = 0, y = 0) +
-  labs(x="Recall", y="Precision", color = "Mouse model") +
+  labs(x = "Recall", y = "Precision", color = "Mouse model") +
   my_theme(fsize = fz) +
   scale_color_viridis_d()
 ```
-
