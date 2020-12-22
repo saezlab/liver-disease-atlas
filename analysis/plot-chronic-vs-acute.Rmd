@@ -1,7 +1,5 @@
 ---
 title: "Chronic vs. acute (Fig. 3)"
-author: "Christian H. Holland"
-date: "2020-12-20"
 output: 
   workflowr::wflow_html:
     code_folding: hide
@@ -951,7 +949,7 @@ ggsave(here("figures/Supplementary Figure 3.4.png"), sfig3_4,
 
 ### Figure 3
 Main Figure.
-```{r fig-3, eval=FALSE}
+```{r fig-3, eval=TRUE, fig.width=7.87, fig.height=11.69}
 fig3 <- ((((acute_gs_sim / v) + plot_layout(height = c(4, 1))) |
   acute_interstudy_enrichment)) /
   grid.grabExpr(draw(exclusive_chronic_hmap)) /
@@ -970,10 +968,10 @@ fig3 <- ((((acute_gs_sim / v) + plot_layout(height = c(4, 1))) |
 
 fig3
 
-ggsave(here("figures/Supplementary Figure 3.pdf"), fig3,
+ggsave(here("figures/Figure 3.pdf"), fig3,
   width = 21, height = 29.7, units = c("cm")
 )
-ggsave(here("figures/Supplementary Figure 3.png"), fig3,
+ggsave(here("figures/Figure 3.png"), fig3,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
