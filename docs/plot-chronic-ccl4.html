@@ -458,7 +458,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="plot-study-overview.html">Studies overview (SFig. 1)</a>
+      <a href="plot-study-overview.html">Study overview (SFig. 0.1)</a>
     </li>
     <li>
       <a href="plot-chronic-ccl4.html">Chronic CCl4 (Fig. 1)</a>
@@ -629,16 +629,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeaf84a7a4cb0bc7a5693060873dd037e837c40959targetblankaf84a7aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/af84a7a4cb0bc7a5693060873dd037e837c40959" target="_blank">af84a7a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeaf84a7a4cb0bc7a5693060873dd037e837c40959targetblankaf84a7aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/af84a7a4cb0bc7a5693060873dd037e837c40959" target="_blank">af84a7a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -711,11 +711,8 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
-Untracked files:
-    Untracked:  analysis/plot-precision-recall.Rmd
-
 Unstaged changes:
-    Modified:   analysis/plot-acute-bdl.Rmd
+    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -754,6 +751,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-chronic-ccl4.Rmd" target="_blank">d4f78fa</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+wflow_publish("analysis/*.Rmd", delete_cache = T)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/plot-chronic-ccl4.html" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -814,18 +845,12 @@ key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.r
 <div id="design" class="section level2">
 <h2>Design</h2>
 <pre class="r"><code>design &lt;- ggdraw() +
-  draw_image(here(data_path, &quot;exp-design.pdf&quot;))
-
-design</code></pre>
-<p><img src="figure/plot-chronic-ccl4.Rmd/design-1.png" width="672" style="display: block; margin: auto;" /></p>
+  draw_image(here(data_path, &quot;exp-design.pdf&quot;))</code></pre>
 </div>
 <div id="histology" class="section level2">
 <h2>Histology</h2>
 <pre class="r"><code>histology &lt;- ggdraw() +
-  draw_image(here(data_path, &quot;histology.png&quot;))
-
-histology</code></pre>
-<p><img src="figure/plot-chronic-ccl4.Rmd/histology-1.png" width="672" style="display: block; margin: auto;" /></p>
+  draw_image(here(data_path, &quot;histology.png&quot;))</code></pre>
 </div>
 <div id="liver-enyzmes" class="section level2">
 <h2>Liver enyzmes</h2>
@@ -854,6 +879,43 @@ liver_enzymes &lt;- df_summary %&gt;%
 
 liver_enzymes</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/liver-enzymes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-liver-enzymes-1">
+Past versions of liver-enzymes-1.png
+</button>
+</p>
+<div id="fig-liver-enzymes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/liver-enzymes-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="pca" class="section level2">
 <h2>PCA</h2>
@@ -887,6 +949,43 @@ pca_plot &lt;- pca_result$coords %&gt;%
 
 pca_plot</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/pca-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca-1">
+Past versions of pca-1.png
+</button>
+</p>
+<div id="fig-pca-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/pca-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="volcano-plot" class="section level2">
 <h2>Volcano plot</h2>
@@ -932,6 +1031,43 @@ volcano &lt;- df %&gt;%
 
 volcano</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/volcano-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-volcano-plot-1">
+Past versions of volcano-plot-1.png
+</button>
+</p>
+<div id="fig-volcano-plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/volcano-plot-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="top-degs" class="section level2">
 <h2>Top DEGs</h2>
@@ -958,6 +1094,43 @@ top_genes &lt;- plots %&gt;%
 
 top_genes</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/top-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-top-degs-1">
+Past versions of top-degs-1.png
+</button>
+</p>
+<div id="fig-top-degs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/top-degs-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gene-overlap" class="section level2">
 <h2>Gene overlap</h2>
@@ -1033,7 +1206,82 @@ plots = c(&quot;up&quot;, &quot;down&quot;) %&gt;%
       grid.arrange(top = textGrob(str_to_title(r), gp=gpar(fontsize=fz, 
                                              fontface = &quot;bold&quot;)))
   })</code></pre>
-<p><img src="figure/plot-chronic-ccl4.Rmd/gene-overlap-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/plot-chronic-ccl4.Rmd/gene-overlap-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/plot-chronic-ccl4.Rmd/gene-overlap-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-gene-overlap-1">
+Past versions of gene-overlap-1.png
+</button>
+</p>
+<div id="fig-gene-overlap-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/gene-overlap-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/plot-chronic-ccl4.Rmd/gene-overlap-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-gene-overlap-2">
+Past versions of gene-overlap-2.png
+</button>
+</p>
+<div id="fig-gene-overlap-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/gene-overlap-2.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 gene_overlap = wrap_plots(plots)</code></pre>
 </div>
@@ -1071,6 +1319,43 @@ top_overlap_genes = top_genes_of_overlap %&gt;%
 
 top_overlap_genes</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/top-genes-overlap-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-top-genes-overlap-1">
+Past versions of top-genes-overlap-1.png
+</button>
+</p>
+<div id="fig-top-genes-overlap-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/top-genes-overlap-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="time-series-cluster" class="section level2">
 <h2>Time series cluster</h2>
@@ -1123,6 +1408,43 @@ ts_cluster &lt;- stem_res %&gt;%
 
 ts_cluster</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/ts-cluster-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-ts-cluster-1">
+Past versions of ts-cluster-1.png
+</button>
+</p>
+<div id="fig-ts-cluster-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/ts-cluster-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
@@ -1142,6 +1464,43 @@ ts_cluster</code></pre>
 
 fig1</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/fig-1-1.png" width="755.52" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fig-1-1">
+Past versions of fig-1-1.png
+</button>
+</p>
+<div id="fig-fig-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/fig-1-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 ggsave(here(&quot;figures/Figure 1.pdf&quot;), fig1,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
@@ -1162,6 +1521,43 @@ ggsave(here(&quot;figures/Figure 1.png&quot;), fig1,
 
 sfig1_1</code></pre>
 <p><img src="figure/plot-chronic-ccl4.Rmd/s-fig-1-1-1.png" width="755.52" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-s-fig-1-1-1">
+Past versions of s-fig-1-1-1.png
+</button>
+</p>
+<div id="fig-s-fig-1-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/1e9ccd3fd670990cff7435c8abd104b6c7081d73/docs/figure/plot-chronic-ccl4.Rmd/s-fig-1-1-1.png" target="_blank">1e9ccd3</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 ggsave(here(&quot;figures/Supplementary Figure 1.1.pdf&quot;), sfig1_1,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
@@ -1169,6 +1565,7 @@ ggsave(here(&quot;figures/Supplementary Figure 1.1.pdf&quot;), sfig1_1,
 ggsave(here(&quot;figures/Supplementary Figure 1.1.png&quot;), sfig1_1,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
+<p>Time spend to execute this analysis: 00:44 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

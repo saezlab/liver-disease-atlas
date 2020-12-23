@@ -9,9 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Christian H. Holland" />
 
-<meta name="date" content="2020-12-20" />
 
 <title>NASH patient cohort by Hampe et al. 2013</title>
 
@@ -383,12 +381,6 @@ div.tocify {
     Home
   </a>
 </li>
-<li>
-  <a href="about.html">About</a>
-</li>
-<li>
-  <a href="license.html">License</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Mouse models
@@ -397,25 +389,25 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="mouse-chronic-ccl4.html">Chronic CCl4 mouse model</a>
+      <a href="mouse-chronic-ccl4.html">CCl4 (chronic)</a>
     </li>
     <li>
-      <a href="mouse-acute-apap.html">Acute APAP mouse model</a>
+      <a href="mouse-acute-apap.html">APAP (acute)</a>
     </li>
     <li>
-      <a href="mouse-acute-ccl4.html">Acute CCl4 mouse model</a>
+      <a href="mouse-acute-ccl4.html">CCl4 (acute)</a>
     </li>
     <li>
-      <a href="mouse-acute-bdl.html">Acute BDL mouse model</a>
+      <a href="mouse-acute-bdl.html">BDL (acute)</a>
     </li>
     <li>
-      <a href="mouse-acute-ph.html">Acute PH mouse model</a>
+      <a href="mouse-acute-ph.html">PH (acute)</a>
     </li>
     <li>
-      <a href="mouse-acute-lps.html">Acute LPS mouse model</a>
+      <a href="mouse-acute-lps.html">LPS (acute)</a>
     </li>
     <li>
-      <a href="mouse-acute-tunicamycin.html">Acute Tunicamycin mouse model</a>
+      <a href="mouse-acute-tunicamycin.html">Tunicamycin (acute)</a>
     </li>
   </ul>
 </li>
@@ -439,7 +431,7 @@ div.tocify {
       <a href="human-hampe13-nash.html">NASH - Hampe et al. '13</a>
     </li>
     <li>
-      <a href="human-hampe13-misc.html">Misc - Hampe et al. '14</a>
+      <a href="human-hampe14-misc.html">Misc - Hampe et al. '14</a>
     </li>
   </ul>
 </li>
@@ -451,7 +443,40 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="meta-analysis-chronic-vs-acute.html">Chronic vs. acute</a>
+      <a href="meta-chronic-vs-acute.html">Chronic vs. acute</a>
+    </li>
+    <li>
+      <a href="meta-mouse-vs-human.html">Mouse vs. human</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Figures
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="plot-study-overview.html">Study overview (SFig. 0.1)</a>
+    </li>
+    <li>
+      <a href="plot-chronic-ccl4.html">Chronic CCl4 (Fig. 1)</a>
+    </li>
+    <li>
+      <a href="plot-acute-apap.html">APAP (Fig. 2)</a>
+    </li>
+    <li>
+      <a href="plot-acute-ccl4.html">Acute CCl4 (SFig. 2.2)</a>
+    </li>
+    <li>
+      <a href="plot-acute-ph.html">PH (SFig. 2.4)</a>
+    </li>
+    <li>
+      <a href="plot-acute-bdl.html">BDL (SFig. 2.6)</a>
+    </li>
+    <li>
+      <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
     </li>
   </ul>
 </li>
@@ -461,7 +486,7 @@ div.tocify {
   <a href="https://zenodo.org/record/xxx">
     <span class="fas fa-database"></span>
      
-    Get required data
+    Get data
   </a>
 </li>
 <li>
@@ -489,8 +514,6 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">NASH patient cohort by Hampe et al. 2013</h1>
-<h4 class="author">Christian H. Holland</h4>
-<h4 class="date">2020-12-20</h4>
 
 </div>
 
@@ -515,7 +538,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-20
+<strong>Last updated:</strong> 2020-12-23
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -606,16 +629,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreebc5a3e60331a6eaaac5938ee7c4ce37b9430ec7dtargetblankbc5a3e6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d" target="_blank">bc5a3e6</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreebc5a3e60331a6eaaac5938ee7c4ce37b9430ec7dtargetblankbc5a3e6a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d" target="_blank">bc5a3e6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -629,7 +652,8 @@ Ignored files:
     Ignored:    analysis/human-hampe14-misc_cache/
     Ignored:    analysis/human-hoang-nafld_cache/
     Ignored:    analysis/human-ramnath-fibrosis_cache/
-    Ignored:    analysis/meta-analysis-chronic-vs-acute_cache/
+    Ignored:    analysis/meta-chronic-vs-acute_cache/
+    Ignored:    analysis/meta-mouse-vs-human_cache/
     Ignored:    analysis/mouse-acute-apap_cache/
     Ignored:    analysis/mouse-acute-bdl_cache/
     Ignored:    analysis/mouse-acute-ccl4_cache/
@@ -637,16 +661,29 @@ Ignored files:
     Ignored:    analysis/mouse-acute-ph_cache/
     Ignored:    analysis/mouse-acute-tunicamycin_cache/
     Ignored:    analysis/mouse-chronic-ccl4_cache/
+    Ignored:    analysis/plot-acute-apap_cache/
+    Ignored:    analysis/plot-acute-bdl_cache/
+    Ignored:    analysis/plot-acute-ccl4_cache/
+    Ignored:    analysis/plot-acute-ph_cache/
+    Ignored:    analysis/plot-chronic-ccl4_cache/
+    Ignored:    analysis/plot-chronic-vs-acute_cache/
+    Ignored:    analysis/plot-precision-recall_cache/
+    Ignored:    analysis/plot-study-overview_cache/
     Ignored:    code/.DS_Store
+    Ignored:    code/README.html
     Ignored:    data/.DS_Store
+    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
     Ignored:    data/human-hampe14-misc/
     Ignored:    data/human-hoang-nafld/
     Ignored:    data/human-ramnath-fibrosis/
+    Ignored:    data/meta-chronic-vs-acute/
+    Ignored:    data/meta-mouse-vs-human/
     Ignored:    data/mouse-acute-apap/
     Ignored:    data/mouse-acute-bdl/
+    Ignored:    data/mouse-acute-ccl4/
     Ignored:    data/mouse-acute-lps/
     Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-acute-tunicamycin/
@@ -654,13 +691,16 @@ Ignored files:
     Ignored:    external_software/.DS_Store
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
+    Ignored:    figures/
     Ignored:    output/.DS_Store
+    Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
     Ignored:    output/human-hampe13-nash/
     Ignored:    output/human-hampe14-misc/
     Ignored:    output/human-hoang-nafld/
     Ignored:    output/human-ramnath-fibrosis/
     Ignored:    output/meta-chronic-vs-acute/
+    Ignored:    output/meta-mouse-vs-human/
     Ignored:    output/mouse-acute-apap/
     Ignored:    output/mouse-acute-bdl/
     Ignored:    output/mouse-acute-ccl4/
@@ -671,14 +711,8 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
-Untracked files:
-    Untracked:  code/human-ramnath-fibrosis/
-    Untracked:  data/mouse-acute-ccl4/
-
 Unstaged changes:
     Modified:   analysis/_site.yml
-    Modified:   analysis/meta-analysis-chronic-vs-acute.Rmd
-    Modified:   code/human-hoang-nafld/preprocessing.R
 
 </code></pre>
 <p>
@@ -717,6 +751,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/human-hampe13-nash.Rmd" target="_blank">d4f78fa</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+wflow_publish("analysis/*.Rmd", delete_cache = T)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/human-hampe13-nash.html" target="_blank">6dbc304</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -906,7 +974,7 @@ df &lt;- getGEO(&quot;GSE48452&quot;)
 #&gt; )
 #&gt; ℹ Use `spec()` for the full column specifications.
 #&gt; File stored at:
-#&gt; /var/folders/62/y2c8xnr53ln52nm6f4yryb_m0000gp/T//Rtmp6njnX1/GPL11532.soft
+#&gt; /var/folders/62/y2c8xnr53ln52nm6f4yryb_m0000gp/T//RtmpGVoCAe/GPL11532.soft
 meta &lt;- df$GSE48452_series_matrix.txt.gz %&gt;%
   pData() %&gt;%
   rownames_to_column(&quot;sample&quot;) %&gt;%
@@ -959,6 +1027,43 @@ saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
 plot_pca(pca_result, feature = &quot;group&quot;) +
   my_theme()</code></pre>
 <p><img src="figure/human-hampe13-nash.Rmd/pca-norm-data-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca-norm-data-1">
+Past versions of pca-norm-data-1.png
+</button>
+</p>
+<div id="fig-pca-norm-data-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hampe13-nash.Rmd/pca-norm-data-1.png" target="_blank">6dbc304</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="differential-gene-expression-analysis" class="section level2">
@@ -1019,6 +1124,44 @@ df %&gt;%
   my_theme(grid = &quot;y&quot;, fsize = fz)
 #&gt; rename: renamed one variable (p)</code></pre>
 <p><img src="figure/human-hampe13-nash.Rmd/volcano-plots-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-volcano-plots-1">
+Past versions of volcano-plots-1.png
+</button>
+</p>
+<div id="fig-volcano-plots-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hampe13-nash.Rmd/volcano-plots-1.png" target="_blank">6dbc304</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Time spend to execute this analysis: 10:22 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

@@ -458,7 +458,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="plot-study-overview.html">Studies overview (SFig. 1)</a>
+      <a href="plot-study-overview.html">Study overview (SFig. 0.1)</a>
+    </li>
+    <li>
+      <a href="plot-chronic-ccl4.html">Chronic CCl4 (Fig. 1)</a>
     </li>
     <li>
       <a href="plot-acute-apap.html">APAP (Fig. 2)</a>
@@ -467,10 +470,10 @@ div.tocify {
       <a href="plot-acute-ccl4.html">Acute CCl4 (SFig. 2.2)</a>
     </li>
     <li>
-      <a href="plot-acute-ph.html">Acute PH (SFig. 2.4)</a>
+      <a href="plot-acute-ph.html">PH (SFig. 2.4)</a>
     </li>
     <li>
-      <a href="plot-acute-bdl.html">Acute BDL (SFig. 2.6)</a>
+      <a href="plot-acute-bdl.html">BDL (SFig. 2.6)</a>
     </li>
     <li>
       <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
@@ -626,16 +629,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9cdd9956eb045fe8bab935ecf03b56bc5f325f94targetblank9cdd995a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9cdd9956eb045fe8bab935ecf03b56bc5f325f94" target="_blank">9cdd995</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9cdd9956eb045fe8bab935ecf03b56bc5f325f94targetblank9cdd995a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9cdd9956eb045fe8bab935ecf03b56bc5f325f94" target="_blank">9cdd995</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -662,6 +665,7 @@ Ignored files:
     Ignored:    analysis/plot-acute-bdl_cache/
     Ignored:    analysis/plot-acute-ccl4_cache/
     Ignored:    analysis/plot-acute-ph_cache/
+    Ignored:    analysis/plot-chronic-ccl4_cache/
     Ignored:    analysis/plot-chronic-vs-acute_cache/
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
@@ -707,8 +711,8 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
-Untracked files:
-    Untracked:  analysis/plot-precision-recall.Rmd
+Unstaged changes:
+    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -747,6 +751,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-acute-apap.Rmd" target="_blank">d4f78fa</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+wflow_publish("analysis/*.Rmd", delete_cache = T)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/plot-acute-apap.html" target="_blank">6b6c16a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -838,92 +876,12 @@ key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.r
 <div id="design" class="section level2">
 <h2>Design</h2>
 <pre class="r"><code>design &lt;- ggdraw() +
-  draw_image(here(data_path, &quot;exp-design.pdf&quot;))
-
-design</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/design-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-design-1">
-Past versions of design-1.png
-</button>
-</p>
-<div id="fig-design-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/design-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+  draw_image(here(data_path, &quot;exp-design.pdf&quot;))</code></pre>
 </div>
 <div id="histology" class="section level2">
 <h2>Histology</h2>
 <pre class="r"><code>histology &lt;- ggdraw() +
-  draw_image(here(data_path, &quot;histology.png&quot;))
-
-histology</code></pre>
-<p><img src="figure/plot-acute-apap.Rmd/histology-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-histology-1">
-Past versions of histology-1.png
-</button>
-</p>
-<div id="fig-histology-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/histology-1.png" target="_blank">b5b58d0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+  draw_image(here(data_path, &quot;histology.png&quot;))</code></pre>
 </div>
 <div id="liver-enyzmes" class="section level2">
 <h2>Liver enyzmes</h2>
@@ -1046,6 +1004,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">6b6c16a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">b5b58d0</a>
@@ -1450,6 +1419,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">6b6c16a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
@@ -1507,6 +1487,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">6b6c16a</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
@@ -1527,6 +1518,7 @@ ggsave(here(&quot;figures/Supplementary Figure 2.1.pdf&quot;), sfig2_1,
 ggsave(here(&quot;figures/Supplementary Figure 2.1.png&quot;), sfig2_1,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
+<p>Time spend to execute this analysis: 01:16 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
