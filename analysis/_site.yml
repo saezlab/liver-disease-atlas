@@ -42,7 +42,7 @@ navbar:
         href: meta-mouse-vs-human.html
   - text: Figures
     menu:
-      - text: "Studies overview (SFig. 1)"
+      - text: "Study overview (SFig. 0.1)"
         href: plot-study-overview.html
       - text: "Chronic CCl4 (Fig. 1)"
         href: plot-chronic-ccl4.html
