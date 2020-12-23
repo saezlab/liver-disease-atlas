@@ -109,9 +109,8 @@ pca_plot <- pca_result$coords %>%
   inner_join(keys, by="time") %>%
   mutate(treatment = case_when(treatment == "bdl" ~ "BDL",
                                treatment == "sham" ~ "Sham Surgery")) %>%
-  ggplot(aes(x=PC1, y=PC2, color=time, shape = treatment, label = label)) +
+  ggplot(aes(x=PC1, y=PC2, color=label, shape = treatment, label = label)) +
   geom_point() +
-  # geom_text(size = fz/(14/5), hjust = "inward", vjust = "inward") +
   labs(x = paste0("PC1", " (", pca_result$var[1], "%)"),
        y = paste0("PC2", " (", pca_result$var[2], "%)"),
        color = "Time", shape = "Group") +
@@ -250,7 +249,7 @@ profile_anno <- stem_res %>%
 
 ts_cluster <- stem_res %>%
   plot_stem_profiles(model_profile = F, nrow = 1) +
-  labs(x = "Time in Hours") +
+  labs(x = "Time in Days") +
   geom_text(
     data = profile_anno, aes(x = 0, y = y, label = label),
     inherit.aes = F, size = fz / (14 / 5), hjust = "inward"
