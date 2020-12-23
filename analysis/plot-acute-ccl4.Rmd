@@ -18,6 +18,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
+```
+
+
 ## Introduction
 Here we generate publication ready plots of the analysis of the acute CCl4 mouse model.
 
@@ -55,16 +61,12 @@ key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
 ```{r design}
 design <- ggdraw() +
   draw_image(here(data_path, "exp-design.pdf"))
-
-design
 ```
 
 ## Histology
 ```{r histology}
 histology <- ggdraw() +
   draw_image(here(data_path, "histology.png"))
-
-histology
 ```
 
 ## Liver enyzmes
@@ -312,3 +314,10 @@ ggsave(here("figures/Supplementary Figure 2.3.png"), sfig2_3,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.
+

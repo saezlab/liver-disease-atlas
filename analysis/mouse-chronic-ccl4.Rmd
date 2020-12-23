@@ -1,7 +1,5 @@
 ---
 title: "Chronic CCl4 mouse model"
-author: "Christian H. Holland"
-date: "2020-12-18"
 output: 
   workflowr::wflow_html:
     code_folding: hide
@@ -16,6 +14,11 @@ knitr::opts_chunk$set(
   autodep = TRUE,
   cache = TRUE
 )
+```
+
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
 ```
 
 ## Introduction
@@ -339,3 +342,9 @@ mapped_df <- df %>%
 
 saveRDS(mapped_df, here(output_path, "limma_result_hs.rds"))
 ```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.

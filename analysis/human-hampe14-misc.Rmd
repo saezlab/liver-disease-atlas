@@ -1,7 +1,5 @@
 ---
 title: "Liver disease patient cohort by Hampe et al. 2014"
-author: "Christian H. Holland"
-date: "2020-12-20"
 output: 
   workflowr::wflow_html:
     code_folding: hide
@@ -16,6 +14,11 @@ knitr::opts_chunk$set(
   autodep = TRUE,
   cache = TRUE
 )
+```
+
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
 ```
 
 ## Introduction
@@ -177,3 +180,9 @@ df %>%
   plot_volcano() +
   my_theme(grid = "y", fsize = fz)
 ```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.

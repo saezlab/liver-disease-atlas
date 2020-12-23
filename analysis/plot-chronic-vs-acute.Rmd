@@ -18,6 +18,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
+```
+
 ## Introduction
 Here we generate plots display various features of all included studies.
 
@@ -975,3 +980,9 @@ ggsave(here("figures/Figure 3.png"), fig3,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.
