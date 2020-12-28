@@ -57,7 +57,7 @@ navbar:
       - text: "Chronic vs. acute (Fig. 3)"
         href: plot-chronic-vs-acute.html
       - text: "Mouse vs. human (Fig. 4)"
-        href: plot-chronic-vs-acute.html
+        href: plot-mouw3-vs-human.html
   right:
   - text: "Get data"
     href: https://zenodo.org/record/xxx
