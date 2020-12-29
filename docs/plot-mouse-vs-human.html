@@ -478,6 +478,12 @@ div.tocify {
     <li>
       <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
     </li>
+    <li>
+      <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
+    </li>
+    <li>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -538,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-28
+<strong>Last updated:</strong> 2020-12-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -629,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4603abb7fcf35158e3b8ae8a84b1abddff2c9e9targetblanke4603aba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/e4603abb7fcf35158e3b8ae8a84b1abddff2c9e9" target="_blank">e4603ab</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeaf35abe164468c63d12a5ea58b7d6e131e6cd596targetblankaf35abea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/af35abe164468c63d12a5ea58b7d6e131e6cd596" target="_blank">af35abe</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreee4603abb7fcf35158e3b8ae8a84b1abddff2c9e9targetblanke4603aba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeaf35abe164468c63d12a5ea58b7d6e131e6cd596targetblankaf35abea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/e4603abb7fcf35158e3b8ae8a84b1abddff2c9e9" target="_blank">e4603ab</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/af35abe164468c63d12a5ea58b7d6e131e6cd596" target="_blank">af35abe</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -648,6 +654,7 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/figure/
     Ignored:    analysis/human-diehl-nafld_cache/
     Ignored:    analysis/human-hampe13-nash_cache/
     Ignored:    analysis/human-hampe14-misc_cache/
@@ -670,6 +677,7 @@ Ignored files:
     Ignored:    analysis/plot-chronic-vs-acute_cache/
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
+    Ignored:    analysis/plot-teufel-integration_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    data/.DS_Store
@@ -714,11 +722,6 @@ Ignored files:
 Untracked files:
     Untracked:  data/meta-mouse-vs-human/
 
-Unstaged changes:
-    Modified:   analysis/meta-mouse-vs-human.Rmd
-    Modified:   analysis/plot-acute-bdl.Rmd
-    Modified:   analysis/plot-chronic-vs-acute.Rmd
-
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -756,6 +759,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/af35abe164468c63d12a5ea58b7d6e131e6cd596/analysis/plot-mouse-vs-human.Rmd" target="_blank">af35abe</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-29
+</td>
+<td>
+minor changes
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/plot-mouse-vs-human.html" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -857,6 +894,43 @@ patient_gs_sim &lt;- j %&gt;%
 
 patient_gs_sim</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/sim-patient-gene-sets-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-sim-patient-gene-sets-1">
+Past versions of sim-patient-gene-sets-1.png
+</button>
+</p>
+<div id="fig-sim-patient-gene-sets-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/sim-patient-gene-sets-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="interstudy-enrichment-of-patient-cohorts" class="section level2">
 <h2>Interstudy enrichment of patient cohorts</h2>
@@ -864,7 +938,10 @@ patient_gs_sim</code></pre>
   distinct(contrast, label, source, phenotype)
 
 gsea_res &lt;- readRDS(here(output_path, &quot;interstudy_enrichment.rds&quot;)) %&gt;%
-  separate(signature, into = c(&quot;source&quot;, &quot;phenotype&quot;, &quot;contrast&quot;), sep = &quot;-&quot;) %&gt;%
+  separate(signature,
+    into = c(&quot;source&quot;, &quot;phenotype&quot;, &quot;contrast&quot;),
+    sep = &quot;-&quot;
+  ) %&gt;%
   inner_join(keys, by = c(&quot;contrast&quot;, &quot;source&quot;, &quot;phenotype&quot;)) %&gt;%
   select(-source, -phenotype, -contrast) %&gt;%
   rename(signature = label) %&gt;%
@@ -894,6 +971,43 @@ patient_interstudy_enrichment &lt;- gsea_res %&gt;%
 
 patient_interstudy_enrichment</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/interstudy-enrichment-patient-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-interstudy-enrichment-patient-1">
+Past versions of interstudy-enrichment-patient-1.png
+</button>
+</p>
+<div id="fig-interstudy-enrichment-patient-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/interstudy-enrichment-patient-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="mouse-enrichment-in-patients" class="section level2">
 <h2>Mouse enrichment in patients</h2>
@@ -934,6 +1048,43 @@ mm_enrichment_in_hs &lt;- gsea_res %&gt;%
 
 mm_enrichment_in_hs</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/mouse-enrichment-in-patients-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse-enrichment-in-patients-1">
+Past versions of mouse-enrichment-in-patients-1.png
+</button>
+</p>
+<div id="fig-mouse-enrichment-in-patients-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/mouse-enrichment-in-patients-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="overlap-of-leading-edge-genes" class="section level2">
 <h2>Overlap of leading-edge genes</h2>
@@ -1038,7 +1189,82 @@ le_overlap_plots &lt;- c(&quot;up&quot;, &quot;down&quot;) %&gt;%
         fontface = &quot;bold&quot;
       )))
   })</code></pre>
-<p><img src="figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-leading-edge-overlap-1">
+Past versions of leading-edge-overlap-1.png
+</button>
+</p>
+<div id="fig-leading-edge-overlap-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-leading-edge-overlap-2">
+Past versions of leading-edge-overlap-2.png
+</button>
+</p>
+<div id="fig-leading-edge-overlap-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-2.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 le_gene_overlap &lt;- wrap_plots(le_overlap_plots)</code></pre>
 </div>
@@ -1046,11 +1272,11 @@ le_gene_overlap &lt;- wrap_plots(le_overlap_plots)</code></pre>
 <h2>Top human-mouse consistent genes</h2>
 <div id="heatmap" class="section level3">
 <h3>Heatmap</h3>
-<pre class="r"><code>contrast_keys_mouse &lt;- key_hs %&gt;%
+<pre class="r"><code>contrast_keys_human &lt;- key_hs %&gt;%
   unite(contrast, source, phenotype, contrast, sep = &quot;-&quot;) %&gt;%
   distinct(contrast, label)
 
-contrast_keys_human &lt;- key_mm %&gt;%
+contrast_keys_mouse &lt;- key_mm %&gt;%
   filter(str_detect(contrast, &quot;pure&quot;)) %&gt;%
   distinct(contrast, label)
 
@@ -1114,7 +1340,7 @@ ha &lt;- HeatmapAnnotation(
 h_hmap &lt;- Heatmap(
   t(as.matrix(m)),
   col = col_fun,
-  cluster_rows = T,
+  cluster_rows = F,
   cluster_columns = T,
   show_row_dend = F,
   show_column_dend = T,
@@ -1136,6 +1362,43 @@ h_hmap &lt;- Heatmap(
 
 h_hmap</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-top-human-mouse-consistent-genes-1">
+Past versions of top-human-mouse-consistent-genes-1.png
+</button>
+</p>
+<div id="fig-top-human-mouse-consistent-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="characteriatzion-via-tfs" class="section level3">
 <h3>Characteriatzion via TFs</h3>
@@ -1177,6 +1440,43 @@ tfs_up &lt;- ora_res %&gt;%
 
 tfs_up</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/consistent-tfs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-consistent-tfs-1">
+Past versions of consistent-tfs-1.png
+</button>
+</p>
+<div id="fig-consistent-tfs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-tfs-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="characteriatzion-via-pathways" class="section level3">
 <h3>Characteriatzion via pathways</h3>
@@ -1217,6 +1517,43 @@ pw_down &lt;- ora_res %&gt;%
 
 pw_up + pw_down</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/consistent-pws-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-consistent-pws-1">
+Past versions of consistent-pws-1.png
+</button>
+</p>
+<div id="fig-consistent-pws-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-pws-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="characterization-via-go-terms" class="section level3">
 <h3>Characterization via GO terms</h3>
@@ -1309,6 +1646,43 @@ consistent_down &lt;- down_dens +
 
 consistent_up + consistent_down</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/consistent-go-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-consistent-go-1">
+Past versions of consistent-go-1.png
+</button>
+</p>
+<div id="fig-consistent-go-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-go-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="expression-of-consistent-genes-in-mouse" class="section level2">
@@ -1319,8 +1693,8 @@ consistent_up + consistent_down</code></pre>
 le &lt;- readRDS(here(output_path, &quot;leading_edges_mgi.rds&quot;)) %&gt;%
   rename(contrast = signature)
 
-c &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/limma_result.rds&quot;)) %&gt;%
-  filter(treatment == &quot;pure_ccl4&quot;) %&gt;%
+c &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
   left_join(le) %&gt;%
   select(-regulation) %&gt;%
   rename(regulation = direction) %&gt;%
@@ -1335,7 +1709,10 @@ c &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/limma_result.rds&quot;))
 
 consistent_volcano_main &lt;- c %&gt;%
   filter(label == &quot;Month 12&quot;) %&gt;%
-  ggplot(aes(x = logFC, y = -log10(pval), color = regulation, alpha = regulation)) +
+  ggplot(aes(
+    x = logFC, y = -log10(pval), color = regulation,
+    alpha = regulation
+  )) +
   geom_point() +
   facet_rep_wrap(~label, scales = &quot;free&quot;) +
   my_theme(grid = &quot;y&quot;, fsize = fz) +
@@ -1352,7 +1729,10 @@ consistent_volcano_main &lt;- c %&gt;%
 
 consistent_volcano_supp &lt;- c %&gt;%
   filter(label != &quot;Month 12&quot;) %&gt;%
-  ggplot(aes(x = logFC, y = -log10(pval), color = regulation, alpha = regulation)) +
+  ggplot(aes(
+    x = logFC, y = -log10(pval), color = regulation,
+    alpha = regulation
+  )) +
   geom_point() +
   facet_rep_wrap(~label, scales = &quot;free&quot;) +
   my_theme(grid = &quot;y&quot;, fsize = fz) +
@@ -1369,6 +1749,43 @@ consistent_volcano_supp &lt;- c %&gt;%
 
 consistent_volcano_main + consistent_volcano_supp</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/expression-consistent-genes-in-mouse-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-expression-consistent-genes-in-mouse-1">
+Past versions of expression-consistent-genes-in-mouse-1.png
+</button>
+</p>
+<div id="fig-expression-consistent-genes-in-mouse-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/expression-consistent-genes-in-mouse-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
@@ -1383,7 +1800,10 @@ fig4 &lt;- patient_interstudy_enrichment /
   ((pw_up | tfs_up | consistent_up | consistent_volcano_main) +
     plot_layout(width = c(0.2, 0.3, 1.5, 1.5))) +
   plot_layout(height = c(0.75, 0.75, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;&quot;, &quot;H&quot;))) &amp;
+  plot_annotation(tag_levels = list(c(
+    &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;,
+    &quot;&quot;, &quot;H&quot;
+  ))) &amp;
   theme(
     plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
     legend.key.height = unit(11.5, &quot;pt&quot;),
@@ -1392,6 +1812,43 @@ fig4 &lt;- patient_interstudy_enrichment /
 
 fig4</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/fig-4-1.png" width="793.92" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fig-4-1">
+Past versions of fig-4-1.png
+</button>
+</p>
+<div id="fig-fig-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 ggsave(here(&quot;figures/Figure 4.pdf&quot;), fig4,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
@@ -1411,6 +1868,43 @@ ggsave(here(&quot;figures/Figure 4.png&quot;), fig4,
 
 sfig4_1</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/s-fig-4-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-s-fig-4-1-1">
+Past versions of s-fig-4-1-1.png
+</button>
+</p>
+<div id="fig-s-fig-4-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/s-fig-4-1-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 ggsave(here(&quot;figures/Supplementary Figure 4.1.pdf&quot;), sfig4_1,
   width = 21, height = 10, units = c(&quot;cm&quot;)
@@ -1433,6 +1927,43 @@ ggsave(here(&quot;figures/Supplementary Figure 4.1.png&quot;), sfig4_1,
 
 sfig4_2</code></pre>
 <p><img src="figure/plot-mouse-vs-human.Rmd/s-fig-4-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-s-fig-4-2-1">
+Past versions of s-fig-4-2-1.png
+</button>
+</p>
+<div id="fig-s-fig-4-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/s-fig-4-2-1.png" target="_blank">d8a06eb</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 ggsave(here(&quot;figures/Supplementary Figure 4.2.pdf&quot;), sfig4_2,
   width = 21, height = 10, units = c(&quot;cm&quot;)
@@ -1440,7 +1971,7 @@ ggsave(here(&quot;figures/Supplementary Figure 4.2.pdf&quot;), sfig4_2,
 ggsave(here(&quot;figures/Supplementary Figure 4.2.png&quot;), sfig4_2,
   width = 21, height = 10, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 00:31 minutes.</p>
+<p>Time spend to execute this analysis: 00:30 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
