@@ -110,7 +110,10 @@ keys <- key_hs %>%
   distinct(contrast, label, source, phenotype)
 
 gsea_res <- readRDS(here(output_path, "interstudy_enrichment.rds")) %>%
-  separate(signature, into = c("source", "phenotype", "contrast"), sep = "-") %>%
+  separate(signature,
+    into = c("source", "phenotype", "contrast"),
+    sep = "-"
+  ) %>%
   inner_join(keys, by = c("contrast", "source", "phenotype")) %>%
   select(-source, -phenotype, -contrast) %>%
   rename(signature = label) %>%
@@ -293,11 +296,11 @@ le_gene_overlap <- wrap_plots(le_overlap_plots)
 ## Top human-mouse consistent genes
 ### Heatmap
 ```{r top-human-mouse-consistent-genes}
-contrast_keys_mouse <- key_hs %>%
+contrast_keys_human <- key_hs %>%
   unite(contrast, source, phenotype, contrast, sep = "-") %>%
   distinct(contrast, label)
 
-contrast_keys_human <- key_mm %>%
+contrast_keys_mouse <- key_mm %>%
   filter(str_detect(contrast, "pure")) %>%
   distinct(contrast, label)
 
@@ -361,7 +364,7 @@ ha <- HeatmapAnnotation(
 h_hmap <- Heatmap(
   t(as.matrix(m)),
   col = col_fun,
-  cluster_rows = T,
+  cluster_rows = F,
   cluster_columns = T,
   show_row_dend = F,
   show_column_dend = T,
@@ -565,8 +568,8 @@ keys <- key_mm %>%
 le <- readRDS(here(output_path, "leading_edges_mgi.rds")) %>%
   rename(contrast = signature)
 
-c <- readRDS(here("output/meta-chronic-vs-acute/limma_result.rds")) %>%
-  filter(treatment == "pure_ccl4") %>%
+c <- readRDS(here("output/mouse-chronic-ccl4/limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
   left_join(le) %>%
   select(-regulation) %>%
   rename(regulation = direction) %>%
@@ -581,7 +584,10 @@ c <- readRDS(here("output/meta-chronic-vs-acute/limma_result.rds")) %>%
 
 consistent_volcano_main <- c %>%
   filter(label == "Month 12") %>%
-  ggplot(aes(x = logFC, y = -log10(pval), color = regulation, alpha = regulation)) +
+  ggplot(aes(
+    x = logFC, y = -log10(pval), color = regulation,
+    alpha = regulation
+  )) +
   geom_point() +
   facet_rep_wrap(~label, scales = "free") +
   my_theme(grid = "y", fsize = fz) +
@@ -598,7 +604,10 @@ consistent_volcano_main <- c %>%
 
 consistent_volcano_supp <- c %>%
   filter(label != "Month 12") %>%
-  ggplot(aes(x = logFC, y = -log10(pval), color = regulation, alpha = regulation)) +
+  ggplot(aes(
+    x = logFC, y = -log10(pval), color = regulation,
+    alpha = regulation
+  )) +
   geom_point() +
   facet_rep_wrap(~label, scales = "free") +
   my_theme(grid = "y", fsize = fz) +
@@ -628,7 +637,10 @@ fig4 <- patient_interstudy_enrichment /
   ((pw_up | tfs_up | consistent_up | consistent_volcano_main) +
     plot_layout(width = c(0.2, 0.3, 1.5, 1.5))) +
   plot_layout(height = c(0.75, 0.75, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c("A", "B", "C", "", "D", "E", "F", "G", "", "H"))) &
+  plot_annotation(tag_levels = list(c(
+    "A", "B", "C", "", "D", "E", "F", "G",
+    "", "H"
+  ))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
     legend.key.height = unit(11.5, "pt"),
