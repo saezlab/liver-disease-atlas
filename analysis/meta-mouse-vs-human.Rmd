@@ -312,7 +312,7 @@ gsea_res_top %>%
 
 ## Comparison of mouse and human data
 With this analysis we check whether the top differential expressed human genes have the same direction of regulation in the chronic mouse model.
-## Enrichment of human gene sets in mouse signatures
+### Enrichment of human gene sets in mouse signatures
 ```{r enrichment-hs-gs-mm-sig}
 contrasts <- readRDS(here(output_path, "limma_result.rds"))
 
@@ -395,6 +395,13 @@ unified_le <- leading_edges %>%
   count(signature, time, gene, direction, sort = T, name = "n_studies") %>%
   filter(n_studies >= 3)
 
+# translate to mgi genes for later use
+unified_le_mgi <- unified_le %>%
+  translate_gene_ids(from = "symbol_hgnc", to = "symbol_mgi") %>%
+  distinct(direction, gene, signature) %>%
+  # remove predicted genes
+  filter(!str_detect(gene, "Gm[0-9]+"))
+
 # overlap of unified and consistent leading edge genes per time point
 v <- unified_le %>%
   rename(regulation = direction) %>%
@@ -403,6 +410,7 @@ v <- unified_le %>%
   plot_venn_diagram()
 
 saveRDS(unified_le, here(output_path, "leading_edges.rds"))
+saveRDS(unified_le_mgi, here(output_path, "leading_edges_mgi.rds"))
 ```
 
 ### Heatmap of leading edge genes
@@ -653,6 +661,122 @@ df %>%
   annotation_logticks(sides = "b")
 ```
 
+### Similarity of chronic mouse models and patient cohorts
+```{r similarity-chronic-mm-and-hs}
+patient <- readRDS(here(output_path, "limma_result.rds")) %>%
+  select(gene, contrast, logFC, fdr, regulation, source, phenotype, contrast)
+
+teufel <- readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
+  rename(contrast = study, logFC = logfc)
+
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  select(-c(statistic, pval, contrast_reference))
+
+contrasts <- bind_rows(patient, teufel, chronic) %>%
+  assign_deg(effect_size_cutoff = log2(1.5))
+
+# populate gene sets with only significantly expressed genes
+mat_sig <- contrasts %>%
+  filter(regulation != "ns") %>%
+  unite(geneset, source, phenotype, contrast, sep = "-", na.rm = T) %>%
+  add_count(geneset, name = "size") %>%
+  # exclude gene sets with a size < 20
+  filter(size >= 20) %>%
+  group_by(geneset) %>%
+  mutate(key = row_number()) %>%
+  ungroup() %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene, key) %>%
+  untdy(key, geneset, gene)
+
+o <- set_similarity(mat_sig, measure = "overlap_coef", tidy = T)
+
+saveRDS(o, here(output_path, "cross_species_similarity.rds"))
+
+o %>%
+  ggplot(aes(x = set1, y = set2, fill = similarity)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = aachen_color("green")) +
+  labs(x = NULL, y = NULL, fill = "Overlap\ncoefficient") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+### Enrichment of chronic mouse genes in patient cohorts
+```{r enrichment-chronic-mm-in-hs}
+patient <- readRDS(here(output_path, "limma_result.rds")) %>%
+  select(gene, contrast, logFC, fdr, regulation, source)
+
+teufel <- readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
+  rename(contrast = study, logFC = logfc)
+
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  select(-c(statistic, pval, contrast_reference))
+
+# populate gene sets with only significantly expressed genes
+genesets_sig <- bind_rows(teufel, chronic) %>%
+  # adapt cutoff for the definition of significant genes
+  assign_deg(effect_size_cutoff = log2(1.5)) %>%
+  filter(regulation != "ns") %>%
+  add_count(contrast, name = "size") %>%
+  # exclude gene sets with a size < 10
+  filter(size >= 10) %>%
+  unite(geneset, contrast) %>%
+  unite(geneset, geneset, regulation, sep = "|") %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene)
+
+# construct signature matrix/data frame
+signature_df <- patient %>%
+  unite(signature, source, contrast) %>%
+  mutate(signature = as_factor(signature)) %>%
+  untdy("gene", "signature", "logFC")
+
+# run gsea
+set.seed(123)
+gsea_res_sig <- run_gsea(signature_df, genesets_sig, tidy = T, nperm = 10000) %>%
+  separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
+  mutate(
+    signature = as_factor(signature),
+    geneset = as_factor(geneset)
+  )
+
+saveRDS(gsea_res_sig, here(output_path, "cross_species_enrichment.rds"))
+
+a <- gsea_res_sig %>%
+  filter(direction == "up") %>%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %>%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = "free", ncol = 1) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_gradient2() +
+  my_theme(grid = "no", fsize = fz)
+
+b <- gsea_res_sig %>%
+  mutate(direction = fct_rev(direction)) %>%
+  filter(direction == "up") %>%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  # geom_jitter(aes(color = signature)) +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = "x")
+
+a + theme(legend.position = "none") +
+  b + theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
 ### Build gene pool for human etiology
 For each human etiology (e.g. NAFLD) a union of differentially expressed genes in constructed.
 ```{r etiology-gene-pool}
@@ -787,6 +911,6 @@ pr %>%
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
-t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
 ```
 Time spend to execute this analysis: `r t` minutes.
