@@ -107,20 +107,28 @@ keys <- key_mm %>%
   mutate(time = ordered(time))
 
 pca_plot <- pca_result$coords %>%
-  inner_join(keys, by="time") %>%
-  mutate(treatment = case_when(treatment == "bdl" ~ "BDL",
-                               treatment == "sham" ~ "Sham Surgery")) %>%
-  ggplot(aes(x=PC1, y=PC2, color=label, shape = treatment, label = label)) +
+  inner_join(keys, by = "time") %>%
+  mutate(treatment = case_when(
+    treatment == "bdl" ~ "BDL",
+    treatment == "sham" ~ "Sham Surgery"
+  )) %>%
+  ggplot(aes(x = PC1, y = PC2, color = label, shape = treatment, label = label)) +
   geom_point() +
-  labs(x = paste0("PC1", " (", pca_result$var[1], "%)"),
-       y = paste0("PC2", " (", pca_result$var[2], "%)"),
-       color = "Time", shape = "Group") +
-  my_theme(fsize  = fz) +
-  theme(legend.position = "top",
-        legend.box.margin = margin(10, 0, -20, 10)) +
-  scale_color_manual(values = aachen_color(c("blue", "bordeaux", "orange", 
-                                             "green"))) +
-  scale_shape_manual(values = c(19,15))
+  labs(
+    x = paste0("PC1", " (", pca_result$var[1], "%)"),
+    y = paste0("PC2", " (", pca_result$var[2], "%)"),
+    color = "Time", shape = "Group"
+  ) +
+  my_theme(fsize = fz) +
+  theme(
+    legend.position = "top",
+    legend.box.margin = margin(10, 0, -20, 10)
+  ) +
+  scale_color_manual(values = aachen_color(c(
+    "blue", "bordeaux", "orange",
+    "green"
+  ))) +
+  scale_shape_manual(values = c(19, 15))
 
 pca_plot
 ```
@@ -152,7 +160,7 @@ deg_count <- df %>%
   distinct(n, contrast, logFC, pval, regulation, value) %>%
   complete(contrast, nesting(regulation, logFC, pval), fill = list(n = 0))
 
-main_time = c(1,3,7)
+main_time <- c(1, 3, 7)
 
 # for main panel
 volcano_main <- df %>%
@@ -199,17 +207,17 @@ df <- readRDS(here(output_path, "limma_result.rds")) %>%
   select(-class) %>%
   rename(class = time_label2)
 
-top_genes_df <- df %>% 
+top_genes_df <- df %>%
   filter(regulation != "ns") %>%
   group_by(class, sign(logFC)) %>%
   slice_max(order_by = abs(logFC), n = 10, with_ties = F) %>%
-  ungroup() %>% 
+  ungroup() %>%
   nest(data = -c(class, value))
 
 plots <- top_genes_df %>%
   mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
 
-main_time = c(1,3,7)
+main_time <- c(1, 3, 7)
 
 # for main panel
 top_genes_main <- plots %>%
@@ -268,12 +276,14 @@ ts_cluster
 ### Supplementary Figure 2.6
 ```{r s-fig-2-6, fig.width=7.87, fig.height=11.69}
 sfig2_6 <- (design + histology) /
-  ((liver_enzymes | pca_plot) + plot_layout(widths = c(1,3))) /
+  ((liver_enzymes | pca_plot) + plot_layout(widths = c(1, 3))) /
   ((volcano_main / top_genes_main)) /
   ts_cluster +
   plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c("A", "B", "C", "D", "E", "F", "", "", "",
-                                      "", "", "G"))) &
+  plot_annotation(tag_levels = list(c(
+    "A", "B", "C", "D", "E", "F", "", "", "",
+    "", "", "G"
+  ))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
     legend.key.height = unit(11.5, "pt"),
@@ -312,6 +322,6 @@ ggsave(here("figures/Supplementary Figure 2.7.png"), sfig2_7,
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
-t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
 ```
 Time spend to execute this analysis: `r t` minutes.
