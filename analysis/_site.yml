@@ -59,7 +59,7 @@ navbar:
       - text: "Mouse vs. human (Fig. 4)"
         href: plot-mouse-vs-human.html
       - text: "Precision and recall of mouse models (Fig. 5)"
-        href: plot-teufel-integration.html
+        href: plot-precision-recall.html
   right:
   - text: "Get data"
     href: https://zenodo.org/record/xxx
