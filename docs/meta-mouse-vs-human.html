@@ -478,6 +478,12 @@ div.tocify {
     <li>
       <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
     </li>
+    <li>
+      <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
+    </li>
+    <li>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -538,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-23
+<strong>Last updated:</strong> 2020-12-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -629,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreef20866cebd9d059f3d4da269f394992148f6f35atargetblankf20866ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/f20866cebd9d059f3d4da269f394992148f6f35a" target="_blank">f20866c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreef20866cebd9d059f3d4da269f394992148f6f35atargetblankf20866ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/f20866cebd9d059f3d4da269f394992148f6f35a" target="_blank">f20866c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -667,8 +673,10 @@ Ignored files:
     Ignored:    analysis/plot-acute-ph_cache/
     Ignored:    analysis/plot-chronic-ccl4_cache/
     Ignored:    analysis/plot-chronic-vs-acute_cache/
+    Ignored:    analysis/plot-mouse-vs-human_cache/
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
+    Ignored:    analysis/plot-teufel-integration_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    data/.DS_Store
@@ -680,7 +688,6 @@ Ignored files:
     Ignored:    data/human-hoang-nafld/
     Ignored:    data/human-ramnath-fibrosis/
     Ignored:    data/meta-chronic-vs-acute/
-    Ignored:    data/meta-mouse-vs-human/
     Ignored:    data/mouse-acute-apap/
     Ignored:    data/mouse-acute-bdl/
     Ignored:    data/mouse-acute-ccl4/
@@ -711,8 +718,14 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
+Untracked files:
+    Untracked:  analysis/plot-precision-recall_old.Rmd
+    Untracked:  data/meta-mouse-vs-human/
+
 Unstaged changes:
-    Modified:   analysis/_site.yml
+    Modified:   analysis/plot-acute-bdl.Rmd
+    Modified:   analysis/plot-chronic-vs-acute.Rmd
+    Modified:   analysis/plot-mouse-vs-human.Rmd
 
 </code></pre>
 <p>
@@ -751,6 +764,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/f20866cebd9d059f3d4da269f394992148f6f35a/analysis/meta-mouse-vs-human.Rmd" target="_blank">f20866c</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-29
+</td>
+<td>
+added code for teufel integration
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/meta-mouse-vs-human.html" target="_blank">067c933</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1402,7 +1449,7 @@ christianholland
 </div>
 <div id="comparison-of-mouse-and-human-data" class="section level2">
 <h2>Comparison of mouse and human data</h2>
-<p>With this analysis we check whether the top differential expressed human genes have the same direction of regulation in the chronic mouse model. ## Enrichment of human gene sets in mouse signatures</p>
+<p>With this analysis we check whether the top differential expressed human genes have the same direction of regulation in the chronic mouse model. ### Enrichment of human gene sets in mouse signatures</p>
 <pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
 
 chronic_mouse &lt;- readRDS(
@@ -1542,6 +1589,25 @@ unified_le &lt;- leading_edges %&gt;%
 #&gt; count: now 6,080 rows and 5 columns, ungrouped
 #&gt; filter: removed 5,632 rows (93%), 448 rows remaining
 
+# translate to mgi genes for later use
+unified_le_mgi &lt;- unified_le %&gt;%
+  translate_gene_ids(from = &quot;symbol_hgnc&quot;, to = &quot;symbol_mgi&quot;) %&gt;%
+  distinct(direction, gene, signature) %&gt;%
+  # remove predicted genes
+  filter(!str_detect(gene, &quot;Gm[0-9]+&quot;))
+#&gt; select: dropped 6 variables (ensembl_mgi, ensembl_v_mgi, entrez_mgi, ensembl_hgnc, ensembl_v_hgnc, …)
+#&gt; drop_na: removed 1,905 rows (6%), 30,461 rows remaining
+#&gt; rename: renamed one variable (symbol_hgnc)
+#&gt; left_join: added one column (symbol_mgi)
+#&gt;            &gt; rows only in x        0
+#&gt;            &gt; rows only in y  (30,218)
+#&gt;            &gt; matched rows        473    (includes duplicates)
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total          473
+#&gt; select: renamed one variable (gene) and dropped one variable
+#&gt; distinct: removed 6 rows (1%), 467 rows remaining
+#&gt; filter: removed 4 rows (1%), 463 rows remaining
+
 # overlap of unified and consistent leading edge genes per time point
 v &lt;- unified_le %&gt;%
   rename(regulation = direction) %&gt;%
@@ -1656,7 +1722,8 @@ christianholland
 </div>
 </div>
 <pre class="r"><code>
-saveRDS(unified_le, here(output_path, &quot;leading_edges.rds&quot;))</code></pre>
+saveRDS(unified_le, here(output_path, &quot;leading_edges.rds&quot;))
+saveRDS(unified_le_mgi, here(output_path, &quot;leading_edges_mgi.rds&quot;))</code></pre>
 <div id="heatmap-of-leading-edge-genes" class="section level3">
 <h3>Heatmap of leading edge genes</h3>
 <pre class="r"><code># load leading edge genes and human and mouse contrasts
@@ -2167,6 +2234,160 @@ christianholland
 </table>
 </div>
 </div>
+</div>
+<div id="similarity-of-chronic-mouse-models-and-patient-cohorts" class="section level3">
+<h3>Similarity of chronic mouse models and patient cohorts</h3>
+<pre class="r"><code>patient &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  select(gene, contrast, logFC, fdr, regulation, source, phenotype, contrast)
+#&gt; select: dropped 2 variables (statistic, pval)
+
+teufel &lt;- readRDS(here(output_path, &quot;teufel_genes_hs.rds&quot;)) %&gt;%
+  rename(contrast = study, logFC = logfc)
+#&gt; rename: renamed 2 variables (contrast, logFC)
+
+chronic &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  select(-c(statistic, pval, contrast_reference))
+#&gt; filter: removed 120,807 rows (75%), 40,269 rows remaining
+#&gt; select: dropped 3 variables (statistic, pval, contrast_reference)
+
+contrasts &lt;- bind_rows(patient, teufel, chronic) %&gt;%
+  assign_deg(effect_size_cutoff = log2(1.5))
+
+# populate gene sets with only significantly expressed genes
+mat_sig &lt;- contrasts %&gt;%
+  filter(regulation != &quot;ns&quot;) %&gt;%
+  unite(geneset, source, phenotype, contrast, sep = &quot;-&quot;, na.rm = T) %&gt;%
+  add_count(geneset, name = &quot;size&quot;) %&gt;%
+  # exclude gene sets with a size &lt; 20
+  filter(size &gt;= 20) %&gt;%
+  group_by(geneset) %&gt;%
+  mutate(key = row_number()) %&gt;%
+  ungroup() %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene, key) %&gt;%
+  untdy(key, geneset, gene)
+#&gt; filter: removed 296,977 rows (96%), 13,556 rows remaining
+#&gt; add_count: new variable &#39;size&#39; (integer) with 26 unique values and 0% NA
+#&gt; filter: removed one row (&lt;1%), 13,555 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; select: dropped 4 variables (logFC, fdr, regulation, size)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (diehl-nafld-advanced_vs_mild, ramnath-fibrosis-hcv_adv_vs_early, hoang-nafld-stage_2_vs_0, hoang-nafld-stage_3_vs_0, hoang-nafld-stage_4_vs_0, …) [was 13555x3, now 3640x26]
+
+o &lt;- set_similarity(mat_sig, measure = &quot;overlap_coef&quot;, tidy = T)
+#&gt; gather: reorganized (diehl-nafld-advanced_vs_mild, ramnath-fibrosis-hcv_adv_vs_early, hoang-nafld-stage_2_vs_0, hoang-nafld-stage_3_vs_0, hoang-nafld-stage_4_vs_0, …) into (set2, similarity) [was 25x26, now 625x3]
+#&gt; drop_na: removed 300 rows (48%), 325 rows remaining
+#&gt; filter: removed 25 rows (8%), 300 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+
+saveRDS(o, here(output_path, &quot;cross_species_similarity.rds&quot;))
+
+o %&gt;%
+  ggplot(aes(x = set1, y = set2, fill = similarity)) +
+  geom_tile() +
+  scale_fill_gradient(low = &quot;white&quot;, high = aachen_color(&quot;green&quot;)) +
+  labs(x = NULL, y = NULL, fill = &quot;Overlap\ncoefficient&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="enrichment-of-chronic-mouse-genes-in-patient-cohorts" class="section level3">
+<h3>Enrichment of chronic mouse genes in patient cohorts</h3>
+<pre class="r"><code>patient &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  select(gene, contrast, logFC, fdr, regulation, source)
+#&gt; select: dropped 3 variables (statistic, pval, phenotype)
+
+teufel &lt;- readRDS(here(output_path, &quot;teufel_genes_hs.rds&quot;)) %&gt;%
+  rename(contrast = study, logFC = logfc)
+#&gt; rename: renamed 2 variables (contrast, logFC)
+
+chronic &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  select(-c(statistic, pval, contrast_reference))
+#&gt; filter: removed 120,807 rows (75%), 40,269 rows remaining
+#&gt; select: dropped 3 variables (statistic, pval, contrast_reference)
+
+# populate gene sets with only significantly expressed genes
+genesets_sig &lt;- bind_rows(teufel, chronic) %&gt;%
+  # adapt cutoff for the definition of significant genes
+  assign_deg(effect_size_cutoff = log2(1.5)) %&gt;%
+  filter(regulation != &quot;ns&quot;) %&gt;%
+  add_count(contrast, name = &quot;size&quot;) %&gt;%
+  # exclude gene sets with a size &lt; 10
+  filter(size &gt;= 10) %&gt;%
+  unite(geneset, contrast) %&gt;%
+  unite(geneset, geneset, regulation, sep = &quot;|&quot;) %&gt;%
+  mutate(geneset = as_factor(geneset)) %&gt;%
+  select(geneset, gene)
+#&gt; filter: removed 45,192 rows (86%), 7,653 rows remaining
+#&gt; add_count: new variable &#39;size&#39; (integer) with 12 unique values and 0% NA
+#&gt; filter: no rows removed
+#&gt; select: dropped 3 variables (logFC, fdr, size)
+
+# construct signature matrix/data frame
+signature_df &lt;- patient %&gt;%
+  unite(signature, source, contrast) %&gt;%
+  mutate(signature = as_factor(signature)) %&gt;%
+  untdy(&quot;gene&quot;, &quot;signature&quot;, &quot;logFC&quot;)
+#&gt; select: dropped 2 variables (fdr, regulation)
+#&gt; spread: reorganized (signature, logFC) into (diehl_advanced_vs_mild, ramnath_hcv_adv_vs_early, ramnath_nafld_adv_vs_early, hoang_stage_1_vs_0, hoang_stage_2_vs_0, …) [was 257688x3, now 24107x16]
+
+# run gsea
+set.seed(123)
+gsea_res_sig &lt;- run_gsea(signature_df, genesets_sig, tidy = T, nperm = 10000) %&gt;%
+  separate(geneset, into = c(&quot;geneset&quot;, &quot;direction&quot;), sep = &quot;[|]&quot;) %&gt;%
+  mutate(
+    signature = as_factor(signature),
+    geneset = as_factor(geneset)
+  )
+#&gt; summarise: now 24 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 7,629 rows (&gt;99%), 24 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x     0
+#&gt;            &gt; rows only in y  (  0)
+#&gt;            &gt; matched rows     360
+#&gt;            &gt;                 =====
+#&gt;            &gt; rows total       360
+
+saveRDS(gsea_res_sig, here(output_path, &quot;cross_species_enrichment.rds&quot;))
+
+a &lt;- gsea_res_sig %&gt;%
+  filter(direction == &quot;up&quot;) %&gt;%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %&gt;%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = &quot;free&quot;, ncol = 1) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_gradient2() +
+  my_theme(grid = &quot;no&quot;, fsize = fz)
+#&gt; filter: removed 180 rows (50%), 180 rows remaining
+
+b &lt;- gsea_res_sig %&gt;%
+  mutate(direction = fct_rev(direction)) %&gt;%
+  filter(direction == &quot;up&quot;) %&gt;%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  # geom_jitter(aes(color = signature)) +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = &quot;x&quot;)
+#&gt; filter: removed 180 rows (50%), 180 rows remaining
+
+a + theme(legend.position = &quot;none&quot;) +
+  b + theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/enrichment-chronic-mm-in-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="build-gene-pool-for-human-etiology" class="section level3">
 <h3>Build gene pool for human etiology</h3>
@@ -3160,7 +3381,7 @@ christianholland
 </table>
 </div>
 </div>
-<p>Time spend to execute this analysis: 00:49 minutes.</p>
+<p>Time spend to execute this analysis: 03:02 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
