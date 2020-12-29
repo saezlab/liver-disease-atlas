@@ -123,6 +123,8 @@ oo <- o %>%
   select(set1, set2, similarity)
 
 gs_sim <- oo %>%
+  filter(!str_detect(set1, "NAFLD|NASH|PSC|PBC|HCV")) %>%
+  filter(!str_detect(set2, "WTD|HF|PTEN|MCD|STZ|CCl4")) %>%
   # filter(str_detect(set2, "stage|ctrl|mild|early")) %>%
   ggplot(aes(
     x = set1, y = set2, fill = similarity,
@@ -350,7 +352,7 @@ ggsave(here("figures/Figure 5.png"), fig5,
 
 ### Supplementary Figure 5.1
 ```{r fig-5-1, fig.width=8.27, fig.height=11.69}
-sfig5_1 <- ((num_genes | gs_sim) + plot_layout(width = c(1, 3))) /
+sfig5_1 <- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) /
   ((tile_up + box_up) + plot_layout(width = c(4, 1), guides = "collect")) /
   ((tile_down + box_down) + plot_layout(width = c(4, 1), guides = "collect")) +
   plot_annotation(tag_levels = list(c("A", "B", "C", "", "D"))) &
