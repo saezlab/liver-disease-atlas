@@ -11,7 +11,7 @@
 
 
 
-<title>Precision and recall of chronic mouse models</title>
+<title>Precision and recall of chronic mouse models (Fig. 5)</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -478,6 +478,12 @@ div.tocify {
     <li>
       <a href="plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
     </li>
+    <li>
+      <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
+    </li>
+    <li>
+      <a href="plot-teufel-integration.html">Precision and recall of mouse models (Fig. 5)</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -513,7 +519,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Precision and recall of chronic mouse models</h1>
+<h1 class="title toc-ignore">Precision and recall of chronic mouse models (Fig. 5)</h1>
 
 </div>
 
@@ -538,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-23
+<strong>Last updated:</strong> 2020-12-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -629,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreebe749532db314b0574e22ca6aad1eec847a6ecfctargetblankbe74953a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/be749532db314b0574e22ca6aad1eec847a6ecfc" target="_blank">be74953</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreed4f78fae08eb96da82f28d39a0c6d2962abb7ecdtargetblankd4f78faa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreebe749532db314b0574e22ca6aad1eec847a6ecfctargetblankbe74953a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd" target="_blank">d4f78fa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/be749532db314b0574e22ca6aad1eec847a6ecfc" target="_blank">be74953</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -668,7 +674,9 @@ Ignored files:
     Ignored:    analysis/plot-acute-ph_cache/
     Ignored:    analysis/plot-chronic-ccl4_cache/
     Ignored:    analysis/plot-chronic-vs-acute_cache/
+    Ignored:    analysis/plot-mouse-vs-human_cache/
     Ignored:    analysis/plot-study-overview_cache/
+    Ignored:    analysis/plot-teufel-integration_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    data/.DS_Store
@@ -680,7 +688,6 @@ Ignored files:
     Ignored:    data/human-hoang-nafld/
     Ignored:    data/human-ramnath-fibrosis/
     Ignored:    data/meta-chronic-vs-acute/
-    Ignored:    data/meta-mouse-vs-human/
     Ignored:    data/mouse-acute-apap/
     Ignored:    data/mouse-acute-bdl/
     Ignored:    data/mouse-acute-ccl4/
@@ -711,8 +718,16 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
+Untracked files:
+    Untracked:  analysis/plot-precision-recall_old.Rmd
+    Untracked:  data/meta-mouse-vs-human/
+
 Unstaged changes:
     Modified:   analysis/_site.yml
+    Modified:   analysis/meta-mouse-vs-human.Rmd
+    Modified:   analysis/plot-acute-bdl.Rmd
+    Modified:   analysis/plot-chronic-vs-acute.Rmd
+    Modified:   analysis/plot-mouse-vs-human.Rmd
 
 </code></pre>
 <p>
@@ -756,6 +771,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/be749532db314b0574e22ca6aad1eec847a6ecfc/analysis/plot-precision-recall.Rmd" target="_blank">be74953</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-29
+</td>
+<td>
+added script for fig5
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/plot-precision-recall.html" target="_blank">067c933</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-precision-recall.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
@@ -777,7 +826,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Here we generate publication ready plots displaying various features of all included studies.</p>
+<p>Here we generate publication-ready plots for the integration of further chronic mouse models.</p>
 </div>
 <div id="libraries-and-sources" class="section level2">
 <h2>Libraries and sources</h2>
@@ -787,107 +836,343 @@ library(tidylog)
 library(here)
 
 library(AachenColorPalette)
+library(scales)
 library(UpSetR)
 library(grid)
-library(magick)
-library(ComplexHeatmap)
 library(lemon)
 library(ggrepel)
+library(magick)
 library(patchwork)
 
+library(gtools)
+
 source(here(&quot;code/utils-plots.R&quot;))</code></pre>
-<p>Definition of global variables that are used throughout this analysis.</p>
+<p>Definition of global variables and functions that are used throughout this analysis.</p>
 <pre class="r"><code># i/o
 data_path &lt;- &quot;data/meta-mouse-vs-human&quot;
 output_path &lt;- &quot;output/meta-mouse-vs-human&quot;
 
 # graphical parameters
 # fontsize
-fz &lt;- 7</code></pre>
-</div>
-<div id="number-of-degs" class="section level2">
-<h2>Number of DEGs</h2>
-<pre class="r"><code>df = readRDS(here(output_path, &quot;chronic_mouse_deg_numbers.rds&quot;)) %&gt;%
-  mutate(regulation = fct_rev(str_to_title(regulation))) %&gt;%
-  mutate(study = case_when(
-    str_detect(study, &quot;_2m&quot;) ~ &quot;CCl4 (2 Months)&quot;,
-    str_detect(study, &quot;_6m&quot;) ~ &quot;CCl4 (6 Months)&quot;,
-    str_detect(study, &quot;_12m&quot;) ~ &quot;CCl4 (12 Months)&quot;,
-    TRUE ~ as.character(study)
-  ))
+fz &lt;- 7
 
-mouse_deg_genes = df %&gt;%
-  ggplot(aes(y=fct_reorder(study, n, sum), x=n, fill=regulation)) +
+# keys to annotate contrasts
+key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.rds&quot;))
+key_hs &lt;- readRDS(here(&quot;data/meta-mouse-vs-human/contrast_annotation.rds&quot;))</code></pre>
+</div>
+<div id="chronic-mouse-model-genes-in-number" class="section level2">
+<h2>Chronic mouse model genes in number</h2>
+<pre class="r"><code>keys &lt;- key_mm %&gt;%
+  distinct(study = contrast, label2)
+
+df &lt;- readRDS(here(output_path, &quot;chronic_mouse_deg_numbers.rds&quot;)) %&gt;%
+  left_join(keys, by = &quot;study&quot;) %&gt;%
+  mutate(label2 = coalesce(label2, study)) %&gt;%
+  mutate(regulation = fct_rev(str_to_title(regulation)))
+
+num_genes &lt;- df %&gt;%
+  ggplot(aes(y = fct_reorder(label2, n, sum), x = n, fill = regulation)) +
   geom_col(position = &quot;dodge&quot;) +
-  labs(x=&quot;Number of differentially expressed genes&quot;, y=&quot;Chronic mouse model&quot;, 
-       fill = &quot;Regulation&quot;) +
-   scale_x_log10(
-   breaks = scales::trans_breaks(&quot;log10&quot;, function(x) 10^x),
-   labels = scales::trans_format(&quot;log10&quot;, scales::math_format(10^.x))
- ) +
-  annotation_logticks(sides = &quot;b&quot;) +
+  labs(
+    x = &quot;Number of differentially expressed genes&quot;,
+    y = &quot;Chronic mouse model&quot;,
+    fill = &quot;Regulation&quot;
+  ) +
+  scale_x_log10(
+    breaks = trans_breaks(&quot;log10&quot;, function(x) 10^x),
+    labels = trans_format(&quot;log10&quot;, scales::math_format(10^.x))
+  ) +
   my_theme(grid = &quot;x&quot;, fsize = fz) +
-  scale_fill_manual(values = aachen_color(c(&quot;red75&quot;, &quot;blue75&quot;)))
-  
-mouse_deg_genes</code></pre>
-<p><img src="figure/plot-precision-recall.Rmd/number-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="etiologies-in-numbers" class="section level2">
-<h2>Etiologies in numbers</h2>
-</div>
-<div id="precision-and-recall" class="section level2">
-<h2>Precision and recall</h2>
-<pre class="r"><code>pr = readRDS(here(output_path, &quot;precision_recall.rds&quot;)) %&gt;%
-  mutate(study = case_when(
-    str_detect(study, &quot;_2m&quot;) ~ &quot;CCl4 (2 Months)&quot;,
-    str_detect(study, &quot;_6m&quot;) ~ &quot;CCl4 (6 Months)&quot;,
-    str_detect(study, &quot;_12m&quot;) ~ &quot;CCl4 (12 Months)&quot;,
-    TRUE ~ as.character(study))) %&gt;%
-  mutate(regulation = fct_rev(str_to_title(regulation))) %&gt;%
-  mutate(label = case_when(
-    study == &quot;CCl4 (12 Months)&quot; ~ study,
-    TRUE ~NA_character_
-  ))
+  scale_fill_manual(values = aachen_color(c(&quot;red75&quot;, &quot;blue75&quot;))) +
+  annotation_logticks(sides = &quot;b&quot;)
 
-pr_plot = pr %&gt;%
-  ggplot(aes(x=recall, y=precision, label = label, color = study)) +
+num_genes</code></pre>
+<p><img src="figure/plot-precision-recall.Rmd/vis-chronic-mm-gene-numbers-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="similarity-of-chronic-mouse-models-and-patient-cohorts" class="section level2">
+<h2>Similarity of chronic mouse models and patient cohorts</h2>
+<pre class="r"><code>contrast_keys_human &lt;- key_hs %&gt;%
+  distinct(contrast, label, source, phenotype) %&gt;%
+  unite(contrast, source, phenotype, contrast, sep = &quot;-&quot;)
+
+contrast_keys_mouse &lt;- key_mm %&gt;%
+  filter(str_detect(contrast, &quot;pure&quot;)) %&gt;%
+  distinct(contrast, label)
+
+keys &lt;- bind_rows(contrast_keys_mouse, contrast_keys_human)
+
+
+o &lt;- readRDS(here(output_path, &quot;cross_species_similarity.rds&quot;))
+
+oo &lt;- o %&gt;%
+  rename(contrast = set1) %&gt;%
+  left_join(keys, by = &quot;contrast&quot;) %&gt;%
+  mutate(label = coalesce(label, contrast)) %&gt;%
+  rename(set1 = label, contrast = set2, contrast_set1 = contrast) %&gt;%
+  left_join(keys, by = &quot;contrast&quot;) %&gt;%
+  mutate(label = coalesce(label, contrast)) %&gt;%
+  rename(set2 = label, contrast_set2 = contrast) %&gt;%
+  mutate(
+    contrast_set1 = factor(contrast_set1, levels = levels(o$set1)),
+    contrast_set2 = factor(contrast_set2, levels = levels(o$set2)),
+    set1 = fct_reorder(set1, as.numeric(contrast_set1)),
+    set2 = fct_reorder(set2, as.numeric(contrast_set2))
+  ) %&gt;%
+  select(set1, set2, similarity)
+
+gs_sim &lt;- oo %&gt;%
+  # filter(str_detect(set2, &quot;stage|ctrl|mild|early&quot;)) %&gt;%
+  ggplot(aes(
+    x = set1, y = set2, fill = similarity,
+    label = round(similarity, 3)
+  )) +
+  geom_tile() +
+  scale_fill_gradient(low = &quot;white&quot;, high = aachen_color(&quot;green&quot;)) +
+  labs(x = NULL, y = NULL, fill = &quot;Overlap\ncoefficient&quot;) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  my_theme(fsize = fz, grid = &quot;no&quot;)
+
+gs_sim</code></pre>
+<p><img src="figure/plot-precision-recall.Rmd/similarity-chronic-mm-and-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="enrichment-of-chronic-mouse-genes-in-patient-cohorts" class="section level2">
+<h2>Enrichment of chronic mouse genes in patient cohorts</h2>
+<pre class="r"><code>contrast_keys_human &lt;- key_hs %&gt;%
+  distinct(contrast, label, source) %&gt;%
+  unite(contrast, source, contrast)
+
+contrast_keys_mouse &lt;- key_mm %&gt;%
+  filter(str_detect(contrast, &quot;pure&quot;)) %&gt;%
+  distinct(contrast, label)
+
+keys &lt;- bind_rows(contrast_keys_mouse, contrast_keys_human)
+
+gsea_res &lt;- readRDS(here(output_path, &quot;cross_species_enrichment.rds&quot;)) %&gt;%
+  rename(contrast = signature) %&gt;%
+  inner_join(keys, by = &quot;contrast&quot;) %&gt;%
+  select(-contrast) %&gt;%
+  rename(signature = label, contrast = geneset) %&gt;%
+  left_join(keys, by = &quot;contrast&quot;) %&gt;%
+  mutate(label = coalesce(label, contrast)) %&gt;%
+  select(-contrast) %&gt;%
+  rename(geneset = label) %&gt;%
+  mutate(direction = fct_rev(str_to_title(direction)))
+
+tile_up &lt;- gsea_res %&gt;%
+  filter(direction == &quot;Up&quot;) %&gt;%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %&gt;%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = &quot;free&quot;, ncol = 1) +
+  my_theme(grid = &quot;no&quot;, fsize = fz) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_fill_gradient2(
+    low = aachen_color(&quot;blue&quot;), mid = &quot;white&quot;,
+    high = aachen_color(&quot;red&quot;), limits = c(-1, 1)
+  ) +
+  my_theme(grid = &quot;no&quot;, fsize = fz) +
+  labs(x = &quot;Signature&quot;, y = &quot;Gene Set&quot;, fill = &quot;ES&quot;) +
+  guides(fill = guide_colorbar(title = &quot;ES&quot;))
+
+box_up &lt;- gsea_res %&gt;%
+  filter(direction == &quot;Up&quot;) %&gt;%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = &quot;x&quot;) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+tile_down &lt;- gsea_res %&gt;%
+  filter(direction == &quot;Down&quot;) %&gt;%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %&gt;%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = &quot;free&quot;, ncol = 1) +
+  my_theme(grid = &quot;no&quot;, fsize = fz) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_fill_gradient2(
+    low = aachen_color(&quot;blue&quot;), mid = &quot;white&quot;,
+    high = aachen_color(&quot;red&quot;), limits = c(-1, 1)
+  ) +
+  my_theme(grid = &quot;no&quot;, fsize = fz) +
+  labs(x = &quot;Signature&quot;, y = &quot;Gene Set&quot;, fill = &quot;ES&quot;) +
+  guides(fill = guide_colorbar(title = &quot;ES&quot;))
+
+box_down &lt;- gsea_res %&gt;%
+  filter(direction == &quot;Down&quot;) %&gt;%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = &quot;x&quot;) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+tile_up + box_up</code></pre>
+<p><img src="figure/plot-precision-recall.Rmd/enrichment-chronic-mm-in-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>tile_down + box_down</code></pre>
+<p><img src="figure/plot-precision-recall.Rmd/enrichment-chronic-mm-in-hs-2.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="etiology-genes-in-numbers" class="section level2">
+<h2>Etiology genes in numbers</h2>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;etiology_gene_sets.rds&quot;))
+
+mat_up &lt;- df %&gt;%
+  filter(regulation == &quot;up&quot;) %&gt;%
+  select(-regulation) %&gt;%
+  mutate(val = 1) %&gt;%
+  spread(etiology, val, fill = 0) %&gt;%
+  data.frame(row.names = 1)
+
+pdf(file = here(&quot;figures/tmp/Fig5A1.pdf&quot;), width = 15, height = 10, onefile = F)
+upset(mat_up,
+  nintersects = NA, mainbar.y.label = &quot;Common genes&quot;,
+  sets.x.label = &quot;Total number of genes&quot;,
+  text.scale = 3, point.size = 5
+)
+grid.text(&quot;Up&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz * 3))
+dev.off()
+#&gt; quartz_off_screen 
+#&gt;                 2
+
+mat_down &lt;- df %&gt;%
+  filter(regulation == &quot;down&quot;) %&gt;%
+  select(-regulation) %&gt;%
+  mutate(val = 1) %&gt;%
+  spread(etiology, val, fill = 0) %&gt;%
+  data.frame(row.names = 1)
+
+pdf(file = here(&quot;figures/tmp/Fig5A2.pdf&quot;), width = 15, height = 10, onefile = F)
+upset(mat_down,
+  nintersects = NA, mainbar.y.label = &quot;Common genes&quot;,
+  sets.x.label = &quot;Total number of genes&quot;,
+  text.scale = 3, point.size = 5
+)
+grid.text(&quot;Down&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz * 3))
+dev.off()
+#&gt; quartz_off_screen 
+#&gt;                 2</code></pre>
+</div>
+<div id="pr-scatter-plot" class="section level2">
+<h2>PR scatter plot</h2>
+<pre class="r"><code>keys &lt;- key_mm %&gt;%
+  distinct(study = contrast, label2)
+
+pr &lt;- readRDS(here(output_path, &quot;precision_recall.rds&quot;)) %&gt;%
+  left_join(keys, by = &quot;study&quot;) %&gt;%
+  mutate(label2 = coalesce(label2, study)) %&gt;%
+  mutate(regulation = fct_rev(str_to_title(regulation))) %&gt;%
+  mutate(x = case_when(
+    str_detect(label2, &quot;12 Month&quot;) ~ as.character(label2),
+    TRUE ~ NA_character_
+  )) %&gt;%
+  mutate(etiology = factor(etiology, levels = c(
+    &quot;NAFLD&quot;, &quot;NASH&quot;, &quot;HCV&quot;, &quot;PSC&quot;,
+    &quot;PBC&quot;
+  )))
+
+pr_plot &lt;- pr %&gt;%
+  ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
   geom_point() +
-  facet_rep_grid(etiology~regulation) +
+  facet_rep_grid(etiology ~ regulation) +
+  geom_text_repel(size = fz / (14 / 5), show.legend = FALSE, na.rm = TRUE) +
   geom_abline(lty = &quot;dashed&quot;) +
   expand_limits(x = 0, y = 0) +
-  labs(x=&quot;Recall&quot;, y=&quot;Precision&quot;, color = &quot;Mouse model&quot;) +
+  labs(x = &quot;Recall&quot;, y = &quot;Precision&quot;, color = &quot;Mouse model&quot;) +
   my_theme(fsize = fz) +
   scale_color_viridis_d() +
-  geom_label_repel(size = fz/(14/5), na.rm = T, show.legend = F)
+  coord_fixed()
 
 pr_plot</code></pre>
-<p><img src="figure/plot-precision-recall.Rmd/pr-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/plot-precision-recall.Rmd/pr-scatter-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
-<div id="supplementary-figure-5.1" class="section level3">
-<h3>Supplementary Figure 5.1</h3>
-<pre class="r"><code>sfig5_1 = mouse_deg_genes &amp;
-  theme(plot.tag = element_text(size = fz+3, face = &quot;bold&quot;),
-        legend.key.height= unit(11.5, &#39;pt&#39;),
-        legend.key.width= unit(12.5, &#39;pt&#39;))
-
-sfig5_1</code></pre>
-<p><img src="figure/plot-precision-recall.Rmd/s-fig-5-1-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>
-ggsave(here(&quot;figures/Supplementary Figure 5.1.pdf&quot;), sfig5_1,
-       width = 21, height = 8, units = c(&quot;cm&quot;))
-ggsave(here(&quot;figures/Supplementary Figure 5.1.png&quot;), sfig5_1,
-       width = 21, height = 8, units = c(&quot;cm&quot;))</code></pre>
-</div>
 <div id="figure-5" class="section level3">
 <h3>Figure 5</h3>
-<pre class="r"><code>fig5 = NULL
-ggsave(here(&quot;figures/Supplementary Figure 5.pdf&quot;), fig5,
-       width = 21, height = 29.7, units = c(&quot;cm&quot;))
-ggsave(here(&quot;figures/Supplementary Figure 5.png&quot;), fig5,
-       width = 21, height = 29.7, units = c(&quot;cm&quot;))</code></pre>
-<p>Time spend to execute this analysis: 00:05 minutes.</p>
+<p>Main Figure.</p>
+<pre class="r"><code>upset_up &lt;- image_ggplot(image_read_pdf(here(&quot;figures/tmp/Fig5A1.pdf&quot;)),
+                         interpolate = TRUE)
+
+# file.remove(here(&quot;figures/tmp/Fig5A1.pdf&quot;))
+upset_down &lt;- image_ggplot(image_read_pdf(here(&quot;figures/tmp/Fig5A2.pdf&quot;)),
+  interpolate = TRUE
+)
+# file.remove(here(&quot;figures/tmp/Fig5A2.pdf&quot;))
+
+fig5 &lt;- (upset_up | upset_down) /
+  ((pr_plot | plot_spacer()) + plot_layout(widths = c(2, 1))) +
+  plot_layout(height = c(1, 3)) +
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;&quot;, &quot;B&quot;))) &amp;
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  )
+
+fig5</code></pre>
+<p><img src="figure/plot-precision-recall.Rmd/fig-5-1.png" width="793.92" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+ggsave(here(&quot;figures/Figure 5.pdf&quot;), fig5,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)
+ggsave(here(&quot;figures/Figure 5.png&quot;), fig5,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)</code></pre>
+</div>
+<div id="supplementary-figure-5.1" class="section level3">
+<h3>Supplementary Figure 5.1</h3>
+<pre class="r"><code>sfig5_1 &lt;- ((num_genes | gs_sim) + plot_layout(width = c(1, 3))) /
+  ((tile_up + box_up) + plot_layout(width = c(4, 1), guides = &quot;collect&quot;)) /
+  ((tile_down + box_down) + plot_layout(width = c(4, 1), guides = &quot;collect&quot;)) +
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;&quot;, &quot;D&quot;))) &amp;
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  )
+
+sfig5_1</code></pre>
+<p><img src="figure/plot-precision-recall.Rmd/fig-5-1-1.png" width="793.92" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+ggsave(here(&quot;figures/Supplementary Figure 5.1.pdf&quot;), sfig5_1,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)
+ggsave(here(&quot;figures/Supplementary Figure 5.1.png&quot;), sfig5_1,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)</code></pre>
+<p>Time spend to execute this analysis: 00:50 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -912,40 +1197,32 @@ ggsave(here(&quot;figures/Supplementary Figure 5.png&quot;), fig5,
 #&gt; [8] base     
 #&gt; 
 #&gt; other attached packages:
-#&gt;  [1] patchwork_1.1.1          ggrepel_0.9.0            lemon_0.4.5             
-#&gt;  [4] ComplexHeatmap_2.4.3     magick_2.5.2             UpSetR_1.4.0            
-#&gt;  [7] AachenColorPalette_1.1.2 here_1.0.1               tidylog_1.0.2           
-#&gt; [10] forcats_0.5.0            stringr_1.4.0            dplyr_1.0.2             
-#&gt; [13] purrr_0.3.4              readr_1.4.0              tidyr_1.1.2             
-#&gt; [16] tibble_3.0.4             ggplot2_3.3.2            tidyverse_1.3.0         
-#&gt; [19] workflowr_1.6.2         
+#&gt;  [1] gtools_3.8.2             patchwork_1.1.1          magick_2.5.2            
+#&gt;  [4] ggrepel_0.9.0            lemon_0.4.5              UpSetR_1.4.0            
+#&gt;  [7] scales_1.1.1             AachenColorPalette_1.1.2 here_1.0.1              
+#&gt; [10] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
+#&gt; [13] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
+#&gt; [16] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
+#&gt; [19] tidyverse_1.3.0          workflowr_1.6.2         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] fs_1.5.0            lubridate_1.7.9.2   RColorBrewer_1.1-2 
-#&gt;  [4] httr_1.4.2          rprojroot_2.0.2     tools_4.0.2        
-#&gt;  [7] backports_1.2.1     R6_2.5.0            DBI_1.1.0          
-#&gt; [10] colorspace_2.0-0    GetoptLong_1.0.5    withr_2.3.0        
-#&gt; [13] tidyselect_1.1.0    gridExtra_2.3       compiler_4.0.2     
-#&gt; [16] git2r_0.27.1        cli_2.2.0           rvest_0.3.6        
-#&gt; [19] xml2_1.3.2          labeling_0.4.2      scales_1.1.1       
-#&gt; [22] digest_0.6.27       rmarkdown_2.6       pkgconfig_2.0.3    
-#&gt; [25] htmltools_0.5.0     dbplyr_2.0.0        rlang_0.4.9        
-#&gt; [28] GlobalOptions_0.1.2 readxl_1.3.1        rstudioapi_0.13    
-#&gt; [31] shape_1.4.5         generics_0.1.0      farver_2.0.3       
-#&gt; [34] jsonlite_1.7.2      magrittr_2.0.1      Rcpp_1.0.5         
-#&gt; [37] munsell_0.5.0       fansi_0.4.1         lifecycle_0.2.0    
-#&gt; [40] stringi_1.5.3       whisker_0.4         yaml_2.2.1         
-#&gt; [43] plyr_1.8.6          parallel_4.0.2      promises_1.1.1     
-#&gt; [46] crayon_1.3.4        lattice_0.20-41     haven_2.3.1        
-#&gt; [49] cowplot_1.1.0       circlize_0.4.11     hms_0.5.3          
-#&gt; [52] knitr_1.30          pillar_1.4.7        rjson_0.2.20       
-#&gt; [55] codetools_0.2-16    clisymbols_1.2.0    reprex_0.3.0       
-#&gt; [58] glue_1.4.2          evaluate_0.14       renv_0.12.3        
-#&gt; [61] modelr_0.1.8        png_0.1-7           vctrs_0.3.6        
-#&gt; [64] httpuv_1.5.4        cellranger_1.1.0    gtable_0.3.0       
-#&gt; [67] clue_0.3-58         assertthat_0.2.1    xfun_0.19          
-#&gt; [70] broom_0.7.3         later_1.1.0.1       viridisLite_0.3.0  
-#&gt; [73] cluster_2.1.0       ellipsis_0.3.1</code></pre>
+#&gt;  [1] httr_1.4.2        viridisLite_0.3.0 jsonlite_1.7.2    modelr_0.1.8     
+#&gt;  [5] pdftools_2.3.1    assertthat_0.2.1  askpass_1.1       renv_0.12.3      
+#&gt;  [9] cellranger_1.1.0  yaml_2.2.1        qpdf_1.1          pillar_1.4.7     
+#&gt; [13] backports_1.2.1   lattice_0.20-41   glue_1.4.2        digest_0.6.27    
+#&gt; [17] promises_1.1.1    rvest_0.3.6       colorspace_2.0-0  cowplot_1.1.0    
+#&gt; [21] htmltools_0.5.0   httpuv_1.5.4      plyr_1.8.6        clisymbols_1.2.0 
+#&gt; [25] pkgconfig_2.0.3   broom_0.7.3       haven_2.3.1       whisker_0.4      
+#&gt; [29] later_1.1.0.1     git2r_0.27.1      generics_0.1.0    farver_2.0.3     
+#&gt; [33] ellipsis_0.3.1    withr_2.3.0       cli_2.2.0         magrittr_2.0.1   
+#&gt; [37] crayon_1.3.4      readxl_1.3.1      evaluate_0.14     fs_1.5.0         
+#&gt; [41] fansi_0.4.1       xml2_1.3.2        tools_4.0.2       hms_0.5.3        
+#&gt; [45] lifecycle_0.2.0   munsell_0.5.0     reprex_0.3.0      compiler_4.0.2   
+#&gt; [49] rlang_0.4.9       rstudioapi_0.13   labeling_0.4.2    rmarkdown_2.6    
+#&gt; [53] gtable_0.3.0      codetools_0.2-16  DBI_1.1.0         R6_2.5.0         
+#&gt; [57] gridExtra_2.3     lubridate_1.7.9.2 knitr_1.30        rprojroot_2.0.2  
+#&gt; [61] stringi_1.5.3     Rcpp_1.0.5        vctrs_0.3.6       dbplyr_2.0.0     
+#&gt; [65] tidyselect_1.1.0  xfun_0.19</code></pre>
 </div>
 </div>
 </div>
