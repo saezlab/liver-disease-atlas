@@ -24,7 +24,7 @@ start_time <- Sys.time()
 ```
 
 ## Introduction
-Here we generate plots display various features of all included studies.
+Here we generate publication-ready plots for the comparison of chronic and acute mouse models.
 
 ## Libraries and sources
 These libraries and sources are used for this analysis.
