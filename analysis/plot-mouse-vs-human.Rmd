@@ -315,7 +315,8 @@ sc_degs <- readRDS(here(data_path, "single_cell_degs.rds")) %>%
     avg_logFC >= 0 & cluster == "Uninjured" ~ -avg_logFC,
     avg_logFC < 0 & cluster == "Uninjured" ~ -avg_logFC,
     TRUE ~ avg_logFC
-  ))
+  )) %>%
+  filter(abs(avg_logFC) >= 0.25)
 
 # load consistent genes
 df <- readRDS(here(output_path, "consistent_genes.rds")) %>%
@@ -342,7 +343,10 @@ celltype_anno <- top_genes_df %>%
   data.frame(row.names = 1, check.names = F) %>%
   select(-Unknown)
 
-col_fun_anno <- col_fun
+col_fun_anno <- colorRamp2(
+  c(-1.5, 0, 1.5),
+  c(aachen_color("blue"), "white", aachen_color("red"))
+)
 ha <- HeatmapAnnotation(
   df = celltype_anno,
   show_legend = F,
