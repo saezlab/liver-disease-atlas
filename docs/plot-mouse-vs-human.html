@@ -544,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-29
+<strong>Last updated:</strong> 2020-12-30
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeaf35abe164468c63d12a5ea58b7d6e131e6cd596targetblankaf35abea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/af35abe164468c63d12a5ea58b7d6e131e6cd596" target="_blank">af35abe</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree26cc806777cddc295cc375b282b70905fde421e5targetblank26cc806a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/26cc806777cddc295cc375b282b70905fde421e5" target="_blank">26cc806</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertreeaf35abe164468c63d12a5ea58b7d6e131e6cd596targetblankaf35abea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree26cc806777cddc295cc375b282b70905fde421e5targetblank26cc806a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/af35abe164468c63d12a5ea58b7d6e131e6cd596" target="_blank">af35abe</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/26cc806777cddc295cc375b282b70905fde421e5" target="_blank">26cc806</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -654,7 +654,6 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/figure/
     Ignored:    analysis/human-diehl-nafld_cache/
     Ignored:    analysis/human-hampe13-nash_cache/
     Ignored:    analysis/human-hampe14-misc_cache/
@@ -759,6 +758,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/26cc806777cddc295cc375b282b70905fde421e5/analysis/plot-mouse-vs-human.Rmd" target="_blank">26cc806</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-30
+</td>
+<td>
+changed sc cutoff to 0.25
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/plot-mouse-vs-human.html" target="_blank">b43c246</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1291,7 +1324,8 @@ sc_degs &lt;- readRDS(here(data_path, &quot;single_cell_degs.rds&quot;)) %&gt;%
     avg_logFC &gt;= 0 &amp; cluster == &quot;Uninjured&quot; ~ -avg_logFC,
     avg_logFC &lt; 0 &amp; cluster == &quot;Uninjured&quot; ~ -avg_logFC,
     TRUE ~ avg_logFC
-  ))
+  )) %&gt;%
+  filter(abs(avg_logFC) &gt;= 0.25)
 
 # load consistent genes
 df &lt;- readRDS(here(output_path, &quot;consistent_genes.rds&quot;)) %&gt;%
@@ -1318,7 +1352,10 @@ celltype_anno &lt;- top_genes_df %&gt;%
   data.frame(row.names = 1, check.names = F) %&gt;%
   select(-Unknown)
 
-col_fun_anno &lt;- col_fun
+col_fun_anno &lt;- colorRamp2(
+  c(-1.5, 0, 1.5),
+  c(aachen_color(&quot;blue&quot;), &quot;white&quot;, aachen_color(&quot;red&quot;))
+)
 ha &lt;- HeatmapAnnotation(
   df = celltype_anno,
   show_legend = F,
@@ -1384,6 +1421,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">b43c246</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">d8a06eb</a>
@@ -1836,6 +1884,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/saezlab/meta-liver/blob/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">b43c246</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2020-12-29
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
@@ -1971,7 +2030,7 @@ ggsave(here(&quot;figures/Supplementary Figure 4.2.pdf&quot;), sfig4_2,
 ggsave(here(&quot;figures/Supplementary Figure 4.2.png&quot;), sfig4_2,
   width = 21, height = 10, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 00:30 minutes.</p>
+<p>Time spend to execute this analysis: 00:31 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
