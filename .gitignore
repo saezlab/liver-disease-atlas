@@ -27,5 +27,6 @@ output/**/*.txt
 **/README.html
 
 figures/*
+tables/*
 
 
