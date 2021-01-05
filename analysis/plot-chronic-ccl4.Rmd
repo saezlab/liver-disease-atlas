@@ -62,7 +62,8 @@ key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
 ## Design
 ```{r design}
 design <- ggdraw() +
-  draw_image(here(data_path, "exp-design.pdf"))
+  draw_image(here(data_path, "exp-design.pdf")) +
+  theme(plot.margin = margin(r = 1, unit = "cm"))
 ```
 
 ## Histology
@@ -212,7 +213,8 @@ tables = df %>%
   filter(contrast_reference == "pure_ccl4") %>%
   mutate(class = str_c("Month ", parse_number(as.character(contrast)))) %>%
   select(-contrast_reference, -contrast) %>%
-  mutate(class = factor(class, levels = c("Month 2", "Month 6", "Month 12"))) %>%
+  mutate(class = factor(class, 
+                        levels = c("Month 2", "Month 6", "Month 12"))) %>%
   group_split(class)
 
 # extract labellers
@@ -271,8 +273,9 @@ plots = c("up", "down") %>%
       # cat.col = aachen_color(c("purple", "petrol", "red")),
       cat.cex = 1/12*(fz+1),
       cat.fontfamily = rep("sans", 3),
-      cat.pos = c(0,0,180),
-      cat.prompts = T
+      cat.pos = c(350,10,180),
+      cat.prompts = T,
+      cat.just = list(c(0.5, 1), c(0.5, 1), c(0.5, 1))
     ) %>%
       as_ggplot() %>%
       grid.arrange(top = textGrob(str_to_title(r), gp=gpar(fontsize=fz, 
@@ -374,8 +377,8 @@ ts_cluster
 ### Figure 1
 ```{r fig-1, fig.width=7.87, fig.height=11.69}
 fig1 <- (design + histology) /
-  ((liver_enzymes | gene_overlap | top_overlap_genes) + 
-     plot_layout(widths = c(1,2,2))) /
+  ((liver_enzymes | (gene_overlap / plot_spacer()) | top_overlap_genes) + 
+     plot_layout(widths = c(1,2.5,2))) /
   ts_cluster +
   plot_layout(height = c(1, 1, 1)) +
   plot_annotation(tag_levels = list(c("A", "B", "C", "D", "", "E", "F"))) &
