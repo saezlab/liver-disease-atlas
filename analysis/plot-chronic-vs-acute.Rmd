@@ -208,7 +208,7 @@ union_a <- df %>%
     axis.ticks.y = element_blank(),
     legend.position = "none"
   ) +
-  labs(y = "Genes", x = NULL, fill = "t-statistic") +
+  labs(y = "Pool of acute genes", x = NULL, fill = "t-statistic") +
   facet_rep_wrap(~class) +
   scale_fill_gradient2(
     low = aachen_color("blue"), mid = "white",
@@ -229,7 +229,7 @@ union_c <- df %>%
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   ) +
-  labs(y = "Genes", x = NULL, fill = "t-statistic") +
+  labs(y = "Pool of chronic genes", x = NULL, fill = "t-statistic") +
   facet_rep_wrap(~class) +
   scale_fill_gradient2(
     low = aachen_color("blue"), mid = "white",
