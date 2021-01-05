@@ -368,7 +368,7 @@ ha <- HeatmapAnnotation(
 h_hmap <- Heatmap(
   t(as.matrix(m)),
   col = col_fun,
-  cluster_rows = F,
+  cluster_rows = T,
   cluster_columns = T,
   show_row_dend = F,
   show_column_dend = T,
