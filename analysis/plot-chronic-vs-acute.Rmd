@@ -271,7 +271,8 @@ v <- grid.grabExpr(draw.pairwise.venn(
   # cat.col = aachen_color(c("purple", "petrol")),
   cat.cex = 1 / 12 * (fz + 1),
   cat.fontfamily = rep("sans", 2),
-  cat.pos = c(340, 20)
+  cat.pos = c(340, 20),
+  cat.just = list(c(0.5, 0), c(0.5, 0))
 ))
 ```
 
@@ -306,7 +307,8 @@ mat_exclusive_chronic_genes <- df %>%
 exclusive_chronic_hmap <- Heatmap(
   t(mat_exclusive_chronic_genes),
   col = col_fun,
-  cluster_rows = F, cluster_columns = T,
+  cluster_rows = T, cluster_columns = T,
+  show_row_dend = F,
   row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 2),
   name = "logFC",
   heatmap_legend_param = list(
@@ -492,7 +494,8 @@ mat_common_genes <- df %>%
 common_hmap <- Heatmap(
   t(mat_common_genes),
   col = col_fun,
-  cluster_rows = F, cluster_columns = T,
+  cluster_rows = T, cluster_columns = T,
+  show_row_dend = F,
   row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 2),
   name = "logFC",
   heatmap_legend_param = list(
@@ -706,7 +709,8 @@ mat_exclusive_acute_genes <- df %>%
 exclusive_acute_hmap <- Heatmap(
   t(mat_exclusive_acute_genes),
   col = col_fun,
-  cluster_rows = F, cluster_columns = T,
+  cluster_rows = T, cluster_columns = T,
+  show_row_dend = F,
   row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 2),
   name = "logFC",
   heatmap_legend_param = list(
@@ -905,8 +909,8 @@ exclusive_acute_up + exclusive_acute_down
 ### Figure 3
 Main Figure.
 ```{r fig-3, fig.width=8.27, fig.height=11.69}
-fig3 <- ((((acute_gs_sim / v) + plot_layout(height = c(4, 1))) |
-  acute_interstudy_enrichment)) /
+fig3 <- (((acute_gs_sim / v) + plot_layout(height = c(4, 1))) |
+  acute_interstudy_enrichment) /
   grid.grabExpr(draw(exclusive_chronic_hmap)) /
   ((chronic_tfs_up | chronic_pw_up | exclusive_chronic_up | plot_spacer()) +
     plot_layout(width = c(1, 0.5, 2, 1))) /
