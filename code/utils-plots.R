@@ -548,7 +548,7 @@ make_gsea_plot <- function(signature, geneset, gene_level_stat, ...) {
     geom_path(size = 1, color = "#0098A1") +
     lims(x = c(0, max_rank + 1)) +
     labs(y = "Enrichment Score") +
-    background_grid(major = "y", minor = "none", size.major = 0.4) +
+    cowplot::background_grid(major = "y", minor = "none", size.major = 0.4) +
     theme(
       axis.line.x = element_blank(),
       axis.title.x = element_blank(),
@@ -594,10 +594,12 @@ make_gsea_plot <- function(signature, geneset, gene_level_stat, ...) {
       legend.justification = "center"
     ) +
     labs(x = "Rank", y = NULL, color = "Gene-level Statistic") +
-    guides(color = guide_colorbar(barwidth = 15, ticks = F, title.vjust = 0.8, title.position = "top"))
+    guides(color = guide_colorbar(barwidth = 15, ticks = F, title.vjust = 0.8,
+                                  title.position = "top"))
 
   # combine both plots
-  p <- plot_grid(p1, p2, ncol = 1, align = "v", axis = "l", rel_heights = c(2, 1))
+  p <- cowplot::plot_grid(p1, p2, ncol = 1, align = "v", axis = "l",
+                          rel_heights = c(2, 1))
   return(p)
 }
 
