@@ -264,7 +264,7 @@ j %>%
 
 ### Mutual enrichment of differential expressed genes
 This analysis explores whether the top differential expressed genes of specific contrasts of the acute mouse models are consistently regulated across the acute mouse models.
-```{r mututal-enrichment-degs}
+```{r mututal-enrichment-degs, fig.height=6}
 contrasts <- readRDS(here(output_path, "limma_result.rds"))
 
 # populate gene sets with a fixed size selected by effect size (t-value)
@@ -298,6 +298,18 @@ gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
 
 saveRDS(gsea_res_top, here(output_path, "interstudy_enrichment.rds"))
 
+# individual gsea plot
+make_gsea_plot(
+  signature = signature_df %>%
+    rownames_to_column("gene") %>%
+    select(gene, t = `hoang-nafld-stage_6_vs_0`) %>%
+    drop_na(),
+  geneset = genesets_top %>%
+    filter(geneset == "diehl-nafld-advanced_vs_mild|up"),
+  gene_level_stat = t
+)
+
+# summary gsea plot
 gsea_res_top %>%
   mutate(label = stars.pval(padj)) %>%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
@@ -312,8 +324,9 @@ gsea_res_top %>%
 
 ## Comparison of mouse and human data
 With this analysis we check whether the top differential expressed human genes have the same direction of regulation in the chronic mouse model.
+
 ### Enrichment of human gene sets in mouse signatures
-```{r enrichment-hs-gs-mm-sig}
+```{r enrichment-hs-gs-mm-sig, fig.height=6}
 contrasts <- readRDS(here(output_path, "limma_result.rds"))
 
 chronic_mouse <- readRDS(
@@ -342,7 +355,10 @@ signature_df <- chronic_mouse %>%
 set.seed(123)
 gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
   separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
-  separate(geneset, into = c("source", "phenotype", "contrast"), sep = "-", remove = F) %>%
+  separate(geneset,
+    into = c("source", "phenotype", "contrast"), sep = "-",
+    remove = F
+  ) %>%
   mutate(
     signature = as_factor(signature),
     geneset = as_factor(geneset),
@@ -351,6 +367,18 @@ gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
 
 saveRDS(gsea_res_top, here(output_path, "gsea_res.rds"))
 
+# individual gsea plot
+make_gsea_plot(
+  signature = signature_df %>%
+    rownames_to_column("gene") %>%
+    select(gene, t = `pure_ccl_12m_vs_0m`) %>%
+    drop_na(),
+  geneset = genesets_top %>%
+    filter(geneset == "diehl-nafld-advanced_vs_mild|up"),
+  gene_level_stat = t
+)
+
+# summary gsea plot
 gsea_res_top %>%
   mutate(label = stars.pval(padj)) %>%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
@@ -447,9 +475,27 @@ df_ranked <- df %>%
   transmute(gene, rank = row_number(-abs(mean_logfc))) %>%
   inner_join(df, by = "gene")
 
-saveRDS(df_ranked, here(output_path, "consistent_genes.rds"))
+# get degs from single cell data
+# see "code/meta-mouse-vs-human/sc_deg.R" to see how this object was created.
+sc_degs <- readRDS(here(data_path, "single_cell_degs.rds")) %>%
+  enframe("celltype") %>%
+  unnest(value) %>%
+  filter(p_val_adj <= 0.05) %>%
+  mutate(adjusted_logfc = case_when(
+    avg_logFC >= 0 & cluster == "Uninjured" ~ -avg_logFC,
+    avg_logFC < 0 & cluster == "Uninjured" ~ -avg_logFC,
+    TRUE ~ avg_logFC
+  )) %>%
+  filter(abs(avg_logFC) >= 0.25)
 
-mat <- df_ranked %>%
+# combine consistent genes with cell types
+df_ranked_ct <- df_ranked %>%
+  left_join(sc_degs, by = "gene") %>%
+  mutate(celltype = fct_explicit_na(celltype, na_level = "Unknown"))
+
+saveRDS(df_ranked_ct, here(output_path, "consistent_genes.rds"))
+
+mat <- df_ranked_ct %>%
   filter(rank <= 100) %>%
   distinct(gene, contrast, logFC) %>%
   untdy(feature = "gene", key = "contrast", value = "logFC") %>%

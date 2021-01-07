@@ -306,22 +306,8 @@ contrast_keys_mouse <- key_mm %>%
 
 keys <- bind_rows(contrast_keys_mouse, contrast_keys_human)
 
-# get degs from single cell data
-sc_degs <- readRDS(here(data_path, "single_cell_degs.rds")) %>%
-  enframe("celltype") %>%
-  unnest(value) %>%
-  filter(p_val_adj <= 0.05) %>%
-  mutate(adjusted_logfc = case_when(
-    avg_logFC >= 0 & cluster == "Uninjured" ~ -avg_logFC,
-    avg_logFC < 0 & cluster == "Uninjured" ~ -avg_logFC,
-    TRUE ~ avg_logFC
-  )) %>%
-  filter(abs(avg_logFC) >= 0.25)
-
 # load consistent genes
-df <- readRDS(here(output_path, "consistent_genes.rds")) %>%
-  left_join(sc_degs, by = "gene") %>%
-  mutate(celltype = fct_explicit_na(celltype, na_level = "Unknown"))
+df <- readRDS(here(output_path, "consistent_genes.rds"))
 
 # extract top 100 consistent genes
 top_genes_df <- df %>%

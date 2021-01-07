@@ -312,7 +312,7 @@ j %>%
 
 ### Mutual enrichment of differential expressed genes
 This analysis explores whether the top differential expressed genes of specific contrasts of the acute mouse models are consistently regulated across the acute mouse models.
-```{r mututal-enrichment-degs}
+```{r mututal-enrichment-degs, fig.height=6}
 # select specific contrasts from the acute mouse models
 contrast_of_interest <- c(
   "treat_vs_ctrl", "inLiver_lps_vs_ctrl",
@@ -354,6 +354,18 @@ gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
 
 saveRDS(gsea_res_top, here(output_path, "interstudy_enrichment.rds"))
 
+# individual gsea plot
+make_gsea_plot(
+  signature = signature_df %>%
+    rownames_to_column("gene") %>%
+    select(gene, t = `acute-wek-tunicamycin-treat_vs_ctrl`) %>%
+    drop_na(),
+  geneset = genesets_top %>%
+    filter(geneset == "acute-godoy-ccl4-ccl_24h_vs_0h|up"),
+  gene_level_stat = t
+)
+
+# summary gsea plot
 gsea_res_top %>%
   mutate(label = gtools::stars.pval(padj)) %>%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
@@ -364,6 +376,9 @@ gsea_res_top %>%
   scale_fill_gradient2() +
   my_theme(fsize = fz, grid = "no") +
   labs(x = "Signature", y = "Gene set")
+
+
+
 ```
 
 ## Construction of unified acute and chronic genes
@@ -720,7 +735,7 @@ Heatmap(t(mat_exclusive_acute_genes),
 
 ## Characterization of exclusive and common genes
 All exclusive chronic, exclusive acute and common genes are characterized GO terms, [PROGENy's](http://saezlab.github.io/progeny/) pathways and [DoRothEA's](http://saezlab.github.io/dorothea/) TFs. As statistic over-representation analysis is used.
-```{r exclusive-common-gene-characterization}
+```{r exclusive-common-gene-characterizations}
 exclusive_chronic_genes <- readRDS(
   here(output_path, "ranked_exclusive_chronic_genes.rds")
 ) %>%
@@ -767,7 +782,7 @@ In this section significant GO terms are summarized in two different ways. i) Wh
 
 ### Text analysis
 GO terms are splitted into words and their frequency is counted.
-```{r}
+```{r go-text-analysis}
 # list of words that will be ignored 
 stop_go_words = readRDS(here("data/annotation/stop_go_words.rds"))
 
