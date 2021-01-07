@@ -1,3 +1,8 @@
+# Copyright (c) [2021] [Christian H. Holland]
+# christian.holland@bioquant.uni-heidelberg.de
+
+#' This functions performs PCA analysis either on all genes or only on the most
+#' variable genes.
 do_pca <- function(df, meta = NULL, top_n_var_genes = NULL) {
   if (!is.null(top_n_var_genes)) {
     top_var_genes <- base::apply(df, 1, var) %>%
@@ -83,8 +88,10 @@ assign_deg <- function(df, fdr_cutoff = 0.05, effect_size_cutoff = 1,
                        fdr_id = fdr, effect_size_id = logFC) {
   degs <- df %>%
     mutate(regulation = case_when(
-      {{ effect_size_id }} >= effect_size_cutoff & {{ fdr_id }} <= fdr_cutoff ~ "up",
-      {{ effect_size_id }} <= -effect_size_cutoff & {{ fdr_id }} <= fdr_cutoff ~ "down",
+      {{ effect_size_id }} >= effect_size_cutoff & {{ fdr_id }} <= fdr_cutoff ~
+      "up",
+      {{ effect_size_id }} <= -effect_size_cutoff & {{ fdr_id }} <= fdr_cutoff ~
+      "down",
       TRUE ~ "ns"
     )) %>%
     mutate(regulation = factor(regulation, levels = c("up", "down", "ns")))
@@ -185,7 +192,8 @@ make_gsea_genesets <- function(genesets) {
 #' @return A matrix of normalized enrichment score for each gene sets across all
 #'  signatures. If \code{tidy} is TRUE the results are retured in a tidy format,
 #'  including also p-values and leading edge genes.
-run_gsea <- function(sig_df, genesets, nperm = 1000, options = list(), tidy = F) {
+run_gsea <- function(sig_df, genesets, nperm = 1000, options = list(),
+                     tidy = F) {
   geneset_list <- make_gsea_genesets(genesets)
   gsea_res <- apply(sig_df, 2, function(col) {
     do.call(
@@ -239,7 +247,8 @@ run_gsea <- function(sig_df, genesets, nperm = 1000, options = list(), tidy = F)
 #'
 #' @return Table reporting for each gene set the contingency table, estimate,
 #'   side of the test, p-value and fdr.
-run_ora <- function(sig, sets, min_size = 10, options = list(), background_n = NULL) {
+run_ora <- function(sig, sets, min_size = 10, options = list(),
+                    background_n = NULL) {
 
   #'                       signature (sig)
   #'                     yes   |   no    ||   total
@@ -397,7 +406,9 @@ set_similarity <- function(mat, measure = "jaccard", tidy = T) {
         s1_specific <- length(setdiff(s1, s2))
         s2_specific <- length(setdiff(s2, s1))
 
-        similarity_mat[i, j] <- str_c(common, s1_specific, s2_specific, sep = "|")
+        similarity_mat[i, j] <- str_c(common, s1_specific, s2_specific,
+          sep = "|"
+        )
       }
     }
   }
@@ -518,12 +529,12 @@ run_stem <- function(path, jar_path = "external_software/stem/stem.jar",
   return(tables)
 }
 
-#' Helper function to load the file with the go term mapping
+#' This functions loads gene sets from GO-BP, progeny and dorothea for a
+#' specified organism
 #'
-#' @return Table with go id, term and cleaned term with removed special
-#' characters
-load_go_mapping <- function() readRDS("data/annotation/go/go_mapping.rds")
-
+#' @param organism character; either "mouse" or "human".
+#'
+#' @return Tibble of gene sets.
 load_genesets <- function(organism = "mouse") {
   if (organism == "mouse") {
     go_terms <- msigdf::msigdf.mouse %>%

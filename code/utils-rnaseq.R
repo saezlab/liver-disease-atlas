@@ -1,3 +1,16 @@
+# Copyright (c) [2021] [Christian H. Holland]
+# christian.holland@bioquant.uni-heidelberg.de
+
+#' Function to preprocess a RNA-seq count matrix.
+#'
+#' @description Genes with constant expression are removed and counts are
+#' transformed to log2 space.
+#'
+#' @param count_matrix count matrix with genes in rows and samples in columns.
+#' @param verbose logical indiciating whether it should be printed how many
+#' genes are discarded.
+#'
+#' @return matrix with only non-constant genes containing counts in log2 space.
 preprocess_count_matrix <- function(count_matrix, verbose = TRUE) {
 
   # removes genes with constant expression across all samples
@@ -12,6 +25,12 @@ preprocess_count_matrix <- function(count_matrix, verbose = TRUE) {
   return(res)
 }
 
+
+#' Function to perform RNA-seq normalization
+#'
+#' @param count_matrix count matrix with genes in rows and samples in columns.
+#'
+#' @return Matrix with normalized expression data.
 voom_normalization <- function(count_matrix) {
 
   # filter low read counts, TMM normalization and logCPM transformation

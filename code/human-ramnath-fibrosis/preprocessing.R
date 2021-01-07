@@ -1,3 +1,6 @@
+# Copyright (c) [2021] [Christian H. Holland]
+# christian.holland@bioquant.uni-heidelberg.de
+
 library(tidyverse)
 library(here)
 
