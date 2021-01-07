@@ -125,7 +125,6 @@ oo <- o %>%
 gs_sim <- oo %>%
   filter(!str_detect(set1, "NAFLD|NASH|PSC|PBC|HCV")) %>%
   filter(!str_detect(set2, "WTD|HF|PTEN|MCD|STZ|CCl4")) %>%
-  # filter(str_detect(set2, "stage|ctrl|mild|early")) %>%
   ggplot(aes(
     x = set1, y = set2, fill = similarity,
     label = round(similarity, 3)
