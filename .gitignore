@@ -28,5 +28,6 @@ output/**/*.txt
 
 figures/*
 tables/*
+geo_submission/*
 
 
