@@ -33,6 +33,8 @@ library(tidyverse)
 library(tidylog)
 library(here)
 
+library(janitor)
+
 library(AachenColorPalette)
 library(cowplot)
 library(lemon)
@@ -68,32 +70,58 @@ histology <- ggdraw() +
   draw_image(here(data_path, "histology.png"))
 ```
 
-## Liver enyzmes
-```{r liver-enzymes, eval=FALSE, include=FALSE}
-df <- read_csv2(here(data_path, "liver_enzymes.csv")) %>%
-  mutate(time = fct_inorder(time)) %>%
-  pivot_longer(col = -c(time), names_to = "enzyme", values_to = "y") %>%
-  mutate(enzyme = factor(enzyme, levels = c("ALT", "AST")))
+### Proliferation
+```{r proliferation}
+prolif_df <- read_delim(here(data_path, "prolif.txt"), delim = "\t") %>%
+  clean_names() %>%
+  rename(y = prolif, time = time_days) %>%
+  mutate(time = ordered(time))
 
-df_summary <- df %>%
-  group_by(time, enzyme) %>%
+prolif_summary <- prolif_df %>%
+  group_by(time) %>%
   summarise(mean_se(y)) %>%
   ungroup()
 
-liver_enzymes <- df_summary %>%
+prolif <- prolif_df %>%
   ggplot(aes(x = time, y = y)) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
-  geom_col() +
-  facet_rep_wrap(~enzyme, scales = "free", ncol = 1) +
-  labs(x = NULL, y = "U/L") +
+  geom_boxplot() +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  labs(x = "Time in days", y = "Proliferation in % (24h period)") +
   my_theme(grid = "y", fsize = fz) +
   stat_compare_means(
-    data = df, label = "p.signif",
-    ref.group = "Control", hide.ns = T
-  ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+    data = prolif_df, label = "p.signif",
+    ref.group = "0", hide.ns = T
+  ) 
 
-liver_enzymes
+prolif
+```
+
+### Lobular area
+```{r lobular-area}
+lob_df <- read_delim(here(data_path, "lobarea.txt"), delim = "\t") %>%
+  clean_names() %>%
+  rename(y = lobarea, time = time_days) %>%
+  mutate(time = ordered(time))
+
+lob_summary <- lob_df %>%
+  group_by(time) %>%
+  summarise(mean_se(y)) %>%
+  ungroup()
+
+lob <- lob_df %>%
+  ggplot(aes(x = time, y = y)) +
+  geom_boxplot() +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  labs(x = "Time in days", y = expression(paste("Lobule area in ", mm^2))) +
+  my_theme(grid = "y", fsize = fz) +
+  stat_compare_means(
+    data = lob_df, label = "p.signif",
+    ref.group = "0", hide.ns = TRUE
+  ) 
+
+lob
 ```
 
 ## PCA
@@ -278,12 +306,12 @@ ts_cluster
 ### Supplementary Figure 2.4
 ```{r s-fig-2-2, fig.width=7.87, fig.height=11.69}
 sfig2_4 <- (design + plot_spacer()) /
-  ((plot_spacer() | pca_plot) + plot_layout(widths = c(1, 3))) /
+  (((prolif / lob) | pca_plot) + plot_layout(widths = c(1, 3))) /
   ((volcano_main / top_genes_main)) /
   ts_cluster +
   plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
   plot_annotation(tag_levels = list(c(
-    "A", "D", "E", "F", "", "", "", "", "", "G"
+    "A", "C", "","D", "E", "F", "", "", "", "", "", "G"
   ))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
