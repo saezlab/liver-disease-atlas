@@ -544,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-03
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree585991ff4f001ef8586559e12f5e4b611c7498fdtargetblank585991fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/585991ff4f001ef8586559e12f5e4b611c7498fd" target="_blank">585991f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree585991ff4f001ef8586559e12f5e4b611c7498fdtargetblank585991fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/585991ff4f001ef8586559e12f5e4b611c7498fd" target="_blank">585991f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,6 +677,7 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -720,6 +722,16 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/
+
+Unstaged changes:
+    Modified:   analysis/meta-mouse-vs-human.Rmd
+    Modified:   analysis/mouse-acute-ccl4.Rmd
+    Modified:   analysis/plot-acute-apap.Rmd
+    Modified:   analysis/plot-chronic-ccl4.Rmd
+    Modified:   analysis/plot-chronic-vs-acute.Rmd
+    Modified:   analysis/plot-precision-recall.Rmd
+    Modified:   analysis/plot-study-overview.Rmd
+    Modified:   analysis/save-tables.Rmd
 
 </code></pre>
 <p>
@@ -758,6 +770,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/meta-liver/blob/585991ff4f001ef8586559e12f5e4b611c7498fd/analysis/plot-acute-ph.Rmd" target="_blank">585991f</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-03
+</td>
+<td>
+added prolif and lobarea plot
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/meta-liver/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/plot-acute-ph.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -844,6 +890,8 @@ Added plotting scripts for mouse models
 library(tidylog)
 library(here)
 
+library(janitor)
+
 library(AachenColorPalette)
 library(cowplot)
 library(lemon)
@@ -870,9 +918,60 @@ key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.r
 </div>
 <div id="histology" class="section level2">
 <h2>Histology</h2>
+<div id="proliferation" class="section level3">
+<h3>Proliferation</h3>
+<pre class="r"><code>prolif_df &lt;- read_delim(here(data_path, &quot;prolif.txt&quot;), delim = &quot;\t&quot;) %&gt;%
+  clean_names() %&gt;%
+  rename(y = prolif, time = time_days) %&gt;%
+  mutate(time = ordered(time))
+
+prolif_summary &lt;- prolif_df %&gt;%
+  group_by(time) %&gt;%
+  summarise(mean_se(y)) %&gt;%
+  ungroup()
+
+prolif &lt;- prolif_df %&gt;%
+  ggplot(aes(x = time, y = y)) +
+  geom_boxplot() +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  labs(x = &quot;Time in days&quot;, y = &quot;Proliferation in % (24h period)&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz) +
+  stat_compare_means(
+    data = prolif_df, label = &quot;p.signif&quot;,
+    ref.group = &quot;0&quot;, hide.ns = T
+  ) 
+
+prolif</code></pre>
+<p><img src="figure/plot-acute-ph.Rmd/proliferation-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="liver-enyzmes" class="section level2">
-<h2>Liver enyzmes</h2>
+<div id="lobular-area" class="section level3">
+<h3>Lobular area</h3>
+<pre class="r"><code>lob_df &lt;- read_delim(here(data_path, &quot;lobarea.txt&quot;), delim = &quot;\t&quot;) %&gt;%
+  clean_names() %&gt;%
+  rename(y = lobarea, time = time_days) %&gt;%
+  mutate(time = ordered(time))
+
+lob_summary &lt;- lob_df %&gt;%
+  group_by(time) %&gt;%
+  summarise(mean_se(y)) %&gt;%
+  ungroup()
+
+lob &lt;- lob_df %&gt;%
+  ggplot(aes(x = time, y = y)) +
+  geom_boxplot() +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  labs(x = &quot;Time in days&quot;, y = expression(paste(&quot;Lobule area in &quot;, mm^2))) +
+  my_theme(grid = &quot;y&quot;, fsize = fz) +
+  stat_compare_means(
+    data = lob_df, label = &quot;p.signif&quot;,
+    ref.group = &quot;0&quot;, hide.ns = TRUE
+  ) 
+
+lob</code></pre>
+<p><img src="figure/plot-acute-ph.Rmd/lobular-area-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 </div>
 <div id="pca" class="section level2">
 <h2>PCA</h2>
@@ -1281,12 +1380,12 @@ christianholland
 <div id="supplementary-figure-2.4" class="section level3">
 <h3>Supplementary Figure 2.4</h3>
 <pre class="r"><code>sfig2_4 &lt;- (design + plot_spacer()) /
-  ((plot_spacer() | pca_plot) + plot_layout(widths = c(1, 3))) /
+  (((prolif / lob) | pca_plot) + plot_layout(widths = c(1, 3))) /
   ((volcano_main / top_genes_main)) /
   ts_cluster +
   plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
   plot_annotation(tag_levels = list(c(
-    &quot;A&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;G&quot;
+    &quot;A&quot;, &quot;C&quot;, &quot;&quot;,&quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;G&quot;
   ))) &amp;
   theme(
     plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
@@ -1397,7 +1496,7 @@ ggsave(here(&quot;figures/Supplementary Figure 2.5.pdf&quot;), sfig2_5,
 ggsave(here(&quot;figures/Supplementary Figure 2.5.png&quot;), sfig2_5,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 01:24 minutes.</p>
+<p>Time spend to execute this analysis: 01:33 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1422,11 +1521,11 @@ ggsave(here(&quot;figures/Supplementary Figure 2.5.png&quot;), sfig2_5,
 #&gt; 
 #&gt; other attached packages:
 #&gt;  [1] patchwork_1.1.1          ggpubr_0.4.0             lemon_0.4.5             
-#&gt;  [4] cowplot_1.1.0            AachenColorPalette_1.1.2 here_1.0.1              
-#&gt;  [7] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
-#&gt; [10] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
-#&gt; [13] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
-#&gt; [16] tidyverse_1.3.0          workflowr_1.6.2         
+#&gt;  [4] cowplot_1.1.0            AachenColorPalette_1.1.2 janitor_2.0.1           
+#&gt;  [7] here_1.0.1               tidylog_1.0.2            forcats_0.5.0           
+#&gt; [10] stringr_1.4.0            dplyr_1.0.2              purrr_0.3.4             
+#&gt; [13] readr_1.4.0              tidyr_1.1.2              tibble_3.0.4            
+#&gt; [16] ggplot2_3.3.2            tidyverse_1.3.0          workflowr_1.6.2         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
 #&gt;  [1] fs_1.5.0          lubridate_1.7.9.2 httr_1.4.2        rprojroot_2.0.2  
@@ -1436,18 +1535,19 @@ ggsave(here(&quot;figures/Supplementary Figure 2.5.png&quot;), sfig2_5,
 #&gt; [17] rvest_0.3.6       xml2_1.3.2        labeling_0.4.2    scales_1.1.1     
 #&gt; [21] digest_0.6.27     foreign_0.8-80    rmarkdown_2.6     rio_0.5.16       
 #&gt; [25] pkgconfig_2.0.3   htmltools_0.5.0   dbplyr_2.0.0      rlang_0.4.9      
-#&gt; [29] readxl_1.3.1      rstudioapi_0.13   generics_0.1.0    farver_2.0.3     
+#&gt; [29] readxl_1.3.1      rstudioapi_0.13   farver_2.0.3      generics_0.1.0   
 #&gt; [33] jsonlite_1.7.2    gtools_3.8.2      zip_2.1.1         car_3.0-10       
 #&gt; [37] magrittr_2.0.1    Rcpp_1.0.5        munsell_0.5.0     fansi_0.4.1      
 #&gt; [41] abind_1.4-5       lifecycle_0.2.0   stringi_1.5.3     whisker_0.4      
-#&gt; [45] yaml_2.2.1        carData_3.0-4     plyr_1.8.6        grid_4.0.2       
-#&gt; [49] promises_1.1.1    crayon_1.3.4      lattice_0.20-41   haven_2.3.1      
-#&gt; [53] hms_0.5.3         magick_2.5.2      knitr_1.30        pillar_1.4.7     
-#&gt; [57] ggsignif_0.6.0    codetools_0.2-16  clisymbols_1.2.0  reprex_0.3.0     
-#&gt; [61] glue_1.4.2        evaluate_0.14     data.table_1.13.4 renv_0.12.3      
-#&gt; [65] modelr_0.1.8      vctrs_0.3.6       httpuv_1.5.4      cellranger_1.1.0 
-#&gt; [69] gtable_0.3.0      assertthat_0.2.1  xfun_0.19         openxlsx_4.2.3   
-#&gt; [73] broom_0.7.3       rstatix_0.6.0     later_1.1.0.1     ellipsis_0.3.1</code></pre>
+#&gt; [45] yaml_2.2.1        snakecase_0.11.0  carData_3.0-4     plyr_1.8.6       
+#&gt; [49] grid_4.0.2        promises_1.1.1    crayon_1.3.4      lattice_0.20-41  
+#&gt; [53] haven_2.3.1       hms_0.5.3         magick_2.5.2      knitr_1.30       
+#&gt; [57] pillar_1.4.7      ggsignif_0.6.0    codetools_0.2-16  clisymbols_1.2.0 
+#&gt; [61] reprex_0.3.0      glue_1.4.2        evaluate_0.14     data.table_1.13.4
+#&gt; [65] renv_0.12.3       modelr_0.1.8      vctrs_0.3.6       httpuv_1.5.4     
+#&gt; [69] cellranger_1.1.0  gtable_0.3.0      assertthat_0.2.1  xfun_0.19        
+#&gt; [73] openxlsx_4.2.3    broom_0.7.3       rstatix_0.6.0     later_1.1.0.1    
+#&gt; [77] ellipsis_0.3.1</code></pre>
 </div>
 </div>
 </div>
