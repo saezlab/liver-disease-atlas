@@ -618,7 +618,7 @@ plot_top_genes <- function(data, class, fontsize, ...) {
     filter(logFC >= 0) %>%
     ggplot(aes(x = logFC, y = fct_reorder(gene, logFC), fill = as_factor(sign(logFC)))) +
     geom_col() +
-    labs(x = "Up-regulated logFC", y = NULL) +
+    labs(x = "Upregulated logFC", y = NULL) +
     scale_x_continuous(
       position = "top", limits = c(0, max_logfc),
       breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))
@@ -636,7 +636,7 @@ plot_top_genes <- function(data, class, fontsize, ...) {
     filter(logFC < 0) %>%
     ggplot(aes(x = -logFC, y = fct_reorder(gene, logFC), fill = as_factor(sign(logFC)))) +
     geom_col() +
-    labs(x = "Down-regulated logFC", y = NULL) +
+    labs(x = "Downregulated logFC", y = NULL) +
     scale_x_reverse(
       limits = c(max_logfc, 0),
       breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))
