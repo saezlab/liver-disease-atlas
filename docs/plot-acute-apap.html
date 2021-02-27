@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree014085f11806a41ac5776b37867581b7cc2a3b09targetblank014085fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/014085f11806a41ac5776b37867581b7cc2a3b09" target="_blank">014085f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree014085f11806a41ac5776b37867581b7cc2a3b09targetblank014085fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/014085f11806a41ac5776b37867581b7cc2a3b09" target="_blank">014085f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -720,6 +722,14 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/mouse-acute-ccl4.Rmd
+    Modified:   analysis/plot-chronic-vs-acute.Rmd
+    Modified:   analysis/plot-precision-recall.Rmd
+    Modified:   renv.lock
 
 </code></pre>
 <p>
@@ -760,10 +770,44 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/014085f11806a41ac5776b37867581b7cc2a3b09/analysis/plot-acute-apap.Rmd" target="_blank">014085f</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-27
+</td>
+<td>
+minor changes
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/plot-acute-apap.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/plot-acute-apap.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/plot-acute-apap.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -780,7 +824,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-acute-apap.Rmd" target="_blank">d4f78fa</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-acute-apap.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
 christianholland
@@ -797,7 +841,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/plot-acute-apap.html" target="_blank">6b6c16a</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/plot-acute-apap.html" target="_blank">6b6c16a</a>
 </td>
 <td>
 christianholland
@@ -814,7 +858,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/9cdd9956eb045fe8bab935ecf03b56bc5f325f94/analysis/plot-acute-apap.Rmd" target="_blank">9cdd995</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/9cdd9956eb045fe8bab935ecf03b56bc5f325f94/analysis/plot-acute-apap.Rmd" target="_blank">9cdd995</a>
 </td>
 <td>
 christianholland
@@ -831,7 +875,7 @@ Added plotting scripts for mouse models
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/plot-acute-apap.html" target="_blank">b5b58d0</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/plot-acute-apap.html" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -848,7 +892,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/7ca5d396ba42320026337069df253c95ed9120fe/analysis/plot-acute-apap.Rmd" target="_blank">7ca5d39</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/7ca5d396ba42320026337069df253c95ed9120fe/analysis/plot-acute-apap.Rmd" target="_blank">7ca5d39</a>
 </td>
 <td>
 christianholland
@@ -892,7 +936,7 @@ output_path &lt;- &quot;output/mouse-acute-apap&quot;
 
 # graphical parameters
 # fontsize
-fz &lt;- 7
+fz &lt;- 9
 
 # keys to annotate contrasts
 key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.rds&quot;))</code></pre>
@@ -919,18 +963,72 @@ df_summary &lt;- df %&gt;%
   summarise(mean_se(y)) %&gt;%
   ungroup()
 
-liver_enzymes &lt;- df_summary %&gt;%
+liver_enzymes &lt;- df %&gt;%
   ggplot(aes(x = time, y = y)) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
-  geom_col() +
-  facet_rep_wrap(~enzyme, scales = &quot;free&quot;, ncol = 1) +
-  labs(x = NULL, y = &quot;U/L&quot;) +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.5, size = 1) +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  facet_rep_wrap(~enzyme, scales = &quot;free_y&quot;, ncol = 1) +
+  labs(x = &quot;Time after APAP injection&quot;, y = &quot;U/L&quot;) +
   my_theme(grid = &quot;y&quot;, fsize = fz) +
   stat_compare_means(
     data = df, label = &quot;p.signif&quot;,
     ref.group = &quot;Control&quot;, hide.ns = T
   ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = &quot;none&quot;,
+        panel.spacing.y = unit(-2, &quot;lines&quot;)) #+
+  scale_color_manual(values = aachen_color(c(
+    &quot;blue&quot;, &quot;purple&quot;, &quot;violet&quot;,
+    &quot;bordeaux&quot;, &quot;red&quot;, &quot;orange&quot;,
+    &quot;maygreen&quot;, &quot;green&quot;, &quot;turquoise&quot;,
+    &quot;petrol&quot;
+  )))
+#&gt; &lt;ggproto object: Class ScaleDiscrete, Scale, gg&gt;
+#&gt;     aesthetics: colour
+#&gt;     axis_order: function
+#&gt;     break_info: function
+#&gt;     break_positions: function
+#&gt;     breaks: waiver
+#&gt;     call: call
+#&gt;     clone: function
+#&gt;     dimension: function
+#&gt;     drop: TRUE
+#&gt;     expand: waiver
+#&gt;     get_breaks: function
+#&gt;     get_breaks_minor: function
+#&gt;     get_labels: function
+#&gt;     get_limits: function
+#&gt;     guide: legend
+#&gt;     is_discrete: function
+#&gt;     is_empty: function
+#&gt;     labels: waiver
+#&gt;     limits: NULL
+#&gt;     make_sec_title: function
+#&gt;     make_title: function
+#&gt;     map: function
+#&gt;     map_df: function
+#&gt;     n.breaks.cache: NULL
+#&gt;     na.translate: TRUE
+#&gt;     na.value: NA
+#&gt;     name: waiver
+#&gt;     palette: function
+#&gt;     palette.cache: NULL
+#&gt;     position: left
+#&gt;     range: &lt;ggproto object: Class RangeDiscrete, Range, gg&gt;
+#&gt;         range: NULL
+#&gt;         reset: function
+#&gt;         train: function
+#&gt;         super:  &lt;ggproto object: Class RangeDiscrete, Range, gg&gt;
+#&gt;     rescale: function
+#&gt;     reset: function
+#&gt;     scale_name: manual
+#&gt;     train: function
+#&gt;     train_df: function
+#&gt;     transform: function
+#&gt;     transform_df: function
+#&gt;     super:  &lt;ggproto object: Class ScaleDiscrete, Scale, gg&gt;
 
 liver_enzymes</code></pre>
 <p><img src="figure/plot-acute-apap.Rmd/liver-enzymes-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -958,7 +1056,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/liver-enzymes-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/liver-enzymes-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -996,13 +1094,15 @@ pca_plot &lt;- pca_result$coords %&gt;%
   ) +
   my_theme(fsize = fz) +
   theme(legend.position = &quot;top&quot;,
-        legend.box.margin = margin(10, 0, -20, 0)) +
+        legend.box.margin = margin(10, 0, -20, 0),
+        legend.title = element_blank()) +
   scale_color_manual(values = aachen_color(c(
     &quot;blue&quot;, &quot;purple&quot;, &quot;violet&quot;,
     &quot;bordeaux&quot;, &quot;red&quot;, &quot;orange&quot;,
     &quot;maygreen&quot;, &quot;green&quot;, &quot;turquoise&quot;,
     &quot;petrol&quot;
-  )))
+  ))) +
+  guides(col = guide_legend(nrow = 4))
 
 pca_plot</code></pre>
 <p><img src="figure/plot-acute-apap.Rmd/pca-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -1030,7 +1130,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">6b6c16a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">6b6c16a</a>
 </td>
 <td>
 christianholland
@@ -1041,7 +1141,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/pca-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1067,6 +1167,7 @@ christianholland
     Up = &quot;up&quot;, Down = &quot;down&quot;,
     n.s. = &quot;ns&quot;
   ))
+  
 
 deg_count &lt;- df %&gt;%
   add_count(contrast, regulation) %&gt;%
@@ -1142,7 +1243,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/volcano-plot-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/volcano-plot-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1181,7 +1282,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/volcano-plot-2.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/volcano-plot-2.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1206,12 +1307,12 @@ christianholland
 top_genes_df &lt;- df %&gt;% 
   filter(regulation != &quot;ns&quot;) %&gt;%
   group_by(class, sign(logFC)) %&gt;%
-  slice_max(order_by = abs(logFC), n = 10, with_ties = F) %&gt;%
+  slice_max(order_by = abs(logFC), n = 5, with_ties = F) %&gt;%
   ungroup() %&gt;% 
   nest(data = -c(class, value))
 
 plots &lt;- top_genes_df %&gt;%
-  mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
+  mutate(p = pmap(., .f = plot_top_genes, fontsize = fz-2))
 
 main_time &lt;- c(12, 24, 48)
 
@@ -1255,7 +1356,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/top-degs-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/top-degs-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1294,7 +1395,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/top-degs-2.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/top-degs-2.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1312,13 +1413,13 @@ christianholland
 <h2>Time series cluster</h2>
 <pre class="r"><code>profile_label &lt;- tribble(
   ~profile, ~process,
-  &quot;STEM ID: 14&quot;, &quot;Stress response&quot;,
+  &quot;STEM ID: 14&quot;, &quot;Stress resp.&quot;,
   &quot;STEM ID: 9&quot;, &quot;Migration&quot;,
   &quot;STEM ID: 12&quot;, &quot;Proliferation&quot;,
-  &quot;STEM ID: 6&quot;, &quot;Metabolism (1)&quot;,
-  &quot;STEM ID: 11&quot;, &quot;Metabolism (2)&quot;,
-  &quot;STEM ID: 18&quot;, &quot;Metabolism (3)&quot;,
-  &quot;STEM ID: 8&quot;, &quot;Metabolism (4)&quot;
+  &quot;STEM ID: 6&quot;, &quot;Metabolism 1&quot;,
+  &quot;STEM ID: 11&quot;, &quot;Metabolism 2&quot;,
+  &quot;STEM ID: 18&quot;, &quot;Metabolism 3&quot;,
+  &quot;STEM ID: 8&quot;, &quot;Metabolism 4&quot;
 ) %&gt;%
   mutate(
     profile = fct_inorder(profile),
@@ -1348,8 +1449,8 @@ profile_anno &lt;- stem_res %&gt;%
   mutate(label = str_c(size, &quot; &quot;, &quot;genes&quot;))
 
 ts_cluster &lt;- stem_res %&gt;%
-  plot_stem_profiles(model_profile = F, nrow = 1) +
-  labs(x = &quot;Time in Hours&quot;) +
+  plot_stem_profiles(model_profile = F, nrow = 2) +
+  labs(x = &quot;Time in hours&quot;) +
   geom_text(
     data = profile_anno, aes(x = 0, y = y, label = label),
     inherit.aes = F, size = fz / (14 / 5), hjust = &quot;inward&quot;
@@ -1357,7 +1458,7 @@ ts_cluster &lt;- stem_res %&gt;%
   my_theme(grid = &quot;no&quot;, fsize = fz) +
   scale_x_continuous(
     breaks = unique(stem_res$time),
-    guide = guide_axis(n.dodge = 3)
+    labels = c(&quot;&quot;, 1,&quot;&quot;, &quot;&quot;,24,&quot;&quot;, 96)
   )
 
 ts_cluster</code></pre>
@@ -1386,7 +1487,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/ts-cluster-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/ts-cluster-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1404,13 +1505,12 @@ christianholland
 <h2>Collage</h2>
 <div id="figure-2" class="section level3">
 <h3>Figure 2</h3>
-<pre class="r"><code>fig2 &lt;- (design + histology) /
-  ((liver_enzymes | pca_plot) + plot_layout(widths = c(1,3))) /
-  ((volcano_main / top_genes_main)) /
+<pre class="r"><code>fig2 = (((design / liver_enzymes) | histology) + plot_layout(width = c(1,2.5))) /
+  ((pca_plot | (volcano_main / top_genes_main)) + plot_layout(width = c(1,2))) / 
   ts_cluster +
-  plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,
-                                      &quot;&quot;, &quot;&quot;, &quot;G&quot;))) &amp;
+  plot_layout(height = c(2, 1, 1)) +
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,
+                                      &quot;&quot;, &quot;&quot;,&quot;G&quot;))) &amp;
   theme(
     plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
     legend.key.height = unit(11.5, &quot;pt&quot;),
@@ -1443,7 +1543,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">6b6c16a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">6b6c16a</a>
 </td>
 <td>
 christianholland
@@ -1454,7 +1554,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/fig-2-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1474,6 +1574,9 @@ ggsave(here(&quot;figures/Figure 2.pdf&quot;), fig2,
 ggsave(here(&quot;figures/Figure 2.png&quot;), fig2,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
+</div>
+<div id="partial-figure-2" class="section level3">
+<h3>Partial Figure 2</h3>
 </div>
 <div id="supplementary-figure-2.1" class="section level3">
 <h3>Supplementary Figure 2.1</h3>
@@ -1511,7 +1614,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">6b6c16a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">6b6c16a</a>
 </td>
 <td>
 christianholland
@@ -1522,7 +1625,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">b5b58d0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b5b58d0eccddd12aae311deeb057545ea83fac28/docs/figure/plot-acute-apap.Rmd/s-fig-2-1-1.png" target="_blank">b5b58d0</a>
 </td>
 <td>
 christianholland
@@ -1542,7 +1645,7 @@ ggsave(here(&quot;figures/Supplementary Figure 2.1.pdf&quot;), sfig2_1,
 ggsave(here(&quot;figures/Supplementary Figure 2.1.png&quot;), sfig2_1,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 01:27 minutes.</p>
+<p>Time spend to execute this analysis: 01:25 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
