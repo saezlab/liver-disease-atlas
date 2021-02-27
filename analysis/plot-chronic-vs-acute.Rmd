@@ -87,7 +87,7 @@ max_liver_damage <- pca_dist %>%
   my_theme(grid = "y", fsize = fz) +
   scale_fill_manual(values = aachen_color(c("black50", "green"))) +
   labs(
-    x = "Time in hours",
+    x = NULL,
     y = "Absolute mean distance to control along PC1"
   ) +
   theme(
