@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreee0b19f2996a515b0edef29c893c5d5b7ca181bfetargetblanke0b19f2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/e0b19f2996a515b0edef29c893c5d5b7ca181bfe" target="_blank">e0b19f2</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreee0b19f2996a515b0edef29c893c5d5b7ca181bfetargetblanke0b19f2a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/e0b19f2996a515b0edef29c893c5d5b7ca181bfe" target="_blank">e0b19f2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -681,8 +681,8 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -702,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -721,6 +722,16 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/meta-mouse-vs-human.Rmd
+    Modified:   analysis/mouse-acute-ccl4.Rmd
+    Modified:   analysis/plot-acute-apap.Rmd
+    Modified:   analysis/plot-chronic-ccl4.Rmd
+    Modified:   analysis/plot-chronic-vs-acute.Rmd
+    Modified:   analysis/plot-precision-recall.Rmd
 
 </code></pre>
 <p>
@@ -764,7 +775,41 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/9212828396db6c88e021d10ef9c76bb13828c017/analysis/save-tables.Rmd" target="_blank">9212828</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e0b19f2996a515b0edef29c893c5d5b7ca181bfe/analysis/save-tables.Rmd" target="_blank">e0b19f2</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-27
+</td>
+<td>
+added regulation column
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/save-tables.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/9212828396db6c88e021d10ef9c76bb13828c017/analysis/save-tables.Rmd" target="_blank">9212828</a>
 </td>
 <td>
 christianholland
@@ -823,10 +868,11 @@ l &lt;- contrasts %&gt;%
   deframe()
 
 write.xlsx(l, here(&quot;tables/Supplementary Table 1.xlsx&quot;),
-           keepNA = TRUE)</code></pre>
+  keepNA = TRUE
+)</code></pre>
 </div>
-<div id="human" class="section level3">
-<h3>Human</h3>
+<div id="human---supplementary-table-4" class="section level3">
+<h3>Human - Supplementary Table 4</h3>
 <pre class="r"><code>keys &lt;- key_hs %&gt;%
   distinct(contrast, disease, author2, source, phenotype)
 
@@ -845,13 +891,14 @@ l &lt;- contrasts %&gt;%
   deframe()
 
 write.xlsx(l, here(&quot;tables/Supplementary Table xy human_degs.xlsx&quot;),
-           keepNA = TRUE)</code></pre>
+  keepNA = TRUE
+)</code></pre>
 </div>
 </div>
 <div id="time-series-cluster" class="section level2">
 <h2>Time-series cluster</h2>
-<div id="gene-lists" class="section level3">
-<h3>Gene lists</h3>
+<div id="gene-lists---supplementary-table-2" class="section level3">
+<h3>Gene lists - Supplementary table 2</h3>
 <pre class="r"><code>keys &lt;- key_mm %&gt;%
   drop_na(time) %&gt;%
   distinct(treatment, time = value, time_label2, class)
@@ -920,13 +967,14 @@ df &lt;- stem_profiles %&gt;%
   })) %&gt;%
   deframe()
 
-write.xlsx(df, 
-           here(&quot;tables/Supplementary Table xy stem_results.xlsx&quot;),
-           keepNA = TRUE)</code></pre>
+write.xlsx(df,
+  here(&quot;tables/Supplementary Table xy stem_results.xlsx&quot;),
+  keepNA = TRUE
+)</code></pre>
 </div>
 </div>
-<div id="exclusive-gene-sets" class="section level2">
-<h2>Exclusive gene sets</h2>
+<div id="exclusive-gene-sets---supplementary-table-3" class="section level2">
+<h2>Exclusive gene sets - Supplementary Table 3</h2>
 <pre class="r"><code>exclusive_chronic &lt;- readRDS(here(
   &quot;output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds&quot;
 )) %&gt;%
@@ -943,7 +991,15 @@ common &lt;- readRDS(here(
   mutate(sheet_name = &quot;Common&quot;)
 
 df &lt;- bind_rows(exclusive_chronic, exclusive_acute, common) %&gt;%
-  select(gene, rank, sheet_name) %&gt;%
+  mutate(regulation = case_when(
+    sheet_name == &quot;Exclusive chronic&quot; &amp; chronic_statistic &gt;= 0 ~ &quot;up&quot;,
+    sheet_name == &quot;Exclusive chronic&quot; &amp; chronic_statistic &lt; 0 ~ &quot;down&quot;,
+    sheet_name == &quot;Common&quot; &amp; chronic_statistic &gt;= 0 ~ &quot;up&quot;,
+    sheet_name == &quot;Common&quot; &amp; chronic_statistic &lt; 0 ~ &quot;down&quot;,
+    sheet_name == &quot;Exclusive acute&quot; &amp; acute_statistic &gt;= 0 ~ &quot;up&quot;,
+    sheet_name == &quot;Exclusive acute&quot; &amp; acute_statistic &lt; 0 ~ &quot;down&quot;,
+  )) %&gt;%
+  select(rank, gene, regulation, sheet_name) %&gt;%
   nest(data = -sheet_name) %&gt;%
   deframe()
 
@@ -955,20 +1011,34 @@ write.xlsx(
 </div>
 <div id="human-mouse-consistent-genes" class="section level2">
 <h2>Human mouse consistent genes</h2>
-<pre class="r"><code>consistent_genes = readRDS(here(
+<pre class="r"><code>consistent_genes &lt;- readRDS(here(
   &quot;output/meta-mouse-vs-human/consistent_genes.rds&quot;
 ))
 
-t = consistent_genes %&gt;%
+t &lt;- consistent_genes %&gt;%
+  distinct(gene, rank, contrast, logFC, celltype) %&gt;%
+  group_by(gene) %&gt;%
+  mutate(
+    mean_sign = mean(sign(logFC)),
+    regulation = case_when(
+      mean_sign &lt; 0 ~ &quot;down&quot;,
+      mean_sign &gt;= 0 ~ &quot;up&quot;
+    )
+  ) %&gt;%
+  distinct(gene, rank, celltype, regulation) %&gt;%
+  group_by(gene, rank, regulation) %&gt;%
+  summarise(celltype = str_c(celltype, collapse = &quot;|&quot;)) %&gt;%
+  ungroup() %&gt;%
   arrange(rank) %&gt;%
-  distinct(gene, rank)
+  select(rank, gene, regulation, celltype)
+
 
 write.xlsx(
   t,
   here(&quot;tables/Supplementary Table xy consistent_genes.xlsx&quot;),
   keepNA = TRUE
 )</code></pre>
-<p>Time spend to execute this analysis: 00:05 minutes.</p>
+<p>Time spend to execute this analysis: 00:06 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
