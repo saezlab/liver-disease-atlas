@@ -65,10 +65,11 @@ l <- contrasts %>%
   deframe()
 
 write.xlsx(l, here("tables/Supplementary Table 1.xlsx"),
-           keepNA = TRUE)
+  keepNA = TRUE
+)
 ```
 
-### Human
+### Human - Supplementary Table 4
 ```{r degs-human}
 keys <- key_hs %>%
   distinct(contrast, disease, author2, source, phenotype)
@@ -88,11 +89,12 @@ l <- contrasts %>%
   deframe()
 
 write.xlsx(l, here("tables/Supplementary Table xy human_degs.xlsx"),
-           keepNA = TRUE)
+  keepNA = TRUE
+)
 ```
 
 ## Time-series cluster
-### Gene lists
+### Gene lists - Supplementary table 2
 ```{r "gene-list-of-time-series-cluster"}
 keys <- key_mm %>%
   drop_na(time) %>%
@@ -162,12 +164,13 @@ df <- stem_profiles %>%
   })) %>%
   deframe()
 
-write.xlsx(df, 
-           here("tables/Supplementary Table xy stem_results.xlsx"),
-           keepNA = TRUE)
+write.xlsx(df,
+  here("tables/Supplementary Table xy stem_results.xlsx"),
+  keepNA = TRUE
+)
 ```
 
-## Exclusive gene sets
+## Exclusive gene sets - Supplementary Table 3
 ```{r exclusive-gene-sets}
 exclusive_chronic <- readRDS(here(
   "output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds"
@@ -185,7 +188,15 @@ common <- readRDS(here(
   mutate(sheet_name = "Common")
 
 df <- bind_rows(exclusive_chronic, exclusive_acute, common) %>%
-  select(gene, rank, sheet_name) %>%
+  mutate(regulation = case_when(
+    sheet_name == "Exclusive chronic" & chronic_statistic >= 0 ~ "up",
+    sheet_name == "Exclusive chronic" & chronic_statistic < 0 ~ "down",
+    sheet_name == "Common" & chronic_statistic >= 0 ~ "up",
+    sheet_name == "Common" & chronic_statistic < 0 ~ "down",
+    sheet_name == "Exclusive acute" & acute_statistic >= 0 ~ "up",
+    sheet_name == "Exclusive acute" & acute_statistic < 0 ~ "down",
+  )) %>%
+  select(rank, gene, regulation, sheet_name) %>%
   nest(data = -sheet_name) %>%
   deframe()
 
@@ -198,13 +209,27 @@ write.xlsx(
 
 ## Human mouse consistent genes
 ```{r human-moust-consistent-genes}
-consistent_genes = readRDS(here(
+consistent_genes <- readRDS(here(
   "output/meta-mouse-vs-human/consistent_genes.rds"
 ))
 
-t = consistent_genes %>%
+t <- consistent_genes %>%
+  distinct(gene, rank, contrast, logFC, celltype) %>%
+  group_by(gene) %>%
+  mutate(
+    mean_sign = mean(sign(logFC)),
+    regulation = case_when(
+      mean_sign < 0 ~ "down",
+      mean_sign >= 0 ~ "up"
+    )
+  ) %>%
+  distinct(gene, rank, celltype, regulation) %>%
+  group_by(gene, rank, regulation) %>%
+  summarise(celltype = str_c(celltype, collapse = "|")) %>%
+  ungroup() %>%
   arrange(rank) %>%
-  distinct(gene, rank)
+  select(rank, gene, regulation, celltype)
+
 
 write.xlsx(
   t,
