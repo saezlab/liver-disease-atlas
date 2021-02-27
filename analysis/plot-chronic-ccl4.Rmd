@@ -53,7 +53,7 @@ output_path <- "output/mouse-chronic-ccl4"
 
 # graphical parameters
 # fontsize
-fz <- 7
+fz <- 9
 
 # keys to annotate contrasts
 key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
@@ -75,7 +75,9 @@ histology <- ggdraw() +
 ## Liver enyzmes
 ```{r liver-enzymes}
 df <- read_csv2(here(data_path, "liver_enzymes.csv")) %>%
-  mutate(time = fct_inorder(time)) %>%
+  mutate(time = parse_number(time),
+         time = replace_na(time, 0)) %>%
+  mutate(time = ordered(time)) %>%
   pivot_longer(col = -c(time), names_to = "enzyme", values_to = "y") %>%
   mutate(enzyme = factor(str_to_upper(enzyme), levels = c("ALT", "AST", "ALP")))
 
@@ -84,18 +86,33 @@ df_summary <- df %>%
   summarise(mean_se(y)) %>%
   ungroup()
 
-liver_enzymes <- df_summary %>%
+liver_enzymes_partial <- df %>%
   ggplot(aes(x = time, y = y)) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
-  geom_col() +
-  facet_rep_wrap(~enzyme, scales = "free", ncol = 1) +
-  labs(x = NULL, y = "U/L") +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.5) +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  facet_rep_wrap(~enzyme, scales = "free", ncol = 3) +
+  labs(x = "Time in month", y = "U/L") +
   my_theme(grid = "y", fsize = fz) +
   stat_compare_means(
     data = df, label = "p.signif",
-    ref.group = "Control", hide.ns = T
-  ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+    ref.group = "0", hide.ns = T
+  )
+
+liver_enzymes <- df %>%
+  ggplot(aes(x = time, y = y)) +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.5) +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  facet_rep_wrap(~enzyme, scales = "free", ncol = 1) +
+  labs(x = "Time in month", y = "U/L") +
+  my_theme(grid = "y", fsize = fz) +
+  stat_compare_means(
+    data = df, label = "p.signif",
+    ref.group = "0", hide.ns = T
+  )
 
 liver_enzymes
 ```
@@ -282,8 +299,9 @@ plots = c("up", "down") %>%
                                              fontface = "bold")))
   })
 
-gene_overlap = wrap_plots(plots)
 
+
+gene_overlap = wrap_plots(plots)
 ```
 
 ## Top gene of overlap
@@ -316,7 +334,10 @@ top_overlap_genes = top_genes_of_overlap %>%
   facet_rep_wrap(~regulation, ncol = 1, scales = "free") +
   my_theme(grid = "y", fsize = fz) +
   labs(x="Gene", y="logFC", fill = NULL) +
-  scale_fill_manual(values = aachen_color(c("maygreen", "green", "turquoise")))
+  theme(legend.position = "top",
+        legend.box.margin = margin(-2, 0, -10, 0)) +
+  scale_fill_manual(values = aachen_color(c("maygreen", "green", "turquoise"))) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
 top_overlap_genes
 ```
@@ -377,7 +398,7 @@ ts_cluster
 ### Figure 1
 ```{r fig-1, fig.width=7.87, fig.height=11.69}
 fig1 <- (design + histology) /
-  ((liver_enzymes | (gene_overlap / plot_spacer()) | top_overlap_genes) + 
+  ((liver_enzymes | (gene_overlap / plot_spacer()) | top_overlap_genes) +
      plot_layout(widths = c(1,2.5,2))) /
   ts_cluster +
   plot_layout(height = c(1, 1, 1)) +
@@ -394,6 +415,26 @@ ggsave(here("figures/Figure 1.pdf"), fig1,
   width = 21, height = 29.7, units = c("cm")
 )
 ggsave(here("figures/Figure 1.png"), fig1,
+  width = 21, height = 29.7, units = c("cm")
+)
+```
+
+### Partial Figure 1
+```{r partial-fig-1, eval=FALSE, fig.height=11.69, fig.width=7.87, include=FALSE}
+pfig1 <- (plot_spacer() /
+  (liver_enzymes_partial | gene_overlap) / 
+  ((top_overlap_genes | ts_cluster) + plot_layout(width = c(1,2))) + 
+    plot_layout(heights = c(2,0.5,1))) +
+  plot_annotation(tag_levels = list(c("C", "D", "", "E", "F"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+pfig1
+
+ggsave(here("figures/Figure 1 (partial).pdf"), pfig1,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
