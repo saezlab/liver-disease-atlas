@@ -35,6 +35,7 @@ library(here)
 library(readxl)
 library(glue)
 library(tidytext)
+library(janitor)
 
 library(fgsea)
 library(dorothea)
@@ -638,6 +639,84 @@ go_cluster_ranking %>%
   my_theme(grid = "no", fsize = fz)
 ```
 
+## Integration with chronicity categories
+### PR of chronicity and etiologies
+```{r pr-chronicity-etiology}
+# load etiology gene sets
+etiology_genesets = readRDS(here(output_path, "etiology_gene_sets.rds")) %>%
+  mutate(join_var = "xy") %>%
+  nest(etiology_genes = -c(etiology, regulation, join_var))
+
+# load exclusive chronic and acute and common genes
+chronic = readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds")) %>%
+  mutate(class = "chronic") %>%
+  select(gene, rank, class, statistic = chronic_statistic)
+
+acute = readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds")) %>%
+  mutate(class = "acute") %>%
+  select(gene, rank, class, statistic = acute_statistic)
+
+common = readRDS(here("output/meta-chronic-vs-acute/ranked_common_genes.rds")) %>%
+  mutate(class = "common") %>%
+  select(gene, rank, class, statistic = chronic_statistic)
+
+chronicity = bind_rows(chronic, acute, common) %>%
+  mutate(regulation = if_else(sign(statistic) >= 0, "up", "down"))
+
+chronicity_hgnc = chronicity %>%
+  translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc", na_rm = TRUE) %>%
+  distinct() %>%
+  # drop genes that appear due to translation now in multiple classes
+  group_by(gene) %>%
+  filter(n() == 1) %>%
+  ungroup()
+
+# number of genes per regulated chronicity category
+chronicity_hgnc %>%
+  count(class, regulation) %>%
+  ggplot(aes(x=class, y=n, fill = regulation)) +
+  geom_col(position = "dodge") +
+  geom_hline(yintercept = 120)
+
+setup = chronicity_hgnc %>%
+  group_by(class, regulation) %>%
+  slice_max(order_by = rank, n = 120, with_ties = FALSE) %>%
+  mutate(join_var = "xy") %>%
+  nest(mm_genes = -c(class, regulation, join_var)) %>%
+  ungroup() %>%
+  inner_join(etiology_genesets, by=c("regulation", "join_var")) %>%
+  select(-join_var)
+
+pr = setup %>%
+  mutate(pr = map2(etiology_genes, mm_genes, function(hs_genes, mm_genes) {
+    z <- inner_join(
+      select(mm_genes, gene), 
+      select(hs_genes, gene), by = "gene")
+
+    tibble(
+      recall = nrow(z) / nrow(hs_genes),
+      recall_ratio = glue("{nrow(z)}/{nrow(hs_genes)}"),
+      precision = nrow(z) / nrow(mm_genes),
+      precision_ratio = glue("{nrow(z)}/{nrow(mm_genes)}")
+    )}
+  )) %>%
+  unnest(pr)
+
+saveRDS(pr, here(output_path, "precision_recall_chronicity.rds"))
+
+set.seed(123)
+pr %>%
+  mutate(regulation = factor(regulation, levels = c("up", "down"))) %>%
+  ggplot(aes(x = recall, y = precision, label = class, 
+             color = class)) +
+  geom_jitter(width = 0.0015, height = 0) +
+  facet_rep_grid(etiology ~ regulation) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision") +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d()
+```
 
 ## Integration of published chronic mouse models
 In this section the newly generated and previously published chronic mouse models are analyzed in terms of how well they reflect different human etiologies. The differential expressed genes of the already published mouse models is accessed from [Teufel et al., 2016](https://doi.org/10.1053/j.gastro.2016.05.051), Table S2.
@@ -884,6 +963,10 @@ upset(mat_down,
   sets.x.label = "Total number of genes"
 )
 grid.text("Down", x = 0.65, y = 0.95, gp = gpar(fontsize = fz))
+
+
+# overlap in percentages
+tabyl(c(rowSums(mat_up), rowSums(mat_down)))
 ```
 
 ### Precision and Recall of mouse models
@@ -936,6 +1019,15 @@ pr <- setup %>%
     )
   })) %>%
   unnest(metrics)
+
+# check how well pr improves when going from 2 to 12 months on average
+pr %>% 
+  filter(study %in% c("pure_ccl_12m_vs_0m", "pure_ccl_2m_vs_0m")) %>% 
+  select(study, regulation, recall, etiology) %>% 
+  spread(study, recall) %>% 
+  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %>% 
+  pull(diff) %>% 
+  mean()
 
 saveRDS(pr, here(output_path, "precision_recall.rds"))
 ```
