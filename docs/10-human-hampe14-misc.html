@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Liver disease patient cohort by Hampe et al. 2014</title>
+
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Liver disease atlas</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Mouse models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-mouse-chronic-ccl4.html">CCl4 (chronic)</a>
+    </li>
+    <li>
+      <a href="02-mouse-acute-apap.html">APAP (acute)</a>
+    </li>
+    <li>
+      <a href="03-mouse-acute-ccl4.html">CCl4 (acute)</a>
+    </li>
+    <li>
+      <a href="04-mouse-acute-ph.html">PH (acute)</a>
+    </li>
+    <li>
+      <a href="05-mouse-acute-bdl.html">BDL (acute)</a>
+    </li>
+    <li>
+      <a href="06-mouse-acute-lps.html">LPS (acute)</a>
+    </li>
+    <li>
+      <a href="07-mouse-acute-tunicamycin.html">Tunicamycin (acute)</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Patient cohorts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="08-human-diehl-nafld.html">NAFLD - Diehl et al.</a>
+    </li>
+    <li>
+      <a href="09-human-hampe13-nash.html">NASH - Hampe et al. '13</a>
+    </li>
+    <li>
+      <a href="10-human-hampe14-misc.html">Misc - Hampe et al. '14</a>
+    </li>
+    <li>
+      <a href="11-human-hoang-nafld.html">NAFLD - Hoang et al.</a>
+    </li>
+    <li>
+      <a href="12-human-ramnath-fibrosis.html">Fibrosis - Ramnath et al.</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Meta analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="13-meta-chronic-vs-acute.html">Chronic vs. acute</a>
+    </li>
+    <li>
+      <a href="14-meta-mouse-vs-human.html">Mouse vs. human</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Figures
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="20-plot-study-overview.html">Study overview (SFig. 0.1)</a>
+    </li>
+    <li>
+      <a href="15-plot-chronic-ccl4.html">Chronic CCl4 (Fig. 1)</a>
+    </li>
+    <li>
+      <a href="16-plot-acute-apap.html">APAP (Fig. 2)</a>
+    </li>
+    <li>
+      <a href="17-plot-acute-ccl4.html">Acute CCl4 (SFig. 2.2)</a>
+    </li>
+    <li>
+      <a href="18-plot-acute-ph.html">PH (SFig. 2.4)</a>
+    </li>
+    <li>
+      <a href="19-plot-acute-bdl.html">BDL (SFig. 2.6)</a>
+    </li>
+    <li>
+      <a href="21-plot-chronic-vs-acute.html">Chronic vs. acute (Fig. 3)</a>
+    </li>
+    <li>
+      <a href="22-plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
+    </li>
+    <li>
+      <a href="23-plot-precision-recall.html">Precision and recall analysis (Fig. 6)</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://doi.org/10.5281/zenodo.4407208">
+    <span class="fas fa-database"></span>
+     
+    Get data
+  </a>
+</li>
+<li>
+  <a href="https://github.com/saezlab/liver-disease-atlas">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Liver disease patient cohort by Hampe et al. 2014</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2021-02-28
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201218code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201218)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201218code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201218)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree7f331d0aac7cf3f2475dc5e40a743d773bdaf1bftargetblank7f331d0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/7f331d0aac7cf3f2475dc5e40a743d773bdaf1bf" target="_blank">7f331d0</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree7f331d0aac7cf3f2475dc5e40a743d773bdaf1bftargetblank7f331d0a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/7f331d0aac7cf3f2475dc5e40a743d773bdaf1bf" target="_blank">7f331d0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/01-mouse-chronic-ccl4_cache/
+    Ignored:    analysis/02-mouse-acute-apap_cache/
+    Ignored:    analysis/03-mouse-acute-ccl4_cache/
+    Ignored:    analysis/04-mouse-acute-ph_cache/
+    Ignored:    analysis/05-mouse-acute-bdl_cache/
+    Ignored:    analysis/06-mouse-acute-lps_cache/
+    Ignored:    analysis/07-mouse-acute-tunicamycin_cache/
+    Ignored:    analysis/08-human-diehl-nafld_cache/
+    Ignored:    analysis/09-human-hampe13-nash_cache/
+    Ignored:    code/.DS_Store
+    Ignored:    code/README.html
+    Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
+    Ignored:    data/.DS_Store
+    Ignored:    data/annotation/
+    Ignored:    data/human-diehl-nafld/
+    Ignored:    data/human-hampe13-nash/
+    Ignored:    data/human-hampe14-misc/
+    Ignored:    data/human-hoang-nafld/
+    Ignored:    data/human-ramnath-fibrosis/
+    Ignored:    data/meta-chronic-vs-acute/
+    Ignored:    data/meta-mouse-vs-human/
+    Ignored:    data/mouse-acute-apap/
+    Ignored:    data/mouse-acute-bdl/
+    Ignored:    data/mouse-acute-ccl4/
+    Ignored:    data/mouse-acute-lps/
+    Ignored:    data/mouse-acute-ph/
+    Ignored:    data/mouse-acute-tunicamycin/
+    Ignored:    data/mouse-chronic-ccl4/
+    Ignored:    external_software/.DS_Store
+    Ignored:    external_software/README.html
+    Ignored:    external_software/stem/.DS_Store
+    Ignored:    figures/
+    Ignored:    geo_submission/
+    Ignored:    output/.DS_Store
+    Ignored:    output/README.html
+    Ignored:    output/human-diehl-nafld/
+    Ignored:    output/human-hampe13-nash/
+    Ignored:    output/human-hampe14-misc/
+    Ignored:    output/human-hoang-nafld/
+    Ignored:    output/human-ramnath-fibrosis/
+    Ignored:    output/meta-chronic-vs-acute/
+    Ignored:    output/meta-mouse-vs-human/
+    Ignored:    output/mouse-acute-apap/
+    Ignored:    output/mouse-acute-bdl/
+    Ignored:    output/mouse-acute-ccl4/
+    Ignored:    output/mouse-acute-lps/
+    Ignored:    output/mouse-acute-ph/
+    Ignored:    output/mouse-acute-tunicamycin/
+    Ignored:    output/mouse-chronic-ccl4/
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
+    Ignored:    tables/
+
+Unstaged changes:
+    Deleted:    analysis/human-diehl-nafld.Rmd
+    Deleted:    analysis/human-hampe13-nash.Rmd
+    Deleted:    analysis/human-hampe14-misc.Rmd
+    Deleted:    analysis/human-hoang-nafld.Rmd
+    Deleted:    analysis/human-ramnath-fibrosis.Rmd
+    Deleted:    analysis/meta-chronic-vs-acute.Rmd
+    Deleted:    analysis/meta-mouse-vs-human.Rmd
+    Deleted:    analysis/mouse-acute-apap.Rmd
+    Deleted:    analysis/mouse-acute-bdl.Rmd
+    Deleted:    analysis/mouse-acute-ccl4.Rmd
+    Deleted:    analysis/mouse-acute-lps.Rmd
+    Deleted:    analysis/mouse-acute-ph.Rmd
+    Deleted:    analysis/mouse-acute-tunicamycin.Rmd
+    Deleted:    analysis/mouse-chronic-ccl4.Rmd
+    Deleted:    analysis/plot-acute-apap.Rmd
+    Deleted:    analysis/plot-acute-bdl.Rmd
+    Deleted:    analysis/plot-acute-ccl4.Rmd
+    Deleted:    analysis/plot-acute-ph.Rmd
+    Deleted:    analysis/plot-chronic-ccl4.Rmd
+    Deleted:    analysis/plot-chronic-vs-acute.Rmd
+    Deleted:    analysis/plot-mouse-vs-human.Rmd
+    Deleted:    analysis/plot-precision-recall.Rmd
+    Deleted:    analysis/plot-study-overview.Rmd
+    Deleted:    analysis/save-tables.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/10-human-hampe14-misc.Rmd</code>) and HTML (<code>docs/10-human-hampe14-misc.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/7f331d0aac7cf3f2475dc5e40a743d773bdaf1bf/analysis/10-human-hampe14-misc.Rmd" target="_blank">7f331d0</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+<td>
+wflow_publish("analysis/*", delete_cache = TRUE, republish = TRUE)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Here we analysis a patient cohort covering patients with different etiologies of chronic liver disease generated by <a href="https://doi.org/10.1073/pnas.1412759111">Hampe et al. 2014</a>.</p>
+</div>
+<div id="libraries-and-sources" class="section level2">
+<h2>Libraries and sources</h2>
+<p>These libraries and sources are used for this analysis.</p>
+<pre class="r"><code>library(hugene11sttranscriptcluster.db)
+
+library(tidyverse)
+library(tidylog)
+library(here)
+
+library(oligo)
+library(annotate)
+library(GEOquery)
+library(limma)
+library(biobroom)
+
+library(AachenColorPalette)
+library(cowplot)
+library(lemon)
+
+options(&quot;tidylog.display&quot; = list(print))
+source(here(&quot;code/utils-microarray.R&quot;))
+source(here(&quot;code/utils-utils.R&quot;))
+source(here(&quot;code/utils-plots.R&quot;))</code></pre>
+<p>Definition of global variables that are used throughout this analysis.</p>
+<pre class="r"><code># i/o
+data_path &lt;- &quot;data/human-hampe14-misc&quot;
+output_path &lt;- &quot;output/human-hampe14-misc&quot;
+
+# graphical parameters
+# fontsize
+fz &lt;- 9</code></pre>
+</div>
+<div id="data-processing" class="section level2">
+<h2>Data processing</h2>
+<div id="load-.cel-files-and-quality-control" class="section level3">
+<h3>Load .CEL files and quality control</h3>
+<p>The array quality is controlled based on the relative log expression values (RLE) and the normalized unscaled standard errors (NUSE).</p>
+<pre class="r"><code># load cel files and check quality
+platforms &lt;- readRDS(here(&quot;data/annotation/platforms.rds&quot;))
+raw_eset &lt;- list.celfiles(here(data_path), listGzipped = T, full.names = T) %&gt;%
+  read.celfiles() %&gt;%
+  ma_qc() # Discarding in total 1 arrays: GSM1501017_A1891-04.CEL.gz
+#&gt; Loading required package: pd.hugene.1.1.st.v1
+#&gt; Loading required package: RSQLite
+#&gt; Loading required package: DBI
+#&gt; Platform design info loaded.
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501013_A1970-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501014_A1891-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501015_A1891-03.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501016_A1359-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501017_A1891-04.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501018_A1970-02.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501019_A1891-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501020_A1359-02.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501021_A1891-06.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501022_A1891-07.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501023_A1891-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501024_A1359-03.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501025_A1970-04.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501026_A1970-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501027_A1970-06.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501028_A1359-04.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501029_A1891-09.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501030_A1970-07.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501031_A1891-10.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501032_A1359-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501033_A1970-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501034_A1891-11.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501035_A1970-09.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501036_A1970-10.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501037_A1970-11.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501038_A1891-12.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501039_A1970-12.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501040_A1891-13.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501041_A1970-13.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501042_A1359-07.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501043_A1891-14.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501044_A1970-14.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501045_A1359-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501046_A1359-09.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501047_A1359-10.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501048_A1970-15.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501049_A1970-16.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501050_A1970-17.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501051_A1970-18.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501052_A1970-19.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501053_A1891-15.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501054_A1359-12.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501055_A1970-20.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501056_A1359-13.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501057_A1359-14.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501058_A1359-15.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501059_A1359-16.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501060_A1359-17.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501061_A1970-21.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501062_A1359-18.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501063_A1891-17.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501064_A1970-23.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501065_A1970-24.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501066_A1970-25.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501067_A1891-18.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501068_A1359-20.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501069_A1359-21.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501070_A1970-26.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501071_A1359-22.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501072_A1359-23.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501073_A1359-24.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501074_A1649-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501075_A1359-25.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501076_A1359-26.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501077_A1891-19.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501078_A1891-20.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501079_A1970-28.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501080_A1359-27.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501081_A1359-29.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501082_A1359-30.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501083_A1891-21.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501084_A1359-32.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501085_A1359-33.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501086_A1359-34.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501087_A1359-35.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501088_A1359-36.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501089_A1359-37.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501090_A1359-38.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501091_A1359-39.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501092_A1359-40.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501093_A1891-22.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501094_A1359-41.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501095_A1359-44.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501096_A1359-45.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501097_A1359-46.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501098_A1359-49.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501099_A1970-29.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501100_A1970-30.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501101_A1649-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501102_A1970-31.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501103_A1359-54.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501104_A1649-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501105_A1359-55.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501106_A1649-06.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501107_A1891-24.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501108_A1970-32.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501109_A1934-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501110_A1359-57.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501111_A1359-59.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501112_A1934-02.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501113_A1970-33.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501114_A1359-61.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501115_A1359-62.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501116_A1359-63.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501117_A1359-64.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501118_A1970-34.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501119_A1934-04.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501120_A1934-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501121_A1934-06.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501122_A1934-07.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501123_A1934-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501124_A1934-09.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501125_A1970-35.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501126_A1934-10.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501127_A1934-11.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501128_A1934-12.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501129_A1934-13.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501130_A1934-14.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501131_A1934-15.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501132_A1934-16.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501133_A1970-36.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501134_A1970-37.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501135_A1970-38.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501136_A1970-39.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501137_A1970-40.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501138_A1970-41.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501139_A1970-42.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501140_A1970-43.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501141_A1970-44.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501142_A1970-45.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501143_A1970-46.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501144_A1970-47.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501145_A1970-48.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe14-misc/GSM1501146_A1970-49.CEL.gz
+#&gt; Background correcting...
+#&gt; OK
+#&gt; Normalizing... OK
+#&gt; Summarizing... OK
+#&gt; Extracting...
+#&gt;   Estimates... OK
+#&gt;   StdErrors... OK
+#&gt;   Weights..... OK
+#&gt;   Residuals... OK
+#&gt;   Scale....... OK
+#&gt; Warning in ma_qc(.): Discarding in total 1 arrays: GSM1501017_A1891-04.CEL.gz</code></pre>
+</div>
+<div id="normalization-and-probe-annotation" class="section level3">
+<h3>Normalization and probe annotation</h3>
+<p>Probe intensities are normalized with the <code>rma()</code> function. Probes are annotated with HGNC symbols.</p>
+<pre class="r"><code>eset &lt;- rma(raw_eset)
+#&gt; Background correcting
+#&gt; Normalizing
+#&gt; Calculating Expression
+
+# annotate microarray probes with hgnc symbols
+expr &lt;- ma_annotate(eset, platforms)
+# overwrite column names GSMxxx_xxx-xx.CEL.gz -&gt; GSMxxx
+colnames(expr) &lt;- str_extract(colnames(expr), &quot;GSM[0-9]*&quot;)
+
+# save normalized expression
+saveRDS(expr, here(output_path, &quot;normalized_expression.rds&quot;))</code></pre>
+</div>
+<div id="build-meta-data" class="section level3">
+<h3>Build meta data</h3>
+<p>Meta information are downloaded from GEO with the accession ID <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE61260">GSE61260</a>.</p>
+<pre class="r"><code># extract metadata from GEO
+df &lt;- getGEO(&quot;GSE61260&quot;)
+#&gt; Found 1 file(s)
+#&gt; GSE61260_series_matrix.txt.gz
+#&gt; 
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; cols(
+#&gt;   .default = col_character()
+#&gt; )
+#&gt; ℹ Use `spec()` for the full column specifications.
+#&gt; File stored at:
+#&gt; /var/folders/62/y2c8xnr53ln52nm6f4yryb_m0000gp/T//RtmpFwx8yX/GPL11532.soft
+meta &lt;- df$GSE61260_series_matrix.txt.gz %&gt;%
+  pData() %&gt;%
+  rownames_to_column(&quot;sample&quot;) %&gt;%
+  as_tibble() %&gt;%
+  select(sample,
+    group = &quot;diseasestatus:ch1&quot;, gender = &quot;Sex:ch1&quot;,
+    age = &quot;age:ch1&quot;, bmi = &quot;bmi:ch1&quot;
+  ) %&gt;%
+  mutate(
+    group = str_to_lower(group),
+    group = str_remove(group, &quot;healthy &quot;),
+    group = str_remove(group, &quot;normal &quot;),
+    group = factor(group, levels = c(
+      &quot;control&quot;, &quot;obese&quot;, &quot;nash&quot;, &quot;nafld&quot;,
+      &quot;pbc&quot;, &quot;psc&quot;
+    ))
+  ) %&gt;%
+  mutate(
+    gender = as_factor(gender),
+    age = as.numeric(age),
+    bmi = as.numeric(bmi)
+  ) %&gt;%
+  filter(sample %in% colnames(expr))
+#&gt; select: renamed 4 variables (group, gender, age, bmi) and dropped 40 variables
+#&gt; mutate: converted &#39;group&#39; from character to factor (0 new NA)
+#&gt; mutate: converted &#39;gender&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;age&#39; from character to double (0 new NA)
+#&gt;         converted &#39;bmi&#39; from character to double (0 new NA)
+#&gt; filter: removed one row (1%), 133 rows remaining
+
+# save meta data
+saveRDS(meta, here(output_path, &quot;meta_data.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="exploratory-analysis" class="section level2">
+<h2>Exploratory analysis</h2>
+<div id="pca-of-normalized-data" class="section level3">
+<h3>PCA of normalized data</h3>
+<p>PCA plot of normalized expression data contextualized based on etiologies. Only the top 1000 most variable genes are used as features.</p>
+<pre class="r"><code>expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
+meta &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;))
+
+pca_result &lt;- do_pca(expr, meta, top_n_var_genes = 1000)
+#&gt; left_join: added 4 columns (group, gender, age, bmi)
+#&gt;            &gt; rows only in x     0
+#&gt;            &gt; rows only in y  (  0)
+#&gt;            &gt; matched rows     133
+#&gt;            &gt;                 =====
+#&gt;            &gt; rows total       133
+
+saveRDS(pca_result, here(output_path, &quot;pca_result.rds&quot;))
+
+plot_pca(pca_result, feature = &quot;group&quot;) +
+  my_theme()</code></pre>
+<p><img src="figure/10-human-hampe14-misc.Rmd/pca-norm-data-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="differential-gene-expression-analysis" class="section level2">
+<h2>Differential gene expression analysis</h2>
+<div id="running-limma" class="section level3">
+<h3>Running limma</h3>
+<p>Differential gene expression analysis via limma with the aim to identify the signature of different etiologies.</p>
+<pre class="r"><code># load expression and meta data
+expr &lt;- readRDS(here(output_path, &quot;normalized_expression.rds&quot;))
+meta &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;))
+
+stopifnot(colnames(expr) == meta$sample)
+
+# build design matrix
+design &lt;- model.matrix(~ 0 + group, data = meta)
+rownames(design) &lt;- meta$sample
+colnames(design) &lt;- levels(meta$group)
+
+
+# define contrasts
+contrasts &lt;- makeContrasts(
+  obese_vs_ctrl = obese - control,
+  nash_vs_ctrl = nash - control,
+  nafld_vs_ctrl = nafld - control,
+  pbc_vs_ctrl = pbc - control,
+  psc_vs_ctrl = psc - control,
+  levels = design
+)
+
+limma_result &lt;- run_limma(expr, design, contrasts) %&gt;%
+  assign_deg()
+#&gt; Warning: `tbl_df()` is deprecated as of dplyr 1.0.0.
+#&gt; Please use `tibble::as_tibble()` instead.
+#&gt; This warning is displayed once every 8 hours.
+#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.
+#&gt; select: renamed 3 variables (contrast, logFC, pval) and dropped one variable
+#&gt; group_by: one grouping variable (contrast)
+#&gt; mutate (grouped): new variable &#39;fdr&#39; (double) with 48,235 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: new variable &#39;regulation&#39; (character) with 3 unique values and 0% NA
+#&gt; mutate: converted &#39;regulation&#39; from character to factor (0 new NA)
+
+deg_df &lt;- limma_result %&gt;%
+  mutate(
+    contrast = fct_inorder(contrast),
+    contrast_reference = &quot;control&quot;
+  )
+#&gt; mutate: changed 0 values (0%) of &#39;contrast&#39; (0 new NA)
+#&gt;         new variable &#39;contrast_reference&#39; (character) with one unique value and 0% NA
+
+saveRDS(deg_df, here(output_path, &quot;limma_result.rds&quot;))</code></pre>
+</div>
+<div id="volcano-plots" class="section level3">
+<h3>Volcano plots</h3>
+<p>Volcano plots visualizing the signature of different etiologies.</p>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+df %&gt;%
+  plot_volcano() +
+  my_theme(grid = &quot;y&quot;, fsize = fz)
+#&gt; rename: renamed one variable (p)</code></pre>
+<p><img src="figure/10-human-hampe14-misc.Rmd/volcano-plots-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Time spend to execute this analysis: 08:10 minutes.</p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()
+#&gt; R version 4.0.2 (2020-06-22)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Mojave 10.14.5
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] parallel  stats4    stats     graphics  grDevices datasets  utils    
+#&gt; [8] methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] pd.hugene.1.1.st.v1_3.14.1           DBI_1.1.0                           
+#&gt;  [3] RSQLite_2.2.1                        lemon_0.4.5                         
+#&gt;  [5] cowplot_1.1.0                        AachenColorPalette_1.1.2            
+#&gt;  [7] biobroom_1.20.0                      broom_0.7.3                         
+#&gt;  [9] limma_3.44.3                         GEOquery_2.56.0                     
+#&gt; [11] annotate_1.66.0                      XML_3.99-0.5                        
+#&gt; [13] oligo_1.52.1                         Biostrings_2.56.0                   
+#&gt; [15] XVector_0.28.0                       oligoClasses_1.50.4                 
+#&gt; [17] here_1.0.1                           tidylog_1.0.2                       
+#&gt; [19] forcats_0.5.0                        stringr_1.4.0                       
+#&gt; [21] dplyr_1.0.2                          purrr_0.3.4                         
+#&gt; [23] readr_1.4.0                          tidyr_1.1.2                         
+#&gt; [25] tibble_3.0.4                         ggplot2_3.3.2                       
+#&gt; [27] tidyverse_1.3.0                      hugene11sttranscriptcluster.db_8.7.0
+#&gt; [29] org.Hs.eg.db_3.11.4                  AnnotationDbi_1.50.3                
+#&gt; [31] IRanges_2.22.2                       S4Vectors_0.26.1                    
+#&gt; [33] Biobase_2.48.0                       BiocGenerics_0.34.0                 
+#&gt; [35] workflowr_1.6.2                     
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] colorspace_2.0-0            ellipsis_0.3.1             
+#&gt;  [3] rprojroot_2.0.2             GenomicRanges_1.40.0       
+#&gt;  [5] fs_1.5.0                    rstudioapi_0.13            
+#&gt;  [7] farver_2.0.3                affyio_1.58.0              
+#&gt;  [9] bit64_4.0.5                 fansi_0.4.1                
+#&gt; [11] lubridate_1.7.9.2           xml2_1.3.2                 
+#&gt; [13] codetools_0.2-16            splines_4.0.2              
+#&gt; [15] knitr_1.30                  jsonlite_1.7.2             
+#&gt; [17] dbplyr_2.0.0                BiocManager_1.30.10        
+#&gt; [19] compiler_4.0.2              httr_1.4.2                 
+#&gt; [21] backports_1.2.1             assertthat_0.2.1           
+#&gt; [23] Matrix_1.2-18               cli_2.2.0                  
+#&gt; [25] later_1.1.0.1               htmltools_0.5.0            
+#&gt; [27] tools_4.0.2                 gtable_0.3.0               
+#&gt; [29] glue_1.4.2                  GenomeInfoDbData_1.2.3     
+#&gt; [31] affxparser_1.60.0           Rcpp_1.0.5                 
+#&gt; [33] cellranger_1.1.0            vctrs_0.3.6                
+#&gt; [35] preprocessCore_1.50.0       iterators_1.0.13           
+#&gt; [37] xfun_0.19                   rvest_0.3.6                
+#&gt; [39] lifecycle_0.2.0             renv_0.12.3                
+#&gt; [41] zlibbioc_1.34.0             scales_1.1.1               
+#&gt; [43] clisymbols_1.2.0            hms_0.5.3                  
+#&gt; [45] promises_1.1.1              SummarizedExperiment_1.18.2
+#&gt; [47] curl_4.3                    yaml_2.2.1                 
+#&gt; [49] gridExtra_2.3               memoise_1.1.0              
+#&gt; [51] stringi_1.5.3               foreach_1.5.1              
+#&gt; [53] GenomeInfoDb_1.24.2         rlang_0.4.9                
+#&gt; [55] pkgconfig_2.0.3             bitops_1.0-6               
+#&gt; [57] matrixStats_0.57.0          evaluate_0.14              
+#&gt; [59] lattice_0.20-41             labeling_0.4.2             
+#&gt; [61] bit_4.0.4                   tidyselect_1.1.0           
+#&gt; [63] plyr_1.8.6                  magrittr_2.0.1             
+#&gt; [65] R6_2.5.0                    generics_0.1.0             
+#&gt; [67] DelayedArray_0.14.1         pillar_1.4.7               
+#&gt; [69] haven_2.3.1                 whisker_0.4                
+#&gt; [71] withr_2.3.0                 RCurl_1.98-1.2             
+#&gt; [73] modelr_0.1.8                crayon_1.3.4               
+#&gt; [75] rmarkdown_2.6               grid_4.0.2                 
+#&gt; [77] readxl_1.3.1                blob_1.2.1                 
+#&gt; [79] git2r_0.27.1                reprex_0.3.0               
+#&gt; [81] digest_0.6.27               xtable_1.8-4               
+#&gt; [83] ff_4.0.4                    httpuv_1.5.4               
+#&gt; [85] munsell_0.5.0</code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

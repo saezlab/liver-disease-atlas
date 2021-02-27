@@ -11,7 +11,7 @@
 
 
 
-<title>Home</title>
+<title>Chronic CCl4 (Fig. 1)</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -20,7 +20,11 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -268,7 +272,73 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
 
 
 
@@ -278,6 +348,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -429,9 +509,17 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Home</h1>
+
+<h1 class="title toc-ignore">Chronic CCl4 (Fig. 1)</h1>
 
 </div>
 
@@ -580,16 +668,6 @@ Ignored files:
     Ignored:    analysis/12-human-ramnath-fibrosis_cache/
     Ignored:    analysis/13-meta-chronic-vs-acute_cache/
     Ignored:    analysis/14-meta-mouse-vs-human_cache/
-    Ignored:    analysis/15_plot-chronic-ccl4_cache/
-    Ignored:    analysis/16-plot-acute-apap_cache/
-    Ignored:    analysis/17-plot-acute-ccl4_cache/
-    Ignored:    analysis/18-plot-acute-ph_cache/
-    Ignored:    analysis/19-plot-acute-bdl_cache/
-    Ignored:    analysis/20-plot-study-overview_cache/
-    Ignored:    analysis/21-plot-chronic-vs-acute_cache/
-    Ignored:    analysis/22-plot-mouse-vs-human_cache/
-    Ignored:    analysis/23-plot-precision-recall_cache/
-    Ignored:    analysis/24-save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
@@ -677,7 +755,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/15_plot-chronic-ccl4.Rmd</code>) and HTML (<code>docs/15_plot-chronic-ccl4.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -703,648 +781,19 @@ Message
 <tbody>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/5bce71f1f918419c78e528355f79b88c1e1cb900/docs/index.html" target="_blank">5bce71f</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-27
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/4b2560ec76f4d8d31e7d8f4e7a86084a47efd9ad/docs/index.html" target="_blank">4b2560e</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-27
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/liver-disease-atlas/blob/4496cb56f20363d6814edb5dfad8dcfd199beb38/analysis/index.Rmd" target="_blank">4496cb5</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/7f331d0aac7cf3f2475dc5e40a743d773bdaf1bf/analysis/15_plot-chronic-ccl4.Rmd" target="_blank">7f331d0</a>
 </td>
 <td>
 christianholland
 </td>
 <td>
-2021-02-27
+2021-02-28
 </td>
 <td>
-cosmetics
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/801b9c19f34c36e648c745e88489461881458dd3/docs/index.html" target="_blank">801b9c1</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-27
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/saezlab/liver-disease-atlas/blob/c65acdd450fb1b7b67dec425c6b57bd8f11fa941/analysis/index.Rmd" target="_blank">c65acdd</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-27
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”, “analysis/plot-study-overview.Rmd”,
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/3d42f16aefb8de8671c6530ae24e58561d214f3f/docs/index.html" target="_blank">3d42f16</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-03
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/index.html" target="_blank">9c62197</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-01-07
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/index.html" target="_blank">45a33e4</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-01-07
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b4ed535d7df32989c0ea6b09bd423f648b64d40c/docs/index.html" target="_blank">b4ed535</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-01-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/index.html" target="_blank">3f4f82f</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-01-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/index.html" target="_blank">ce21ef0</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-01-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/0a6e6bcd8b323482dbee6a81d31f8dac004297c3/docs/index.html" target="_blank">0a6e6bc</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-01-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45c5848406234b136005dc618f9be05ba3fd97ec/docs/index.html" target="_blank">45c5848</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/c2af37f38439ab5171298a601a06b956ad426f95/docs/index.html" target="_blank">c2af37f</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-29
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/385ea5e5e302d6a9d8cf7541c835135250305f9d/docs/index.html" target="_blank">385ea5e</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-28
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/57d35bb8f592d1f361f927178efe4ab674ac7aa0/docs/index.html" target="_blank">57d35bb</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-28
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/195c1be74f4be58306838c774a7e2a988437ab57/docs/index.html" target="_blank">195c1be</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-28
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/index.html" target="_blank">d8a06eb</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-28
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/172755d9139e9f7d7eb2dd9aa825f42dc63e4dfd/docs/index.html" target="_blank">172755d</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-28
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/index.html" target="_blank">067c933</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/620ffb3ea3e38d31e0c8a481675bfb1a26a9115b/docs/index.html" target="_blank">620ffb3</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/a008b5433410d48f54e42385a14517f47eacc97b/docs/index.html" target="_blank">a008b54</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/index.html" target="_blank">6b6c16a</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/459dd00399a7a0715f071d3a68cb300286315b4d/docs/index.html" target="_blank">459dd00</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/e864f08a96be45a178568da72d11734a068349e7/docs/index.html" target="_blank">e864f08</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/600864947a45de2b8b915c62b895c511813f1f0b/docs/index.html" target="_blank">6008649</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/25f0b94c83d12567eeb1afa3ca1e6ab6484c4db8/docs/index.html" target="_blank">25f0b94</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/index.html" target="_blank">8a9b7bf</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/24076d281cf0aaf72fe1fdb34396dfacc1ad37e3/docs/index.html" target="_blank">24076d2</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b8af0949a529ac5ea7328f6d5c581f2be253af0e/docs/index.html" target="_blank">b8af094</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/index.html" target="_blank">6dbc304</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d8ff438f82338095a8e8d4da32a977b9d8e44c24/docs/index.html" target="_blank">d8ff438</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/e22a40bafb648c6d8240eab4610edfb69278df74/docs/index.html" target="_blank">e22a40b</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-20
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/af384509e61f6d626b8f2f1bccf80c7f075f5cbc/docs/index.html" target="_blank">af38450</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/index.html" target="_blank">c73e126</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/7bb9aabe6b561f25945051f912a51c735be785dc/docs/index.html" target="_blank">7bb9aab</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/51832b8793c64b84d741be59b3896fbdecb654cf/docs/index.html" target="_blank">51832b8</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-<td>
-Initial page build
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/saezlab/liver-disease-atlas/blob/16718bcdac308c0b81d4b507cfdc41d0f7eb6a6c/analysis/index.Rmd" target="_blank">16718bc</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2020-12-18
-</td>
-<td>
-Start workflowr project.
+wflow_publish("analysis/*", delete_cache = TRUE, republish = TRUE)
 </td>
 </tr>
 </tbody>
@@ -1354,80 +803,420 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<div id="transcriptomic-cross-species-analysis-of-chronic-liver-disease-reveals-a-consistent-regulation-pattern-between-humans-and-mice" class="section level1">
-<h1>Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice</h1>
-<p>The results and the analysis scripts presented on this website ensures the reproducibility of all bioinformatics related findings presented in <a href=""><em>“Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice”</em></a>. Please see below to get more information about the individual analysis and some tips on how to reproduce the result.</p>
-<div id="abstract" class="section level2">
-<h2>Abstract</h2>
-<div id="background-and-aims" class="section level3">
-<h3>Background and aims</h3>
-<p>Mouse models are frequently used to study chronic liver diseases (CLD). To allow a better assessment of translational relevance, we quantified the similarity of prevalent mouse models to human CLD based on transcriptome data.</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Here we generate publication ready plots of the analysis of the chronic CCl4 mouse model.</p>
 </div>
-<div id="methods" class="section level3">
-<h3>Methods</h3>
-<p>RNA-sequencing and gene array data from 372 patients with CLD (NAFLD, NASH, HCV, PBC, and PSC) were compared to acute and chronic mouse models with 227 mice and additionally 9 published gene sets of chronic mouse models. Genes consistently altered in humans and mice were mapped to specific liver cell types based on single-cell RNA-sequencing and validated by immunostaining.</p>
+<div id="libraries-and-sources" class="section level2">
+<h2>Libraries and sources</h2>
+<p>These libraries and sources are used for this analysis.</p>
+<pre class="r"><code>library(tidyverse)
+library(tidylog)
+library(here)
+
+library(AachenColorPalette)
+library(cowplot)
+library(lemon)
+library(ggpubr)
+library(VennDiagram)
+library(grid)
+library(gridExtra)
+library(patchwork)
+
+source(here(&quot;code/utils-plots.R&quot;))</code></pre>
+<p>Definition of global variables that are used throughout this analysis.</p>
+<pre class="r"><code># i/o
+data_path &lt;- &quot;data/mouse-chronic-ccl4&quot;
+output_path &lt;- &quot;output/mouse-chronic-ccl4&quot;
+
+# graphical parameters
+# fontsize
+fz &lt;- 9
+
+# keys to annotate contrasts
+key_mm &lt;- readRDS(here(&quot;data/meta-chronic-vs-acute/contrast_annotation.rds&quot;))</code></pre>
 </div>
-<div id="results" class="section level3">
-<h3>Results</h3>
-<p>Similarity of the top differentially expressed genes between humans and mice varied among the individual mouse models and depended on the period of damage induction. Some models, e.g. 12 months induction of damage by CCl4, reached high similarity to humans with 0.4 recall and 0.33 precision, respectively. Consistently upregulated genes between the chronic CCl4 mouse model and human data were enriched in inflammatory and developmental processes, and mapped to cholangiocytes, macrophages, endothelial and mesenchymal cells, while downregulated genes were enriched in metabolic functions and mapped to hepatocytes. Immunostaining confirmed selected consistent genes and their cell-type specificity. Upregulated genes in both acute and chronic mouse models showed a higher recall and precision with respect to human CLDNAFLD and NASH than exclusively acute or chronic genes.</p>
+<div id="design" class="section level2">
+<h2>Design</h2>
+<pre class="r"><code>design &lt;- ggdraw() +
+  draw_image(here(data_path, &quot;exp-design.pdf&quot;)) +
+  theme(plot.margin = margin(r = 1, unit = &quot;cm&quot;))</code></pre>
 </div>
-<div id="conclusion" class="section level3">
-<h3>Conclusion</h3>
-<p>Our analyses led to the identification of similarly regulated genes in human and mouse liver disease. Although major species differences exist, mouse models may recall at least 30% of the genes significantly altered in human CLDliver diseases. The relevance of individual genes in CLD can be assessed at <a href="https://saezlab.shinyapps.io/liverdiseaseatlas/" class="uri">https://saezlab.shinyapps.io/liverdiseaseatlas/</a>.</p>
+<div id="histology" class="section level2">
+<h2>Histology</h2>
+<pre class="r"><code>histology &lt;- ggdraw() +
+  draw_image(here(data_path, &quot;histology.png&quot;))</code></pre>
 </div>
+<div id="liver-enyzmes" class="section level2">
+<h2>Liver enyzmes</h2>
+<pre class="r"><code>df &lt;- read_csv2(here(data_path, &quot;liver_enzymes.csv&quot;)) %&gt;%
+  mutate(time = parse_number(time),
+         time = replace_na(time, 0)) %&gt;%
+  mutate(time = ordered(time)) %&gt;%
+  pivot_longer(col = -c(time), names_to = &quot;enzyme&quot;, values_to = &quot;y&quot;) %&gt;%
+  mutate(enzyme = factor(str_to_upper(enzyme), levels = c(&quot;ALT&quot;, &quot;AST&quot;, &quot;ALP&quot;)))
+
+df_summary &lt;- df %&gt;%
+  group_by(time, enzyme) %&gt;%
+  summarise(mean_se(y)) %&gt;%
+  ungroup()
+
+liver_enzymes_partial &lt;- df %&gt;%
+  ggplot(aes(x = time, y = y)) +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.5) +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  facet_rep_wrap(~enzyme, scales = &quot;free&quot;, ncol = 3) +
+  labs(x = &quot;Time in month&quot;, y = &quot;U/L&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz) +
+  stat_compare_means(
+    data = df, label = &quot;p.signif&quot;,
+    ref.group = &quot;0&quot;, hide.ns = T
+  )
+
+liver_enzymes &lt;- df %&gt;%
+  ggplot(aes(x = time, y = y)) +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.5) +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  facet_rep_wrap(~enzyme, scales = &quot;free&quot;, ncol = 1) +
+  labs(x = &quot;Time in month&quot;, y = &quot;U/L&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz) +
+  stat_compare_means(
+    data = df, label = &quot;p.signif&quot;,
+    ref.group = &quot;0&quot;, hide.ns = T
+  )
+
+liver_enzymes</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/liver-enzymes-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="analysis" class="section level2">
-<h2>Analysis</h2>
-<p>The tab <code>Mouse models</code> contains Rmarkdown scripts to analyze and characterize the transcriptomic profiles of acute and chronic liver disease mouse models. These analyses comprised</p>
-<ul>
-<li>Normalization</li>
-<li>PCA analysis</li>
-<li>Differential gene expression analysis</li>
-<li>Time series clustering and characterization (if applicable)</li>
-</ul>
-<p>The tab <code>Patient cohorts</code> contains Rmarkdown scripts to analyze and characterize the transcriptomic profiles of patient cohorts suffering from various chronic liver disease etiologies. These analyses comprised:</p>
-<ul>
-<li>Normalization</li>
-<li>PCA analysis</li>
-<li>Differential gene expression analysis</li>
-</ul>
-<p>The tab <code>Meta analysis</code> contains Rmarkdown scripts to integrate acute and chronic mouse models with patient cohorts.</p>
-<ul>
-<li><a href="meta-chronic-vs-acute.html">Chronic vs. acute</a>
-<ul>
-<li>Identification of exclusively and commonly- regulated genes of chronic and acute disease in mice.</li>
-</ul></li>
-<li><a href="meta-mouse-vs-human.html">Mouse vs. human</a>
-<ul>
-<li>Identification of consistently regulated genes in the chronic CCl<sub>4</sub>[mouse-chronic-ccl4.html] mouse model and patients.</li>
-<li>Quantification of the similarity of the in total 12 chronic mouse models with the different human patient cohorts based on precision and recall.</li>
-</ul></li>
-</ul>
-<p>The tab <code>Figures</code> contains Rmarkdown scripts to generate the figures used in the manuscript.</p>
+<div id="pca" class="section level2">
+<h2>PCA</h2>
+<pre class="r"><code>pca_result &lt;- readRDS(here(output_path, &quot;pca_result.rds&quot;))
+
+keys &lt;- key_mm %&gt;%
+  filter(treatment == &quot;CCl4&quot; &amp; class == &quot;Chronic&quot;) %&gt;%
+  distinct(time = value, label = time_label2) %&gt;%
+  drop_na() %&gt;%
+  add_row(time = 0, label = &quot;Control&quot;) %&gt;%
+  mutate(time = ordered(time))
+
+pca_plot &lt;- pca_result$coords %&gt;%
+  arrange(time) %&gt;%
+  inner_join(keys, by = &quot;time&quot;) %&gt;%
+  mutate(label = fct_inorder(label)) %&gt;%
+  mutate(treatment = case_when(treatment == &quot;oil&quot; ~ &quot;Oil&quot;,
+                               treatment == &quot;ccl4&quot; ~ &quot;CCl4 + Oil&quot;,
+                               treatment == &quot;ctrl&quot; ~ &quot;Control&quot;)) %&gt;%
+  ggplot(aes(x=PC1, y=PC2, color=label, shape = treatment, label = label)) +
+  geom_point() +
+  labs(x = paste0(&quot;PC1&quot;, &quot; (&quot;, pca_result$var[1], &quot;%)&quot;),
+       y = paste0(&quot;PC2&quot;, &quot; (&quot;, pca_result$var[2], &quot;%)&quot;),
+       color = &quot;Time&quot;, shape = &quot;Treatment&quot;) +
+  my_theme(fsize  = fz) +
+  theme(legend.position = &quot;top&quot;,
+        legend.box.margin = margin(10, 0, -20, 10)) +
+  scale_color_manual(values = aachen_color(c(
+    &quot;violet&quot;, &quot;bordeaux&quot;, &quot;red&quot;, &quot;orange&quot;
+  )))
+
+pca_plot</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/pca-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="how-can-i-reproduce-the-analysis" class="section level2">
-<h2>How can I reproduce the analysis?</h2>
-<p>We have used the <a href="https://jdblischak.github.io/workflowr/">workflowr</a> package to organize the analysis scipts within this project so please familiarize yourself with its concept.</p>
-<ol style="list-style-type: decimal">
-<li>Clone the repository from <a href="https://github.com/saezlab/liver-disease-atlas" class="uri">https://github.com/saezlab/liver-disease-atlas</a> which automatically provides you with all analysis scripts and the correct directory structure.</li>
-<li>You need to install all packages that are required for the analyses. The package <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> allows you to easily install the packages with the correct versions:</li>
-</ol>
-<pre class="r"><code>install.packages(&quot;renv&quot;)
-renv::restore()</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li><p>The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at <a href="https://doi.org/10.5281/zenodo.4407208">Zenodo</a>. <a href="https://doi.org/10.5281/zenodo.4407208"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4407208.svg" alt="DOI" /></a> Download the zipped <code>data</code> folder unzipp it and replace the existing <code>data</code> folder at the root level of the R-project.</p></li>
-<li><p>Run all analyses by running</p></li>
-</ol>
-<pre class="r"><code>install.packages(&quot;workflowr&quot;)
-workflowr::wflow_build(republish = TRUE)</code></pre>
-<p>All intermediate and final results will be saved in the <code>output</code> folder.</p>
+<div id="volcano-plot" class="section level2">
+<h2>Volcano plot</h2>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  inner_join(key_mm, by = &quot;contrast&quot;) %&gt;%
+  select(-contrast) %&gt;%
+  rename(contrast = time_label2) %&gt;%
+  mutate(contrast = fct_drop(contrast)) %&gt;%
+  mutate(regulation = fct_recode(regulation,
+    Up = &quot;up&quot;, Down = &quot;down&quot;,
+    n.s. = &quot;ns&quot;
+  ))
+
+deg_count &lt;- df %&gt;%
+  add_count(contrast, regulation) %&gt;%
+  filter(regulation != &quot;n.s.&quot;) %&gt;%
+  mutate(regulation = fct_drop(regulation)) %&gt;%
+  mutate(
+    logFC = case_when(
+      regulation == &quot;Up&quot; ~ 0.75 * max(logFC),
+      regulation == &quot;Down&quot; ~ 0.75 * min(logFC)
+    ),
+    pval = 0.4
+  ) %&gt;%
+  distinct(n, contrast, logFC, pval, regulation, value) %&gt;%
+  complete(contrast, nesting(regulation, logFC, pval), fill = list(n = 0))
+
+volcano &lt;- df %&gt;%
+  plot_volcano(ncol = 1) +
+  geom_text(
+    data = filter(deg_count),
+    aes(y = pval, label = n), size = fz / (14 / 5),
+    hjust = &quot;inward&quot;, vjust = &quot;inward&quot;,
+    show.legend = F
+  ) +
+  theme(
+    legend.position = &quot;top&quot;,
+    legend.box.margin = margin(-10, 0, -10, 0)
+  ) +
+  labs(color = &quot;Regulation&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz)
+
+volcano</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/volcano-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="how-to-cite" class="section level2">
-<h2>How to cite?</h2>
-<blockquote>
-<p>Holland CH, Ramirez Flores RO, Myllys M, Hassan R, Edlund K, Hofmann U, Marchan R, Cadenas C, Reinders J, Hoehme S, Seddek A, Dooley S, Keitel V, Godoy P, Begher-Tibbe B, Trautwein C, Rupp C, Mueller S, Longerich T, Hengstler JG<sup>#</sup>, Saez-Rodriguez J<sup>#</sup>, Ghallab A<sup>#</sup>. “Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice.” <em>In preparation</em>. 2021.</p>
-</blockquote>
-<p><sup>#</sup><em>Shared senior authorship</em></p>
+<div id="top-degs" class="section level2">
+<h2>Top DEGs</h2>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  inner_join(key_mm) %&gt;%
+  select(-class) %&gt;%
+  rename(class = time_label2)
+
+top_genes_df &lt;- df %&gt;% 
+  group_by(class, sign(logFC)) %&gt;%
+  slice_max(order_by = abs(statistic), n = 10, with_ties = F) %&gt;%
+  ungroup() %&gt;% 
+  nest(data = -c(class, value))
+
+plots &lt;- top_genes_df %&gt;%
+  mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
+
+# for main panel
+top_genes &lt;- plots %&gt;%
+  pull(p) %&gt;%
+  wrap_plots() +
+  plot_layout(ncol = 1)
+
+top_genes</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/top-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gene-overlap" class="section level2">
+<h2>Gene overlap</h2>
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;))
+
+tables = df %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  mutate(class = str_c(&quot;Month &quot;, parse_number(as.character(contrast)))) %&gt;%
+  select(-contrast_reference, -contrast) %&gt;%
+  mutate(class = factor(class, 
+                        levels = c(&quot;Month 2&quot;, &quot;Month 6&quot;, &quot;Month 12&quot;))) %&gt;%
+  group_split(class)
+
+# extract labellers
+c1 = tables[[1]] %&gt;% distinct(class) %&gt;% pull() %&gt;% as.character()
+c2 = tables[[2]] %&gt;% distinct(class) %&gt;% pull() %&gt;% as.character()
+c3 = tables[[3]] %&gt;% distinct(class) %&gt;% pull() %&gt;% as.character()
+
+t1 = tables[[1]] %&gt;% count(regulation)
+t2 = tables[[2]] %&gt;% count(regulation)
+t3 = tables[[3]] %&gt;% count(regulation)
+    
+plots = c(&quot;up&quot;, &quot;down&quot;) %&gt;%
+  map(function(r) {
+    # set sizes of regulated genes
+    a1 = t1 %&gt;% filter(regulation == r) %&gt;% pull(n)
+    a2 = t2 %&gt;% filter(regulation == r) %&gt;% pull(n)
+    a3 = t3 %&gt;% filter(regulation == r) %&gt;% pull(n)
+    
+    a12 = purrr::reduce(
+      list(tables[[1]] %&gt;% filter(regulation == r) %&gt;% pull(gene),
+           tables[[2]] %&gt;% filter(regulation == r) %&gt;% pull(gene)),
+      intersect) %&gt;%
+      length()
+    
+    a23 = purrr::reduce(
+      list(tables[[2]] %&gt;% filter(regulation == r) %&gt;% pull(gene),
+           tables[[3]] %&gt;% filter(regulation == r) %&gt;% pull(gene)),
+      intersect) %&gt;% 
+      length()
+    
+    a13 = purrr::reduce(
+      list(tables[[1]] %&gt;% filter(regulation == r) %&gt;% pull(gene),
+           tables[[3]] %&gt;% filter(regulation == r) %&gt;% pull(gene)),
+      intersect) %&gt;% 
+      length()
+    
+    a123 = purrr::reduce(
+      list(tables[[1]] %&gt;% filter(regulation == r) %&gt;% pull(gene),
+           tables[[2]] %&gt;% filter(regulation == r) %&gt;% pull(gene),
+           tables[[3]] %&gt;% filter(regulation == r) %&gt;% pull(gene)),
+      intersect) %&gt;% 
+      length()
+    
+
+    
+    grid.newpage()
+    p = draw.triple.venn(
+      area1 = a1, area2 = a2, area3 = a3, 
+      n12 = a12, n23 = a23, n13 = a13, 
+      n123 = a123,
+      category = c(c1, c2, c3),
+      # lty = &quot;blank&quot;,
+      cex = 1/12*fz,
+      fontfamily = rep(&quot;sans&quot;, 7),
+      # fill = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;, &quot;red&quot;)),
+      # cat.col = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;, &quot;red&quot;)),
+      cat.cex = 1/12*(fz+1),
+      cat.fontfamily = rep(&quot;sans&quot;, 3),
+      cat.pos = c(350,10,180),
+      cat.prompts = T,
+      cat.just = list(c(0.5, 1), c(0.5, 1), c(0.5, 1))
+    ) %&gt;%
+      as_ggplot() %&gt;%
+      grid.arrange(top = textGrob(str_to_title(r), gp=gpar(fontsize=fz, 
+                                             fontface = &quot;bold&quot;)))
+  })</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/gene-overlap-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/15_plot-chronic-ccl4.Rmd/gene-overlap-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+
+
+gene_overlap = wrap_plots(plots)</code></pre>
+</div>
+<div id="top-gene-of-overlap" class="section level2">
+<h2>Top gene of overlap</h2>
+<pre class="r"><code>df = readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;pure_ccl4&quot;) %&gt;%
+  inner_join(key_mm) %&gt;%
+  select(-class) %&gt;%
+  rename(class = time_label2) %&gt;% 
+  filter(regulation != &quot;ns&quot;) %&gt;%
+  mutate(regulation = fct_inorder(str_to_title(regulation)))
+  
+top_genes_ranked = df %&gt;%
+  # filter for genes that are deregulated at all time points
+  group_by(gene, regulation) %&gt;%
+  filter(n() == 3) %&gt;%
+  summarise(mean_logfc = mean(logFC)) %&gt;%
+  group_by(regulation) %&gt;%
+  mutate(rank = row_number(-abs(mean_logfc))) %&gt;%
+  ungroup()
+
+top_genes_of_overlap = df %&gt;%
+  inner_join(top_genes_ranked, by=c(&quot;gene&quot;, &quot;regulation&quot;))
+
+top_overlap_genes = top_genes_of_overlap %&gt;%
+  filter(rank &lt;= 5) %&gt;%
+  ggplot(aes(x=fct_reorder(gene, mean_logfc), y=logFC, group = class, 
+             fill = class)) +
+  geom_col(position = &quot;dodge&quot;) +
+  facet_rep_wrap(~regulation, ncol = 1, scales = &quot;free&quot;) +
+  my_theme(grid = &quot;y&quot;, fsize = fz) +
+  labs(x=&quot;Gene&quot;, y=&quot;logFC&quot;, fill = NULL) +
+  theme(legend.position = &quot;top&quot;,
+        legend.box.margin = margin(-2, 0, -10, 0)) +
+  scale_fill_manual(values = aachen_color(c(&quot;maygreen&quot;, &quot;green&quot;, &quot;turquoise&quot;))) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+top_overlap_genes</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/top-genes-overlap-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="time-series-cluster" class="section level2">
+<h2>Time series cluster</h2>
+<pre class="r"><code>profile_label = tribble(
+  ~profile, ~process,
+  &quot;STEM ID: 14&quot;, &quot;Inflammation&quot;,
+  &quot;STEM ID: 6&quot;, &quot;Proliferation&quot;,
+  &quot;STEM ID: 17&quot;, NA_character_,
+  &quot;STEM ID: 12&quot;, NA_character_,
+  &quot;STEM ID: 7&quot;, &quot;Metabolism (1)&quot;,
+  &quot;STEM ID: 9&quot;, &quot;Metabolism (2)&quot;,
+  &quot;STEM ID: 13&quot;, &quot;ECM&quot;
+) %&gt;%
+  mutate(profile = fct_inorder(profile),
+         process = coalesce(process, profile),
+         process = fct_inorder(process))
+
+stem_res &lt;- readRDS(here(output_path, &quot;stem_result.rds&quot;)) %&gt;%
+  filter(key == &quot;pure_ccl4&quot;) %&gt;%
+  filter(p &lt;= 0.05) %&gt;%
+  mutate(profile = fct_reorder(str_c(
+    &quot;STEM ID: &quot;,
+    as.character(profile)
+  ), p)) %&gt;%
+  inner_join(profile_label, by = &quot;profile&quot;) %&gt;%
+  select(-profile) %&gt;%
+  rename(profile = process)
+
+# extract meta data of profiles
+profile_anno &lt;- stem_res %&gt;%
+  group_by(key, profile, p) %&gt;%
+  mutate(y = 1.2 * abs(max(value))) %&gt;%
+  ungroup() %&gt;%
+  mutate(max_time = max(time)) %&gt;%
+  distinct(key, profile, p, size, y, max_time) %&gt;%
+  mutate(label = str_c(size, &quot; &quot;, &quot;genes&quot;))
+
+ts_cluster &lt;- stem_res %&gt;%
+  plot_stem_profiles(model_profile = F, nrow = 2) +
+  labs(x = &quot;Time in Months&quot;) +
+  geom_text(
+    data = profile_anno, aes(x = 0, y = y, label = label),
+    inherit.aes = F, size = fz / (14 / 5), hjust = &quot;inward&quot;
+  ) +
+  my_theme(grid = &quot;no&quot;, fsize = fz) +
+  scale_x_continuous(
+    breaks = unique(stem_res$time),
+    guide = guide_axis(n.dodge = 1)
+  )
+
+ts_cluster</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/ts-cluster-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="collage" class="section level2">
+<h2>Collage</h2>
+<div id="figure-1" class="section level3">
+<h3>Figure 1</h3>
+<pre class="r"><code>fig1 &lt;- (design + histology) /
+  ((liver_enzymes | (gene_overlap / plot_spacer()) | top_overlap_genes) +
+     plot_layout(widths = c(1,2.5,2))) /
+  ts_cluster +
+  plot_layout(height = c(1, 1, 1)) +
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;&quot;, &quot;E&quot;, &quot;F&quot;))) &amp;
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  )
+
+fig1</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/fig-1-1.png" width="755.52" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+ggsave(here(&quot;figures/Figure 1.pdf&quot;), fig1,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)
+ggsave(here(&quot;figures/Figure 1.png&quot;), fig1,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)</code></pre>
+</div>
+<div id="partial-figure-1" class="section level3">
+<h3>Partial Figure 1</h3>
+</div>
+<div id="supplementary-figure-1.1" class="section level3">
+<h3>Supplementary Figure 1.1</h3>
+<pre class="r"><code>sfig1_1 &lt;- pca_plot / (volcano | top_genes) +
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;))) &amp;
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  )
+
+sfig1_1</code></pre>
+<p><img src="figure/15_plot-chronic-ccl4.Rmd/s-fig-1-1-1.png" width="755.52" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+ggsave(here(&quot;figures/Supplementary Figure 1.1.pdf&quot;), sfig1_1,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)
+ggsave(here(&quot;figures/Supplementary Figure 1.1.png&quot;), sfig1_1,
+  width = 21, height = 29.7, units = c(&quot;cm&quot;)
+)</code></pre>
+<p>Time spend to execute this analysis: 00:50 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1435,33 +1224,58 @@ workflowr::wflow_build(republish = TRUE)</code></pre>
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.0.2 (2020-06-22)
-Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Mojave 10.14.5
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-attached base packages:
-[1] stats     graphics  grDevices datasets  utils     methods   base     
-
-other attached packages:
-[1] workflowr_1.6.2
-
-loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5      rstudioapi_0.13 whisker_0.4     knitr_1.30     
- [5] magrittr_2.0.1  R6_2.5.0        rlang_0.4.9     stringr_1.4.0  
- [9] tools_4.0.2     xfun_0.19       git2r_0.27.1    htmltools_0.5.0
-[13] ellipsis_0.3.1  rprojroot_2.0.2 yaml_2.2.1      digest_0.6.27  
-[17] tibble_3.0.4    lifecycle_0.2.0 crayon_1.3.4    later_1.1.0.1  
-[21] vctrs_0.3.6     promises_1.1.1  fs_1.5.0        glue_1.4.2     
-[25] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.2 
-[29] pillar_1.4.7    httpuv_1.5.4    renv_0.12.3     pkgconfig_2.0.3</code></pre>
+<pre class="r"><code>sessionInfo()
+#&gt; R version 4.0.2 (2020-06-22)
+#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+#&gt; Running under: macOS Mojave 10.14.5
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] grid      stats     graphics  grDevices datasets  utils     methods  
+#&gt; [8] base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] patchwork_1.1.1          gridExtra_2.3            VennDiagram_1.6.20      
+#&gt;  [4] futile.logger_1.4.3      ggpubr_0.4.0             lemon_0.4.5             
+#&gt;  [7] cowplot_1.1.0            AachenColorPalette_1.1.2 here_1.0.1              
+#&gt; [10] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
+#&gt; [13] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
+#&gt; [16] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
+#&gt; [19] tidyverse_1.3.0          workflowr_1.6.2         
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] fs_1.5.0             lubridate_1.7.9.2    httr_1.4.2          
+#&gt;  [4] rprojroot_2.0.2      tools_4.0.2          backports_1.2.1     
+#&gt;  [7] R6_2.5.0             DBI_1.1.0            colorspace_2.0-0    
+#&gt; [10] withr_2.3.0          tidyselect_1.1.0     curl_4.3            
+#&gt; [13] compiler_4.0.2       git2r_0.27.1         cli_2.2.0           
+#&gt; [16] rvest_0.3.6          formatR_1.7          xml2_1.3.2          
+#&gt; [19] labeling_0.4.2       scales_1.1.1         digest_0.6.27       
+#&gt; [22] foreign_0.8-80       rmarkdown_2.6        rio_0.5.16          
+#&gt; [25] pkgconfig_2.0.3      htmltools_0.5.0      dbplyr_2.0.0        
+#&gt; [28] rlang_0.4.9          readxl_1.3.1         rstudioapi_0.13     
+#&gt; [31] farver_2.0.3         generics_0.1.0       jsonlite_1.7.2      
+#&gt; [34] gtools_3.8.2         zip_2.1.1            car_3.0-10          
+#&gt; [37] magrittr_2.0.1       Rcpp_1.0.5           munsell_0.5.0       
+#&gt; [40] fansi_0.4.1          abind_1.4-5          lifecycle_0.2.0     
+#&gt; [43] stringi_1.5.3        whisker_0.4          yaml_2.2.1          
+#&gt; [46] carData_3.0-4        plyr_1.8.6           promises_1.1.1      
+#&gt; [49] crayon_1.3.4         lattice_0.20-41      haven_2.3.1         
+#&gt; [52] hms_0.5.3            magick_2.5.2         knitr_1.30          
+#&gt; [55] pillar_1.4.7         ggsignif_0.6.0       codetools_0.2-16    
+#&gt; [58] clisymbols_1.2.0     futile.options_1.0.1 reprex_0.3.0        
+#&gt; [61] glue_1.4.2           evaluate_0.14        lambda.r_1.2.4      
+#&gt; [64] data.table_1.13.4    renv_0.12.3          modelr_0.1.8        
+#&gt; [67] vctrs_0.3.6          httpuv_1.5.4         cellranger_1.1.0    
+#&gt; [70] gtable_0.3.0         assertthat_0.2.1     xfun_0.19           
+#&gt; [73] openxlsx_4.2.3       broom_0.7.3          rstatix_0.6.0       
+#&gt; [76] later_1.1.0.1        ellipsis_0.3.1</code></pre>
 </div>
 </div>
 </div>
@@ -1482,6 +1296,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -1513,7 +1329,38 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
