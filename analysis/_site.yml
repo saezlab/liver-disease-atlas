@@ -1,7 +1,7 @@
 name: Liver disease atlas
 output_dir: ../docs
 navbar:
-  title: meta-liver
+  title: Liver disease atlas
   left:
   - text: Home
     href: index.html
