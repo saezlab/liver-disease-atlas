@@ -89,11 +89,14 @@ num_mouse <- df %>%
   )) +
   geom_col(position = "dodge") +
   labs(
-    x = "Number of mice", y = "Study", subtitle = stitle,
+    x = "Number of mice", y = "Mouse model", subtitle = stitle,
     fill = NULL
   ) +
   my_theme(grid = "x", fsize = fz) +
-  scale_fill_manual(values = aachen_color(c("blue75", "red75")))
+  scale_fill_manual(values = aachen_color(c("blue75", "red75"))) +
+  scale_y_discrete(labels = c("Tunicamycin","LPS","BDL",  
+                              expression(CCl[4] (Chronic)),
+                              expression(CCl[4] (Acute)), "APAP", "PH"))
 
 num_mouse
 ```
@@ -123,7 +126,7 @@ num_patient <- df %>%
   )) +
   geom_col(position = "dodge") +
   labs(
-    x = "Number of patients", y = "Study", subtitle = stitle,
+    x = "Number of patients", y = "Patient cohort", subtitle = stitle,
     fill = NULL
   ) +
   my_theme(grid = "x", fsize = fz) +
@@ -197,9 +200,9 @@ gene_coverage_hs
 ## Collage
 ### Supplementary Figure 0.1
 ```{r s-fig-0-1}
-sfig0_1 <- (num_mouse + num_patient) /
-  (gene_coverage_mm + gene_coverage_hs) +
-  plot_annotation(tag_levels = list(c("A", "B", "C", "D"))) &
+sfig0_1 <- (num_mouse + num_patient) +
+  # (gene_coverage_mm + gene_coverage_hs) +
+  plot_annotation(tag_levels = list(c("A", "B"))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
     legend.key.height = unit(11.5, "pt"),
@@ -209,10 +212,10 @@ sfig0_1 <- (num_mouse + num_patient) /
 sfig0_1
 
 ggsave(here("figures/Supplementary Figure 0.1.pdf"), sfig0_1,
-  width = 21, height = 10, units = c("cm")
+  width = 21, height = 5, units = c("cm")
 )
 ggsave(here("figures/Supplementary Figure 0.1.png"), sfig0_1,
-  width = 21, height = 10, units = c("cm")
+  width = 21, height = 5, units = c("cm")
 )
 ```
 

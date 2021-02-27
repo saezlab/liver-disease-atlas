@@ -65,7 +65,7 @@ design <- ggdraw() +
 ```
 
 ## Histology
-```{r histology, eval=FALSE, include=FALSE}
+```{r histology, include=FALSE}
 histology <- ggdraw() +
   draw_image(here(data_path, "histology.png"))
 ```
@@ -87,7 +87,7 @@ prolif <- prolif_df %>%
   geom_boxplot() +
   # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
   # geom_col() +
-  labs(x = "Time in days", y = "Proliferation in % (24h period)") +
+  labs(x = "Time in days", y = "Proliferation in %\n(24h period)") +
   my_theme(grid = "y", fsize = fz) +
   stat_compare_means(
     data = prolif_df, label = "p.signif",
@@ -296,7 +296,7 @@ ts_cluster <- stem_res %>%
   my_theme(grid = "no", fsize = fz) +
   scale_x_continuous(
     breaks = unique(stem_res$time),
-    guide = guide_axis(n.dodge = 3)
+    labels = c("", 1,"", "",24,"","", 96)
   )
 
 ts_cluster
@@ -305,13 +305,13 @@ ts_cluster
 ## Collage
 ### Supplementary Figure 2.4
 ```{r s-fig-2-2, fig.width=7.87, fig.height=11.69}
-sfig2_4 <- (design + plot_spacer()) /
+sfig2_4 <- (design + histology) /
   (((prolif / lob) | pca_plot) + plot_layout(widths = c(1, 3))) /
-  ((volcano_main / top_genes_main)) /
+  (volcano_main / top_genes_main) /
   ts_cluster +
   plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
   plot_annotation(tag_levels = list(c(
-    "A", "C", "","D", "E", "F", "", "", "", "", "", "G"
+    "A", "B", "C","","D", "E", "F", "", "", "", "", "", "G"
   ))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
