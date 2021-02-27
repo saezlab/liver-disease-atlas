@@ -1,0 +1,439 @@
+---
+title: "Precision and recall of chronic mouse models (Fig. 5)"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r chunk-setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  autodep = TRUE,
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
+```
+
+## Introduction
+Here we generate publication-ready plots for the integration of further chronic mouse models.
+
+## Libraries and sources
+These libraries and sources are used for this analysis.
+```{r libs-and-src, message=FALSE, warning=FALSE, cache=FALSE}
+library(tidyverse)
+library(tidylog)
+library(here)
+
+library(AachenColorPalette)
+library(scales)
+library(UpSetR)
+library(grid)
+library(lemon)
+library(ggrepel)
+library(magick)
+library(patchwork)
+
+library(gtools)
+
+source(here("code/utils-plots.R"))
+```
+
+Definition of global variables and functions that are used throughout this analysis.
+```{r analysis-specific-params, cache=FALSE}
+# i/o
+data_path <- "data/meta-mouse-vs-human"
+output_path <- "output/meta-mouse-vs-human"
+
+# graphical parameters
+# fontsize
+fz <- 9
+
+# keys to annotate contrasts
+key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
+key_hs <- readRDS(here("data/meta-mouse-vs-human/contrast_annotation.rds"))
+```
+
+## Chronic mouse model genes in number
+```{r vis-chronic-mm-gene-numbers}
+keys <- key_mm %>%
+  distinct(study = contrast, label2)
+
+df <- readRDS(here(output_path, "chronic_mouse_deg_numbers.rds")) %>%
+  left_join(keys, by = "study") %>%
+  mutate(label2 = coalesce(label2, study)) %>%
+  mutate(regulation = fct_rev(str_to_title(regulation)))
+
+num_genes <- df %>%
+  ggplot(aes(y = fct_reorder(label2, n, sum), x = n, fill = regulation)) +
+  geom_col(position = "dodge") +
+  labs(
+    x = "Number of differentially expressed genes",
+    y = "Chronic mouse model",
+    fill = "Regulation"
+  ) +
+  scale_x_log10(
+    breaks = trans_breaks("log10", function(x) 10^x),
+    labels = trans_format("log10", scales::math_format(10^.x))
+  ) +
+  my_theme(grid = "x", fsize = fz) +
+  scale_fill_manual(values = aachen_color(c("red75", "blue75"))) +
+  annotation_logticks(sides = "b")
+
+num_genes
+```
+
+## Similarity of chronic mouse models and patient cohorts
+```{r similarity-chronic-mm-and-hs}
+contrast_keys_human <- key_hs %>%
+  distinct(contrast, label, source, phenotype) %>%
+  unite(contrast, source, phenotype, contrast, sep = "-")
+
+contrast_keys_mouse <- key_mm %>%
+  filter(str_detect(contrast, "pure")) %>%
+  distinct(contrast, label)
+
+keys <- bind_rows(contrast_keys_mouse, contrast_keys_human)
+
+
+o <- readRDS(here(output_path, "cross_species_similarity.rds"))
+
+oo <- o %>%
+  rename(contrast = set1) %>%
+  left_join(keys, by = "contrast") %>%
+  mutate(label = coalesce(label, contrast)) %>%
+  rename(set1 = label, contrast = set2, contrast_set1 = contrast) %>%
+  left_join(keys, by = "contrast") %>%
+  mutate(label = coalesce(label, contrast)) %>%
+  rename(set2 = label, contrast_set2 = contrast) %>%
+  mutate(
+    contrast_set1 = factor(contrast_set1, levels = levels(o$set1)),
+    contrast_set2 = factor(contrast_set2, levels = levels(o$set2)),
+    set1 = fct_reorder(set1, as.numeric(contrast_set1)),
+    set2 = fct_reorder(set2, as.numeric(contrast_set2))
+  ) %>%
+  select(set1, set2, similarity)
+
+gs_sim <- oo %>%
+  filter(!str_detect(set1, "NAFLD|NASH|PSC|PBC|HCV")) %>%
+  filter(!str_detect(set2, "WTD|HF|PTEN|MCD|STZ|CCl4")) %>%
+  ggplot(aes(
+    x = set1, y = set2, fill = similarity,
+    label = round(similarity, 3)
+  )) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = aachen_color("green")) +
+  labs(x = NULL, y = NULL, fill = "Overlap\ncoefficient") +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  my_theme(fsize = fz, grid = "no")
+
+gs_sim
+```
+
+## Enrichment of chronic mouse genes in patient cohorts
+```{r enrichment-chronic-mm-in-hs}
+contrast_keys_human <- key_hs %>%
+  distinct(contrast, label, source) %>%
+  unite(contrast, source, contrast)
+
+contrast_keys_mouse <- key_mm %>%
+  filter(str_detect(contrast, "pure")) %>%
+  distinct(contrast, label)
+
+keys <- bind_rows(contrast_keys_mouse, contrast_keys_human)
+
+gsea_res <- readRDS(here(output_path, "cross_species_enrichment.rds")) %>%
+  rename(contrast = signature) %>%
+  inner_join(keys, by = "contrast") %>%
+  select(-contrast) %>%
+  rename(signature = label, contrast = geneset) %>%
+  left_join(keys, by = "contrast") %>%
+  mutate(label = coalesce(label, contrast)) %>%
+  select(-contrast) %>%
+  rename(geneset = label) %>%
+  mutate(direction = fct_rev(str_to_title(direction)))
+
+tile_up <- gsea_res %>%
+  filter(direction == "Up") %>%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %>%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = "free", ncol = 1) +
+  my_theme(grid = "no", fsize = fz) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_fill_gradient2(
+    low = aachen_color("blue"), mid = "white",
+    high = aachen_color("red"), limits = c(-1, 1)
+  ) +
+  my_theme(grid = "no", fsize = fz) +
+  labs(x = "Signature", y = "Gene Set", fill = "ES") +
+  guides(fill = guide_colorbar(title = "ES"))
+
+box_up <- gsea_res %>%
+  filter(direction == "Up") %>%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = "x") +
+  theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+tile_down <- gsea_res %>%
+  filter(direction == "Down") %>%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %>%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = "free", ncol = 1) +
+  my_theme(grid = "no", fsize = fz) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_fill_gradient2(
+    low = aachen_color("blue"), mid = "white",
+    high = aachen_color("red"), limits = c(-1, 1)
+  ) +
+  my_theme(grid = "no", fsize = fz) +
+  labs(x = "Signature", y = "Gene Set", fill = "ES") +
+  guides(fill = guide_colorbar(title = "ES"))
+
+box_down <- gsea_res %>%
+  filter(direction == "Down") %>%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = "x") +
+  theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+tile_up + box_up
+tile_down + box_down
+```
+
+## Etiology genes in numbers
+```{r vis-etiology-gene-numbers}
+df <- readRDS(here(output_path, "etiology_gene_sets.rds"))
+
+mat_up <- df %>%
+  filter(regulation == "up") %>%
+  select(-regulation) %>%
+  mutate(val = 1) %>%
+  spread(etiology, val, fill = 0) %>%
+  data.frame(row.names = 1)
+
+pdf(file = here("figures/tmp/Fig5A1.pdf"), width = 15, height = 10, onefile = F)
+upset(mat_up,
+  nintersects = NA, mainbar.y.label = "Common genes",
+  sets.x.label = "Total number of genes",
+  text.scale = 3, point.size = 5
+)
+grid.text("Up", x = 0.65, y = 0.95, gp = gpar(fontsize = fz * 4))
+dev.off()
+
+mat_down <- df %>%
+  filter(regulation == "down") %>%
+  select(-regulation) %>%
+  mutate(val = 1) %>%
+  spread(etiology, val, fill = 0) %>%
+  data.frame(row.names = 1)
+
+pdf(file = here("figures/tmp/Fig5A2.pdf"), width = 15, height = 10, onefile = F)
+upset(mat_down,
+  nintersects = NA, mainbar.y.label = "Common genes",
+  sets.x.label = "Total number of genes",
+  text.scale = 3, point.size = 5
+)
+grid.text("Down", x = 0.65, y = 0.95, gp = gpar(fontsize = fz * 4))
+dev.off()
+```
+
+## PR scatter plot of chronic mouse models
+```{r pr-scatter-plot-mouse-models}
+keys <- key_mm %>%
+  distinct(study = contrast, label2)
+
+pr <- readRDS(here(output_path, "precision_recall.rds")) %>%
+  left_join(keys, by = "study") %>%
+  mutate(label2 = coalesce(label2, study)) %>%
+  mutate(regulation = fct_rev(str_to_title(regulation))) %>%
+  mutate(x = case_when(
+    str_detect(label2, "12 Month") ~ as.character(label2),
+    TRUE ~ NA_character_
+  )) %>%
+  mutate(etiology = factor(etiology, levels = c(
+    "NAFLD", "NASH", "HCV", "PSC",
+    "PBC"
+  ))) %>%
+  mutate(label2 = case_when(
+    str_detect(label2, "HF12") ~ "High-fat diet (12 Weeks)",
+    str_detect(label2, "HF18") ~ "High-fat diet (18 Weeks)",
+    str_detect(label2, "HF30") ~ "High-fat diet (30 Weeks)",
+    str_detect(label2, "STZ12") ~ "Streptozocin diet (12 Weeks)",
+    str_detect(label2, "STZ18") ~ "Streptozocin diet (18 Weeks)",
+    str_detect(label2, "MCD4") ~ "Methionine- and choline-deficient diet (4 Weeks)",
+    str_detect(label2, "MCD8") ~ "Methionine- and choline-deficient diet (8 Weeks)",
+    str_detect(label2, "WTD") ~ "Western-type diet (12 Weeks)",
+    str_detect(label2, "PTEN") ~ "PTEN knockout mice",
+    TRUE ~ as.character(label2)
+  )) %>%
+  mutate(label2 = factor(label2, levels = c(
+    "CCl4 (2 Months)", "CCl4 (6 Months)", "CCl4 (12 Months)",
+    "High-fat diet (12 Weeks)", "High-fat diet (18 Weeks)",
+    "High-fat diet (30 Weeks)", "Streptozocin diet (12 Weeks)",
+    "Streptozocin diet (18 Weeks)",
+    "Methionine- and choline-deficient diet (4 Weeks)",
+    "Methionine- and choline-deficient diet (8 Weeks)",
+    "Western-type diet (12 Weeks)",
+    "PTEN knockout mice"
+  )))
+
+pr_plot_mm <- pr %>%
+  ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
+  geom_point() +
+  facet_rep_grid(regulation ~ etiology) +
+  geom_text_repel(size = fz / (14 / 5), show.legend = FALSE, na.rm = TRUE) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision", color = "Mouse model") +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d(direction = -1, option = "B") +
+  theme(legend.position = "top") +
+  guides(col = guide_legend(nrow = 4))
+
+pr_plot_mm
+```
+
+## PR scatter plot of chronicity categories
+```{r pr-scatter-plot-chronicity}
+pr <- readRDS(here(output_path, "precision_recall_chronicity.rds")) %>%
+  mutate(
+    etiology = factor(etiology, levels = c("NAFLD", "NASH", "HCV", "PSC", "PBC")),
+    regulation = factor(str_to_title(regulation), levels = c("Up", "Down")),
+    class = case_when(
+      str_detect(class, "acute") ~ "Exclusive acute",
+      str_detect(class, "chronic") ~ "Exclusive chronic",
+      str_detect(class, "common") ~ "Common in chronic and acute"
+    ),
+    class = factor(class, levels = c(
+      "Exclusive chronic",
+      "Exclusive acute",
+      "Common in chronic and acute"
+    ))
+  )
+
+set.seed(123)
+pr_plot_category <- pr %>%
+  ggplot(aes(
+    x = recall, y = precision, label = class,
+    color = class
+  )) +
+  geom_jitter(width = 0.0015, height = 0) +
+  facet_rep_grid(regulation ~ etiology) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision", color = "Category") +
+  my_theme(fsize = fz) +
+  scale_color_manual(values = aachen_color(c("bordeaux", "orange", "petrol"))) +
+  theme(legend.position = "top")
+
+pr_plot_category
+```
+
+
+## Collage
+### Figure 5
+Main Figure.
+```{r fig-5, fig.width=8.27, fig.height=11.69}
+upset_up <- image_ggplot(image_read_pdf(here("figures/tmp/Fig5A1.pdf")),
+  interpolate = TRUE
+)
+
+# file.remove(here("figures/tmp/Fig5A1.pdf"))
+upset_down <- image_ggplot(image_read_pdf(here("figures/tmp/Fig5A2.pdf")),
+  interpolate = TRUE
+)
+# file.remove(here("figures/tmp/Fig5A2.pdf"))
+
+fig5 <- (upset_up | upset_down) /
+  ((pr_plot_mm / pr_plot_category) + plot_layout(heights = c(1, 1))) +
+  plot_layout(height = c(1, 3)) +
+  plot_annotation(tag_levels = list(c("A", "", "B", "C"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+fig5
+
+ggsave(here("figures/Figure 5.pdf"), fig5,
+  width = 21, height = 29.7, units = c("cm")
+)
+ggsave(here("figures/Figure 5.png"), fig5,
+  width = 21, height = 29.7, units = c("cm")
+)
+```
+
+### Supplementary Figure 5.1
+```{r fig-5-1, fig.width=8.27, fig.height=11.69}
+sfig5_1 <- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) +
+  # ((tile_up + box_up) + plot_layout(width = c(4, 1), guides = "collect")) /
+  # ((tile_down + box_down) + plot_layout(width = c(4, 1), guides = "collect")) +
+  plot_annotation(tag_levels = list(c("A", "B", "C", "", "D"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+sfig5_1
+
+ggsave(here("figures/Supplementary Figure 5.1.pdf"), sfig5_1,
+  width = 21, height = 10, units = c("cm")
+)
+ggsave(here("figures/Supplementary Figure 5.1.png"), sfig5_1,
+  width = 21, height = 10, units = c("cm")
+)
+```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.

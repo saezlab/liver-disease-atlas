@@ -1,0 +1,226 @@
+---
+title: "Study overview (SFig. 0.1)"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r chunk-setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  autodep = TRUE,
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
+```
+
+## Introduction
+Here we generate plots display various features of all included studies.
+
+## Libraries and sources
+These libraries and sources are used for this analysis.
+```{r libs-and-src, message=FALSE, warning=FALSE, cache=FALSE}
+library(tidyverse)
+library(tidylog)
+library(here)
+library(glue)
+
+library(AachenColorPalette)
+library(scales)
+library(circlize)
+library(patchwork)
+
+source(here("code/utils-plots.R"))
+```
+
+Definition of global variables that are used throughout this analysis.
+```{r analysis-specific-params, cache=FALSE}
+# graphical parameters
+# fontsize
+fz <- 7
+# color function for heatmaps
+col_fun <- colorRamp2(
+  c(-4, 0, 4),
+  c(aachen_color("blue"), "white", aachen_color("red"))
+)
+
+# keys to annotate contrasts
+key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
+key_hs <- readRDS(here("data/meta-mouse-vs-human/contrast_annotation.rds"))
+```
+
+## Studied individuals
+### Mouse models
+```{r number-of-mice}
+df <- readRDS(here("output/meta-chronic-vs-acute/meta_data.rds")) %>%
+  count(treatment, source, class, group) %>%
+  mutate(label = case_when(
+    treatment == "apap" ~ "APAP",
+    treatment == "bdl" ~ "BDL",
+    treatment == "ccl4" ~ "CCl4 (Acute)",
+    treatment == "lps" ~ "LPS",
+    treatment == "ph" ~ "PH",
+    treatment == "tunicamycin" ~ "Tunicamycin",
+    treatment == "pure_ccl4" ~ "CCl4 (Chronic)"
+  )) %>%
+  mutate(group = str_to_title(group))
+
+stitle <- df %>%
+  group_by(group) %>%
+  tally(n) %>%
+  mutate(total = sum(n)) %>%
+  pivot_wider(names_from = group, values_from = n) %>%
+  mutate(label = glue("Total: {total} ({Control}/{Treated})")) %>%
+  pull(label)
+
+num_mouse <- df %>%
+  ggplot(aes(
+    x = n, fct_reorder(label, n),
+    group = group, fill = group
+  )) +
+  geom_col(position = "dodge") +
+  labs(
+    x = "Number of mice", y = "Mouse model", subtitle = stitle,
+    fill = NULL
+  ) +
+  my_theme(grid = "x", fsize = fz) +
+  scale_fill_manual(values = aachen_color(c("blue75", "red75"))) +
+  scale_y_discrete(labels = c("Tunicamycin","LPS","BDL",  
+                              expression(CCl[4] (Chronic)),
+                              expression(CCl[4] (Acute)), "APAP", "PH"))
+
+num_mouse
+```
+
+### Patient cohorts
+```{r number-of-patients}
+keys <- key_hs %>%
+  distinct(source, phenotype, author2)
+
+df <- readRDS(here("output/meta-mouse-vs-human/meta_data.rds")) %>%
+  inner_join(keys) %>%
+  count(author2, class) %>%
+  mutate(class = str_to_title(class))
+
+stitle <- df %>%
+  group_by(class) %>%
+  tally(n) %>%
+  mutate(total = sum(n)) %>%
+  pivot_wider(names_from = class, values_from = n) %>%
+  mutate(label = glue("Total: {total} ({Control}/{Disease})")) %>%
+  pull(label)
+
+num_patient <- df %>%
+  ggplot(aes(
+    x = n, fct_reorder(author2, n),
+    group = class, fill = class
+  )) +
+  geom_col(position = "dodge") +
+  labs(
+    x = "Number of patients", y = "Patient cohort", subtitle = stitle,
+    fill = NULL
+  ) +
+  my_theme(grid = "x", fsize = fz) +
+  scale_fill_manual(values = aachen_color(c("blue75", "red75")))
+
+num_patient
+```
+
+## Gene coverage
+### Mouse models
+```{r gene-coverage-mm}
+keys <- key_mm %>%
+  distinct(contrast, treatment_abbr, class)
+
+mm <- readRDS(here("output/meta-chronic-vs-acute/limma_result.rds")) %>%
+  select(-treatment, -class) %>%
+  inner_join(keys, by = "contrast") %>%
+  distinct(gene, treatment_abbr, class) %>%
+  count(treatment_abbr, class) %>%
+  mutate(group = case_when(
+    str_detect(treatment_abbr, "CCl4") ~ str_c(treatment_abbr, " (", class, ")"),
+    TRUE ~ as.character(treatment_abbr)
+  ))
+
+gene_coverage_mm <- mm %>%
+  ggplot(aes(x = n, fct_reorder(group, n), group = class)) +
+  geom_col() +
+  geom_text(aes(x = n, y = fct_reorder(group, n), label = n),
+    size = (fz - 2) / (14 / 5), color = "white", hjust = 1.5
+  ) +
+  labs(x = "Gene coverage", y = NULL) +
+  my_theme(grid = "x", fsize = fz) +
+  theme(
+    legend.position = "top",
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_x_continuous(labels = label_number_si())
+
+gene_coverage_mm
+```
+
+### Patient cohorts
+```{r gene-coverage-hs}
+keys <- key_hs %>%
+  distinct(contrast, source, phenotype, author2)
+
+hs <- readRDS(here("output/meta-mouse-vs-human/limma_result.rds")) %>%
+  inner_join(keys) %>%
+  distinct(gene, author2) %>%
+  count(author2)
+
+gene_coverage_hs <- hs %>%
+  ggplot(aes(x = n, fct_reorder(author2, n))) +
+  geom_col() +
+  geom_text(aes(x = n, y = fct_reorder(author2, n), label = n),
+    size = (fz - 2) / (14 / 5), color = "white", hjust = 1.5
+  ) +
+  labs(x = "Gene coverage", y = NULL) +
+  my_theme(grid = "x", fsize = fz) +
+  theme(
+    legend.position = "top",
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_x_continuous(labels = label_number_si())
+
+gene_coverage_hs
+```
+
+## Collage
+### Supplementary Figure 0.1
+```{r s-fig-0-1}
+sfig0_1 <- (num_mouse + num_patient) +
+  # (gene_coverage_mm + gene_coverage_hs) +
+  plot_annotation(tag_levels = list(c("A", "B"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+sfig0_1
+
+ggsave(here("figures/Supplementary Figure 0.1.pdf"), sfig0_1,
+  width = 21, height = 5, units = c("cm")
+)
+ggsave(here("figures/Supplementary Figure 0.1.png"), sfig0_1,
+  width = 21, height = 5, units = c("cm")
+)
+```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.

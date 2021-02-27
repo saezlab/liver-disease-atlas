@@ -4,62 +4,63 @@ navbar:
   title: Liver disease atlas
   left:
   - text: Home
-    href: index.html
+    href: "index.html"
     icon: fas fa-home
   - text: Mouse models
     menu:
     - text: "CCl4 (chronic)"
-      href: mouse-chronic-ccl4.html
+      href: "01-mouse-chronic-ccl4.html"
     - text: "APAP (acute)"
-      href: mouse-acute-apap.html
+      href: "02-mouse-acute-apap.html"
     - text: "CCl4 (acute)"
-      href: mouse-acute-ccl4.html
-    - text: "BDL (acute)"
-      href: mouse-acute-bdl.html
+      href: "03-mouse-acute-ccl4.html"
     - text: "PH (acute)"
-      href: mouse-acute-ph.html
+      href: "04-mouse-acute-ph.html"
+    - text: "BDL (acute)"
+      href: "05-mouse-acute-bdl.html"
     - text: "LPS (acute)"
-      href: mouse-acute-lps.html
+      href: "06-mouse-acute-lps.html"
     - text: "Tunicamycin (acute)"
-      href: mouse-acute-tunicamycin.html
+      href: "07-mouse-acute-tunicamycin.html"
   - text: Patient cohorts
     menu:
-      - text: "NAFLD - Hoang et al."
-        href: human-hoang-nafld.html
       - text: "NAFLD - Diehl et al."
-        href: human-diehl-nafld.html
-      - text: "Fibrosis - Ramnath et al."
-        href: human-ramnath-fibrosis.html
+        href: "08-human-diehl-nafld.html"
       - text: "NASH - Hampe et al. '13"
-        href: human-hampe13-nash.html
+        href: "09-human-hampe13-nash.html"
       - text: "Misc - Hampe et al. '14"
-        href: human-hampe14-misc.html
+        href: "10-human-hampe14-misc.html"
+      - text: "NAFLD - Hoang et al."
+        href: "11-human-hoang-nafld.html"
+      - text: "Fibrosis - Ramnath et al."
+        href: "12-human-ramnath-fibrosis.html"
+
   - text: Meta analysis
     menu:
       - text: "Chronic vs. acute"
-        href: meta-chronic-vs-acute.html
+        href: "13-meta-chronic-vs-acute.html"
       - text: "Mouse vs. human"
-        href: meta-mouse-vs-human.html
+        href: "14-meta-mouse-vs-human.html"
   - text: Figures
     menu:
       - text: "Study overview (SFig. 0.1)"
-        href: plot-study-overview.html
+        href: "20-plot-study-overview.html"
       - text: "Chronic CCl4 (Fig. 1)"
-        href: plot-chronic-ccl4.html
+        href: "15-plot-chronic-ccl4.html"
       - text: "APAP (Fig. 2)"
-        href: plot-acute-apap.html
+        href: "16-plot-acute-apap.html"
       - text: "Acute CCl4 (SFig. 2.2)"
-        href: plot-acute-ccl4.html
+        href: "17-plot-acute-ccl4.html"
       - text: "PH (SFig. 2.4)"
-        href: plot-acute-ph.html
+        href: "18-plot-acute-ph.html"
       - text: "BDL (SFig. 2.6)"
-        href: plot-acute-bdl.html
+        href: "19-plot-acute-bdl.html"
       - text: "Chronic vs. acute (Fig. 3)"
-        href: plot-chronic-vs-acute.html
+        href: "21-plot-chronic-vs-acute.html"
       - text: "Mouse vs. human (Fig. 4)"
-        href: plot-mouse-vs-human.html
+        href: "22-plot-mouse-vs-human.html"
       - text: "Precision and recall analysis (Fig. 6)"
-        href: plot-precision-recall.html
+        href: "23-plot-precision-recall.html"
   right:
   - text: "Get data"
     href: https://doi.org/10.5281/zenodo.4407208

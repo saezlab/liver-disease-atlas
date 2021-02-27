@@ -1,0 +1,246 @@
+---
+title: "Tables and Supplementary information"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r chunk-setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  autodep = TRUE,
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
+```
+
+## Introduction
+Here we generate tables and supplementary tables/information.
+
+## Libraries and sources
+These libraries and sources are used for this analysis.
+```{r libs-and-src, message=FALSE, warning=FALSE, cache=FALSE}
+library(tidyverse)
+library(tidylog)
+library(here)
+library(openxlsx)
+```
+
+Definition of global variables that are used throughout this analysis.
+```{r analysis-specific-params, cache=FALSE}
+# keys to annotate contrasts
+key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
+key_hs <- readRDS(here("data/meta-mouse-vs-human/contrast_annotation.rds"))
+```
+
+## Differential expressed genes
+### Mouse - Supplementary Table 1
+```{r degs-mouse}
+keys <- key_mm %>%
+  distinct(contrast, label2, treatment, class)
+
+contrasts <- readRDS(here("output/meta-chronic-vs-acute/limma_result.rds")) %>%
+  filter(regulation != "ns") %>%
+  select(-treatment, -source, -class) %>%
+  inner_join(keys) %>%
+  select(-contrast)
+
+l <- contrasts %>%
+  mutate(sheet_name = str_c(treatment, " (", class, ")")) %>%
+  select(gene,
+    contrast = label2, logFC, `t-statistic` = statistic,
+    `p-value` = pval, fdr, regulation, sheet_name
+  ) %>%
+  arrange(contrast, `p-value`) %>%
+  nest(data = -sheet_name) %>%
+  deframe()
+
+write.xlsx(l, here("tables/Supplementary Table 1.xlsx"),
+  keepNA = TRUE
+)
+```
+
+### Human - Supplementary Table 4
+```{r degs-human}
+keys <- key_hs %>%
+  distinct(contrast, disease, author2, source, phenotype)
+
+contrasts <- readRDS(here("output/meta-mouse-vs-human/limma_result.rds")) %>%
+  filter(regulation != "ns") %>%
+  inner_join(keys) %>%
+  select(-contrast)
+
+l <- contrasts %>%
+  select(gene,
+    contrast = disease, logFC, `t-statistic` = statistic,
+    `p-value` = pval, fdr, regulation, sheet_name = author2
+  ) %>%
+  arrange(contrast, `p-value`) %>%
+  nest(data = -sheet_name) %>%
+  deframe()
+
+write.xlsx(l, here("tables/Supplementary Table xy human_degs.xlsx"),
+  keepNA = TRUE
+)
+```
+
+## Time-series cluster
+### Gene lists - Supplementary table 2
+```{r "gene-list-of-time-series-cluster"}
+keys <- key_mm %>%
+  drop_na(time) %>%
+  distinct(treatment, time = value, time_label2, class)
+
+
+profile_label <- tribble(
+  ~profile, ~process, ~treatment, ~class,
+  "STEM ID: 14", "Inflammation", "CCl4", "Chronic",
+  "STEM ID: 6", "Proliferation", "CCl4", "chronic",
+  "STEM ID: 17", NA_character_, "CCl4", "Chronic",
+  "STEM ID: 12", NA_character_, "CCl4", "Chronic",
+  "STEM ID: 7", "Metabolism (1)", "CCl4", "Chronic",
+  "STEM ID: 9", "Metabolism (2)", "CCl4", "Chronic",
+  "STEM ID: 13", "ECM", "CCl4", "Chronic",
+  "STEM ID: 14", "Stress response", "APAP", "Acute",
+  "STEM ID: 9", "Migration", "APAP", "Acute",
+  "STEM ID: 12", "Proliferation", "APAP", "Acute",
+  "STEM ID: 6", "Metabolism (1)", "APAP", "Acute",
+  "STEM ID: 11", "Metabolism (2)", "APAP", "Acute",
+  "STEM ID: 18", "Metabolism (3)", "APAP", "Acute",
+  "STEM ID: 8", "Metabolism (4)", "APAP", "Acute"
+)
+
+stem_profiles <- list.files(here("output"), "stem_result.rds",
+  recursive = T,
+  full.names = TRUE
+) %>%
+  map_dfr(readRDS) %>%
+  mutate(
+    treatment = case_when(
+      key == "apap" ~ "APAP",
+      key == "bdl" ~ "Bile Duct Ligation",
+      str_detect(key, "ccl4") ~ "CCl4",
+      key == "hepatec" ~ "Partial Hepatectomy"
+    ),
+    class = case_when(
+      key == "pure_ccl4" ~ "Chronic",
+      TRUE ~ "Acute"
+    )
+  )
+
+df <- stem_profiles %>%
+  filter(p <= 0.05) %>%
+  mutate(profile = str_c("STEM ID: ", as.character(profile))) %>%
+  # match stem profiles with biological processes
+  left_join(profile_label, by = c("treatment", "class", "profile")) %>%
+  # match time points with nice labels
+  left_join(keys) %>%
+  mutate(time_label2 = as.character(time_label2)) %>%
+  mutate(
+    time_label2 = replace_na(time_label2, "0"),
+    time_label2 = fct_inorder(str_c(time_label2, " (logFC)")),
+    sheet_name = str_c(treatment, " (", class, ")")
+  ) %>%
+  # spread table
+  select(gene, time_label2, value, profile, process, size,
+    `p-value` = p,
+    sheet_name
+  ) %>%
+  nest(data = -sheet_name) %>%
+  transmute(sheet_name, table = data %>% map(function(data) {
+    data %>%
+      mutate(profile = fct_reorder(profile, `p-value`)) %>%
+      spread(time_label2, value) %>%
+      arrange(profile)
+  })) %>%
+  deframe()
+
+write.xlsx(df,
+  here("tables/Supplementary Table xy stem_results.xlsx"),
+  keepNA = TRUE
+)
+```
+
+## Exclusive gene sets - Supplementary Table 3
+```{r exclusive-gene-sets}
+exclusive_chronic <- readRDS(here(
+  "output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds"
+)) %>%
+  mutate(sheet_name = "Exclusive chronic")
+
+exclusive_acute <- readRDS(here(
+  "output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds"
+)) %>%
+  mutate(sheet_name = "Exclusive acute")
+
+common <- readRDS(here(
+  "output/meta-chronic-vs-acute/ranked_common_genes.rds"
+)) %>%
+  mutate(sheet_name = "Common")
+
+df <- bind_rows(exclusive_chronic, exclusive_acute, common) %>%
+  mutate(regulation = case_when(
+    sheet_name == "Exclusive chronic" & chronic_statistic >= 0 ~ "up",
+    sheet_name == "Exclusive chronic" & chronic_statistic < 0 ~ "down",
+    sheet_name == "Common" & chronic_statistic >= 0 ~ "up",
+    sheet_name == "Common" & chronic_statistic < 0 ~ "down",
+    sheet_name == "Exclusive acute" & acute_statistic >= 0 ~ "up",
+    sheet_name == "Exclusive acute" & acute_statistic < 0 ~ "down",
+  )) %>%
+  select(rank, gene, regulation, sheet_name) %>%
+  nest(data = -sheet_name) %>%
+  deframe()
+
+write.xlsx(
+  df,
+  here("tables/Supplementary Table xy exclusive_common_genes.xlsx"),
+  keepNA = TRUE
+)
+```
+
+## Human mouse consistent genes
+```{r human-moust-consistent-genes}
+consistent_genes <- readRDS(here(
+  "output/meta-mouse-vs-human/consistent_genes.rds"
+))
+
+t <- consistent_genes %>%
+  distinct(gene, rank, contrast, logFC, celltype) %>%
+  group_by(gene) %>%
+  mutate(
+    mean_sign = mean(sign(logFC)),
+    regulation = case_when(
+      mean_sign < 0 ~ "down",
+      mean_sign >= 0 ~ "up"
+    )
+  ) %>%
+  distinct(gene, rank, celltype, regulation) %>%
+  group_by(gene, rank, regulation) %>%
+  summarise(celltype = str_c(celltype, collapse = "|")) %>%
+  ungroup() %>%
+  arrange(rank) %>%
+  select(rank, gene, regulation, celltype)
+
+
+write.xlsx(
+  t,
+  here("tables/Supplementary Table xy consistent_genes.xlsx"),
+  keepNA = TRUE
+)
+```
+
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.

@@ -1,0 +1,1055 @@
+---
+title: "Meta anlaysis of patients cohorts and chronic (CCl4) mouse models"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+```{r chunk-setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  autodep = TRUE,
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r wall-time-start, cache=FALSE, include=FALSE}
+# Track time spent on performing this analysis
+start_time <- Sys.time()
+```
+
+## Introduction
+Here we integrate various patient cohorts of chronic liver diseases with the chronic CCl4 mouse model to identify consistently deregulated genes in mouse and human.
+
+## Libraries and sources
+These libraries and sources are used for this analysis.
+```{r libs-and-src, message=FALSE, warning=FALSE, cache=FALSE}
+library(tidyverse)
+library(tidylog)
+library(here)
+library(readxl)
+library(glue)
+library(tidytext)
+library(janitor)
+
+library(fgsea)
+library(dorothea)
+library(progeny)
+library(biobroom)
+
+library(circlize)
+library(AachenColorPalette)
+library(lemon)
+library(VennDiagram)
+library(ComplexHeatmap)
+library(gridExtra)
+library(cowplot)
+library(ggpubr)
+library(UpSetR)
+library(ggwordcloud)
+library(patchwork)
+
+library(msigdf) # remotes::install_github("ToledoEM/msigdf@v7.1")
+library(gtools)
+
+options("tidylog.display" = list(print))
+source(here("code/utils-utils.R"))
+source(here("code/utils-plots.R"))
+```
+
+Definition of global variables that are used throughout this analysis.
+```{r analysis-specific-params, cache=FALSE}
+# i/o
+data_path <- "data/meta-mouse-vs-human"
+output_path <- "output/meta-mouse-vs-human"
+
+# graphical parameters
+# fontsize
+fz <- 9
+# color function for heatmaps
+col_fun <- colorRamp2(
+  c(-4, 0, 4),
+  c(aachen_color("blue"), "white", aachen_color("red"))
+)
+```
+
+## Merging data of all mouse models 
+### Merging contrasts
+Contrasts from all available patient cohorts are merged into a single object.
+```{r "merging-contrast"}
+diehl <- readRDS(here("output/human-diehl-nafld/limma_result.rds")) %>%
+  mutate(
+    phenotype = "nafld",
+    source = "diehl"
+  )
+
+hoang <- readRDS(here("output/human-hoang-nafld/limma_result.rds")) %>%
+  filter(contrast_reference == "stage_0") %>%
+  mutate(
+    phenotype = "nafld",
+    source = "hoang"
+  )
+
+hampe13 <- readRDS(here("output/human-hampe13-nash/limma_result.rds")) %>%
+  filter(contrast_reference == "control") %>%
+  mutate(
+    phenotype = "nash",
+    source = "hampe13"
+  )
+
+hampe14 <- readRDS(here("output/human-hampe14-misc/limma_result.rds")) %>%
+  filter(contrast_reference == "control") %>%
+  mutate(
+    phenotype = "omni",
+    source = "hampe14"
+  )
+
+ramnath <- readRDS(here("output/human-ramnath-fibrosis/limma_result.rds")) %>%
+  mutate(
+    phenotype = "fibrosis",
+    source = "ramnath"
+  )
+
+combined_contrasts <- bind_rows(
+  diehl, ramnath, hoang, hampe13,
+  hampe14
+) %>%
+  select(-contrast_reference) %>%
+  mutate(contrast = as_factor(contrast)) %>%
+  assign_deg() %>%
+  # phenotypes related to obesity are removed
+  filter(phenotype != "obesity") %>%
+  filter(!str_detect(contrast, "obese"))
+
+saveRDS(combined_contrasts, here(output_path, "limma_result.rds"))
+```
+
+### Merging meta data
+Meta data from all available patient cohorts are merged into a single object.
+```{r "merging-meta-data"}
+diehl <- readRDS(here("output/human-diehl-nafld/meta_data.rds")) %>%
+  select(sample, group = class) %>%
+  mutate(
+    phenotype = "nafld",
+    source = "diehl"
+  )
+
+hoang <- readRDS(here("data/human-hoang-nafld/meta_data.rds")) %>%
+  select(sample, group = nafld) %>%
+  mutate(
+    phenotype = "nafld",
+    source = "hoang"
+  )
+
+hampe13 <- readRDS(here("output/human-hampe13-nash/meta_data.rds")) %>%
+  select(sample, group) %>%
+  mutate(
+    phenotype = "nash",
+    source = "hampe13"
+  )
+
+hampe14 <- readRDS(here("output/human-hampe14-misc/meta_data.rds")) %>%
+  select(sample, group) %>%
+  mutate(
+    phenotype = "omni",
+    source = "hampe14"
+  )
+
+ramnath <- readRDS(here("data/human-ramnath-fibrosis/meta_data.rds")) %>%
+  select(sample, group) %>%
+  mutate(
+    phenotype = "fibrosis",
+    source = "ramnath"
+  )
+
+combined_meta <- bind_rows(
+  diehl, ramnath, hoang, hampe13,
+  hampe14
+) %>%
+  # patients related to obesity are removed
+  filter(group != "obese") %>%
+  # assign whether patient is sick or healthy (control)
+  mutate(class = case_when(
+    str_detect(
+      group, "early|control|stage_0|mild"
+    ) ~ "control",
+    TRUE ~ "disease"
+  ))
+
+saveRDS(combined_meta, here(output_path, "meta_data.rds"))
+```
+
+## Number of patients
+Barplot showing number of patients per study.
+```{r patient-number}
+df <- readRDS(here(output_path, "meta_data.rds")) %>%
+  count(phenotype, source, class)
+
+df %>%
+  ggplot(aes(
+    x = n, fct_reorder(interaction(source, phenotype, sep = "_"), n),
+    group = class, fill = class
+  )) +
+  geom_col(position = "dodge") +
+  labs(x = "Number of patients", y = "Study") +
+  my_theme(grid = "x", fsize = fz)
+```
+
+
+## Gene coverage
+Barplot showing the gene coverage of the patient cohorts.
+```{r gene-coverage}
+contrasts <- readRDS(here(output_path, "limma_result.rds")) %>%
+  distinct(gene, phenotype, source) %>%
+  count(phenotype, source)
+
+contrasts %>%
+  ggplot(aes(
+    x = n, fct_reorder(interaction(source, phenotype, sep = "_"), n),
+    group = source
+  )) +
+  geom_col() +
+  labs(x = "Gene coverage", y = "Study") +
+  my_theme(grid = "x", fsize = fz)
+```
+
+## Number of differential expressed genes
+Barplot showing the number of differentially expressed genes for each contrast.
+```{r deg-number}
+contrasts <- readRDS(here(output_path, "limma_result.rds"))
+
+combined_contrasts %>%
+  filter(regulation != "ns") %>%
+  count(contrast, source, regulation) %>%
+  ggplot(aes(y = interaction(source, contrast), x = n, fill = regulation)) +
+  geom_col(position = position_dodge()) +
+  labs(y = NULL, y = "Number of degs") +
+  my_theme(grid = "x", fsize = fz)
+```
+
+## Interstudy analysis of patient cohorts
+### Mutual similarity of differential expressed genes
+This analysis computes the similarity of differential expressed genes for all contrasts of the patient cohorts. Similarity is measured with the Jaccard Index.
+```{r deg-similarity}
+contrasts <- readRDS(here(output_path, "limma_result.rds"))
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+mat_top <- contrasts %>%
+  group_by(contrast, phenotype, source) %>%
+  top_n(500, abs(statistic)) %>%
+  mutate(key = row_number()) %>%
+  ungroup() %>%
+  unite(geneset, source, phenotype, contrast, sep = "-") %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene, key) %>%
+  untdy(key, geneset, gene)
+
+# usage of jaccard index for balanced set sizes
+j <- set_similarity(mat_top, measure = "jaccard", tidy = T)
+
+saveRDS(j, here(output_path, "gene_set_similarity.rds"))
+
+j %>%
+  ggplot(aes(x = set1, y = set2, fill = similarity)) +
+  geom_tile(color = "black") +
+  scale_fill_gradient(low = "white", high = aachen_color("green")) +
+  labs(x = NULL, y = NULL, fill = "Jaccard\nIndex") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  my_theme(fsize = fz, grid = "no")
+```
+
+### Mutual enrichment of differential expressed genes
+This analysis explores whether the top differential expressed genes of specific contrasts of the acute mouse models are consistently regulated across the acute mouse models.
+```{r mututal-enrichment-degs, fig.height=6}
+contrasts <- readRDS(here(output_path, "limma_result.rds"))
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+genesets_top <- contrasts %>%
+  mutate(direction = case_when(
+    sign(statistic) >= 0 ~ "up",
+    sign(statistic) < 0 ~ "down"
+  )) %>%
+  group_by(source, phenotype, contrast, direction) %>%
+  top_n(500, abs(statistic)) %>%
+  ungroup() %>%
+  unite(geneset, source, phenotype, contrast, sep = "-") %>%
+  unite(geneset, geneset, direction, sep = "|") %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene)
+
+# construct signature matrix/data frame
+signature_df <- contrasts %>%
+  unite(signature, source, phenotype, contrast, sep = "-") %>%
+  mutate(signature = as_factor(signature)) %>%
+  untdy("gene", "signature", "statistic")
+
+# run gsea
+set.seed(123)
+gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
+  separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
+  mutate(
+    signature = as_factor(signature),
+    geneset = as_factor(geneset)
+  )
+
+saveRDS(gsea_res_top, here(output_path, "interstudy_enrichment.rds"))
+
+# individual gsea plot
+make_gsea_plot(
+  signature = signature_df %>%
+    rownames_to_column("gene") %>%
+    select(gene, t = `hoang-nafld-stage_6_vs_0`) %>%
+    drop_na(),
+  geneset = genesets_top %>%
+    filter(geneset == "diehl-nafld-advanced_vs_mild|up"),
+  gene_level_stat = t
+)
+
+# summary gsea plot
+gsea_res_top %>%
+  mutate(label = stars.pval(padj)) %>%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_wrap(~direction) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_gradient2() +
+  my_theme(fsize = fz, grid = "no") +
+  labs(x = "Signature", y = "Gene set")
+```
+
+## Comparison of mouse and human data
+With this analysis we check whether the top differential expressed human genes have the same direction of regulation in the chronic mouse model.
+
+### Enrichment of human gene sets in mouse signatures
+```{r enrichment-hs-gs-mm-sig, fig.height=6}
+contrasts <- readRDS(here(output_path, "limma_result.rds"))
+
+chronic_mouse <- readRDS(
+  here("output/mouse-chronic-ccl4/limma_result_hs.rds")
+) %>%
+  filter(contrast_reference == "pure_ccl4")
+
+# populate gene sets with a fixed size selected by effect size (t-value)
+genesets_top <- contrasts %>%
+  mutate(direction = case_when(
+    sign(statistic) >= 0 ~ "up",
+    sign(statistic) < 0 ~ "down"
+  )) %>%
+  group_by(source, phenotype, contrast, direction) %>%
+  top_n(500, abs(statistic)) %>%
+  ungroup() %>%
+  unite(geneset, source, phenotype, contrast, sep = "-") %>%
+  unite(geneset, geneset, direction, sep = "|") %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene)
+
+signature_df <- chronic_mouse %>%
+  untdy("gene", "contrast", "statistic")
+
+# run gsea
+set.seed(123)
+gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
+  separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
+  separate(geneset,
+    into = c("source", "phenotype", "contrast"), sep = "-",
+    remove = F
+  ) %>%
+  mutate(
+    signature = as_factor(signature),
+    geneset = as_factor(geneset),
+    time = parse_number(as.character(signature))
+  )
+
+saveRDS(gsea_res_top, here(output_path, "gsea_res.rds"))
+
+# individual gsea plot
+make_gsea_plot(
+  signature = signature_df %>%
+    rownames_to_column("gene") %>%
+    select(gene, t = `pure_ccl_12m_vs_0m`) %>%
+    drop_na(),
+  geneset = genesets_top %>%
+    filter(geneset == "diehl-nafld-advanced_vs_mild|up"),
+  gene_level_stat = t
+)
+
+# summary gsea plot
+gsea_res_top %>%
+  mutate(label = stars.pval(padj)) %>%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label), size = fz / (14 / 5), vjust = 1) +
+  facet_wrap(~direction, ncol = 2) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  scale_fill_gradient2(
+    low = aachen_color("blue"), mid = "white",
+    high = aachen_color("red")
+  ) +
+  my_theme(grid = "no", fsize = fz) +
+  labs(x = "Signature", y = "Gene Set", fill = "ES") +
+  guides(fill = guide_colorbar(title = "ES"))
+```
+
+## Leading edge extraction
+The enrichment of human genes sets in mouse signatures reveals that there is a set of genes which is significantly consistently deregulated in mouse and human. To identify these genes we extract the leading edge genes from the enrichment analysis.
+```{r leading-edge-extraction}
+gsea_res <- readRDS(here(output_path, "gsea_res.rds"))
+
+# extract leading edges from significant and correctly directed enrichments
+leading_edges <- gsea_res %>%
+  filter(padj <= 0.05 &
+    (direction == "up" & ES >= 0) | (direction == "down" & ES < 0)) %>%
+  unnest(leadingEdge) %>%
+  rename(gene = leadingEdge)
+
+saveRDS(leading_edges, here(output_path, "individual_le.rds"))
+
+# for each study a union of leading edges is build across all contrast per time
+# point
+# subsequently we count how often a gene appears per time and direction
+# (max 5 times because we have 5 studies in total)
+# filter for those leading edges that appear in at least three studies
+unified_le <- leading_edges %>%
+  distinct(signature, direction, time, source, phenotype, gene) %>%
+  count(signature, time, gene, direction, sort = T, name = "n_studies") %>%
+  filter(n_studies >= 3)
+
+# translate to mgi genes for later use
+unified_le_mgi <- unified_le %>%
+  translate_gene_ids(from = "symbol_hgnc", to = "symbol_mgi") %>%
+  distinct(direction, gene, signature) %>%
+  # remove predicted genes
+  filter(!str_detect(gene, "Gm[0-9]+"))
+
+# overlap of unified and consistent leading edge genes per time point
+v <- unified_le %>%
+  rename(regulation = direction) %>%
+  mutate(class = str_c("Month ", time)) %>%
+  group_split(class) %>%
+  plot_venn_diagram()
+
+saveRDS(unified_le, here(output_path, "leading_edges.rds"))
+saveRDS(unified_le_mgi, here(output_path, "leading_edges_mgi.rds"))
+```
+
+### Heatmap of leading edge genes
+```{r le-visualization}
+# load leading edge genes and human and mouse contrasts
+le <- readRDS(here(output_path, "leading_edges.rds"))
+contrasts <- readRDS(here(output_path, "limma_result.rds"))
+chronic_mouse <- readRDS(
+  here("output/mouse-chronic-ccl4/limma_result_hs.rds")
+) %>%
+  filter(contrast_reference == "pure_ccl4")
+
+
+# filter mouse and human genes for leading edge genes
+c <- chronic_mouse %>%
+  inner_join(le, by = "gene") %>%
+  mutate(class = "chronic") %>%
+  select(gene, contrast, logFC, class)
+
+h <- contrasts %>%
+  inner_join(le, by = "gene") %>%
+  mutate(class = "human") %>%
+  unite(contrast, source, phenotype, contrast, sep = "-") %>%
+  select(gene, contrast, logFC, class)
+
+df <- bind_rows(c, h) %>%
+  mutate(contrast = as_factor(contrast)) %>%
+  distinct()
+
+# assign a rank for each gene based on absolute mean logfc
+df_ranked <- df %>%
+  group_by(gene) %>%
+  summarise(mean_logfc = mean(logFC)) %>%
+  transmute(gene, rank = row_number(-abs(mean_logfc))) %>%
+  inner_join(df, by = "gene")
+
+# get degs from single cell data
+# see "code/meta-mouse-vs-human/sc_deg.R" to see how this object was created.
+sc_degs <- readRDS(here(data_path, "single_cell_degs.rds")) %>%
+  enframe("celltype") %>%
+  unnest(value) %>%
+  filter(p_val_adj <= 0.05) %>%
+  mutate(adjusted_logfc = case_when(
+    avg_logFC >= 0 & cluster == "Uninjured" ~ -avg_logFC,
+    avg_logFC < 0 & cluster == "Uninjured" ~ -avg_logFC,
+    TRUE ~ avg_logFC
+  )) %>%
+  filter(abs(avg_logFC) >= 0.25)
+
+# combine consistent genes with cell types
+df_ranked_ct <- df_ranked %>%
+  left_join(sc_degs, by = "gene") %>%
+  mutate(celltype = fct_explicit_na(celltype, na_level = "Unknown"))
+
+saveRDS(df_ranked_ct, here(output_path, "consistent_genes.rds"))
+
+mat <- df_ranked_ct %>%
+  filter(rank <= 100) %>%
+  distinct(gene, contrast, logFC) %>%
+  untdy(feature = "gene", key = "contrast", value = "logFC") %>%
+  as.matrix()
+
+ComplexHeatmap::Heatmap(t(as.matrix(mat)),
+  col = col_fun,
+  cluster_rows = F,
+  cluster_columns = T,
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
+  name = "logFC",
+  row_gap = unit(2.5, "mm"),
+  border = T,
+  row_split = c(rep("Mouse", 3), rep("Human", 15))
+)
+```
+
+### Characterization of leading edge genes
+Up and down-regulated leading edge genes are characterized with GO terms, [PROGENy's](http://saezlab.github.io/progeny/) pathways and [DoRothEA's](http://saezlab.github.io/dorothea/) TFs. As statistic over-representation analysis is used.
+```{r le-characterization}
+signatures <- readRDS(here(output_path, "leading_edges.rds")) %>%
+  distinct(gene, regulation = direction)
+
+genesets <- load_genesets(organism = "human") %>%
+  filter(confidence %in% c(NA, "A", "B", "C"))
+
+ora_res <- signatures %>%
+  nest(sig = -c(regulation)) %>%
+  dplyr::mutate(ora = sig %>% map(run_ora,
+    sets = genesets, min_size = 10,
+    options = list(alternative = "greater"),
+    background_n = 20000
+  )) %>%
+  select(-sig) %>%
+  unnest(ora)
+
+saveRDS(ora_res, here(output_path, "leading_edges_characterization.rds"))
+```
+
+## GO downstream analysis
+In this section significant GO terms are summarized in two different ways. i) Which words appear the most among the GO terms and ii) Position of members of manually created GO cluster in a ranked list of significant GO terms (based on p-value)
+
+### Text analysis
+GO terms are splitted into words and their frequency is counted.
+```{r}
+# list of words that will be ignored
+stop_go_words <- readRDS(here("data/annotation/stop_go_words.rds"))
+
+go_terms <- readRDS(here(output_path, "leading_edges_characterization.rds")) %>%
+  filter(group == "go" & fdr <= 0.05) %>%
+  mutate(
+    term = str_remove(geneset, "GO_"),
+    term = str_replace_all(term, "_", " "),
+    term = str_to_lower(term)
+  ) %>%
+  select(regulation, term)
+
+go_wordcounts <- go_terms %>%
+  # glue words that should be treated as one
+  mutate(
+    term = str_replace(term, "smooth muscle", "smoothmuscle"),
+    term = str_replace(term, "amino acid", "aminoacid"),
+    term = str_replace(term, "cell cycle", "cellcycle"),
+    term = str_replace(term, "endoplasmic reticulum stress", "endoplasmicreticulumstress"),
+    term = str_replace(term, "endoplasmic reticulum", "endoplasmicreticulum")
+  ) %>%
+  unnest_tokens(word, term) %>%
+  anti_join(stop_words, by = "word") %>%
+  # correct for abbreviations
+  mutate(word = case_when(
+    word == "er" ~ "endoplasmicreticulum",
+    TRUE ~ word
+  )) %>%
+  # remove words which are pure numbers
+  filter(!str_detect(word, "^[0-9]+")) %>%
+  # count word frequency
+  count(regulation, word, sort = T) %>%
+  # dissect prior glued words
+  mutate(word = case_when(
+    word == "smoothmuscle" ~ "smooth-muscle",
+    word == "aminoacid" ~ "amino-acid",
+    word == "cellcycle" ~ "cell-cycle",
+    word == "endoplasmicreticulumstress" ~ "endoplasmic-reticulum-stress",
+    word == "endoplasmicreticulum" ~ "endoplasmic-reticulum",
+    TRUE ~ word
+  )) %>%
+  # remove meaning less words
+  anti_join(stop_go_words, by = "word")
+
+saveRDS(go_wordcounts, here(output_path, "go_wordcounts.rds"))
+
+go_wordcounts %>%
+  filter((regulation == "up" & n > 4) | (regulation == "down" & n > 2)) %>%
+  ggplot(aes(label = word, size = n)) +
+  geom_text_wordcloud() +
+  scale_size_area(max_size = fz / (14 / 5)) +
+  facet_wrap(~regulation) +
+  theme(axis.line = element_blank()) +
+  my_theme(grid = "no", fsize = fz)
+```
+
+### Cluster ranking
+Distribution of manually created GO-cluster.
+```{r go-cluster-ranking}
+go_cluster_mapping <- tribble(
+  ~cluster, ~description,
+  1, "Migration",
+  2, "Development and Morphogenesis",
+  3, "Metabolism"
+)
+
+go_cluster <- read_excel(here(data_path, "manual_go_cluster_anno.xlsx")) %>%
+  distinct(regulation, term, cluster) %>%
+  drop_na() %>%
+  inner_join(go_cluster_mapping)
+
+go_terms_ranking <- readRDS(
+  here(output_path, "leading_edges_characterization.rds")
+) %>%
+  mutate(
+    term = str_remove(geneset, "GO_"),
+    term = str_replace_all(term, "_", " "),
+    term = str_to_lower(term)
+  ) %>%
+  filter(fdr <= 0.05) %>%
+  group_by(regulation) %>%
+  mutate(rank = row_number(p.value)) %>%
+  mutate(max_rank = max(rank)) %>%
+  ungroup() %>%
+  select(regulation, term, rank, max_rank)
+
+go_cluster_ranking <- go_terms_ranking %>%
+  inner_join(go_cluster)
+
+saveRDS(go_cluster_ranking, here(output_path, "go_cluster_ranking.rds"))
+
+go_cluster_ranking %>%
+  mutate(regulation = as_factor(regulation)) %>%
+  plot_go_rank_density() +
+  my_theme(grid = "no", fsize = fz)
+```
+
+## Integration with chronicity categories
+### PR of chronicity and etiologies
+```{r pr-chronicity-etiology}
+# load etiology gene sets
+etiology_genesets = readRDS(here(output_path, "etiology_gene_sets.rds")) %>%
+  mutate(join_var = "xy") %>%
+  nest(etiology_genes = -c(etiology, regulation, join_var))
+
+# load exclusive chronic and acute and common genes
+chronic = readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds")) %>%
+  mutate(class = "chronic") %>%
+  select(gene, rank, class, statistic = chronic_statistic)
+
+acute = readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds")) %>%
+  mutate(class = "acute") %>%
+  select(gene, rank, class, statistic = acute_statistic)
+
+common = readRDS(here("output/meta-chronic-vs-acute/ranked_common_genes.rds")) %>%
+  mutate(class = "common") %>%
+  select(gene, rank, class, statistic = chronic_statistic)
+
+chronicity = bind_rows(chronic, acute, common) %>%
+  mutate(regulation = if_else(sign(statistic) >= 0, "up", "down"))
+
+chronicity_hgnc = chronicity %>%
+  translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc", na_rm = TRUE) %>%
+  distinct() %>%
+  # drop genes that appear due to translation now in multiple classes
+  group_by(gene) %>%
+  filter(n() == 1) %>%
+  ungroup()
+
+# number of genes per regulated chronicity category
+chronicity_hgnc %>%
+  count(class, regulation) %>%
+  ggplot(aes(x=class, y=n, fill = regulation)) +
+  geom_col(position = "dodge") +
+  geom_hline(yintercept = 120)
+
+setup = chronicity_hgnc %>%
+  group_by(class, regulation) %>%
+  slice_max(order_by = rank, n = 120, with_ties = FALSE) %>%
+  mutate(join_var = "xy") %>%
+  nest(mm_genes = -c(class, regulation, join_var)) %>%
+  ungroup() %>%
+  inner_join(etiology_genesets, by=c("regulation", "join_var")) %>%
+  select(-join_var)
+
+pr = setup %>%
+  mutate(pr = map2(etiology_genes, mm_genes, function(hs_genes, mm_genes) {
+    z <- inner_join(
+      select(mm_genes, gene), 
+      select(hs_genes, gene), by = "gene")
+
+    tibble(
+      recall = nrow(z) / nrow(hs_genes),
+      recall_ratio = glue("{nrow(z)}/{nrow(hs_genes)}"),
+      precision = nrow(z) / nrow(mm_genes),
+      precision_ratio = glue("{nrow(z)}/{nrow(mm_genes)}")
+    )}
+  )) %>%
+  unnest(pr)
+
+saveRDS(pr, here(output_path, "precision_recall_chronicity.rds"))
+
+set.seed(123)
+pr %>%
+  mutate(regulation = factor(regulation, levels = c("up", "down"))) %>%
+  ggplot(aes(x = recall, y = precision, label = class, 
+             color = class)) +
+  geom_jitter(width = 0.0015, height = 0) +
+  facet_rep_grid(etiology ~ regulation) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision") +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d()
+```
+
+## Integration of published chronic mouse models
+In this section the newly generated and previously published chronic mouse models are analyzed in terms of how well they reflect different human etiologies. The differential expressed genes of the already published mouse models is accessed from [Teufel et al., 2016](https://doi.org/10.1053/j.gastro.2016.05.051), Table S2.
+
+### Load Teufel genes
+Here the differentially expressed genes of the mouse models from the Teufel study are loaded.
+```{r load-teufel-genes}
+teufel_genes <- read_excel(here(data_path, "TableS2_Teufel_clean.xlsx"),
+  sheet = "mouse"
+) %>%
+  rename(gene = ...1) %>%
+  pivot_longer(-gene) %>%
+  separate(name, into = c("study", "key")) %>%
+  pivot_wider(names_from = key, values_from = value) %>%
+  assign_deg(fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5), effect_size_id = logfc) %>%
+  mutate(study = str_to_upper(study)) %>%
+  mutate(study = factor(study, levels = c(
+    "HF12", "HF18", "STZ12", "STZ18", "MCD4",
+    "MCD8", "PTEN", "HF30", "WTD"
+  )))
+
+# for late use mgi symbols are translated to hgnc
+teufel_genes_hs <- teufel_genes %>%
+  translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc") %>%
+  drop_na(gene) %>%
+  distinct() %>%
+  # in case of duplicated genes take the one with the higher logfc
+  group_by(study, gene) %>%
+  slice_max(n = 1, order_by = abs(logfc)) %>%
+  ungroup()
+
+saveRDS(teufel_genes, here(output_path, "teufel_genes.rds"))
+saveRDS(teufel_genes_hs, here(output_path, "teufel_genes_hs.rds"))
+```
+
+### Chronic mouse models in numbers
+Number of differentially expressed genes per chronic mouse model.
+```{r vis-chronic-mm-gene-numbers}
+teufel_genes <- readRDS(here(output_path, "teufel_genes.rds")) %>%
+  assign_deg(effect_size_cutoff = log2(1.5), effect_size_id = logfc) %>%
+  filter(regulation != "ns")
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  assign_deg(effect_size_cutoff = log2(1.5)) %>%
+  filter(regulation != "ns")
+
+teufel_count <- teufel_genes %>%
+  count(study, regulation)
+
+chronic_count <- chronic %>%
+  count(contrast, regulation) %>%
+  rename(study = contrast)
+
+df <- bind_rows(teufel_count, chronic_count)
+
+saveRDS(df, here(output_path, "chronic_mouse_deg_numbers.rds"))
+
+df %>%
+  ggplot(aes(y = study, x = n, fill = regulation)) +
+  geom_col(position = "dodge") +
+  labs(x = "Number of differential expressed genes", y = NULL) +
+  scale_x_log10(
+    breaks = scales::trans_breaks("log10", function(x) 10^x),
+    labels = scales::trans_format("log10", scales::math_format(10^.x))
+  ) +
+  my_theme(grid = "x", fsize = fz) +
+  annotation_logticks(sides = "b")
+```
+
+### Similarity of chronic mouse models and patient cohorts
+```{r similarity-chronic-mm-and-hs}
+patient <- readRDS(here(output_path, "limma_result.rds")) %>%
+  select(gene, contrast, logFC, fdr, regulation, source, phenotype, contrast)
+
+teufel <- readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
+  rename(contrast = study, logFC = logfc)
+
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  select(-c(statistic, pval, contrast_reference))
+
+contrasts <- bind_rows(patient, teufel, chronic) %>%
+  assign_deg(effect_size_cutoff = log2(1.5))
+
+# populate gene sets with only significantly expressed genes
+mat_sig <- contrasts %>%
+  filter(regulation != "ns") %>%
+  unite(geneset, source, phenotype, contrast, sep = "-", na.rm = T) %>%
+  add_count(geneset, name = "size") %>%
+  # exclude gene sets with a size < 20
+  filter(size >= 20) %>%
+  group_by(geneset) %>%
+  mutate(key = row_number()) %>%
+  ungroup() %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene, key) %>%
+  untdy(key, geneset, gene)
+
+o <- set_similarity(mat_sig, measure = "overlap_coef", tidy = T)
+
+saveRDS(o, here(output_path, "cross_species_similarity.rds"))
+
+o %>%
+  ggplot(aes(x = set1, y = set2, fill = similarity)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = aachen_color("green")) +
+  labs(x = NULL, y = NULL, fill = "Overlap\ncoefficient") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  my_theme(grid = "no", fsize = fz)
+```
+
+### Enrichment of chronic mouse genes in patient cohorts
+```{r enrichment-chronic-mm-in-hs}
+patient <- readRDS(here(output_path, "limma_result.rds")) %>%
+  select(gene, contrast, logFC, fdr, regulation, source)
+
+teufel <- readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
+  rename(contrast = study, logFC = logfc)
+
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  select(-c(statistic, pval, contrast_reference))
+
+# populate gene sets with only significantly expressed genes
+genesets_sig <- bind_rows(teufel, chronic) %>%
+  # adapt cutoff for the definition of significant genes
+  assign_deg(effect_size_cutoff = log2(1.5)) %>%
+  filter(regulation != "ns") %>%
+  add_count(contrast, name = "size") %>%
+  # exclude gene sets with a size < 10
+  filter(size >= 10) %>%
+  unite(geneset, contrast) %>%
+  unite(geneset, geneset, regulation, sep = "|") %>%
+  mutate(geneset = as_factor(geneset)) %>%
+  select(geneset, gene)
+
+# construct signature matrix/data frame
+signature_df <- patient %>%
+  unite(signature, source, contrast) %>%
+  mutate(signature = as_factor(signature)) %>%
+  untdy("gene", "signature", "logFC")
+
+# run gsea
+set.seed(123)
+gsea_res_sig <- run_gsea(signature_df, genesets_sig, tidy = T, nperm = 10000) %>%
+  separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
+  mutate(
+    signature = as_factor(signature),
+    geneset = as_factor(geneset)
+  )
+
+saveRDS(gsea_res_sig, here(output_path, "cross_species_enrichment.rds"))
+
+a <- gsea_res_sig %>%
+  filter(direction == "up") %>%
+  mutate(
+    label = stars.pval(padj),
+    direction = fct_rev(direction)
+  ) %>%
+  ggplot(aes(x = signature, y = geneset, fill = ES)) +
+  geom_tile() +
+  geom_text(aes(label = label)) +
+  facet_rep_wrap(~direction, scales = "free", ncol = 1) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_gradient2() +
+  my_theme(grid = "no", fsize = fz)
+
+b <- gsea_res_sig %>%
+  mutate(direction = fct_rev(direction)) %>%
+  filter(direction == "up") %>%
+  ggplot(aes(y = geneset, x = ES)) +
+  geom_boxplot() +
+  # geom_jitter(aes(color = signature)) +
+  facet_rep_wrap(~direction, ncol = 1) +
+  geom_vline(xintercept = 0) +
+  my_theme(fsize = fz, grid = "x")
+
+a + theme(legend.position = "none") +
+  b + theme(
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+### Build gene pool for human etiology
+For each human etiology (e.g. NAFLD) a union of differentially expressed genes in constructed.
+```{r etiology-gene-pool}
+# get etiology for each human contrast
+etiologies <- readRDS(here(data_path, "contrast_annotation.rds")) %>%
+  mutate(etiology = str_remove(disease, pattern = " Stage [0-9]")) %>%
+  distinct(source, phenotype, contrast, etiology)
+
+contrasts <- readRDS(here(output_path, "limma_result.rds"))
+
+etiology_union <- contrasts %>%
+  inner_join(etiologies, by = c("source", "phenotype", "contrast")) %>%
+  assign_deg(effect_size_cutoff = log2(1.5)) %>%
+  filter(regulation != "ns") %>%
+  arrange(etiology, gene, regulation) %>%
+  # how often is a gene-regulation pair reported per etiology
+  count(gene, regulation, etiology) %>%
+  group_by(gene, etiology) %>%
+  # extract this gene-regulation-etiology combination that is reported by more
+  # contrasts
+  # in case of ties take the first one (mostly up-regulation, first factor)
+  slice_max(n, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(-n)
+
+saveRDS(etiology_union, here(output_path, "etiology_gene_sets.rds"))
+```
+
+#### Etiology genes in numbers
+UpsetR plots showing the number of differential expressed genes per etiology and their overlap.
+```{r vis-etiology-gene-numbers}
+df <- readRDS(here(output_path, "etiology_gene_sets.rds"))
+
+mat_up <- df %>%
+  filter(regulation == "up") %>%
+  select(-regulation) %>%
+  mutate(val = 1) %>%
+  spread(etiology, val, fill = 0) %>%
+  data.frame(row.names = 1)
+
+grid.newpage()
+upset(mat_up,
+  nintersects = NA, mainbar.y.label = "Common genes",
+  sets.x.label = "Total number of genes"
+)
+grid.text("Up", x = 0.65, y = 0.95, gp = gpar(fontsize = fz))
+
+mat_down <- df %>%
+  filter(regulation == "down") %>%
+  select(-regulation) %>%
+  mutate(val = 1) %>%
+  spread(etiology, val, fill = 0) %>%
+  data.frame(row.names = 1)
+
+grid.newpage()
+upset(mat_down,
+  nintersects = NA, mainbar.y.label = "Common genes",
+  sets.x.label = "Total number of genes"
+)
+grid.text("Down", x = 0.65, y = 0.95, gp = gpar(fontsize = fz))
+
+
+# overlap in percentages
+tabyl(c(rowSums(mat_up), rowSums(mat_down)))
+```
+
+### Precision and Recall of mouse models
+How well mouse models capture the genes that are deregulated in human is computed by precision and recall.
+```{r precision-recall}
+etiology_pool <- readRDS(here(output_path, "etiology_gene_sets.rds")) %>%
+  filter(regulation != "ns") %>%
+  mutate(key = "key") %>%
+  nest(hs_genes = c(gene))
+
+teufel_genes <- readRDS(here(output_path, "teufel_genes_hs.rds")) %>%
+  filter(regulation != "ns") %>%
+  mutate(class = "teufel") %>%
+  distinct(gene, study, regulation, class)
+
+chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "pure_ccl4") %>%
+  select(gene, contrast,
+    logfc = logFC, fdr, regulation,
+    source = contrast_reference
+  ) %>%
+  assign_deg(
+    fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5),
+    effect_size_id = logfc
+  ) %>%
+  filter(regulation != "ns") %>%
+  mutate(class = "chronic") %>%
+  distinct(gene, study = contrast, regulation, class)
+
+
+# merge gene pools of all chronic mouse models
+mm <- bind_rows(teufel_genes, chronic)
+
+setup <- mm %>%
+  mutate(key = "key") %>%
+  # rename(direction = regulation) %>%
+  nest(mm_genes = c(gene)) %>%
+  inner_join(etiology_pool, by = c("key", "regulation")) %>%
+  select(-key)
+
+pr <- setup %>%
+  mutate(metrics = pmap(., .f = function(mm_genes, hs_genes, ...) {
+    z <- inner_join(mm_genes, hs_genes, by = "gene")
+
+    tibble(
+      recall = nrow(z) / nrow(hs_genes),
+      recall_ratio = glue("{nrow(z)}/{nrow(hs_genes)}"),
+      precision = nrow(z) / nrow(mm_genes),
+      precision_ratio = glue("{nrow(z)}/{nrow(mm_genes)}")
+    )
+  })) %>%
+  unnest(metrics)
+
+# check how well pr improves when going from 2 to 12 months on average
+pr %>% 
+  filter(study %in% c("pure_ccl_12m_vs_0m", "pure_ccl_2m_vs_0m")) %>% 
+  select(study, regulation, recall, etiology) %>% 
+  spread(study, recall) %>% 
+  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %>% 
+  pull(diff) %>% 
+  mean()
+
+saveRDS(pr, here(output_path, "precision_recall.rds"))
+```
+
+#### PR scatter plot
+Scatter plot showing precision and recall for each chronic mouse model.
+```{r pr-scatter-plot}
+pr <- readRDS(here(output_path, "precision_recall.rds"))
+
+pr %>%
+  ggplot(aes(x = recall, y = precision, label = study, color = study)) +
+  geom_point() +
+  facet_rep_grid(etiology ~ regulation) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision", color = "Mouse model") +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d()
+```
+
+```{r wall-time-end, cache=FALSE, include=FALSE}
+duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
+```
+Time spend to execute this analysis: `r t` minutes.
