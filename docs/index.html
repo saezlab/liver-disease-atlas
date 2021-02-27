@@ -402,21 +402,21 @@ $(document).ready(function () {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -456,13 +456,13 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-02-03
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -487,16 +487,76 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree585991ff4f001ef8586559e12f5e4b611c7498fdtargetblank585991fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/585991ff4f001ef8586559e12f5e4b611c7498fd" target="_blank">585991f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree585991ff4f001ef8586559e12f5e4b611c7498fdtargetblank585991fa" class="panel-collapse collapse">
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201218code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201218)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20201218code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20201218)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreec65acdd450fb1b7b67dec425c6b57bd8f11fa941targetblankc65acdda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/c65acdd450fb1b7b67dec425c6b57bd8f11fa941" target="_blank">c65acdd</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreec65acdd450fb1b7b67dec425c6b57bd8f11fa941targetblankc65acdda" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/585991ff4f001ef8586559e12f5e4b611c7498fd" target="_blank">585991f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/c65acdd450fb1b7b67dec425c6b57bd8f11fa941" target="_blank">c65acdd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -534,8 +594,8 @@ Ignored files:
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -583,7 +643,6 @@ Unstaged changes:
     Modified:   analysis/plot-chronic-ccl4.Rmd
     Modified:   analysis/plot-chronic-vs-acute.Rmd
     Modified:   analysis/plot-precision-recall.Rmd
-    Modified:   analysis/plot-study-overview.Rmd
     Modified:   analysis/save-tables.Rmd
 
 </code></pre>
@@ -625,10 +684,44 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/c65acdd450fb1b7b67dec425c6b57bd8f11fa941/analysis/index.Rmd" target="_blank">c65acdd</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-27
+</td>
+<td>
+wflow_publish(c(“analysis/index.Rmd”, “analysis/plot-study-overview.Rmd”,
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/index.html" target="_blank">9c62197</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/3d42f16aefb8de8671c6530ae24e58561d214f3f/docs/index.html" target="_blank">3d42f16</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/index.html" target="_blank">9c62197</a>
 </td>
 <td>
 christianholland
@@ -645,7 +738,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/index.html" target="_blank">45a33e4</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/index.html" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -662,7 +755,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/b4ed535d7df32989c0ea6b09bd423f648b64d40c/docs/index.html" target="_blank">b4ed535</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b4ed535d7df32989c0ea6b09bd423f648b64d40c/docs/index.html" target="_blank">b4ed535</a>
 </td>
 <td>
 christianholland
@@ -679,7 +772,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/index.html" target="_blank">3f4f82f</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/index.html" target="_blank">3f4f82f</a>
 </td>
 <td>
 christianholland
@@ -696,7 +789,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/index.html" target="_blank">ce21ef0</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/index.html" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -713,7 +806,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/0a6e6bcd8b323482dbee6a81d31f8dac004297c3/docs/index.html" target="_blank">0a6e6bc</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/0a6e6bcd8b323482dbee6a81d31f8dac004297c3/docs/index.html" target="_blank">0a6e6bc</a>
 </td>
 <td>
 christianholland
@@ -730,7 +823,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/45c5848406234b136005dc618f9be05ba3fd97ec/docs/index.html" target="_blank">45c5848</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45c5848406234b136005dc618f9be05ba3fd97ec/docs/index.html" target="_blank">45c5848</a>
 </td>
 <td>
 christianholland
@@ -747,7 +840,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/c2af37f38439ab5171298a601a06b956ad426f95/docs/index.html" target="_blank">c2af37f</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/c2af37f38439ab5171298a601a06b956ad426f95/docs/index.html" target="_blank">c2af37f</a>
 </td>
 <td>
 christianholland
@@ -764,7 +857,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/385ea5e5e302d6a9d8cf7541c835135250305f9d/docs/index.html" target="_blank">385ea5e</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/385ea5e5e302d6a9d8cf7541c835135250305f9d/docs/index.html" target="_blank">385ea5e</a>
 </td>
 <td>
 christianholland
@@ -781,7 +874,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/57d35bb8f592d1f361f927178efe4ab674ac7aa0/docs/index.html" target="_blank">57d35bb</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/57d35bb8f592d1f361f927178efe4ab674ac7aa0/docs/index.html" target="_blank">57d35bb</a>
 </td>
 <td>
 christianholland
@@ -798,7 +891,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/195c1be74f4be58306838c774a7e2a988437ab57/docs/index.html" target="_blank">195c1be</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/195c1be74f4be58306838c774a7e2a988437ab57/docs/index.html" target="_blank">195c1be</a>
 </td>
 <td>
 christianholland
@@ -815,7 +908,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/index.html" target="_blank">d8a06eb</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/index.html" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -832,7 +925,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/172755d9139e9f7d7eb2dd9aa825f42dc63e4dfd/docs/index.html" target="_blank">172755d</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/172755d9139e9f7d7eb2dd9aa825f42dc63e4dfd/docs/index.html" target="_blank">172755d</a>
 </td>
 <td>
 christianholland
@@ -849,7 +942,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/index.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/index.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -866,7 +959,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/620ffb3ea3e38d31e0c8a481675bfb1a26a9115b/docs/index.html" target="_blank">620ffb3</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/620ffb3ea3e38d31e0c8a481675bfb1a26a9115b/docs/index.html" target="_blank">620ffb3</a>
 </td>
 <td>
 christianholland
@@ -883,7 +976,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/a008b5433410d48f54e42385a14517f47eacc97b/docs/index.html" target="_blank">a008b54</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/a008b5433410d48f54e42385a14517f47eacc97b/docs/index.html" target="_blank">a008b54</a>
 </td>
 <td>
 christianholland
@@ -900,7 +993,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/index.html" target="_blank">6b6c16a</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6b6c16aec3f78829dbafadfe193a2e1460faf3b4/docs/index.html" target="_blank">6b6c16a</a>
 </td>
 <td>
 christianholland
@@ -917,7 +1010,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/459dd00399a7a0715f071d3a68cb300286315b4d/docs/index.html" target="_blank">459dd00</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/459dd00399a7a0715f071d3a68cb300286315b4d/docs/index.html" target="_blank">459dd00</a>
 </td>
 <td>
 christianholland
@@ -934,7 +1027,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/e864f08a96be45a178568da72d11734a068349e7/docs/index.html" target="_blank">e864f08</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/e864f08a96be45a178568da72d11734a068349e7/docs/index.html" target="_blank">e864f08</a>
 </td>
 <td>
 christianholland
@@ -951,7 +1044,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/600864947a45de2b8b915c62b895c511813f1f0b/docs/index.html" target="_blank">6008649</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/600864947a45de2b8b915c62b895c511813f1f0b/docs/index.html" target="_blank">6008649</a>
 </td>
 <td>
 christianholland
@@ -968,7 +1061,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/25f0b94c83d12567eeb1afa3ca1e6ab6484c4db8/docs/index.html" target="_blank">25f0b94</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/25f0b94c83d12567eeb1afa3ca1e6ab6484c4db8/docs/index.html" target="_blank">25f0b94</a>
 </td>
 <td>
 christianholland
@@ -985,7 +1078,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/index.html" target="_blank">8a9b7bf</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/index.html" target="_blank">8a9b7bf</a>
 </td>
 <td>
 christianholland
@@ -1002,7 +1095,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/24076d281cf0aaf72fe1fdb34396dfacc1ad37e3/docs/index.html" target="_blank">24076d2</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/24076d281cf0aaf72fe1fdb34396dfacc1ad37e3/docs/index.html" target="_blank">24076d2</a>
 </td>
 <td>
 christianholland
@@ -1019,7 +1112,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/b8af0949a529ac5ea7328f6d5c581f2be253af0e/docs/index.html" target="_blank">b8af094</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b8af0949a529ac5ea7328f6d5c581f2be253af0e/docs/index.html" target="_blank">b8af094</a>
 </td>
 <td>
 christianholland
@@ -1036,7 +1129,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/index.html" target="_blank">6dbc304</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/index.html" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1053,7 +1146,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/d8ff438f82338095a8e8d4da32a977b9d8e44c24/docs/index.html" target="_blank">d8ff438</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d8ff438f82338095a8e8d4da32a977b9d8e44c24/docs/index.html" target="_blank">d8ff438</a>
 </td>
 <td>
 christianholland
@@ -1070,7 +1163,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/e22a40bafb648c6d8240eab4610edfb69278df74/docs/index.html" target="_blank">e22a40b</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/e22a40bafb648c6d8240eab4610edfb69278df74/docs/index.html" target="_blank">e22a40b</a>
 </td>
 <td>
 christianholland
@@ -1087,7 +1180,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/af384509e61f6d626b8f2f1bccf80c7f075f5cbc/docs/index.html" target="_blank">af38450</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/af384509e61f6d626b8f2f1bccf80c7f075f5cbc/docs/index.html" target="_blank">af38450</a>
 </td>
 <td>
 christianholland
@@ -1104,7 +1197,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/index.html" target="_blank">c73e126</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/c73e1266a60e2026d63f9225cdbcbe7647929924/docs/index.html" target="_blank">c73e126</a>
 </td>
 <td>
 christianholland
@@ -1121,7 +1214,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/7bb9aabe6b561f25945051f912a51c735be785dc/docs/index.html" target="_blank">7bb9aab</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/7bb9aabe6b561f25945051f912a51c735be785dc/docs/index.html" target="_blank">7bb9aab</a>
 </td>
 <td>
 christianholland
@@ -1138,7 +1231,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/51832b8793c64b84d741be59b3896fbdecb654cf/docs/index.html" target="_blank">51832b8</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/51832b8793c64b84d741be59b3896fbdecb654cf/docs/index.html" target="_blank">51832b8</a>
 </td>
 <td>
 christianholland
@@ -1155,7 +1248,7 @@ Initial page build
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/16718bcdac308c0b81d4b507cfdc41d0f7eb6a6c/analysis/index.Rmd" target="_blank">16718bc</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/16718bcdac308c0b81d4b507cfdc41d0f7eb6a6c/analysis/index.Rmd" target="_blank">16718bc</a>
 </td>
 <td>
 christianholland
@@ -1174,7 +1267,117 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>Welcome to my research website.</p>
+<div id="transcriptomic-cross-species-analysis-of-chronic-liver-disease-reveals-a-consistent-regulation-pattern-between-humans-and-mice" class="section level1">
+<h1>Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice</h1>
+<p>The results and the analysis scripts presented on this website ensures the reproducibility of all bioinformatics related findings presented in <a href=""><em>“Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice”</em></a>. Please see below to get more information about the individual analysis and some tips on how to reproduce the result.</p>
+<div id="abstract" class="section level2">
+<h2>Abstract</h2>
+<div id="background-and-aims" class="section level3">
+<h3>Background and aims:</h3>
+<p>Mouse models are frequently used to study chronic liver diseases (CLD). To allow a better assessment of translational relevance, we quantified the similarity of prevalent mouse models to human CLD based on transcriptome data.</p>
+</div>
+<div id="methods" class="section level3">
+<h3>Methods:</h3>
+<p>RNA-sequencing and gene array data from 372 patients with CLD (NAFLD, NASH, HCV, PBC, and PSC) were compared to acute and chronic mouse models with 227 mice and additionally 9 published gene sets of chronic mouse models. Genes consistently altered in humans and mice were mapped to specific liver cell types based on single-cell RNA-sequencing and validated by immunostaining.</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results:</h3>
+<p>Similarity of the top differentially expressed genes between humans and mice varied among the individual mouse models and depended on the period of damage induction. Some models, e.g. 12 months induction of damage by CCl4, reached high similarity to humans with 0.4 recall and 0.33 precision, respectively. Consistently upregulated genes between the chronic CCl4 mouse model and human data were enriched in inflammatory and developmental processes, and mapped to cholangiocytes, macrophages, endothelial and mesenchymal cells, while downregulated genes were enriched in metabolic functions and mapped to hepatocytes. Immunostaining confirmed selected consistent genes and their cell-type specificity. Upregulated genes in both acute and chronic mouse models showed a higher recall and precision with respect to human CLDNAFLD and NASH than exclusively acute or chronic genes.</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion:</h3>
+<p>Our analyses led to the identification of similarly regulated genes in human and mouse liver disease. Although major species differences exist, mouse models may recall at least 30% of the genes significantly altered in human CLDliver diseases. The relevance of individual genes in CLD can be assessed at <a href="https://saezlab.shinyapps.io/liverdiseaseatlas/" class="uri">https://saezlab.shinyapps.io/liverdiseaseatlas/</a>.</p>
+</div>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>The tab <code>Mouse models</code> contains Rmarkdown scripts to analyze and characterize the transcriptomic profiles of acute and chronic liver disease mouse models. These analyses comprised</p>
+<ul>
+<li>Normalization</li>
+<li>PCA analysis</li>
+<li>Differential gene expression analysis</li>
+<li>Time series clustering and characterization (if applicable)</li>
+</ul>
+<p>The tab <code>Patient cohorts</code> contains Rmarkdown scripts to analyze and characterize the transcriptomic profiles of patient cohorts suffering from various chronic liver disease etiologies. These analyses comprised:</p>
+<ul>
+<li>Normalization</li>
+<li>PCA analysis</li>
+<li>Differential gene expression analysis</li>
+</ul>
+<p>The tab <code>Meta analysis</code> contains Rmarkdown scripts to integrate acute and chronic mouse models with patient cohorts.</p>
+<ul>
+<li><a href="meta-chronic-vs-acute.html">Chronic vs. acute</a>
+<ul>
+<li>Identification of exclusively and commonly- regulated genes of chronic and acute disease in mice.</li>
+</ul></li>
+<li><a href="meta-mouse-vs-human.html">Mouse vs. human</a>
+<ul>
+<li>Identification of consistently regulated genes in the chronic CCl<sub>4</sub>[mouse-chronic-ccl4.html] mouse model and patients.</li>
+<li>Quantification of the similarity of the in total 12 chronic mouse models with the different human patient cohorts based on precision and recall.</li>
+</ul></li>
+</ul>
+<p>The tab <code>Figures</code> contains Rmarkdown scripts to generate the figures used in the manuscript.</p>
+</div>
+<div id="how-can-i-reproduce-the-analysis" class="section level2">
+<h2>How can I reproduce the analysis?</h2>
+<p>We have used the <a href="https://jdblischak.github.io/workflowr/">workflowr</a> package to organize the analysis scipts within this project so please familiarize yourself with its concept.</p>
+<ol style="list-style-type: decimal">
+<li>Clone the repository from <a href="https://github.com/saezlab/liver-disease-atlas" class="uri">https://github.com/saezlab/liver-disease-atlas</a> which automatically provides you with all analysis scripts and the correct directory structure.</li>
+<li>You need to install all packages that are required for the analyses. The package <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> allows you to easily install the packages with the correct versions:</li>
+</ol>
+<pre class="r"><code>install.packages(&quot;renv&quot;)
+renv::restore()</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at <a href="https://doi.org/10.5281/zenodo.4407208">Zenodo</a>. Download the zipped <code>data</code> folder unzipp it and replace the existing <code>data</code> folder at the root level of the R-project.</p></li>
+<li><p>Run all analyses by running</p></li>
+</ol>
+<pre class="r"><code>install.packages(&quot;workflowr&quot;)
+workflowr::wflow_build(republish = TRUE)</code></pre>
+<p>All intermediate and final results will be saved in the <code>output</code> folder.</p>
+</div>
+<div id="how-to-cite" class="section level2">
+<h2>How to cite?</h2>
+<blockquote>
+<p>Holland CH, Ramirez Flores RO, Myllys M, Hassan R, Edlund K, Hofmann U, Marchan R, Cadenas C, Reinders J, Hoehme S, Seddek A, Dooley S, Keitel V, Godoy P, Begher-Tibbe B, Trautwein C, Rupp C, Mueller S, Longerich T, Hengstler JG<sup>#</sup>, Saez-Rodriguez J<sup>#</sup>, , Ghallab A<sup>#</sup>. “Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice.” <em>In preparation</em>. 2021.</p>
+</blockquote>
+<p><sup>#</sup><em>Shared senior authorship</em></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.0.2 (2020-06-22)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Mojave 10.14.5
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+[1] workflowr_1.6.2
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.5      rstudioapi_0.13 whisker_0.4     knitr_1.30     
+ [5] magrittr_2.0.1  R6_2.5.0        rlang_0.4.9     stringr_1.4.0  
+ [9] tools_4.0.2     xfun_0.19       git2r_0.27.1    htmltools_0.5.0
+[13] ellipsis_0.3.1  rprojroot_2.0.2 yaml_2.2.1      digest_0.6.27  
+[17] tibble_3.0.4    lifecycle_0.2.0 crayon_1.3.4    later_1.1.0.1  
+[21] vctrs_0.3.6     promises_1.1.1  fs_1.5.0        glue_1.4.2     
+[25] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.2 
+[29] pillar_1.4.7    httpuv_1.5.4    renv_0.12.3     pkgconfig_2.0.3</code></pre>
+</div>
+</div>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
