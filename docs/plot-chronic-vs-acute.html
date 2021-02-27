@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree424c86118595db2cfe586c3ebfe0a1699a88d38btargetblank424c861a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/424c86118595db2cfe586c3ebfe0a1699a88d38b" target="_blank">424c861</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree424c86118595db2cfe586c3ebfe0a1699a88d38btargetblank424c861a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/424c86118595db2cfe586c3ebfe0a1699a88d38b" target="_blank">424c861</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -720,6 +722,13 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/mouse-acute-ccl4.Rmd
+    Modified:   analysis/plot-precision-recall.Rmd
+    Modified:   renv.lock
 
 </code></pre>
 <p>
@@ -760,10 +769,44 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/424c86118595db2cfe586c3ebfe0a1699a88d38b/analysis/plot-chronic-vs-acute.Rmd" target="_blank">424c861</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-27
+</td>
+<td>
+minor change
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/plot-chronic-vs-acute.html" target="_blank">ce21ef0</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/plot-chronic-vs-acute.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/plot-chronic-vs-acute.html" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -780,7 +823,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/41a051d9ffab71cfaa1d74556651d318ac865a0e/analysis/plot-chronic-vs-acute.Rmd" target="_blank">41a051d</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/41a051d9ffab71cfaa1d74556651d318ac865a0e/analysis/plot-chronic-vs-acute.Rmd" target="_blank">41a051d</a>
 </td>
 <td>
 christianholland
@@ -797,7 +840,7 @@ polished figure
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/0a6e6bcd8b323482dbee6a81d31f8dac004297c3/analysis/plot-chronic-vs-acute.Rmd" target="_blank">0a6e6bc</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/0a6e6bcd8b323482dbee6a81d31f8dac004297c3/analysis/plot-chronic-vs-acute.Rmd" target="_blank">0a6e6bc</a>
 </td>
 <td>
 christianholland
@@ -814,7 +857,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ff46d5907fe7810d198551d3cd49f7ee714d9c1f/analysis/plot-chronic-vs-acute.Rmd" target="_blank">ff46d59</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ff46d5907fe7810d198551d3cd49f7ee714d9c1f/analysis/plot-chronic-vs-acute.Rmd" target="_blank">ff46d59</a>
 </td>
 <td>
 christianholland
@@ -831,7 +874,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/plot-chronic-vs-acute.html" target="_blank">bf1292e</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/plot-chronic-vs-acute.html" target="_blank">bf1292e</a>
 </td>
 <td>
 christianholland
@@ -848,7 +891,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/8918efde7277835dd200e6ef8636dc48685bc01c/analysis/plot-chronic-vs-acute.Rmd" target="_blank">8918efd</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/8918efde7277835dd200e6ef8636dc48685bc01c/analysis/plot-chronic-vs-acute.Rmd" target="_blank">8918efd</a>
 </td>
 <td>
 christianholland
@@ -865,7 +908,7 @@ changed plot order
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/plot-chronic-vs-acute.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/plot-chronic-vs-acute.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -882,7 +925,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-chronic-vs-acute.Rmd" target="_blank">d4f78fa</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/plot-chronic-vs-acute.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
 christianholland
@@ -899,7 +942,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/459dd00399a7a0715f071d3a68cb300286315b4d/docs/plot-chronic-vs-acute.html" target="_blank">459dd00</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/459dd00399a7a0715f071d3a68cb300286315b4d/docs/plot-chronic-vs-acute.html" target="_blank">459dd00</a>
 </td>
 <td>
 christianholland
@@ -916,7 +959,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/c85193dde1c71599b8b868cfa15d08b54b45f39f/analysis/plot-chronic-vs-acute.Rmd" target="_blank">c85193d</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/c85193dde1c71599b8b868cfa15d08b54b45f39f/analysis/plot-chronic-vs-acute.Rmd" target="_blank">c85193d</a>
 </td>
 <td>
 christianholland
@@ -933,7 +976,7 @@ wflow_publish(c(“analysis/plot-chronic-vs-acute.Rmd”, “analysis/index.Rmd�
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/plot-chronic-vs-acute.html" target="_blank">e693cef</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/plot-chronic-vs-acute.html" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -950,7 +993,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/2cbfb369dc347710ad07663d71a879c7ffff0f2f/analysis/plot-chronic-vs-acute.Rmd" target="_blank">2cbfb36</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/2cbfb369dc347710ad07663d71a879c7ffff0f2f/analysis/plot-chronic-vs-acute.Rmd" target="_blank">2cbfb36</a>
 </td>
 <td>
 christianholland
@@ -1030,7 +1073,7 @@ max_liver_damage &lt;- pca_dist %&gt;%
   my_theme(grid = &quot;y&quot;, fsize = fz) +
   scale_fill_manual(values = aachen_color(c(&quot;black50&quot;, &quot;green&quot;))) +
   labs(
-    x = &quot;Time in hours&quot;,
+    x = NULL,
     y = &quot;Absolute mean distance to control along PC1&quot;
   ) +
   theme(
@@ -1065,7 +1108,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/time-point-max-liver-damage-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/time-point-max-liver-damage-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1139,7 +1182,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/sim-acute-gene-sets-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/sim-acute-gene-sets-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1219,7 +1262,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/interstudy-enrichment-acute-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/interstudy-enrichment-acute-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1319,7 +1362,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/union-chronic-acute-gene-pools-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/union-chronic-acute-gene-pools-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -1330,7 +1373,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/union-chronic-acute-gene-pools-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/union-chronic-acute-gene-pools-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1452,7 +1495,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-hmap-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-hmap-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -1463,7 +1506,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-hmap-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-hmap-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1541,7 +1584,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-tfs-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-tfs-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1605,7 +1648,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-pws-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-pws-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1710,7 +1753,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-go-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-chronic-go-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1800,7 +1843,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/common-hmap-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/common-hmap-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -1811,7 +1854,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-hmap-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-hmap-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1889,7 +1932,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-tfs-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-tfs-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -1955,7 +1998,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-pws-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-pws-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2086,7 +2129,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-go-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/common-go-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2176,7 +2219,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-hmap-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-hmap-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -2187,7 +2230,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-hmap-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-hmap-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2265,7 +2308,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-tfs-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-tfs-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2343,7 +2386,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-pws-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-pws-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2474,7 +2517,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-go-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/exclusive-acute-go-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2538,7 +2581,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/fig-3-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/fig-3-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -2549,7 +2592,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/figure/plot-chronic-vs-acute.Rmd/fig-3-1.png" target="_blank">bf1292e</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/figure/plot-chronic-vs-acute.Rmd/fig-3-1.png" target="_blank">bf1292e</a>
 </td>
 <td>
 christianholland
@@ -2560,7 +2603,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/459dd00399a7a0715f071d3a68cb300286315b4d/docs/figure/plot-chronic-vs-acute.Rmd/fig-3-1.png" target="_blank">459dd00</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/459dd00399a7a0715f071d3a68cb300286315b4d/docs/figure/plot-chronic-vs-acute.Rmd/fig-3-1.png" target="_blank">459dd00</a>
 </td>
 <td>
 christianholland
@@ -2616,7 +2659,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-1-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-1-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2673,7 +2716,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-2-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-2-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -2684,7 +2727,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-2-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-2-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2748,7 +2791,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-3-1.png" target="_blank">ce21ef0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ce21ef09a7d59171f6cb1452fabf5a7f64363a73/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-3-1.png" target="_blank">ce21ef0</a>
 </td>
 <td>
 christianholland
@@ -2759,7 +2802,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-3-1.png" target="_blank">bf1292e</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-3-1.png" target="_blank">bf1292e</a>
 </td>
 <td>
 christianholland
@@ -2770,7 +2813,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-3-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-3-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2829,7 +2872,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-4-1.png" target="_blank">bf1292e</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bf1292e73ce0d1e02ca0c97b848ac6dd3fb83aad/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-4-1.png" target="_blank">bf1292e</a>
 </td>
 <td>
 christianholland
@@ -2840,7 +2883,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-4-1.png" target="_blank">e693cef</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e693ceff5cfd008b0a07995b8ec99012fc8a33d4/docs/figure/plot-chronic-vs-acute.Rmd/s-fig-3-4-1.png" target="_blank">e693cef</a>
 </td>
 <td>
 christianholland
@@ -2860,7 +2903,7 @@ ggsave(here(&quot;figures/Supplementary Figure 3.4.pdf&quot;), sfig3_4,
 ggsave(here(&quot;figures/Supplementary Figure 3.4.png&quot;), sfig3_4,
   width = 21, height = 7, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 00:58 minutes.</p>
+<p>Time spend to execute this analysis: 01:00 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
