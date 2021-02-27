@@ -58,15 +58,15 @@ navbar:
         href: plot-chronic-vs-acute.html
       - text: "Mouse vs. human (Fig. 4)"
         href: plot-mouse-vs-human.html
-      - text: "Precision and recall of mouse models (Fig. 5)"
+      - text: "Precision and recall of mouse models (Fig. 6)"
         href: plot-precision-recall.html
   right:
   - text: "Get data"
-    href: https://zenodo.org/record/xxx
+    href: https://doi.org/10.5281/zenodo.4407208
     icon: fas fa-database
   - text: "Source code"
     icon: fab fa-github
-    href: https://github.com/saezlab/meta-liver
+    href: https://github.com/saezlab/liver-disease-atlas
 output:
   workflowr::wflow_html:
     toc: yes
