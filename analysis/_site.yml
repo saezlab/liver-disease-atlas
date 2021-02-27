@@ -1,4 +1,4 @@
-name: meta-liver
+name: Liver disease atlas
 output_dir: ../docs
 navbar:
   title: meta-liver
