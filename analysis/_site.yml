@@ -58,7 +58,7 @@ navbar:
         href: plot-chronic-vs-acute.html
       - text: "Mouse vs. human (Fig. 4)"
         href: plot-mouse-vs-human.html
-      - text: "Precision and recall of mouse models (Fig. 6)"
+      - text: "Precision and recall analysis (Fig. 6)"
         href: plot-precision-recall.html
   right:
   - text: "Get data"
