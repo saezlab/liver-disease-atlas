@@ -50,7 +50,7 @@ output_path <- "output/mouse-acute-apap"
 
 # graphical parameters
 # fontsize
-fz <- 7
+fz <- 9
 
 # keys to annotate contrasts
 key_mm <- readRDS(here("data/meta-chronic-vs-acute/contrast_annotation.rds"))
@@ -80,18 +80,28 @@ df_summary <- df %>%
   summarise(mean_se(y)) %>%
   ungroup()
 
-liver_enzymes <- df_summary %>%
+liver_enzymes <- df %>%
   ggplot(aes(x = time, y = y)) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
-  geom_col() +
-  facet_rep_wrap(~enzyme, scales = "free", ncol = 1) +
-  labs(x = NULL, y = "U/L") +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.5, size = 1) +
+  # geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.5) +
+  # geom_col() +
+  facet_rep_wrap(~enzyme, scales = "free_y", ncol = 1) +
+  labs(x = "Time after APAP injection", y = "U/L") +
   my_theme(grid = "y", fsize = fz) +
   stat_compare_means(
     data = df, label = "p.signif",
     ref.group = "Control", hide.ns = T
   ) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none",
+        panel.spacing.y = unit(-2, "lines")) #+
+  scale_color_manual(values = aachen_color(c(
+    "blue", "purple", "violet",
+    "bordeaux", "red", "orange",
+    "maygreen", "green", "turquoise",
+    "petrol"
+  )))
 
 liver_enzymes
 ```
@@ -120,13 +130,15 @@ pca_plot <- pca_result$coords %>%
   ) +
   my_theme(fsize = fz) +
   theme(legend.position = "top",
-        legend.box.margin = margin(10, 0, -20, 0)) +
+        legend.box.margin = margin(10, 0, -20, 0),
+        legend.title = element_blank()) +
   scale_color_manual(values = aachen_color(c(
     "blue", "purple", "violet",
     "bordeaux", "red", "orange",
     "maygreen", "green", "turquoise",
     "petrol"
-  )))
+  ))) +
+  guides(col = guide_legend(nrow = 4))
 
 pca_plot
 ```
@@ -143,6 +155,7 @@ df <- readRDS(here(output_path, "limma_result.rds")) %>%
     Up = "up", Down = "down",
     n.s. = "ns"
   ))
+  
 
 deg_count <- df %>%
   add_count(contrast, regulation) %>%
@@ -207,12 +220,12 @@ df <- readRDS(here(output_path, "limma_result.rds")) %>%
 top_genes_df <- df %>% 
   filter(regulation != "ns") %>%
   group_by(class, sign(logFC)) %>%
-  slice_max(order_by = abs(logFC), n = 10, with_ties = F) %>%
+  slice_max(order_by = abs(logFC), n = 5, with_ties = F) %>%
   ungroup() %>% 
   nest(data = -c(class, value))
 
 plots <- top_genes_df %>%
-  mutate(p = pmap(., .f = plot_top_genes, fontsize = fz))
+  mutate(p = pmap(., .f = plot_top_genes, fontsize = fz-2))
 
 main_time <- c(12, 24, 48)
 
@@ -238,13 +251,13 @@ top_genes_supp
 ```{r ts-cluster}
 profile_label <- tribble(
   ~profile, ~process,
-  "STEM ID: 14", "Stress response",
+  "STEM ID: 14", "Stress resp.",
   "STEM ID: 9", "Migration",
   "STEM ID: 12", "Proliferation",
-  "STEM ID: 6", "Metabolism (1)",
-  "STEM ID: 11", "Metabolism (2)",
-  "STEM ID: 18", "Metabolism (3)",
-  "STEM ID: 8", "Metabolism (4)"
+  "STEM ID: 6", "Metabolism 1",
+  "STEM ID: 11", "Metabolism 2",
+  "STEM ID: 18", "Metabolism 3",
+  "STEM ID: 8", "Metabolism 4"
 ) %>%
   mutate(
     profile = fct_inorder(profile),
@@ -274,8 +287,8 @@ profile_anno <- stem_res %>%
   mutate(label = str_c(size, " ", "genes"))
 
 ts_cluster <- stem_res %>%
-  plot_stem_profiles(model_profile = F, nrow = 1) +
-  labs(x = "Time in Hours") +
+  plot_stem_profiles(model_profile = F, nrow = 2) +
+  labs(x = "Time in hours") +
   geom_text(
     data = profile_anno, aes(x = 0, y = y, label = label),
     inherit.aes = F, size = fz / (14 / 5), hjust = "inward"
@@ -283,7 +296,7 @@ ts_cluster <- stem_res %>%
   my_theme(grid = "no", fsize = fz) +
   scale_x_continuous(
     breaks = unique(stem_res$time),
-    guide = guide_axis(n.dodge = 3)
+    labels = c("", 1,"", "",24,"", 96)
   )
 
 ts_cluster
@@ -292,13 +305,12 @@ ts_cluster
 ## Collage
 ### Figure 2
 ```{r fig-2, fig.width=7.87, fig.height=11.69}
-fig2 <- (design + histology) /
-  ((liver_enzymes | pca_plot) + plot_layout(widths = c(1,3))) /
-  ((volcano_main / top_genes_main)) /
+fig2 = (((design / liver_enzymes) | histology) + plot_layout(width = c(1,2.5))) /
+  ((pca_plot | (volcano_main / top_genes_main)) + plot_layout(width = c(1,2))) / 
   ts_cluster +
-  plot_layout(height = c(1.5, 2, 1.75, 0.75)) +
-  plot_annotation(tag_levels = list(c("A", "B", "C", "D", "E", "F", "", "", "",
-                                      "", "", "G"))) &
+  plot_layout(height = c(2, 1, 1)) +
+  plot_annotation(tag_levels = list(c("A", "C", "B", "D", "E", "F", "", "", "",
+                                      "", "","G"))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),
     legend.key.height = unit(11.5, "pt"),
@@ -311,6 +323,28 @@ ggsave(here("figures/Figure 2.pdf"), fig2,
   width = 21, height = 29.7, units = c("cm")
 )
 ggsave(here("figures/Figure 2.png"), fig2,
+  width = 21, height = 29.7, units = c("cm")
+)
+```
+
+### Partial Figure 2
+```{r pfig-2, eval=FALSE, fig.height=11.69, fig.width=7.87, include=FALSE}
+pfig2 = plot_spacer() / 
+  ((liver_enzymes | plot_spacer()) + plot_layout(widths = c(1,3.5))) /
+  ((plot_spacer() | ts_cluster) + plot_layout(widths = c(1,2))) +
+  plot_layout(height = c(2, 1, 1)) +
+  plot_annotation(tag_levels = list(c("C", "G", "E", "", "", "", "", "", "F",
+                                      "G"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+
+pfig2
+
+ggsave(here("figures/Figure 2 (partial).pdf"), pfig2,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
