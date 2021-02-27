@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreec541e97f41b9ff7a39aaa24044ec8106b69d6b05targetblankc541e97a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/c541e97f41b9ff7a39aaa24044ec8106b69d6b05" target="_blank">c541e97</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreec541e97f41b9ff7a39aaa24044ec8106b69d6b05targetblankc541e97a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/c541e97f41b9ff7a39aaa24044ec8106b69d6b05" target="_blank">c541e97</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -720,6 +722,15 @@ Ignored files:
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/mouse-acute-ccl4.Rmd
+    Modified:   analysis/plot-acute-apap.Rmd
+    Modified:   analysis/plot-chronic-ccl4.Rmd
+    Modified:   analysis/plot-chronic-vs-acute.Rmd
+    Modified:   analysis/plot-precision-recall.Rmd
 
 </code></pre>
 <p>
@@ -760,10 +771,44 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/c541e97f41b9ff7a39aaa24044ec8106b69d6b05/analysis/meta-mouse-vs-human.Rmd" target="_blank">c541e97</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-27
+</td>
+<td>
+added pr for chronicitiy
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/meta-mouse-vs-human.html" target="_blank">45a33e4</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/meta-mouse-vs-human.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/meta-mouse-vs-human.html" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -780,7 +825,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e6ada135831299c07c500b553a2bade8628ff65a/analysis/meta-mouse-vs-human.Rmd" target="_blank">e6ada13</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e6ada135831299c07c500b553a2bade8628ff65a/analysis/meta-mouse-vs-human.Rmd" target="_blank">e6ada13</a>
 </td>
 <td>
 christianholland
@@ -797,7 +842,7 @@ added example gsea plots
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/73708b19dedba527877512a3a2af452a702962be/docs/meta-mouse-vs-human.html" target="_blank">73708b1</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/73708b19dedba527877512a3a2af452a702962be/docs/meta-mouse-vs-human.html" target="_blank">73708b1</a>
 </td>
 <td>
 christianholland
@@ -814,7 +859,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e0164baee3fa08d8e244bf02e04ab52451064edf/analysis/meta-mouse-vs-human.Rmd" target="_blank">e0164ba</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e0164baee3fa08d8e244bf02e04ab52451064edf/analysis/meta-mouse-vs-human.Rmd" target="_blank">e0164ba</a>
 </td>
 <td>
 christianholland
@@ -831,7 +876,7 @@ wflow_publish(c(“analysis/meta-mouse-vs-human.Rmd”, “analysis/plot-precisi
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/beaeae06be81850d16b0c023633b0e640d5b47a4/docs/meta-mouse-vs-human.html" target="_blank">beaeae0</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/beaeae06be81850d16b0c023633b0e640d5b47a4/docs/meta-mouse-vs-human.html" target="_blank">beaeae0</a>
 </td>
 <td>
 christianholland
@@ -848,7 +893,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f20866cebd9d059f3d4da269f394992148f6f35a/analysis/meta-mouse-vs-human.Rmd" target="_blank">f20866c</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f20866cebd9d059f3d4da269f394992148f6f35a/analysis/meta-mouse-vs-human.Rmd" target="_blank">f20866c</a>
 </td>
 <td>
 christianholland
@@ -865,7 +910,7 @@ added code for teufel integration
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/meta-mouse-vs-human.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/meta-mouse-vs-human.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -882,7 +927,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/meta-mouse-vs-human.Rmd" target="_blank">d4f78fa</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/meta-mouse-vs-human.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
 christianholland
@@ -899,7 +944,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/bf6fcc69c8835ef80fc56aa386ae6deda2b44db6/docs/meta-mouse-vs-human.html" target="_blank">bf6fcc6</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/bf6fcc69c8835ef80fc56aa386ae6deda2b44db6/docs/meta-mouse-vs-human.html" target="_blank">bf6fcc6</a>
 </td>
 <td>
 christianholland
@@ -916,7 +961,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f97eb55864265696bdc3226c4fcfd1e4e93d679a/analysis/meta-mouse-vs-human.Rmd" target="_blank">f97eb55</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f97eb55864265696bdc3226c4fcfd1e4e93d679a/analysis/meta-mouse-vs-human.Rmd" target="_blank">f97eb55</a>
 </td>
 <td>
 christianholland
@@ -933,7 +978,7 @@ added deg numbers of mouse models
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/meta-mouse-vs-human.html" target="_blank">f8d8343</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/meta-mouse-vs-human.html" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -950,7 +995,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/ba489192cbcdd22f0be5f02d6ee20365bb7aa62e/analysis/meta-mouse-vs-human.Rmd" target="_blank">ba48919</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/ba489192cbcdd22f0be5f02d6ee20365bb7aa62e/analysis/meta-mouse-vs-human.Rmd" target="_blank">ba48919</a>
 </td>
 <td>
 christianholland
@@ -967,7 +1012,7 @@ added go downstream analysis
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/meta-mouse-vs-human.html" target="_blank">d7ef743</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/meta-mouse-vs-human.html" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -984,7 +1029,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e686c2a615345f43572458e1b2ec2ff4801e5ce3/analysis/meta-mouse-vs-human.Rmd" target="_blank">e686c2a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e686c2a615345f43572458e1b2ec2ff4801e5ce3/analysis/meta-mouse-vs-human.Rmd" target="_blank">e686c2a</a>
 </td>
 <td>
 christianholland
@@ -1016,6 +1061,7 @@ library(here)
 library(readxl)
 library(glue)
 library(tidytext)
+library(janitor)
 
 library(fgsea)
 library(dorothea)
@@ -1212,7 +1258,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/patient-number-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/patient-number-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -1268,7 +1314,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -1279,7 +1325,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -1332,7 +1378,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/deg-number-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/deg-number-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -1411,7 +1457,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/deg-similarity-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/deg-similarity-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -1525,7 +1571,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" target="_blank">45a33e4</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -1536,7 +1582,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -1586,7 +1632,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-2.png" target="_blank">45a33e4</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/mututal-enrichment-degs-2.png" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -1711,7 +1757,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" target="_blank">45a33e4</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -1722,7 +1768,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -1780,7 +1826,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-2.png" target="_blank">45a33e4</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/figure/meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-2.png" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -1893,7 +1939,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -1943,7 +1989,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-2.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/leading-edge-extraction-2.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -2091,7 +2137,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/le-visualization-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/le-visualization-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -2248,7 +2294,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -2259,7 +2305,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">d7ef743</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d7ef743c73acc1d9fb82d5d3c390b4aa7c8d5eb9/docs/figure/meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">d7ef743</a>
 </td>
 <td>
 christianholland
@@ -2354,7 +2400,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/go-cluster-ranking-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/go-cluster-ranking-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -2367,6 +2413,355 @@ christianholland
 </table>
 </div>
 </div>
+</div>
+</div>
+<div id="integration-with-chronicity-categories" class="section level2">
+<h2>Integration with chronicity categories</h2>
+<div id="pr-of-chronicity-and-etiologies" class="section level3">
+<h3>PR of chronicity and etiologies</h3>
+<pre class="r"><code># load etiology gene sets
+etiology_genesets = readRDS(here(output_path, &quot;etiology_gene_sets.rds&quot;)) %&gt;%
+  mutate(join_var = &quot;xy&quot;) %&gt;%
+  nest(etiology_genes = -c(etiology, regulation, join_var))
+
+# load exclusive chronic and acute and common genes
+chronic = readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds&quot;)) %&gt;%
+  mutate(class = &quot;chronic&quot;) %&gt;%
+  select(gene, rank, class, statistic = chronic_statistic)
+#&gt; select: renamed one variable (statistic) and dropped 4 variables
+
+acute = readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds&quot;)) %&gt;%
+  mutate(class = &quot;acute&quot;) %&gt;%
+  select(gene, rank, class, statistic = acute_statistic)
+#&gt; select: renamed one variable (statistic) and dropped 4 variables
+
+common = readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_common_genes.rds&quot;)) %&gt;%
+  mutate(class = &quot;common&quot;) %&gt;%
+  select(gene, rank, class, statistic = chronic_statistic)
+#&gt; select: renamed one variable (statistic) and dropped 4 variables
+
+chronicity = bind_rows(chronic, acute, common) %&gt;%
+  mutate(regulation = if_else(sign(statistic) &gt;= 0, &quot;up&quot;, &quot;down&quot;))
+
+chronicity_hgnc = chronicity %&gt;%
+  translate_gene_ids(from = &quot;symbol_mgi&quot;, to = &quot;symbol_hgnc&quot;, na_rm = TRUE) %&gt;%
+  distinct() %&gt;%
+  # drop genes that appear due to translation now in multiple classes
+  group_by(gene) %&gt;%
+  filter(n() == 1) %&gt;%
+  ungroup()
+#&gt; select: dropped 6 variables (ensembl_mgi, ensembl_v_mgi, entrez_mgi, ensembl_hgnc, ensembl_v_hgnc, …)
+#&gt; drop_na: removed 1,905 rows (6%), 30,461 rows remaining
+#&gt; rename: renamed one variable (symbol_mgi)
+#&gt; left_join: added one column (symbol_hgnc)
+#&gt;            &gt; rows only in x      168
+#&gt;            &gt; rows only in y  (26,671)
+#&gt;            &gt; matched rows      3,790    (includes duplicates)
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total        3,958
+#&gt; select: renamed one variable (gene) and dropped one variable
+#&gt; drop_na: removed 168 rows (4%), 3,790 rows remaining
+#&gt; distinct: removed 37 rows (1%), 3,753 rows remaining
+#&gt; filter (grouped): removed 173 rows (5%), 3,580 rows remaining
+#&gt; ungroup: no grouping variables
+
+# number of genes per regulated chronicity category
+chronicity_hgnc %&gt;%
+  count(class, regulation) %&gt;%
+  ggplot(aes(x=class, y=n, fill = regulation)) +
+  geom_col(position = &quot;dodge&quot;) +
+  geom_hline(yintercept = 120)
+#&gt; count: now 6 rows and 3 columns, ungrouped</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/pr-chronicity-etiology-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+setup = chronicity_hgnc %&gt;%
+  group_by(class, regulation) %&gt;%
+  slice_max(order_by = rank, n = 120, with_ties = FALSE) %&gt;%
+  mutate(join_var = &quot;xy&quot;) %&gt;%
+  nest(mm_genes = -c(class, regulation, join_var)) %&gt;%
+  ungroup() %&gt;%
+  inner_join(etiology_genesets, by=c(&quot;regulation&quot;, &quot;join_var&quot;)) %&gt;%
+  select(-join_var)
+#&gt; slice_max (grouped): removed 2,860 rows (80%), 720 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; inner_join: added 2 columns (etiology, etiology_genes)
+#&gt;             &gt; rows only in x  ( 0)
+#&gt;             &gt; rows only in y  ( 0)
+#&gt;             &gt; matched rows     30    (includes duplicates)
+#&gt;             &gt;                 ====
+#&gt;             &gt; rows total       30
+#&gt; select: dropped one variable (join_var)
+
+pr = setup %&gt;%
+  mutate(pr = map2(etiology_genes, mm_genes, function(hs_genes, mm_genes) {
+    z &lt;- inner_join(
+      select(mm_genes, gene), 
+      select(hs_genes, gene), by = &quot;gene&quot;)
+
+    tibble(
+      recall = nrow(z) / nrow(hs_genes),
+      recall_ratio = glue(&quot;{nrow(z)}/{nrow(hs_genes)}&quot;),
+      precision = nrow(z) / nrow(mm_genes),
+      precision_ratio = glue(&quot;{nrow(z)}/{nrow(mm_genes)}&quot;)
+    )}
+  )) %&gt;%
+  unnest(pr)
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (112)
+#&gt;             &gt; rows only in y  (684)
+#&gt;             &gt; matched rows       8
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         8
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  (202)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  (113)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  ( 50)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (113)
+#&gt;             &gt; rows only in y  (344)
+#&gt;             &gt; matched rows       7
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         7
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  113)
+#&gt;             &gt; rows only in y  (1,330)
+#&gt;             &gt; matched rows         7
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total           7
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  107)
+#&gt;             &gt; rows only in y  (1,121)
+#&gt;             &gt; matched rows        13
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          13
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (114)
+#&gt;             &gt; rows only in y  (478)
+#&gt;             &gt; matched rows       6
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         6
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (117)
+#&gt;             &gt; rows only in y  (145)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (120)
+#&gt;             &gt; rows only in y  (109)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (112)
+#&gt;             &gt; rows only in y  (684)
+#&gt;             &gt; matched rows       8
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         8
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  (202)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  (113)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  ( 50)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (113)
+#&gt;             &gt; rows only in y  (344)
+#&gt;             &gt; matched rows       7
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         7
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  102)
+#&gt;             &gt; rows only in y  (1,319)
+#&gt;             &gt; matched rows        18
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          18
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (   96)
+#&gt;             &gt; rows only in y  (1,110)
+#&gt;             &gt; matched rows        24
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          24
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (111)
+#&gt;             &gt; rows only in y  (475)
+#&gt;             &gt; matched rows       9
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         9
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  (147)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (119)
+#&gt;             &gt; rows only in y  (108)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 96)
+#&gt;             &gt; rows only in y  (668)
+#&gt;             &gt; matched rows      24
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        24
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (114)
+#&gt;             &gt; rows only in y  (197)
+#&gt;             &gt; matched rows       6
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         6
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (120)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (117)
+#&gt;             &gt; rows only in y  ( 48)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (105)
+#&gt;             &gt; rows only in y  (336)
+#&gt;             &gt; matched rows      15
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        15
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  109)
+#&gt;             &gt; rows only in y  (1,326)
+#&gt;             &gt; matched rows        11
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          11
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (   84)
+#&gt;             &gt; rows only in y  (1,098)
+#&gt;             &gt; matched rows        36
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          36
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (110)
+#&gt;             &gt; rows only in y  (474)
+#&gt;             &gt; matched rows      10
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        10
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (116)
+#&gt;             &gt; rows only in y  (144)
+#&gt;             &gt; matched rows       4
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         4
+#&gt; select: dropped 2 variables (rank, statistic)
+#&gt; select: no changes
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (115)
+#&gt;             &gt; rows only in y  (104)
+#&gt;             &gt; matched rows       5
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         5
+
+saveRDS(pr, here(output_path, &quot;precision_recall_chronicity.rds&quot;))
+
+set.seed(123)
+pr %&gt;%
+  mutate(regulation = factor(regulation, levels = c(&quot;up&quot;, &quot;down&quot;))) %&gt;%
+  ggplot(aes(x = recall, y = precision, label = class, 
+             color = class)) +
+  geom_jitter(width = 0.0015, height = 0) +
+  facet_rep_grid(etiology ~ regulation) +
+  geom_abline(lty = &quot;dashed&quot;) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = &quot;Recall&quot;, y = &quot;Precision&quot;) +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d()</code></pre>
+<p><img src="figure/meta-mouse-vs-human.Rmd/pr-chronicity-etiology-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="integration-of-published-chronic-mouse-models" class="section level2">
@@ -2482,7 +2877,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bf6fcc69c8835ef80fc56aa386ae6deda2b44db6/docs/figure/meta-mouse-vs-human.Rmd/vis-chronic-mm-gene-numbers-1.png" target="_blank">bf6fcc6</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bf6fcc69c8835ef80fc56aa386ae6deda2b44db6/docs/figure/meta-mouse-vs-human.Rmd/vis-chronic-mm-gene-numbers-1.png" target="_blank">bf6fcc6</a>
 </td>
 <td>
 christianholland
@@ -2577,7 +2972,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/73708b19dedba527877512a3a2af452a702962be/docs/figure/meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" target="_blank">73708b1</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/73708b19dedba527877512a3a2af452a702962be/docs/figure/meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" target="_blank">73708b1</a>
 </td>
 <td>
 christianholland
@@ -2588,7 +2983,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/beaeae06be81850d16b0c023633b0e640d5b47a4/docs/figure/meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" target="_blank">beaeae0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/beaeae06be81850d16b0c023633b0e640d5b47a4/docs/figure/meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" target="_blank">beaeae0</a>
 </td>
 <td>
 christianholland
@@ -2722,7 +3117,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/beaeae06be81850d16b0c023633b0e640d5b47a4/docs/figure/meta-mouse-vs-human.Rmd/enrichment-chronic-mm-in-hs-1.png" target="_blank">beaeae0</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/beaeae06be81850d16b0c023633b0e640d5b47a4/docs/figure/meta-mouse-vs-human.Rmd/enrichment-chronic-mm-in-hs-1.png" target="_blank">beaeae0</a>
 </td>
 <td>
 christianholland
@@ -2820,7 +3215,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -2875,7 +3270,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-2.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-2.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -2888,6 +3283,15 @@ christianholland
 </table>
 </div>
 </div>
+<pre class="r"><code>
+
+# overlap in percentages
+tabyl(c(rowSums(mat_up), rowSums(mat_down)))
+#&gt;  c(rowSums(mat_up), rowSums(mat_down))    n     percent
+#&gt;                                      1 3314 0.849090443
+#&gt;                                      2  476 0.121957469
+#&gt;                                      3   95 0.024340251
+#&gt;                                      4   18 0.004611837</code></pre>
 </div>
 </div>
 <div id="precision-and-recall-of-mouse-models" class="section level3">
@@ -3675,6 +4079,19 @@ pr &lt;- setup %&gt;%
 #&gt;             &gt;                 =======
 #&gt;             &gt; rows total          66
 
+# check how well pr improves when going from 2 to 12 months on average
+pr %&gt;% 
+  filter(study %in% c(&quot;pure_ccl_12m_vs_0m&quot;, &quot;pure_ccl_2m_vs_0m&quot;)) %&gt;% 
+  select(study, regulation, recall, etiology) %&gt;% 
+  spread(study, recall) %&gt;% 
+  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %&gt;% 
+  pull(diff) %&gt;% 
+  mean()
+#&gt; filter: removed 100 rows (83%), 20 rows remaining
+#&gt; select: dropped 6 variables (class, mm_genes, hs_genes, recall_ratio, precision, …)
+#&gt; spread: reorganized (study, recall) into (pure_ccl_2m_vs_0m, pure_ccl_12m_vs_0m) [was 20x4, now 10x4]
+#&gt; [1] 0.182263
+
 saveRDS(pr, here(output_path, &quot;precision_recall.rds&quot;))</code></pre>
 <div id="pr-scatter-plot" class="section level4">
 <h4>PR scatter plot</h4>
@@ -3715,7 +4132,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/pr-scatter-plot-1.png" target="_blank">f8d8343</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/f8d83433873c01bdc55750a44f5e3a14f0a6c338/docs/figure/meta-mouse-vs-human.Rmd/pr-scatter-plot-1.png" target="_blank">f8d8343</a>
 </td>
 <td>
 christianholland
@@ -3728,7 +4145,7 @@ christianholland
 </table>
 </div>
 </div>
-<p>Time spend to execute this analysis: 03:28 minutes.</p>
+<p>Time spend to execute this analysis: 03:33 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -3759,45 +4176,45 @@ christianholland
 #&gt; [10] VennDiagram_1.6.20       futile.logger_1.4.3      lemon_0.4.5             
 #&gt; [13] AachenColorPalette_1.1.2 circlize_0.4.11          biobroom_1.20.0         
 #&gt; [16] broom_0.7.3              progeny_1.10.0           dorothea_1.0.1          
-#&gt; [19] fgsea_1.14.0             tidytext_0.2.6           glue_1.4.2              
-#&gt; [22] readxl_1.3.1             here_1.0.1               tidylog_1.0.2           
-#&gt; [25] forcats_0.5.0            stringr_1.4.0            dplyr_1.0.2             
-#&gt; [28] purrr_0.3.4              readr_1.4.0              tidyr_1.1.2             
-#&gt; [31] tibble_3.0.4             ggplot2_3.3.2            tidyverse_1.3.0         
-#&gt; [34] workflowr_1.6.2         
+#&gt; [19] fgsea_1.14.0             janitor_2.0.1            tidytext_0.2.6          
+#&gt; [22] glue_1.4.2               readxl_1.3.1             here_1.0.1              
+#&gt; [25] tidylog_1.0.2            forcats_0.5.0            stringr_1.4.0           
+#&gt; [28] dplyr_1.0.2              purrr_0.3.4              readr_1.4.0             
+#&gt; [31] tidyr_1.1.2              tibble_3.0.4             ggplot2_3.3.2           
+#&gt; [34] tidyverse_1.3.0          workflowr_1.6.2         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
 #&gt;  [1] colorspace_2.0-0     ggsignif_0.6.0       rjson_0.2.20        
 #&gt;  [4] rio_0.5.16           ellipsis_0.3.1       rprojroot_2.0.2     
-#&gt;  [7] GlobalOptions_0.1.2  fs_1.5.0             clue_0.3-58         
-#&gt; [10] rstudioapi_0.13      farver_2.0.3         SnowballC_0.7.0     
-#&gt; [13] ggrepel_0.9.0        fansi_0.4.1          lubridate_1.7.9.2   
-#&gt; [16] xml2_1.3.2           codetools_0.2-16     knitr_1.30          
-#&gt; [19] jsonlite_1.7.2       bcellViper_1.24.0    cluster_2.1.0       
-#&gt; [22] dbplyr_2.0.0         png_0.1-7            compiler_4.0.2      
-#&gt; [25] httr_1.4.2           backports_1.2.1      assertthat_0.2.1    
-#&gt; [28] Matrix_1.2-18        cli_2.2.0            later_1.1.0.1       
-#&gt; [31] formatR_1.7          htmltools_0.5.0      tools_4.0.2         
-#&gt; [34] gtable_0.3.0         fastmatch_1.1-0      Rcpp_1.0.5          
-#&gt; [37] carData_3.0-4        Biobase_2.48.0       cellranger_1.1.0    
-#&gt; [40] vctrs_0.3.6          xfun_0.19            openxlsx_4.2.3      
-#&gt; [43] rvest_0.3.6          lifecycle_0.2.0      renv_0.12.3         
-#&gt; [46] rstatix_0.6.0        scales_1.1.1         clisymbols_1.2.0    
-#&gt; [49] hms_0.5.3            promises_1.1.1       parallel_4.0.2      
-#&gt; [52] lambda.r_1.2.4       RColorBrewer_1.1-2   curl_4.3            
-#&gt; [55] yaml_2.2.1           stringi_1.5.3        tokenizers_0.2.1    
-#&gt; [58] BiocGenerics_0.34.0  zip_2.1.1            BiocParallel_1.22.0 
-#&gt; [61] shape_1.4.5          rlang_0.4.9          pkgconfig_2.0.3     
-#&gt; [64] evaluate_0.14        lattice_0.20-41      labeling_0.4.2      
-#&gt; [67] tidyselect_1.1.0     plyr_1.8.6           magrittr_2.0.1      
-#&gt; [70] R6_2.5.0             generics_0.1.0       DBI_1.1.0           
-#&gt; [73] foreign_0.8-80       pillar_1.4.7         haven_2.3.1         
-#&gt; [76] whisker_0.4          withr_2.3.0          abind_1.4-5         
-#&gt; [79] car_3.0-10           janeaustenr_0.1.5    modelr_0.1.8        
-#&gt; [82] crayon_1.3.4         futile.options_1.0.1 rmarkdown_2.6       
-#&gt; [85] GetoptLong_1.0.5     data.table_1.13.4    git2r_0.27.1        
-#&gt; [88] reprex_0.3.0         digest_0.6.27        httpuv_1.5.4        
-#&gt; [91] munsell_0.5.0        viridisLite_0.3.0</code></pre>
+#&gt;  [7] snakecase_0.11.0     GlobalOptions_0.1.2  fs_1.5.0            
+#&gt; [10] clue_0.3-58          rstudioapi_0.13      farver_2.0.3        
+#&gt; [13] SnowballC_0.7.0      ggrepel_0.9.0        fansi_0.4.1         
+#&gt; [16] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-16    
+#&gt; [19] knitr_1.30           jsonlite_1.7.2       bcellViper_1.24.0   
+#&gt; [22] cluster_2.1.0        dbplyr_2.0.0         png_0.1-7           
+#&gt; [25] compiler_4.0.2       httr_1.4.2           backports_1.2.1     
+#&gt; [28] assertthat_0.2.1     Matrix_1.2-18        cli_2.2.0           
+#&gt; [31] later_1.1.0.1        formatR_1.7          htmltools_0.5.0     
+#&gt; [34] tools_4.0.2          gtable_0.3.0         fastmatch_1.1-0     
+#&gt; [37] Rcpp_1.0.5           carData_3.0-4        Biobase_2.48.0      
+#&gt; [40] cellranger_1.1.0     vctrs_0.3.6          xfun_0.19           
+#&gt; [43] openxlsx_4.2.3       rvest_0.3.6          lifecycle_0.2.0     
+#&gt; [46] renv_0.12.3          rstatix_0.6.0        scales_1.1.1        
+#&gt; [49] clisymbols_1.2.0     hms_0.5.3            promises_1.1.1      
+#&gt; [52] parallel_4.0.2       lambda.r_1.2.4       RColorBrewer_1.1-2  
+#&gt; [55] curl_4.3             yaml_2.2.1           stringi_1.5.3       
+#&gt; [58] tokenizers_0.2.1     BiocGenerics_0.34.0  zip_2.1.1           
+#&gt; [61] BiocParallel_1.22.0  shape_1.4.5          rlang_0.4.9         
+#&gt; [64] pkgconfig_2.0.3      evaluate_0.14        lattice_0.20-41     
+#&gt; [67] labeling_0.4.2       tidyselect_1.1.0     plyr_1.8.6          
+#&gt; [70] magrittr_2.0.1       R6_2.5.0             generics_0.1.0      
+#&gt; [73] DBI_1.1.0            foreign_0.8-80       pillar_1.4.7        
+#&gt; [76] haven_2.3.1          whisker_0.4          withr_2.3.0         
+#&gt; [79] abind_1.4-5          car_3.0-10           janeaustenr_0.1.5   
+#&gt; [82] modelr_0.1.8         crayon_1.3.4         futile.options_1.0.1
+#&gt; [85] rmarkdown_2.6        GetoptLong_1.0.5     data.table_1.13.4   
+#&gt; [88] git2r_0.27.1         reprex_0.3.0         digest_0.6.27       
+#&gt; [91] httpuv_1.5.4         munsell_0.5.0        viridisLite_0.3.0</code></pre>
 </div>
 </div>
 </div>
