@@ -370,7 +370,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">meta-liver</a>
+      <a class="navbar-brand" href="index.html">Liver disease atlas</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall analysis (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -763,7 +765,24 @@ Message
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/plot-mouse-vs-human.html" target="_blank">45a33e4</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/plot-mouse-vs-human.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45a33e4bf9976b61178a021e1c8f7a32ac72697e/docs/plot-mouse-vs-human.html" target="_blank">45a33e4</a>
 </td>
 <td>
 christianholland
@@ -780,7 +799,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e6ada135831299c07c500b553a2bade8628ff65a/analysis/plot-mouse-vs-human.Rmd" target="_blank">e6ada13</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e6ada135831299c07c500b553a2bade8628ff65a/analysis/plot-mouse-vs-human.Rmd" target="_blank">e6ada13</a>
 </td>
 <td>
 christianholland
@@ -797,7 +816,7 @@ added example gsea plots
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/b4ed535d7df32989c0ea6b09bd423f648b64d40c/docs/plot-mouse-vs-human.html" target="_blank">b4ed535</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b4ed535d7df32989c0ea6b09bd423f648b64d40c/docs/plot-mouse-vs-human.html" target="_blank">b4ed535</a>
 </td>
 <td>
 christianholland
@@ -814,7 +833,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/plot-mouse-vs-human.html" target="_blank">3f4f82f</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/plot-mouse-vs-human.html" target="_blank">3f4f82f</a>
 </td>
 <td>
 christianholland
@@ -831,7 +850,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/1b1ab6ae04b8dd083362fd11be8236c9c0266c31/analysis/plot-mouse-vs-human.Rmd" target="_blank">1b1ab6a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/1b1ab6ae04b8dd083362fd11be8236c9c0266c31/analysis/plot-mouse-vs-human.Rmd" target="_blank">1b1ab6a</a>
 </td>
 <td>
 christianholland
@@ -848,7 +867,7 @@ cluster contrasts
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/45c5848406234b136005dc618f9be05ba3fd97ec/docs/plot-mouse-vs-human.html" target="_blank">45c5848</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/45c5848406234b136005dc618f9be05ba3fd97ec/docs/plot-mouse-vs-human.html" target="_blank">45c5848</a>
 </td>
 <td>
 christianholland
@@ -865,7 +884,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/26cc806777cddc295cc375b282b70905fde421e5/analysis/plot-mouse-vs-human.Rmd" target="_blank">26cc806</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/26cc806777cddc295cc375b282b70905fde421e5/analysis/plot-mouse-vs-human.Rmd" target="_blank">26cc806</a>
 </td>
 <td>
 christianholland
@@ -882,7 +901,7 @@ changed sc cutoff to 0.25
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/plot-mouse-vs-human.html" target="_blank">b43c246</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/plot-mouse-vs-human.html" target="_blank">b43c246</a>
 </td>
 <td>
 christianholland
@@ -899,7 +918,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/af35abe164468c63d12a5ea58b7d6e131e6cd596/analysis/plot-mouse-vs-human.Rmd" target="_blank">af35abe</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/af35abe164468c63d12a5ea58b7d6e131e6cd596/analysis/plot-mouse-vs-human.Rmd" target="_blank">af35abe</a>
 </td>
 <td>
 christianholland
@@ -916,7 +935,7 @@ minor changes
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/plot-mouse-vs-human.html" target="_blank">d8a06eb</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/plot-mouse-vs-human.html" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -933,7 +952,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e4603abb7fcf35158e3b8ae8a84b1abddff2c9e9/analysis/plot-mouse-vs-human.Rmd" target="_blank">e4603ab</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e4603abb7fcf35158e3b8ae8a84b1abddff2c9e9/analysis/plot-mouse-vs-human.Rmd" target="_blank">e4603ab</a>
 </td>
 <td>
 christianholland
@@ -1053,7 +1072,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/sim-patient-gene-sets-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/sim-patient-gene-sets-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1130,7 +1149,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/interstudy-enrichment-patient-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/interstudy-enrichment-patient-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1207,7 +1226,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/mouse-enrichment-in-patients-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/mouse-enrichment-in-patients-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1349,7 +1368,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1387,7 +1406,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-2.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/leading-edge-overlap-2.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1511,7 +1530,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">3f4f82f</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">3f4f82f</a>
 </td>
 <td>
 christianholland
@@ -1522,7 +1541,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/45c5848406234b136005dc618f9be05ba3fd97ec/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">45c5848</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/45c5848406234b136005dc618f9be05ba3fd97ec/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">45c5848</a>
 </td>
 <td>
 christianholland
@@ -1533,7 +1552,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">b43c246</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">b43c246</a>
 </td>
 <td>
 christianholland
@@ -1544,7 +1563,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/top-human-mouse-consistent-genes-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1622,7 +1641,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-tfs-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-tfs-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1699,7 +1718,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-pws-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-pws-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1828,7 +1847,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-go-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/consistent-go-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1931,7 +1950,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/expression-consistent-genes-in-mouse-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/expression-consistent-genes-in-mouse-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -1994,7 +2013,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">3f4f82f</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/3f4f82fcaac4489825cff59c01d452331bf1c85d/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">3f4f82f</a>
 </td>
 <td>
 christianholland
@@ -2005,7 +2024,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/45c5848406234b136005dc618f9be05ba3fd97ec/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">45c5848</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/45c5848406234b136005dc618f9be05ba3fd97ec/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">45c5848</a>
 </td>
 <td>
 christianholland
@@ -2016,7 +2035,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">b43c246</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b43c2467a94d8a7da73e6f548d9e4cf1afe01790/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">b43c246</a>
 </td>
 <td>
 christianholland
@@ -2027,7 +2046,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/fig-4-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -2083,7 +2102,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/s-fig-4-1-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/s-fig-4-1-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -2142,7 +2161,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/s-fig-4-2-1.png" target="_blank">d8a06eb</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d8a06ebf69a2a2fe0ac8401e1195774a095920b6/docs/figure/plot-mouse-vs-human.Rmd/s-fig-4-2-1.png" target="_blank">d8a06eb</a>
 </td>
 <td>
 christianholland
@@ -2162,7 +2181,7 @@ ggsave(here(&quot;figures/Supplementary Figure 4.2.pdf&quot;), sfig4_2,
 ggsave(here(&quot;figures/Supplementary Figure 4.2.png&quot;), sfig4_2,
   width = 21, height = 10, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 00:31 minutes.</p>
+<p>Time spend to execute this analysis: 00:36 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

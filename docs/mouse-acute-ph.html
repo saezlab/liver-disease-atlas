@@ -370,7 +370,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">meta-liver</a>
+      <a class="navbar-brand" href="index.html">Liver disease atlas</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall analysis (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -760,10 +762,44 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/40203d5fcfd0af9fa5b006d6711874376826d215/analysis/mouse-acute-ph.Rmd" target="_blank">40203d5</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-27
+</td>
+<td>
+wflow_publish("analysis/*", delete_cache = TRUE)
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/mouse-acute-ph.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/mouse-acute-ph.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/mouse-acute-ph.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -780,7 +816,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/mouse-acute-ph.Rmd" target="_blank">d4f78fa</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/mouse-acute-ph.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
 christianholland
@@ -797,7 +833,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/mouse-acute-ph.html" target="_blank">8a9b7bf</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/mouse-acute-ph.html" target="_blank">8a9b7bf</a>
 </td>
 <td>
 christianholland
@@ -814,7 +850,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/e22a40bafb648c6d8240eab4610edfb69278df74/docs/mouse-acute-ph.html" target="_blank">e22a40b</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/e22a40bafb648c6d8240eab4610edfb69278df74/docs/mouse-acute-ph.html" target="_blank">e22a40b</a>
 </td>
 <td>
 christianholland
@@ -831,7 +867,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/mouse-acute-ph.html" target="_blank">bea437a</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/mouse-acute-ph.html" target="_blank">bea437a</a>
 </td>
 <td>
 christianholland
@@ -848,7 +884,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/c78e88389929df94c6790585a37c4cf7798d04f8/analysis/mouse-acute-ph.Rmd" target="_blank">c78e883</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/c78e88389929df94c6790585a37c4cf7798d04f8/analysis/mouse-acute-ph.Rmd" target="_blank">c78e883</a>
 </td>
 <td>
 christianholland
@@ -865,7 +901,7 @@ stem characterization
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/af384509e61f6d626b8f2f1bccf80c7f075f5cbc/docs/mouse-acute-ph.html" target="_blank">af38450</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/af384509e61f6d626b8f2f1bccf80c7f075f5cbc/docs/mouse-acute-ph.html" target="_blank">af38450</a>
 </td>
 <td>
 christianholland
@@ -882,7 +918,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/mouse-acute-ph.html" target="_blank">d9b8f7e</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/mouse-acute-ph.html" target="_blank">d9b8f7e</a>
 </td>
 <td>
 christianholland
@@ -899,7 +935,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/891a004bf1971621aaaa3d652cc6018bb6c66ae0/analysis/mouse-acute-ph.Rmd" target="_blank">891a004</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/891a004bf1971621aaaa3d652cc6018bb6c66ae0/analysis/mouse-acute-ph.Rmd" target="_blank">891a004</a>
 </td>
 <td>
 christianholland
@@ -969,59 +1005,59 @@ platforms &lt;- readRDS(here(&quot;data/annotation/platforms.rds&quot;))
 raw_eset &lt;- list.celfiles(here(data_path), listGzipped = T, full.names = T) %&gt;%
   read.celfiles() %&gt;%
   ma_qc() # discard Jena_DPH_69_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_03_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_04_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_16_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_21_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_22_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_23_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_24_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_25_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_27_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_28_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_29_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_34_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_35_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_36_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_37_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_39_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_40_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_41_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_44_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_47_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_48_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_49_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_50_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_51_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_52_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_54_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_58_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_59_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_60_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_61_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_62_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_66_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_67_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_69_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_70_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_71_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_74_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_75_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_DPH_76_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_WMH_17_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Jena_WMT_16_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_DPH022_1_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_DPH023_2_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_NOR_014_8_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_NOR_015_9_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_NOR_016_10_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_NOR_017_11_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_NOR_018_12_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_WMH_004_3_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_WMH_005_4_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_WMH_006_5_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_WMH_007_6_(Mouse430_2).CEL
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/mouse-acute-ph/Patricio_WMH_008_7_(Mouse430_2).CEL</code></pre>
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_03_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_04_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_16_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_21_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_22_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_23_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_24_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_25_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_27_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_28_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_29_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_34_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_35_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_36_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_37_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_39_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_40_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_41_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_44_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_47_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_48_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_49_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_50_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_51_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_52_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_54_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_58_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_59_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_60_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_61_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_62_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_66_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_67_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_69_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_70_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_71_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_74_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_75_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_DPH_76_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_WMH_17_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Jena_WMT_16_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_DPH022_1_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_DPH023_2_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_NOR_014_8_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_NOR_015_9_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_NOR_016_10_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_NOR_017_11_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_NOR_018_12_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_WMH_004_3_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_WMH_005_4_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_WMH_006_5_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_WMH_007_6_(Mouse430_2).CEL
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/mouse-acute-ph/Patricio_WMH_008_7_(Mouse430_2).CEL</code></pre>
 </div>
 <div id="normalization-and-probe-annotation" class="section level3">
 <h3>Normalization and probe annotation</h3>
@@ -1111,7 +1147,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">8a9b7bf</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">8a9b7bf</a>
 </td>
 <td>
 christianholland
@@ -1122,7 +1158,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e22a40bafb648c6d8240eab4610edfb69278df74/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">e22a40b</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e22a40bafb648c6d8240eab4610edfb69278df74/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">e22a40b</a>
 </td>
 <td>
 christianholland
@@ -1133,7 +1169,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">bea437a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">bea437a</a>
 </td>
 <td>
 christianholland
@@ -1144,7 +1180,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">d9b8f7e</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/figure/mouse-acute-ph.Rmd/pca-norm-data-1.png" target="_blank">d9b8f7e</a>
 </td>
 <td>
 christianholland
@@ -1260,7 +1296,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">8a9b7bf</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">8a9b7bf</a>
 </td>
 <td>
 christianholland
@@ -1271,7 +1307,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e22a40bafb648c6d8240eab4610edfb69278df74/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">e22a40b</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e22a40bafb648c6d8240eab4610edfb69278df74/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">e22a40b</a>
 </td>
 <td>
 christianholland
@@ -1282,7 +1318,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">bea437a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">bea437a</a>
 </td>
 <td>
 christianholland
@@ -1293,7 +1329,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">d9b8f7e</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/figure/mouse-acute-ph.Rmd/volcano-plots-1.png" target="_blank">d9b8f7e</a>
 </td>
 <td>
 christianholland
@@ -1339,7 +1375,7 @@ stem_inputs %&gt;%
 <h3>Run STEM</h3>
 <p>STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are visualized.</p>
 <pre class="r"><code># execute stem
-stem_res &lt;- run_stem(here(output_path, &quot;stem&quot;), clear_output = T)
+stem_res &lt;- run_stem(file.path(output_path, &quot;stem&quot;), clear_output = T)
 #&gt; distinct: no rows removed
 #&gt; mutate: new variable &#39;gene&#39; (character) with 20,509 unique values and 0% NA
 #&gt; distinct: no rows removed
@@ -1403,7 +1439,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">8a9b7bf</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/8a9b7bf0458f500b5efba0985b3c1ac38ad63f7f/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">8a9b7bf</a>
 </td>
 <td>
 christianholland
@@ -1414,7 +1450,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/e22a40bafb648c6d8240eab4610edfb69278df74/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">e22a40b</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/e22a40bafb648c6d8240eab4610edfb69278df74/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">e22a40b</a>
 </td>
 <td>
 christianholland
@@ -1425,7 +1461,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">bea437a</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bea437a2a4cb44a0186b2c0083a042b63195d509/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">bea437a</a>
 </td>
 <td>
 christianholland
@@ -1436,7 +1472,7 @@ christianholland
 </tr>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">d9b8f7e</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d9b8f7e56bece8a2cf6e8a4465d3fe86f80d91ec/docs/figure/mouse-acute-ph.Rmd/run-stem-1.png" target="_blank">d9b8f7e</a>
 </td>
 <td>
 christianholland
@@ -1547,7 +1583,7 @@ ora_res = signatures %&gt;%
 #&gt; select: dropped one variable (sig)
 
 saveRDS(ora_res, here(output_path, &quot;stem_characterization.rds&quot;))</code></pre>
-<p>Time spend to execute this analysis: 02:50 minutes.</p>
+<p>Time spend to execute this analysis: 02:59 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

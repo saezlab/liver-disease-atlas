@@ -370,7 +370,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">meta-liver</a>
+      <a class="navbar-brand" href="index.html">Liver disease atlas</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall analysis (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -763,7 +765,24 @@ Message
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/human-hampe13-nash.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/human-hampe13-nash.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/human-hampe13-nash.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -780,7 +799,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/human-hampe13-nash.Rmd" target="_blank">d4f78fa</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/human-hampe13-nash.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
 christianholland
@@ -797,7 +816,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/human-hampe13-nash.html" target="_blank">6dbc304</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/human-hampe13-nash.html" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -814,7 +833,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d/analysis/human-hampe13-nash.Rmd" target="_blank">bc5a3e6</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d/analysis/human-hampe13-nash.Rmd" target="_blank">bc5a3e6</a>
 </td>
 <td>
 christianholland
@@ -883,79 +902,79 @@ raw_eset &lt;- list.celfiles(here(data_path), listGzipped = T, full.names = T) %
 #&gt; Loading required package: RSQLite
 #&gt; Loading required package: DBI
 #&gt; Platform design info loaded.
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178970_A1359-01.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178971_A1359-02.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178972_A1359-03.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178973_A1359-04.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178974_A1359-05.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178975_A1359-06.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178976_A1359-07.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178977_A1359-08.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178978_A1359-09.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178979_A1359-10.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178980_A1359-11.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178981_A1359-12.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178982_A1359-13.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178983_A1359-14.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178984_A1359-15.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178985_A1359-16.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178986_A1359-17.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178987_A1359-18.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178988_A1359-19.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178989_A1359-20.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178990_A1359-22.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178991_A1359-23.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178992_A1359-24.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178993_A1649-01.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178994_A1359-25.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178995_A1359-26.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178996_A1359-27.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178997_A1359-28.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178998_A1359-29.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1178999_A1359-30.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179000_A1359-31.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179001_A1359-32.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179002_A1359-33.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179003_A1359-34.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179004_A1359-35.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179005_A1359-36.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179006_A1359-37.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179007_A1359-38.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179008_A1359-39.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179009_A1649-02.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179010_A1359-40.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179011_A1649-03.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179012_A1359-41.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179013_A1359-42.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179014_A1359-43.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179015_A1359-44.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179016_A1359-45.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179017_A1359-46.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179018_A1359-49.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179019_A1359-50.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179020_A1359-51.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179021_A1649-05.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179022_A1359-52.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179023_A1359-53.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179024_A1359-54.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179025_A1649-08.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179026_A1359-55.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179027_A1649-06.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179028_A1649-09.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179029_A1359-56.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179030_A1359-57.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179031_A1649-10.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179032_A1359-58.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179033_A1359-59.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179034_A1359-60.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179035_A1359-61.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179036_A1359-62.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179037_A1359-63.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179038_A1359-64.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179039_A1649-11.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179040_A1649-12.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179041_A1649-13.CEL.gz
-#&gt; Reading in : /Users/cholland/Projects/meta-liver/data/human-hampe13-nash/GSM1179042_A1649-14.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178970_A1359-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178971_A1359-02.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178972_A1359-03.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178973_A1359-04.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178974_A1359-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178975_A1359-06.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178976_A1359-07.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178977_A1359-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178978_A1359-09.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178979_A1359-10.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178980_A1359-11.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178981_A1359-12.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178982_A1359-13.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178983_A1359-14.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178984_A1359-15.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178985_A1359-16.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178986_A1359-17.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178987_A1359-18.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178988_A1359-19.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178989_A1359-20.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178990_A1359-22.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178991_A1359-23.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178992_A1359-24.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178993_A1649-01.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178994_A1359-25.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178995_A1359-26.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178996_A1359-27.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178997_A1359-28.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178998_A1359-29.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1178999_A1359-30.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179000_A1359-31.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179001_A1359-32.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179002_A1359-33.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179003_A1359-34.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179004_A1359-35.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179005_A1359-36.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179006_A1359-37.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179007_A1359-38.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179008_A1359-39.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179009_A1649-02.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179010_A1359-40.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179011_A1649-03.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179012_A1359-41.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179013_A1359-42.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179014_A1359-43.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179015_A1359-44.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179016_A1359-45.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179017_A1359-46.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179018_A1359-49.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179019_A1359-50.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179020_A1359-51.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179021_A1649-05.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179022_A1359-52.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179023_A1359-53.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179024_A1359-54.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179025_A1649-08.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179026_A1359-55.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179027_A1649-06.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179028_A1649-09.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179029_A1359-56.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179030_A1359-57.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179031_A1649-10.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179032_A1359-58.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179033_A1359-59.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179034_A1359-60.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179035_A1359-61.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179036_A1359-62.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179037_A1359-63.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179038_A1359-64.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179039_A1649-11.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179040_A1649-12.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179041_A1649-13.CEL.gz
+#&gt; Reading in : /Users/cholland/Google Drive/Projects/liver-disease-atlas/data/human-hampe13-nash/GSM1179042_A1649-14.CEL.gz
 #&gt; Background correcting...
 #&gt; OK
 #&gt; Normalizing... OK
@@ -998,7 +1017,7 @@ df &lt;- getGEO(&quot;GSE48452&quot;)
 #&gt; )
 #&gt; ℹ Use `spec()` for the full column specifications.
 #&gt; File stored at:
-#&gt; /var/folders/62/y2c8xnr53ln52nm6f4yryb_m0000gp/T//RtmpULywzE/GPL11532.soft
+#&gt; /var/folders/62/y2c8xnr53ln52nm6f4yryb_m0000gp/T//RtmpnXHaHi/GPL11532.soft
 meta &lt;- df$GSE48452_series_matrix.txt.gz %&gt;%
   pData() %&gt;%
   rownames_to_column(&quot;sample&quot;) %&gt;%
@@ -1075,7 +1094,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hampe13-nash.Rmd/pca-norm-data-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hampe13-nash.Rmd/pca-norm-data-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1172,7 +1191,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hampe13-nash.Rmd/volcano-plots-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hampe13-nash.Rmd/volcano-plots-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1185,7 +1204,7 @@ christianholland
 </table>
 </div>
 </div>
-<p>Time spend to execute this analysis: 04:59 minutes.</p>
+<p>Time spend to execute this analysis: 04:54 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">

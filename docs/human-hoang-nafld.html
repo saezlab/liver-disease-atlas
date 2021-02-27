@@ -370,7 +370,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">meta-liver</a>
+      <a class="navbar-brand" href="index.html">Liver disease atlas</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -482,21 +482,21 @@ div.tocify {
       <a href="plot-mouse-vs-human.html">Mouse vs. human (Fig. 4)</a>
     </li>
     <li>
-      <a href="plot-precision-recall.html">Precision and recall of mouse models (Fig. 5)</a>
+      <a href="plot-precision-recall.html">Precision and recall analysis (Fig. 6)</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://zenodo.org/record/xxx">
+  <a href="https://doi.org/10.5281/zenodo.4407208">
     <span class="fas fa-database"></span>
      
     Get data
   </a>
 </li>
 <li>
-  <a href="https://github.com/saezlab/meta-liver">
+  <a href="https://github.com/saezlab/liver-disease-atlas">
     <span class="fab fa-github"></span>
      
     Source code
@@ -544,13 +544,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-01-07
+<strong>Last updated:</strong> 2021-02-27
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>meta-liver/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>liver-disease-atlas/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabmetalivertree9212828396db6c88e021d10ef9c76bb13828c017targetblank9212828a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree40203d5fcfd0af9fa5b006d6711874376826d215targetblank40203d5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/meta-liver/tree/9212828396db6c88e021d10ef9c76bb13828c017" target="_blank">9212828</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/40203d5fcfd0af9fa5b006d6711874376826d215" target="_blank">40203d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -677,11 +677,12 @@ Ignored files:
     Ignored:    analysis/plot-precision-recall_cache/
     Ignored:    analysis/plot-study-overview_cache/
     Ignored:    analysis/plot-teufel-integration_cache/
+    Ignored:    analysis/save-tables_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/README.html
     Ignored:    code/meta-mouse-vs-human/.DS_Store
+    Ignored:    data.zip
     Ignored:    data/.DS_Store
-    Ignored:    data/README.html
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -701,6 +702,7 @@ Ignored files:
     Ignored:    external_software/README.html
     Ignored:    external_software/stem/.DS_Store
     Ignored:    figures/
+    Ignored:    geo_submission/
     Ignored:    output/.DS_Store
     Ignored:    output/README.html
     Ignored:    output/human-diehl-nafld/
@@ -763,7 +765,24 @@ Message
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/human-hoang-nafld.html" target="_blank">067c933</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/9c62197c1a318b00f52dbf3e9e3613ebd34b9b33/docs/human-hoang-nafld.html" target="_blank">9c62197</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-01-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/067c9337e4cb6becda6b2d2ace64a70dc92107a3/docs/human-hoang-nafld.html" target="_blank">067c933</a>
 </td>
 <td>
 christianholland
@@ -780,7 +799,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/human-hoang-nafld.Rmd" target="_blank">d4f78fa</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/d4f78fae08eb96da82f28d39a0c6d2962abb7ecd/analysis/human-hoang-nafld.Rmd" target="_blank">d4f78fa</a>
 </td>
 <td>
 christianholland
@@ -797,7 +816,7 @@ wflow_publish("analysis/*.Rmd", delete_cache = T)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/saezlab/meta-liver/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/human-hoang-nafld.html" target="_blank">6dbc304</a>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/human-hoang-nafld.html" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -814,7 +833,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d/analysis/human-hoang-nafld.Rmd" target="_blank">bc5a3e6</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/bc5a3e60331a6eaaac5938ee7c4ce37b9430ec7d/analysis/human-hoang-nafld.Rmd" target="_blank">bc5a3e6</a>
 </td>
 <td>
 christianholland
@@ -898,7 +917,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/lib-size-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/lib-size-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -964,7 +983,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/count-distribution-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/count-distribution-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1027,7 +1046,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/pca-raw-data-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/pca-raw-data-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1104,7 +1123,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/pca-norm-data-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/pca-norm-data-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1202,7 +1221,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/saezlab/meta-liver/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/volcano-plots-1.png" target="_blank">6dbc304</a>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6dbc304c47af46a45be8bf60060a2e2e0eae2d85/docs/figure/human-hoang-nafld.Rmd/volcano-plots-1.png" target="_blank">6dbc304</a>
 </td>
 <td>
 christianholland
@@ -1215,7 +1234,7 @@ christianholland
 </table>
 </div>
 </div>
-<p>Time spend to execute this analysis: 00:24 minutes.</p>
+<p>Time spend to execute this analysis: 00:25 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
