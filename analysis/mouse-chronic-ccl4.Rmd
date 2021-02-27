@@ -291,7 +291,7 @@ stem_inputs %>%
 STEM is implemented in Java. The .jar file is called from R. Only significant time series clusters are visualized.
 ```{r run-stem}
 # execute stem
-stem_res <- run_stem(here(output_path, "stem"), clear_output = T)
+stem_res <- run_stem(file.path(output_path, "stem"), clear_output = T)
 
 saveRDS(stem_res, here(output_path, "stem_result.rds"))
 
