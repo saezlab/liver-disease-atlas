@@ -67,7 +67,7 @@ install.packages("renv")
 renv::restore()
 ```
 
-3. The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at [Zenodo](https://doi.org/10.5281/zenodo.4407208). [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4407208.svg)](https://doi.org/10.5281/zenodo.4407208)
+3. The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4568505.svg)](https://doi.org/10.5281/zenodo.4568505).
 Download the zipped `data` folder unzipp it and replace the existing `data` folder at the root level of the R-project.
 
 4. Run all analyses by running
