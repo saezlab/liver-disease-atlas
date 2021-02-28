@@ -41,6 +41,7 @@ library(lemon)
 library(ggrepel)
 library(magick)
 library(patchwork)
+library(pdftools)
 
 library(gtools)
 
