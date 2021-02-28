@@ -24,14 +24,13 @@ data/**/*.rdata
 output/**/*.rds
 output/**/*.txt
 
-*.pdf
-*.png
-*.key
-*.tiff
+figures/**/*.pdf
+figures/**/*.png
+figures/**/*.key
+figures/**/*.tiff
 
 **/README.html
 
 geo_submission/*
 data.zip
-
 Icon[]
