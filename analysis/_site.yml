@@ -63,7 +63,7 @@ navbar:
         href: "23-plot-precision-recall.html"
   right:
   - text: "Get data"
-    href: https://doi.org/10.5281/zenodo.4407208
+    href: https://doi.org/10.5281/zenodo.4568505
     icon: fas fa-database
   - text: "Source code"
     icon: fab fa-github
