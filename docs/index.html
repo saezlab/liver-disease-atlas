@@ -547,16 +547,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree3c62198c088563fcfc9a155fce297534f83dfcfdtargetblank3c62198a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/3c62198c088563fcfc9a155fce297534f83dfcfd" target="_blank">3c62198</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree6550734ecc6781d4289b8ee5493f92e6cedc966atargetblank6550734a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/6550734ecc6781d4289b8ee5493f92e6cedc966a" target="_blank">6550734</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree3c62198c088563fcfc9a155fce297534f83dfcfdtargetblank3c62198a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree6550734ecc6781d4289b8ee5493f92e6cedc966atargetblank6550734a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/3c62198c088563fcfc9a155fce297534f83dfcfd" target="_blank">3c62198</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/6550734ecc6781d4289b8ee5493f92e6cedc966a" target="_blank">6550734</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -784,6 +784,10 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
 
+Unstaged changes:
+    Modified:   README.Rmd
+    Modified:   README.md
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -821,6 +825,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/6550734ecc6781d4289b8ee5493f92e6cedc966a/analysis/index.Rmd" target="_blank">6550734</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+<td>
+wflow_publish(“analysis/index.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/ea860747edfe2470d1dfbdf671033c1a42017e13/docs/index.html" target="_blank">ea86074</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1620,12 +1658,12 @@ Start workflowr project.
 <pre class="r"><code>install.packages(&quot;renv&quot;)
 renv::restore()</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at Zenodo <a href="https://doi.org/10.5281/zenodo.4568505"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4568505.svg" alt="DOI" /></a>. Download the zipped <code>data</code> folder unzipp it and replace the existing <code>data</code> folder at the root level of the R-project.</p></li>
+<li><p>The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at Zenodo <a href="https://doi.org/10.5281/zenodo.4568505"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4568505.svg" alt="DOI" /></a>. Download the zipped <code>data</code> folder unzip it and replace the existing <code>data</code> folder at the root level of the R-project.</p></li>
 <li><p>Run all analyses by running</p></li>
 </ol>
 <pre class="r"><code>install.packages(&quot;workflowr&quot;)
 workflowr::wflow_build(republish = TRUE)</code></pre>
-<p>All intermediate and final results will be saved in the <code>output</code> folder.</p>
+<p>All intermediate and final results will be saved in the <code>output</code> folder. Please make sure to run <em>all</em> analyses in the specified order as downstream analyses depend on prior generated results.</p>
 </div>
 <div id="how-to-cite" class="section level2">
 <h2>How to cite?</h2>
