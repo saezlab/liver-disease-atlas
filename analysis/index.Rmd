@@ -68,14 +68,14 @@ renv::restore()
 ```
 
 3. The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4568505.svg)](https://doi.org/10.5281/zenodo.4568505).
-Download the zipped `data` folder unzipp it and replace the existing `data` folder at the root level of the R-project.
+Download the zipped `data` folder unzip it and replace the existing `data` folder at the root level of the R-project.
 
 4. Run all analyses by running
 ```{r eval=FALSE}
 install.packages("workflowr")
 workflowr::wflow_build(republish = TRUE)
 ```
-All intermediate and final results will be saved in the `output` folder.
+All intermediate and final results will be saved in the `output` folder. Please make sure to run _all_ analyses in the specified order as downstream analyses depend on prior generated results.
 
 How to cite?
 --------
