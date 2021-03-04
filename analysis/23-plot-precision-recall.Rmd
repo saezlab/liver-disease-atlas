@@ -328,7 +328,7 @@ pr_plot_mm <- pr %>%
   ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
   geom_point() +
   facet_rep_grid(regulation ~ etiology) +
-  geom_text_repel(size = fz / (14 / 5), show.legend = FALSE, na.rm = TRUE) +
+  # geom_text_repel(size = fz / (14 / 5), show.legend = FALSE, na.rm = TRUE) +
   geom_abline(lty = "dashed") +
   expand_limits(x = 0, y = 0) +
   labs(x = "Recall", y = "Precision", color = "Mouse model") +
