@@ -183,8 +183,42 @@ df %>%
   my_theme(grid = "y", fsize = fz)
 ```
 
+### z-scores
+```{r z-scores}
+expr <- readRDS(here(output_path, "normalized_expression.rds"))
+meta <- readRDS(here(data_path, "meta_data.rds"))
+
+# extract name of control samples
+ctrl_samples <- meta %>%
+  filter(nafld == "stage_0") %>%
+  pull(sample)
+
+treated_samples <- meta %>%
+  filter(nafld != "stage_0") %>%
+  pull(sample)
+
+# compute mean and standard deviation of gene expression in control sample
+ctrl_mean <- expr[, ctrl_samples] %>%
+  apply(1, mean)
+ctrl_sd <- expr[, ctrl_samples] %>%
+  apply(1, sd)
+
+# check whether genes are in correct order
+stopifnot(names(ctrl_mean) == colnames(t(expr)))
+stopifnot(names(ctrl_mean) == colnames(t(expr)))
+
+# z-score transformation of gene expression w.r.t control samples
+z_scores <- expr[, treated_samples] %>%
+  t() %>%
+  scale(center = ctrl_mean, scale = ctrl_sd) %>%
+  t() %>%
+  data.frame(check.names = FALSE)
+
+saveRDS(z_scores, here(output_path, "z_scores.rds"))
+```
+
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
-t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
 ```
 Time spend to execute this analysis: `r t` minutes.

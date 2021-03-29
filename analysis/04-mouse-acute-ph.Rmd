@@ -93,17 +93,19 @@ saveRDS(expr, here(output_path, "normalized_expression.rds"))
 ### Build meta data
 Meta information are loaded from a manual constructed .csv file
 ```{r build-meta-data}
-meta_raw = read_csv(here(data_path, "DPH_WMH_Samples_clean.csv"))
+meta_raw <- read_csv(here(data_path, "DPH_WMH_Samples_clean.csv"))
 
-meta = meta_raw %>% 
+meta <- meta_raw %>%
   filter(sample %in% colnames(expr)) %>%
-  mutate(time = ordered(time),
-         gender = as_factor(gender),
-         treatment = as_factor(treatment),
-         year = ordered(year),
-         mouse = fct_inorder(mouse),
-         surgeon = factor(surgeon),
-         group = as_factor(group)) %>%
+  mutate(
+    time = ordered(time),
+    gender = as_factor(gender),
+    treatment = as_factor(treatment),
+    year = ordered(year),
+    mouse = fct_inorder(mouse),
+    surgeon = factor(surgeon),
+    group = as_factor(group)
+  ) %>%
   select(-gender)
 
 # save meta data
@@ -136,12 +138,12 @@ meta <- readRDS(here(output_path, "meta_data.rds"))
 stopifnot(colnames(expr) == meta$sample)
 
 # build design matrix
-design = model.matrix(~0+group, data=meta)
-rownames(design) = meta$sample
+design <- model.matrix(~ 0 + group, data = meta)
+rownames(design) <- meta$sample
 
 
 # define contrasts
-contrasts = makeContrasts(
+contrasts <- makeContrasts(
   # comparison vs time point 0
   ph_0.043d = group1h - group0h,
   ph_0.25d = group6h - group0h,
@@ -154,7 +156,7 @@ contrasts = makeContrasts(
   ph_14d = group2w - group0h,
   ph_28d = group4w - group0h,
   ph_84d = group3m - group0h,
-  
+
   # consecutive timepoint comparison
   consec_1h_vs_0h = group1h - group0h,
   consec_6h_vs_1h = group6h - group1h,
@@ -170,16 +172,51 @@ contrasts = makeContrasts(
   levels = design
 )
 
-limma_result = run_limma(expr, design, contrasts) %>%
+limma_result <- run_limma(expr, design, contrasts) %>%
   assign_deg()
 
-deg_df = limma_result %>%
+deg_df <- limma_result %>%
   mutate(contrast = fct_inorder(contrast)) %>%
   mutate(contrast_reference = case_when(
     str_detect(contrast, "ph") ~ "hepatec",
-    str_detect(contrast, "consec") ~ "consec"))
+    str_detect(contrast, "consec") ~ "consec"
+  ))
 
 saveRDS(deg_df, here(output_path, "limma_result.rds"))
+```
+
+### z-scores
+```{r z-scores}
+expr <- readRDS(here(output_path, "normalized_expression.rds"))
+meta <- readRDS(here(output_path, "meta_data.rds"))
+
+# extract name of control samples
+ctrl_samples <- meta %>%
+  filter(group == "0h") %>%
+  pull(sample)
+
+treated_samples <- meta %>%
+  filter(group != "0h") %>%
+  pull(sample)
+
+# compute mean and standard deviation of gene expresion in control ssample
+ctrl_mean <- expr[, ctrl_samples] %>%
+  apply(1, mean)
+ctrl_sd <- expr[, ctrl_samples] %>%
+  apply(1, sd)
+
+# check whether genes are in correct order
+stopifnot(names(ctrl_mean) == colnames(t(expr)))
+stopifnot(names(ctrl_mean) == colnames(t(expr)))
+
+# z-score transformation of gene expression w.r.t control samples
+z_scores <- expr[, treated_samples] %>%
+  t() %>%
+  scale(center = ctrl_mean, scale = ctrl_sd) %>%
+  t() %>%
+  data.frame(check.names = FALSE)
+
+saveRDS(z_scores, here(output_path, "z_scores.rds"))
 ```
 
 ### Volcano plots
@@ -199,19 +236,21 @@ Gene expression trajectories are clustered using the [STEM](http://www.cs.cmu.ed
 ### Prepare input
 ```{r prepare-stem-input}
 # prepare input for stem analysis
-df = readRDS(here(output_path, "limma_result.rds"))
+df <- readRDS(here(output_path, "limma_result.rds"))
 
-stem_inputs = df %>%
+stem_inputs <- df %>%
   filter(contrast_reference == "hepatec") %>%
-  mutate(class = str_c("Hour ", 
-                       as.integer(parse_number(as.character(contrast))*24))) %>%
+  mutate(class = str_c(
+    "Hour ",
+    as.integer(parse_number(as.character(contrast)) * 24)
+  )) %>%
   arrange(contrast) %>%
   mutate(class = fct_inorder(class)) %>%
   select(gene, class, logFC, contrast_reference)
-  
+
 stem_inputs %>%
   select(-contrast_reference) %>%
-  pivot_wider(names_from = class, values_from = logFC) %>% 
+  pivot_wider(names_from = class, values_from = logFC) %>%
   write_delim(here(output_path, "stem/input/hepatec.txt"), delim = "\t")
 ```
 
@@ -235,20 +274,22 @@ stem_res %>%
 ### Cluster characterization
 STEM clusters are characterized by GO terms, [PROGENy's](http://saezlab.github.io/progeny/) pathways and [DoRothEA's](http://saezlab.github.io/dorothea/) TFs. As statistic over-representation analysis is used.
 ```{r cluster-characterization}
-stem_res = readRDS(here(output_path, "stem_result.rds"))
+stem_res <- readRDS(here(output_path, "stem_result.rds"))
 
-signatures = stem_res %>%
+signatures <- stem_res %>%
   filter(p <= 0.05) %>%
   distinct(profile, gene, p_profile = p)
 
-genesets = load_genesets() %>%
-  filter(confidence %in% c(NA,"A", "B", "C")) 
+genesets <- load_genesets() %>%
+  filter(confidence %in% c(NA, "A", "B", "C"))
 
-ora_res = signatures %>%
+ora_res <- signatures %>%
   nest(sig = c(-profile)) %>%
-  dplyr::mutate(ora = sig %>% map(run_ora,  sets = genesets, min_size = 10,
-                           options = list(alternative = "greater"), 
-                           background_n = 20000)) %>%
+  dplyr::mutate(ora = sig %>% map(run_ora,
+    sets = genesets, min_size = 10,
+    options = list(alternative = "greater"),
+    background_n = 20000
+  )) %>%
   select(-sig) %>%
   unnest(ora)
 
@@ -257,6 +298,6 @@ saveRDS(ora_res, here(output_path, "stem_characterization.rds"))
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
-t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
 ```
 Time spend to execute this analysis: `r t` minutes.

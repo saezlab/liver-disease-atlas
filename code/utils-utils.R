@@ -231,11 +231,11 @@ run_gsea <- function(sig_df, genesets, nperm = 1000, options = list(),
 #'  various gene sets. This dataframe must contain at least the column
 #'  \code{gene} containing the genes of the signature to analyse. All other
 #'  columns will be ignored.
-#' @param sets A dataframe holding all gene sets. It must contain at least the
+#' @param sets A data frame holding all gene sets. It must contain at least the
 #'   columns \code{geneset}, \code{gene} and \code{group}, containing gene set
-#'   identifier, gene set members and a varible separting gene sets into groups,
-#'   respectively (e.g. GO and KEGG). Further meta information of the gene sets
-#'   might be provided in futher columns.
+#'   identifier, gene set members and a variable separating gene sets into
+#'   groups, respectively (e.g. GO and KEGG). Further meta information of the
+#'   gene sets might be provided in further columns.
 #' @param min_size integer indication the minimum gene set size. Gene sets with
 #'   less members are discarded from the analysis.
 #' @param options A list of named options to pass to
@@ -471,7 +471,7 @@ run_stem <- function(path, jar_path = "external_software/stem/stem.jar",
 
   # stem translates all gene symbols to upper case so we need to create a
   # mapping between the original gene id and the upper case version
-  gene_mapping <- list.files(input_path, full.names = T) %>%
+  gene_mapping <- list.files(input_path, full.names = T, pattern = ".txt") %>%
     map_dfr(function(p) {
       read_delim(p, delim = "\t") %>%
         distinct(symbol = gene)

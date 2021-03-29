@@ -544,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-02-28
+<strong>Last updated:</strong> 2021-03-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree591f2bcea6086b18fe7c44194f18fb2798f239fftargetblank591f2bca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/591f2bcea6086b18fe7c44194f18fb2798f239ff" target="_blank">591f2bc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree591f2bcea6086b18fe7c44194f18fb2798f239fftargetblank591f2bca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/591f2bcea6086b18fe7c44194f18fb2798f239ff" target="_blank">591f2bc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -667,6 +667,7 @@ Ignored files:
     Ignored:    analysis/11-human-hoang-nafld_cache/
     Ignored:    analysis/12-human-ramnath-fibrosis_cache/
     Ignored:    analysis/13-meta-chronic-vs-acute_cache/
+    Ignored:    analysis/15-plot-chronic-ccl4_cache/
     Ignored:    analysis/16-plot-acute-apap_cache/
     Ignored:    analysis/17-plot-acute-ccl4_cache/
     Ignored:    analysis/18-plot-acute-ph_cache/
@@ -681,6 +682,7 @@ Ignored files:
     Ignored:    code/meta-mouse-vs-human/.DS_Store
     Ignored:    data.zip
     Ignored:    data/.DS_Store
+    Ignored:    data/Icon
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -711,7 +713,7 @@ Ignored files:
     Ignored:    figures/Figure 4.pdf
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
-    Ignored:    figures/Figure 5.png
+    Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
     Ignored:    figures/Supplementary Figure 0.1.png
@@ -754,25 +756,37 @@ Ignored files:
     Ignored:    figures/tmp/Icon
     Ignored:    geo_submission/
     Ignored:    output/.DS_Store
+    Ignored:    output/Icon
     Ignored:    output/README.html
+    Ignored:    output/human-diehl-nafld/Icon
     Ignored:    output/human-diehl-nafld/limma_result.rds
     Ignored:    output/human-diehl-nafld/meta_data.rds
     Ignored:    output/human-diehl-nafld/normalized_expression.rds
     Ignored:    output/human-diehl-nafld/pca_result.rds
+    Ignored:    output/human-diehl-nafld/z_scores.rds
+    Ignored:    output/human-hampe13-nash/Icon
     Ignored:    output/human-hampe13-nash/limma_result.rds
     Ignored:    output/human-hampe13-nash/meta_data.rds
     Ignored:    output/human-hampe13-nash/normalized_expression.rds
     Ignored:    output/human-hampe13-nash/pca_result.rds
+    Ignored:    output/human-hampe13-nash/z_scores.rds
+    Ignored:    output/human-hampe14-misc/Icon
     Ignored:    output/human-hampe14-misc/limma_result.rds
     Ignored:    output/human-hampe14-misc/meta_data.rds
     Ignored:    output/human-hampe14-misc/normalized_expression.rds
     Ignored:    output/human-hampe14-misc/pca_result.rds
+    Ignored:    output/human-hampe14-misc/z_scores.rds
+    Ignored:    output/human-hoang-nafld/Icon
     Ignored:    output/human-hoang-nafld/limma_result.rds
     Ignored:    output/human-hoang-nafld/normalized_expression.rds
     Ignored:    output/human-hoang-nafld/pca_result.rds
+    Ignored:    output/human-hoang-nafld/z_scores.rds
+    Ignored:    output/human-ramnath-fibrosis/Icon
     Ignored:    output/human-ramnath-fibrosis/limma_result.rds
     Ignored:    output/human-ramnath-fibrosis/normalized_expression.rds
     Ignored:    output/human-ramnath-fibrosis/pca_result.rds
+    Ignored:    output/human-ramnath-fibrosis/z_scores.rds
+    Ignored:    output/meta-chronic-vs-acute/Icon
     Ignored:    output/meta-chronic-vs-acute/acute_gene_pool.rds
     Ignored:    output/meta-chronic-vs-acute/chronic_gene_pool.rds
     Ignored:    output/meta-chronic-vs-acute/exclusive_genes_characterization.rds
@@ -789,6 +803,8 @@ Ignored files:
     Ignored:    output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds
     Ignored:    output/meta-chronic-vs-acute/union_acute_geneset.rds
     Ignored:    output/meta-chronic-vs-acute/union_chronic_geneset.rds
+    Ignored:    output/meta-chronic-vs-acute/z_score_pca.rds
+    Ignored:    output/meta-mouse-vs-human/Icon
     Ignored:    output/meta-mouse-vs-human/chronic_mouse_deg_numbers.rds
     Ignored:    output/meta-mouse-vs-human/consistent_genes.rds
     Ignored:    output/meta-mouse-vs-human/cross_species_enrichment.rds
@@ -809,59 +825,84 @@ Ignored files:
     Ignored:    output/meta-mouse-vs-human/precision_recall_chronicity.rds
     Ignored:    output/meta-mouse-vs-human/teufel_genes.rds
     Ignored:    output/meta-mouse-vs-human/teufel_genes_hs.rds
+    Ignored:    output/meta-mouse-vs-human/z_score_pca.rds
     Ignored:    output/mouse-acute-apap/.DS_Store
+    Ignored:    output/mouse-acute-apap/Icon
     Ignored:    output/mouse-acute-apap/limma_result.rds
     Ignored:    output/mouse-acute-apap/meta_data.rds
     Ignored:    output/mouse-acute-apap/normalized_expression.rds
     Ignored:    output/mouse-acute-apap/pca_result.rds
     Ignored:    output/mouse-acute-apap/stem/.DS_Store
+    Ignored:    output/mouse-acute-apap/stem/Icon
+    Ignored:    output/mouse-acute-apap/stem/input/Icon
     Ignored:    output/mouse-acute-apap/stem/input/apap.txt
     Ignored:    output/mouse-acute-apap/stem_characterization.rds
     Ignored:    output/mouse-acute-apap/stem_result.rds
+    Ignored:    output/mouse-acute-apap/z_scores.rds
     Ignored:    output/mouse-acute-bdl/.DS_Store
+    Ignored:    output/mouse-acute-bdl/Icon
     Ignored:    output/mouse-acute-bdl/limma_result.rds
     Ignored:    output/mouse-acute-bdl/meta_data.rds
     Ignored:    output/mouse-acute-bdl/normalized_expression.rds
     Ignored:    output/mouse-acute-bdl/pca_result.rds
     Ignored:    output/mouse-acute-bdl/stem/.DS_Store
+    Ignored:    output/mouse-acute-bdl/stem/Icon
+    Ignored:    output/mouse-acute-bdl/stem/input/Icon
     Ignored:    output/mouse-acute-bdl/stem/input/bdl.txt
     Ignored:    output/mouse-acute-bdl/stem_characterization.rds
     Ignored:    output/mouse-acute-bdl/stem_result.rds
+    Ignored:    output/mouse-acute-bdl/z_scores.rds
     Ignored:    output/mouse-acute-ccl4/.DS_Store
+    Ignored:    output/mouse-acute-ccl4/Icon
     Ignored:    output/mouse-acute-ccl4/limma_result.rds
     Ignored:    output/mouse-acute-ccl4/meta_data.rds
     Ignored:    output/mouse-acute-ccl4/normalized_expression.rds
     Ignored:    output/mouse-acute-ccl4/pca_result.rds
     Ignored:    output/mouse-acute-ccl4/stem/.DS_Store
+    Ignored:    output/mouse-acute-ccl4/stem/Icon
+    Ignored:    output/mouse-acute-ccl4/stem/input/Icon
     Ignored:    output/mouse-acute-ccl4/stem/input/ccl4.txt
     Ignored:    output/mouse-acute-ccl4/stem_characterization.rds
     Ignored:    output/mouse-acute-ccl4/stem_result.rds
+    Ignored:    output/mouse-acute-ccl4/z_scores.rds
+    Ignored:    output/mouse-acute-lps/Icon
     Ignored:    output/mouse-acute-lps/limma_result.rds
     Ignored:    output/mouse-acute-lps/meta_data.rds
     Ignored:    output/mouse-acute-lps/normalized_expression.rds
     Ignored:    output/mouse-acute-lps/pca_result.rds
+    Ignored:    output/mouse-acute-lps/z_scores.rds
     Ignored:    output/mouse-acute-ph/.DS_Store
+    Ignored:    output/mouse-acute-ph/Icon
     Ignored:    output/mouse-acute-ph/limma_result.rds
     Ignored:    output/mouse-acute-ph/meta_data.rds
     Ignored:    output/mouse-acute-ph/normalized_expression.rds
     Ignored:    output/mouse-acute-ph/pca_result.rds
     Ignored:    output/mouse-acute-ph/stem/.DS_Store
+    Ignored:    output/mouse-acute-ph/stem/Icon
+    Ignored:    output/mouse-acute-ph/stem/input/Icon
     Ignored:    output/mouse-acute-ph/stem/input/hepatec.txt
     Ignored:    output/mouse-acute-ph/stem_characterization.rds
     Ignored:    output/mouse-acute-ph/stem_result.rds
+    Ignored:    output/mouse-acute-ph/z_scores.rds
+    Ignored:    output/mouse-acute-tunicamycin/Icon
     Ignored:    output/mouse-acute-tunicamycin/limma_result.rds
     Ignored:    output/mouse-acute-tunicamycin/meta_data.rds
     Ignored:    output/mouse-acute-tunicamycin/normalized_expression.rds
     Ignored:    output/mouse-acute-tunicamycin/pca_result.rds
+    Ignored:    output/mouse-acute-tunicamycin/z_scores.rds
     Ignored:    output/mouse-chronic-ccl4/.DS_Store
+    Ignored:    output/mouse-chronic-ccl4/Icon
     Ignored:    output/mouse-chronic-ccl4/limma_result.rds
     Ignored:    output/mouse-chronic-ccl4/limma_result_hs.rds
     Ignored:    output/mouse-chronic-ccl4/normalized_expression.rds
     Ignored:    output/mouse-chronic-ccl4/pca_result.rds
     Ignored:    output/mouse-chronic-ccl4/stem/.DS_Store
+    Ignored:    output/mouse-chronic-ccl4/stem/Icon
+    Ignored:    output/mouse-chronic-ccl4/stem/input/Icon
     Ignored:    output/mouse-chronic-ccl4/stem/input/pure_ccl4.txt
     Ignored:    output/mouse-chronic-ccl4/stem_characterization.rds
     Ignored:    output/mouse-chronic-ccl4/stem_result.rds
+    Ignored:    output/mouse-chronic-ccl4/z_scores.rds
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/Supplementary Table 1.xlsx
@@ -869,9 +910,6 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy exclusive_common_genes.xlsx
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
-
-Unstaged changes:
-    Deleted:    analysis/15_plot-chronic-ccl4.Rmd
 
 </code></pre>
 <p>
@@ -910,6 +948,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/c5a4d0c0fccb091cc4fda8932cdc0fb2b0a4b148/analysis/14-meta-mouse-vs-human.Rmd" target="_blank">c5a4d0c</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+added pca of z-scores
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/24c0c748ec36f408ef3729f373e5bfeda89862c7/docs/14-meta-mouse-vs-human.html" target="_blank">24c0c74</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1154,6 +1226,43 @@ df %&gt;%
   labs(x = &quot;Number of patients&quot;, y = &quot;Study&quot;) +
   my_theme(grid = &quot;x&quot;, fsize = fz)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/patient-number-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-patient-number-1">
+Past versions of patient-number-1.png
+</button>
+</p>
+<div id="fig-patient-number-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/patient-number-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gene-coverage" class="section level2">
 <h2>Gene coverage</h2>
@@ -1173,6 +1282,106 @@ contrasts %&gt;%
   labs(x = &quot;Gene coverage&quot;, y = &quot;Study&quot;) +
   my_theme(grid = &quot;x&quot;, fsize = fz)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/gene-coverage-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-gene-coverage-1">
+Past versions of gene-coverage-1.png
+</button>
+</p>
+<div id="fig-gene-coverage-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/gene-coverage-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="pca-of-z-scores" class="section level2">
+<h2>PCA of z-scores</h2>
+<p>To check for batch effects we check the clustering of perturbed samples in PCA space (based on z-scores)</p>
+<pre class="r"><code># load z-scores and combine into a single data frame
+z_scores_mat &lt;- list.files(here(&quot;output&quot;),
+  pattern = &quot;z_scores.rds&quot;,
+  recursive = TRUE, full.names = TRUE
+) %&gt;%
+  # discard mouse experiments
+  keep(str_detect(., pattern = &quot;human-&quot;)) %&gt;%
+  map(function(path) {
+    readRDS(path) %&gt;%
+      rownames_to_column(&quot;gene&quot;)
+  }) %&gt;%
+  reduce(.f = full_join, by = &quot;gene&quot;) %&gt;%
+  column_to_rownames(&quot;gene&quot;)
+#&gt; full_join: added 32 columns (GSM1178975, GSM1178980, GSM1178986, GSM1178987, GSM1178988, …)
+#&gt;            &gt; rows only in x    3,213
+#&gt;            &gt; rows only in y    1,860
+#&gt;            &gt; matched rows     16,961
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       22,034
+#&gt; full_join: added 72 columns (GSM1501018, GSM1501019, GSM1501022, GSM1501025, GSM1501033, …)
+#&gt;            &gt; rows only in x    3,213
+#&gt;            &gt; rows only in y        0
+#&gt;            &gt; matched rows     18,821
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       22,034
+#&gt; full_join: added 74 columns (440349.1.X_1, 440350.1.X_1, 440351.1.X_4, 440352.1.X_4, 440353.1.X_4, …)
+#&gt;            &gt; rows only in x    7,183
+#&gt;            &gt; rows only in y      342
+#&gt;            &gt; matched rows     14,851
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       22,376
+#&gt; full_join: added 27 columns (sample14, sample15, sample16, sample18, sample19, …)
+#&gt;            &gt; rows only in x    7,392
+#&gt;            &gt; rows only in y    1,731
+#&gt;            &gt; matched rows     14,984
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       24,107
+
+# remove genes with infinity or NA
+z_scores_mat &lt;- z_scores_mat[is.finite(rowSums(z_scores_mat)), ]
+
+# load meta data
+meta &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;)) %&gt;%
+  filter(class == &quot;disease&quot;)
+#&gt; filter: removed 135 rows (36%), 237 rows remaining
+
+pca_result &lt;- do_pca(z_scores_mat, meta, top_n_var_genes = NULL)
+#&gt; left_join: added 4 columns (group, phenotype, source, class)
+#&gt;            &gt; rows only in x     0
+#&gt;            &gt; rows only in y  (  0)
+#&gt;            &gt; matched rows     237
+#&gt;            &gt;                 =====
+#&gt;            &gt; rows total       237
+
+saveRDS(pca_result, here(output_path, &quot;z_score_pca.rds&quot;))
+
+plot_pca(pca_result, feature = &quot;phenotype&quot;) +
+  my_theme()</code></pre>
+<p><img src="figure/14-meta-mouse-vs-human.Rmd/z-score-pca-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="number-of-differential-expressed-genes" class="section level2">
 <h2>Number of differential expressed genes</h2>
@@ -1189,6 +1398,43 @@ combined_contrasts %&gt;%
 #&gt; filter: removed 255,692 rows (99%), 1,996 rows remaining
 #&gt; count: now 26 rows and 4 columns, ungrouped</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/deg-number-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-deg-number-1">
+Past versions of deg-number-1.png
+</button>
+</p>
+<div id="fig-deg-number-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/deg-number-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="interstudy-analysis-of-patient-cohorts" class="section level2">
 <h2>Interstudy analysis of patient cohorts</h2>
@@ -1231,6 +1477,43 @@ j %&gt;%
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   my_theme(fsize = fz, grid = &quot;no&quot;)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/deg-similarity-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-deg-similarity-1">
+Past versions of deg-similarity-1.png
+</button>
+</p>
+<div id="fig-deg-similarity-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/deg-similarity-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="mutual-enrichment-of-differential-expressed-genes" class="section level3">
 <h3>Mutual enrichment of differential expressed genes</h3>
@@ -1308,6 +1591,43 @@ make_gsea_plot(
 #&gt;             &gt; rows total          473
 #&gt; top_n: removed 947 rows (&gt;99%), one row remaining</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mututal-enrichment-degs-1">
+Past versions of mututal-enrichment-degs-1.png
+</button>
+</p>
+<div id="fig-mututal-enrichment-degs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/mututal-enrichment-degs-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 # summary gsea plot
 gsea_res_top %&gt;%
@@ -1321,6 +1641,43 @@ gsea_res_top %&gt;%
   my_theme(fsize = fz, grid = &quot;no&quot;) +
   labs(x = &quot;Signature&quot;, y = &quot;Gene set&quot;)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/mututal-enrichment-degs-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mututal-enrichment-degs-2">
+Past versions of mututal-enrichment-degs-2.png
+</button>
+</p>
+<div id="fig-mututal-enrichment-degs-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/mututal-enrichment-degs-2.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="comparison-of-mouse-and-human-data" class="section level2">
@@ -1409,6 +1766,43 @@ make_gsea_plot(
 #&gt;             &gt; rows total          433
 #&gt; top_n: removed 867 rows (&gt;99%), one row remaining</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-enrichment-hs-gs-mm-sig-1">
+Past versions of enrichment-hs-gs-mm-sig-1.png
+</button>
+</p>
+<div id="fig-enrichment-hs-gs-mm-sig-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 # summary gsea plot
 gsea_res_top %&gt;%
@@ -1430,6 +1824,43 @@ gsea_res_top %&gt;%
   labs(x = &quot;Signature&quot;, y = &quot;Gene Set&quot;, fill = &quot;ES&quot;) +
   guides(fill = guide_colorbar(title = &quot;ES&quot;))</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-enrichment-hs-gs-mm-sig-2">
+Past versions of enrichment-hs-gs-mm-sig-2.png
+</button>
+</p>
+<div id="fig-enrichment-hs-gs-mm-sig-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/enrichment-hs-gs-mm-sig-2.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="leading-edge-extraction" class="section level2">
@@ -1506,6 +1937,43 @@ v &lt;- unified_le %&gt;%
 #&gt; filter: removed 48 rows (38%), 77 rows remaining
 #&gt; filter: removed 68 rows (41%), 97 rows remaining</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/leading-edge-extraction-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-leading-edge-extraction-1">
+Past versions of leading-edge-extraction-1.png
+</button>
+</p>
+<div id="fig-leading-edge-extraction-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/leading-edge-extraction-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre><code>#&gt; filter: removed one row (50%), one row remaining
 #&gt; filter: removed one row (50%), one row remaining
 #&gt; filter: removed one row (50%), one row remaining
@@ -1519,6 +1987,43 @@ v &lt;- unified_le %&gt;%
 #&gt; filter: removed 77 rows (62%), 48 rows remaining
 #&gt; filter: removed 97 rows (59%), 68 rows remaining</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/leading-edge-extraction-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-leading-edge-extraction-2">
+Past versions of leading-edge-extraction-2.png
+</button>
+</p>
+<div id="fig-leading-edge-extraction-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/leading-edge-extraction-2.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 saveRDS(unified_le, here(output_path, &quot;leading_edges.rds&quot;))
 saveRDS(unified_le_mgi, here(output_path, &quot;leading_edges_mgi.rds&quot;))</code></pre>
@@ -1630,6 +2135,43 @@ ComplexHeatmap::Heatmap(t(as.matrix(mat)),
   row_split = c(rep(&quot;Mouse&quot;, 3), rep(&quot;Human&quot;, 15))
 )</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/le-visualization-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-le-visualization-1">
+Past versions of le-visualization-1.png
+</button>
+</p>
+<div id="fig-le-visualization-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/le-visualization-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="characterization-of-leading-edge-genes" class="section level3">
 <h3>Characterization of leading edge genes</h3>
@@ -1750,6 +2292,43 @@ go_wordcounts %&gt;%
   my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; filter: removed 268 rows (87%), 41 rows remaining</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
+Past versions of unnamed-chunk-1-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/unnamed-chunk-1-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="cluster-ranking" class="section level3">
 <h3>Cluster ranking</h3>
@@ -1808,6 +2387,43 @@ go_cluster_ranking %&gt;%
   plot_go_rank_density() +
   my_theme(grid = &quot;no&quot;, fsize = fz)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/go-cluster-ranking-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-go-cluster-ranking-1">
+Past versions of go-cluster-ranking-1.png
+</button>
+</p>
+<div id="fig-go-cluster-ranking-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/go-cluster-ranking-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="integration-of-published-chronic-mouse-models" class="section level2">
@@ -1899,6 +2515,43 @@ df %&gt;%
   my_theme(grid = &quot;x&quot;, fsize = fz) +
   annotation_logticks(sides = &quot;b&quot;)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/vis-chronic-mm-gene-numbers-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-chronic-mm-gene-numbers-1">
+Past versions of vis-chronic-mm-gene-numbers-1.png
+</button>
+</p>
+<div id="fig-vis-chronic-mm-gene-numbers-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/vis-chronic-mm-gene-numbers-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="similarity-of-chronic-mouse-models-and-patient-cohorts" class="section level3">
 <h3>Similarity of chronic mouse models and patient cohorts</h3>
@@ -1957,6 +2610,43 @@ o %&gt;%
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   my_theme(grid = &quot;no&quot;, fsize = fz)</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-similarity-chronic-mm-and-hs-1">
+Past versions of similarity-chronic-mm-and-hs-1.png
+</button>
+</p>
+<div id="fig-similarity-chronic-mm-and-hs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/similarity-chronic-mm-and-hs-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="enrichment-of-chronic-mouse-genes-in-patient-cohorts" class="section level3">
 <h3>Enrichment of chronic mouse genes in patient cohorts</h3>
@@ -2054,6 +2744,43 @@ a + theme(legend.position = &quot;none&quot;) +
     axis.ticks.y = element_blank()
   )</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/enrichment-chronic-mm-in-hs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-enrichment-chronic-mm-in-hs-1">
+Past versions of enrichment-chronic-mm-in-hs-1.png
+</button>
+</p>
+<div id="fig-enrichment-chronic-mm-in-hs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/enrichment-chronic-mm-in-hs-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="build-gene-pool-for-human-etiology" class="section level3">
 <h3>Build gene pool for human etiology</h3>
@@ -2115,6 +2842,43 @@ upset(mat_up,
 )
 grid.text(&quot;Up&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz))</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-etiology-gene-numbers-1">
+Past versions of vis-etiology-gene-numbers-1.png
+</button>
+</p>
+<div id="fig-vis-etiology-gene-numbers-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 mat_down &lt;- df %&gt;%
   filter(regulation == &quot;down&quot;) %&gt;%
@@ -2133,6 +2897,43 @@ upset(mat_down,
 )
 grid.text(&quot;Down&quot;, x = 0.65, y = 0.95, gp = gpar(fontsize = fz))</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-etiology-gene-numbers-2">
+Past versions of vis-etiology-gene-numbers-2.png
+</button>
+</p>
+<div id="fig-vis-etiology-gene-numbers-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/vis-etiology-gene-numbers-2.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 
 # overlap in percentages
@@ -2958,6 +3759,43 @@ pr %&gt;%
   my_theme(fsize = fz) +
   scale_color_viridis_d()</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/pr-scatter-plot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pr-scatter-plot-1">
+Past versions of pr-scatter-plot-1.png
+</button>
+</p>
+<div id="fig-pr-scatter-plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/pr-scatter-plot-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3019,6 +3857,43 @@ chronicity_hgnc %&gt;%
   geom_hline(yintercept = 120)
 #&gt; count: now 6 rows and 3 columns, ungrouped</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/pr-chronicity-etiology-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pr-chronicity-etiology-1">
+Past versions of pr-chronicity-etiology-1.png
+</button>
+</p>
+<div id="fig-pr-chronicity-etiology-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/pr-chronicity-etiology-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 setup = chronicity_hgnc %&gt;%
   group_by(class, regulation) %&gt;%
@@ -3308,7 +4183,44 @@ pr %&gt;%
   my_theme(fsize = fz) +
   scale_color_viridis_d()</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/pr-chronicity-etiology-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Time spend to execute this analysis: 03:37 minutes.</p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pr-chronicity-etiology-2">
+Past versions of pr-chronicity-etiology-2.png
+</button>
+</p>
+<div id="fig-pr-chronicity-etiology-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/14-meta-mouse-vs-human.Rmd/pr-chronicity-etiology-2.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Time spend to execute this analysis: 03:33 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -3352,11 +4264,11 @@ pr %&gt;%
 #&gt;  [7] snakecase_0.11.0     GlobalOptions_0.1.2  fs_1.5.0            
 #&gt; [10] clue_0.3-58          rstudioapi_0.13      farver_2.0.3        
 #&gt; [13] SnowballC_0.7.0      ggrepel_0.9.0        fansi_0.4.1         
-#&gt; [16] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-16    
+#&gt; [16] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-18    
 #&gt; [19] knitr_1.30           jsonlite_1.7.2       bcellViper_1.24.0   
-#&gt; [22] cluster_2.1.0        dbplyr_2.0.0         png_0.1-7           
+#&gt; [22] cluster_2.1.1        dbplyr_2.0.0         png_0.1-7           
 #&gt; [25] compiler_4.0.2       httr_1.4.2           backports_1.2.1     
-#&gt; [28] assertthat_0.2.1     Matrix_1.2-18        cli_2.2.0           
+#&gt; [28] assertthat_0.2.1     Matrix_1.3-2         cli_2.2.0           
 #&gt; [31] later_1.1.0.1        formatR_1.7          htmltools_0.5.0     
 #&gt; [34] tools_4.0.2          gtable_0.3.0         fastmatch_1.1-0     
 #&gt; [37] Rcpp_1.0.5           carData_3.0-4        Biobase_2.48.0      
@@ -3371,7 +4283,7 @@ pr %&gt;%
 #&gt; [64] pkgconfig_2.0.3      evaluate_0.14        lattice_0.20-41     
 #&gt; [67] labeling_0.4.2       tidyselect_1.1.0     plyr_1.8.6          
 #&gt; [70] magrittr_2.0.1       R6_2.5.0             generics_0.1.0      
-#&gt; [73] DBI_1.1.0            foreign_0.8-80       pillar_1.4.7        
+#&gt; [73] DBI_1.1.0            foreign_0.8-81       pillar_1.4.7        
 #&gt; [76] haven_2.3.1          whisker_0.4          withr_2.3.0         
 #&gt; [79] abind_1.4-5          car_3.0-10           janeaustenr_0.1.5   
 #&gt; [82] modelr_0.1.8         crayon_1.3.4         futile.options_1.0.1

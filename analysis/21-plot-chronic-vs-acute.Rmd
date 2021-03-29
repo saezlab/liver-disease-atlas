@@ -105,6 +105,7 @@ keys <- key_mm %>%
   distinct(contrast, label = label2)
 
 j <- readRDS(here(output_path, "gene_set_similarity.rds")) %>%
+  filter(top_n_genes == 500) %>%
   separate(set1, into = c("tmp1", "tmp2", "tmp3", "contrast"), sep = "-") %>%
   select(-starts_with("tmp")) %>%
   inner_join(keys, by = "contrast") %>%
@@ -114,7 +115,7 @@ j <- readRDS(here(output_path, "gene_set_similarity.rds")) %>%
   select(-starts_with("tmp")) %>%
   inner_join(keys, by = "contrast") %>%
   rename(set2 = label) %>%
-  select(-contrast)
+  select(-c(contrast))
 
 acute_gs_sim <- j %>%
   mutate(set1 = fct_rev(set1)) %>%
@@ -142,6 +143,7 @@ keys <- key_mm %>%
   distinct(contrast, label = label2)
 
 gsea_res <- readRDS(here(output_path, "interstudy_enrichment.rds")) %>%
+  filter(top_n_genes == 500) %>%
   separate(signature,
     into = c("tmp1", "tmp2", "tmp3", "contrast"),
     sep = "-"
@@ -909,8 +911,7 @@ exclusive_acute_up + exclusive_acute_down
 ### Figure 3
 Main Figure.
 ```{r fig-3, fig.width=8.27, fig.height=11.69}
-fig3 <- (((acute_gs_sim / v) + plot_layout(height = c(4, 1))) |
-  acute_interstudy_enrichment) /
+fig3 <- (acute_gs_sim | acute_interstudy_enrichment) /
   grid.grabExpr(draw(exclusive_chronic_hmap)) /
   ((chronic_tfs_up | chronic_pw_up | exclusive_chronic_up | plot_spacer()) +
     plot_layout(width = c(1, 0.5, 2, 1))) /
@@ -919,7 +920,7 @@ fig3 <- (((acute_gs_sim / v) + plot_layout(height = c(4, 1))) |
     plot_layout(width = c(0.5, 1, 2, 1))) +
   plot_layout(height = c(1.5, 1.75, 0.75, 1.75, 0.75)) +
   plot_annotation(tag_levels = list(c(
-    "A", "C", "B", "D", "E", "F", "G", "", "H", "I", "J", "K"
+    "A", "B", "C", "D", "", "", "", "E", "F", "", ""
   ))) &
   theme(
     plot.tag = element_text(size = fz + 3, face = "bold"),

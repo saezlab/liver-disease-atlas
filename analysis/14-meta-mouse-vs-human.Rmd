@@ -218,6 +218,38 @@ contrasts %>%
   my_theme(grid = "x", fsize = fz)
 ```
 
+## PCA of z-scores
+To check for batch effects we check the clustering of perturbed samples in PCA space (based on z-scores)
+```{r z-score-pca}
+# load z-scores and combine into a single data frame
+z_scores_mat <- list.files(here("output"),
+  pattern = "z_scores.rds",
+  recursive = TRUE, full.names = TRUE
+) %>%
+  # discard mouse experiments
+  keep(str_detect(., pattern = "human-")) %>%
+  map(function(path) {
+    readRDS(path) %>%
+      rownames_to_column("gene")
+  }) %>%
+  reduce(.f = full_join, by = "gene") %>%
+  column_to_rownames("gene")
+
+# remove genes with infinity or NA
+z_scores_mat <- z_scores_mat[is.finite(rowSums(z_scores_mat)), ]
+
+# load meta data
+meta <- readRDS(here(output_path, "meta_data.rds")) %>%
+  filter(class == "disease")
+
+pca_result <- do_pca(z_scores_mat, meta, top_n_var_genes = NULL)
+
+saveRDS(pca_result, here(output_path, "z_score_pca.rds"))
+
+plot_pca(pca_result, feature = "phenotype") +
+  my_theme()
+```
+
 ## Number of differential expressed genes
 Barplot showing the number of differentially expressed genes for each contrast.
 ```{r deg-number}

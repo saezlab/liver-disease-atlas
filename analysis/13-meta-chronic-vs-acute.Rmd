@@ -129,60 +129,96 @@ tun <- readRDS(here("output/mouse-acute-tunicamycin/meta_data.rds")) %>%
 
 lps <- readRDS(here("output/mouse-acute-lps/meta_data.rds")) %>%
   filter(origin == "liver") %>%
-  transmute(sample, group = case_when(treatment == "control" ~ "control",
-                                      TRUE ~ "treated")) %>%
-  mutate(treatment = "lps",
-         source = "godoy", 
-         class = "acute")
+  transmute(sample, group = case_when(
+    treatment == "control" ~ "control",
+    TRUE ~ "treated"
+  )) %>%
+  mutate(
+    treatment = "lps",
+    source = "godoy",
+    class = "acute"
+  )
 
 acute_ccl4 <- readRDS(here("output/mouse-acute-ccl4/meta_data.rds")) %>%
-    mutate(group = case_when(time == 0 ~ "control",
-                           TRUE ~ "treated"),
-         treatment = "ccl4",
-         source = "godoy") %>%
+  mutate(
+    group = case_when(
+      time == 0 ~ "control",
+      TRUE ~ "treated"
+    ),
+    treatment = "ccl4",
+    source = "godoy"
+  ) %>%
   select(sample, group, time, treatment, source) %>%
-  mutate(time = as.character(time),
-         class = "acute")
+  mutate(
+    time = as.character(time),
+    class = "acute"
+  )
 
 ph <- readRDS(here("output/mouse-acute-ph/meta_data.rds")) %>%
-    mutate(group = case_when(time == 0 ~ "control",
-                           TRUE ~ "treated"),
-         treatment = "ph",
-         source = "godoy") %>%
+  mutate(
+    group = case_when(
+      time == 0 ~ "control",
+      TRUE ~ "treated"
+    ),
+    treatment = "ph",
+    source = "godoy"
+  ) %>%
   select(-c(surgeon, year, mouse)) %>%
-  mutate(time = as.character(time),
-         class = "acute")
+  mutate(
+    time = as.character(time),
+    class = "acute"
+  )
 
 apap <- readRDS(here("output/mouse-acute-apap/meta_data.rds")) %>%
-  mutate(group = case_when(time == 0 ~ "control",
-                           TRUE ~ "treated"),
-         treatment = "apap",
-         source = "ghallab") %>%
+  mutate(
+    group = case_when(
+      time == 0 ~ "control",
+      TRUE ~ "treated"
+    ),
+    treatment = "apap",
+    source = "ghallab"
+  ) %>%
   select(sample, group, time, treatment, source) %>%
-  mutate(time = as.character(time),
-         class = "acute")
+  mutate(
+    time = as.character(time),
+    class = "acute"
+  )
 
 bdl <- readRDS(here("output/mouse-acute-bdl/meta_data.rds")) %>%
-  mutate(group = case_when(treatment == "sham" ~ "control",
-                           TRUE ~ "treated"),
-         treatment = "bdl",
-         source = "ghallab") %>%
+  mutate(
+    group = case_when(
+      treatment == "sham" ~ "control",
+      TRUE ~ "treated"
+    ),
+    treatment = "bdl",
+    source = "ghallab"
+  ) %>%
   select(-mouse) %>%
-  mutate(time = as.character(time),
-         class = "acute")
+  mutate(
+    time = as.character(time),
+    class = "acute"
+  )
 
 # chronic
 chronic_ccl4 <- readRDS(here("data/mouse-chronic-ccl4/meta_data.rds")) %>%
-  mutate(group = case_when(treatment == "ccl4" ~ "treated",
-                           treatment %in% c("oil", "ctrl") ~ "control"),
-         treatment = "pure_ccl4",
-         source = "ghallab") %>%
+  mutate(
+    group = case_when(
+      treatment == "ccl4" ~ "treated",
+      treatment %in% c("oil", "ctrl") ~ "control"
+    ),
+    treatment = "pure_ccl4",
+    source = "ghallab"
+  ) %>%
   select(sample, group, time, treatment, source) %>%
-  mutate(time = as.character(time),
-         class = "chronic")
+  mutate(
+    time = as.character(time),
+    class = "chronic"
+  )
 
-combined_meta_data = bind_rows(tun, lps, acute_ccl4, ph, apap, bdl, 
-                               chronic_ccl4)
+combined_meta_data <- bind_rows(
+  tun, lps, acute_ccl4, ph, apap, bdl,
+  chronic_ccl4
+)
 
 saveRDS(combined_meta_data, here(output_path, "meta_data.rds"))
 ```
@@ -190,14 +226,14 @@ saveRDS(combined_meta_data, here(output_path, "meta_data.rds"))
 ## Number of mice
 Barplot showing number of mice per study.
 ```{r mouse-number}
-df = readRDS(here(output_path, "meta_data.rds")) %>%
+df <- readRDS(here(output_path, "meta_data.rds")) %>%
   count(treatment, source, group, class)
 
 df %>%
   ggplot(aes(
     x = n, fct_reorder(interaction(treatment, class, sep = "_"), n),
     group = group, fill = group
-    )) +
+  )) +
   geom_col(position = "dodge") +
   labs(x = "Number of mice", y = "Study") +
   my_theme(grid = "x", fsize = fz)
@@ -207,67 +243,114 @@ df %>%
 Barplot showing the gene coverage of the acute and chronic mouse models.
 ```{r gene-coverage}
 contrasts <- readRDS(here(output_path, "limma_result.rds")) %>%
-  distinct(gene, treatment, source, class) %>% 
+  distinct(gene, treatment, source, class) %>%
   count(treatment, source, class)
 
 contrasts %>%
-  ggplot(aes(x = n, fct_reorder(interaction(class, treatment, sep = "_"), n),
-             group = class)) +
+  ggplot(aes(
+    x = n, fct_reorder(interaction(class, treatment, sep = "_"), n),
+    group = class
+  )) +
   geom_col() +
-  labs(x="Gene coverage", y=NULL) +
-  my_theme(grid = "x", fsize = fz) 
+  labs(x = "Gene coverage", y = NULL) +
+  my_theme(grid = "x", fsize = fz)
 ```
+
+## PCA of z-scores
+To check for batch effects we check the clustering of perturbed samples in PCA space (based on z-scores)
+```{r z-score-pca}
+# load z-scores and combine into a single data frame
+z_scores_mat <- list.files(here("output"),
+  pattern = "z_scores.rds",
+  recursive = TRUE, full.names = TRUE
+) %>%
+  # discard human experiments
+  keep(str_detect(., pattern = "mouse-")) %>%
+  map(function(path) {
+    readRDS(path) %>%
+      rownames_to_column("gene")
+  }) %>%
+  reduce(.f = full_join, by = "gene") %>%
+  column_to_rownames("gene")
+
+# remove genes with infinity or NA
+z_scores_mat <- z_scores_mat[is.finite(rowSums(z_scores_mat)), ]
+
+# load meta data
+meta <- readRDS(here(output_path, "meta_data.rds")) %>%
+  filter(group == "treated")
+
+pca_result <- do_pca(z_scores_mat, meta, top_n_var_genes = NULL)
+
+saveRDS(pca_result, here(output_path, "z_score_pca.rds"))
+
+plot_pca(pca_result, feature = "treatment") +
+  my_theme()
+```
+
 
 ## Time point of maximal liver damage
 Here we identify for the acute CCl4, APAP and PH mouse model the time point with the strongest deregulated gene expression profile, based on PCA space. This time point is considered the time point of maximal liver damage.
-```{r "time-point-max-liver-damage"}
-pca_result_ccl4 = readRDS(here("output/mouse-acute-ccl4/pca_result.rds")) %>%
+```{r time-point-max-liver-damage}
+pca_result_ccl4 <- readRDS(here("output/mouse-acute-ccl4/pca_result.rds")) %>%
   pluck("coords") %>%
   select(sample, PC1, time) %>%
-  mutate(treatment_abbr = "CCl4",
-         time = as.character(time))
+  mutate(
+    treatment_abbr = "CCl4",
+    time = as.character(time)
+  )
 
-pca_result_apap = readRDS(here("output/mouse-acute-apap/pca_result.rds")) %>%
+pca_result_apap <- readRDS(here("output/mouse-acute-apap/pca_result.rds")) %>%
   pluck("coords") %>%
   select(sample, PC1, time) %>%
-  mutate(treatment_abbr = "APAP",
-         time = as.character(time))
+  mutate(
+    treatment_abbr = "APAP",
+    time = as.character(time)
+  )
 
-pca_result_ph = readRDS(here("output/mouse-acute-ph/pca_result.rds")) %>%
+pca_result_ph <- readRDS(here("output/mouse-acute-ph/pca_result.rds")) %>%
   pluck("coords") %>%
   select(sample, PC1, time) %>%
-  mutate(treatment_abbr = "PH",
-         time = as.character(round(24*as.numeric(as.character(time)), 0)))
+  mutate(
+    treatment_abbr = "PH",
+    time = as.character(round(24 * as.numeric(as.character(time)), 0))
+  )
 
-pca_result = bind_rows(pca_result_ccl4, pca_result_apap, pca_result_ph) %>%
+pca_result <- bind_rows(pca_result_ccl4, pca_result_apap, pca_result_ph) %>%
   mutate(time = ordered(as.numeric(time))) %>%
   arrange(treatment_abbr, time)
 
-pca_dist = pca_result %>%
+pca_dist <- pca_result %>%
   group_by(time, treatment_abbr) %>%
   summarise(mean_pc1_coord = mean(PC1)) %>%
   ungroup() %>%
   arrange(treatment_abbr) %>%
   mutate(control_coord = case_when(time == 0 ~ mean_pc1_coord)) %>%
   fill(control_coord) %>%
-  mutate(dist = abs(mean_pc1_coord -control_coord)) %>%
+  mutate(dist = abs(mean_pc1_coord - control_coord)) %>%
   group_by(treatment_abbr) %>%
-  mutate(max = case_when(dist == max(dist) ~ "yes",
-                         TRUE ~ "no")) %>%
+  mutate(max = case_when(
+    dist == max(dist) ~ "yes",
+    TRUE ~ "no"
+  )) %>%
   ungroup() %>%
-  filter(time != 0) 
+  filter(time != 0)
 
 saveRDS(pca_dist, here(output_path, "pca_dist.rds"))
 
 pca_dist %>%
-  ggplot(aes(x=time, y=dist, fill=max)) +
+  ggplot(aes(x = time, y = dist, fill = max)) +
   geom_col() +
   my_theme(grid = "y", fsize = fz) +
   scale_fill_manual(values = aachen_color(c("black50", "green"))) +
-  labs(x = "Time in hours", 
-       y = "Absolute mean distance to control along PC1") +
-  theme(legend.position = "none",
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
+    x = "Time in hours",
+    y = "Absolute mean distance to control along PC1"
+  ) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
   facet_rep_wrap(~treatment_abbr, scales = "free")
 ```
 
@@ -285,23 +368,43 @@ contrast_of_interest <- c(
 contrasts <- readRDS(here(output_path, "limma_result.rds")) %>%
   filter(contrast %in% contrast_of_interest)
 
-# populate gene sets with a fixed size selected by effect size (t-value)
-mat_top <- contrasts %>%
-  group_by(contrast, treatment, source, class) %>%
-  top_n(500, abs(statistic)) %>%
-  mutate(key = row_number()) %>%
-  ungroup() %>%
-  unite(geneset, class, source, treatment, contrast, sep = "-") %>%
-  mutate(geneset = as_factor(geneset)) %>%
-  select(geneset, gene, key) %>%
-  untdy(key, geneset, gene)
+top_n_genes = seq(100, 3000, 100)
 
-# usage of jaccard index for balanced set sizes
-j <- set_similarity(mat_top, measure = "jaccard", tidy = T)
+j = map_dfr(top_n_genes, function(n) {
+  # populate gene sets with a fixed size selected by effect size (t-value)
+  mat_top <- contrasts %>%
+    group_by(contrast, treatment, source, class) %>%
+    top_n(n, abs(statistic)) %>%
+    mutate(key = row_number()) %>%
+    ungroup() %>%
+    unite(geneset, class, source, treatment, contrast, sep = "-") %>%
+    mutate(geneset = as_factor(geneset)) %>%
+    select(geneset, gene, key) %>%
+    untdy(key, geneset, gene)
+  
+  # usage of jaccard index for balanced set sizes
+  set_similarity(mat_top, measure = "jaccard", tidy = T) %>%
+    mutate(top_n_genes = n)
+  
+})
 
 saveRDS(j, here(output_path, "gene_set_similarity.rds"))
 
+# distribution of mean jaccard index with varying gene set size
 j %>%
+  group_by(top_n_genes) %>%
+  summarise(mean_similarity = mean(similarity),
+            sd_similarity = sd(similarity)) %>%
+  ggplot(aes(x=top_n_genes, y=mean_similarity)) +
+  geom_pointline() +
+  geom_errorbar(aes(ymin = mean_similarity - sd_similarity,
+                    ymax = mean_similarity + sd_similarity)) +
+  my_theme() +
+  labs(x = "Gene set size", y="Mean Jaccard Index")
+
+# figure with fixed gene set size
+j %>%
+  filter(top_n_genes == 500) %>%
   ggplot(aes(x = set1, y = set2, fill = similarity)) +
   geom_tile(color = "black") +
   scale_fill_gradient(low = "white", high = aachen_color("green")) +
@@ -323,50 +426,74 @@ contrast_of_interest <- c(
 contrasts <- readRDS(here(output_path, "limma_result.rds")) %>%
   filter(contrast %in% contrast_of_interest)
 
-# populate gene sets with a fixed size selected by effect size (t-value)
-genesets_top <- contrasts %>%
-  mutate(direction = case_when(
-    sign(statistic) >= 0 ~ "up",
-    sign(statistic) < 0 ~ "down"
-  )) %>%
-  group_by(class, source, treatment, contrast, direction) %>%
-  top_n(500, abs(statistic)) %>%
-  ungroup() %>%
-  unite(geneset, class, source, treatment, contrast, sep = "-") %>%
-  unite(geneset, geneset, direction, sep = "|") %>%
-  mutate(geneset = as_factor(geneset)) %>%
-  select(geneset, gene)
-
 # construct signature matrix/data frame
 signature_df <- contrasts %>%
   unite(signature, class, source, treatment, contrast, sep = "-") %>%
   mutate(signature = as_factor(signature)) %>%
   untdy("gene", "signature", "statistic")
 
-# run gsea
-set.seed(123)
-gsea_res_top <- run_gsea(signature_df, genesets_top, tidy = T) %>%
-  separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
-  mutate(
-    signature = as_factor(signature),
-    geneset = as_factor(geneset)
-  )
+top_n_genes = c(seq(100, 1000, 100), 1500, 2000, 3000, 5000)
+
+gsea_res_top <-  map_dfr(top_n_genes, function(n) {
+
+  # populate gene sets with a fixed size selected by effect size (t-value)
+  genesets_top <- contrasts %>%
+    mutate(direction = case_when(
+      sign(statistic) >= 0 ~ "up",
+      sign(statistic) < 0 ~ "down"
+    )) %>%
+    group_by(class, source, treatment, contrast, direction) %>%
+    top_n(n, abs(statistic)) %>%
+    ungroup() %>%
+    unite(geneset, class, source, treatment, contrast, sep = "-") %>%
+    unite(geneset, geneset, direction, sep = "|") %>%
+    mutate(geneset = as_factor(geneset)) %>%
+    select(geneset, gene)
+
+  # run gsea
+  set.seed(123)
+  run_gsea(signature_df, genesets_top, tidy = T) %>%
+    separate(geneset, into = c("geneset", "direction"), sep = "[|]") %>%
+    mutate(
+      signature = as_factor(signature),
+      geneset = as_factor(geneset),
+      top_n_genes = n
+    )
+})
 
 saveRDS(gsea_res_top, here(output_path, "interstudy_enrichment.rds"))
 
-# individual gsea plot
-make_gsea_plot(
-  signature = signature_df %>%
-    rownames_to_column("gene") %>%
-    select(gene, t = `acute-wek-tunicamycin-treat_vs_ctrl`) %>%
-    drop_na(),
-  geneset = genesets_top %>%
-    filter(geneset == "acute-godoy-ccl4-ccl_24h_vs_0h|up"),
-  gene_level_stat = t
-)
 
-# summary gsea plot
+# distribution of mean enrichment score with varying gene set size
 gsea_res_top %>%
+  filter(abs(ES) != 1) %>%
+  group_by(top_n_genes, direction) %>%
+  summarise(mean_es = mean(NES),
+            sd_es = sd(NES)) %>%
+  ggplot(aes(x=top_n_genes, y=mean_es)) +
+  geom_pointline() +
+  geom_errorbar(aes(ymin = mean_es - sd_es,
+                    ymax = mean_es + sd_es)) +
+  geom_hline(yintercept = 0, lty = "dashed") +
+  my_theme() +
+  labs(x = "Gene set size", y="Mean ES") +
+  facet_rep_wrap(~direction)
+
+
+# # individual gsea plot
+# make_gsea_plot(
+#   signature = signature_df %>%
+#     rownames_to_column("gene") %>%
+#     select(gene, t = `acute-wek-tunicamycin-treat_vs_ctrl`) %>%
+#     drop_na(),
+#   geneset = genesets_top %>%
+#     filter(geneset == "acute-godoy-ccl4-ccl_24h_vs_0h|up"),
+#   gene_level_stat = t
+# )
+
+# summary gsea plot with a fixed gene set size
+gsea_res_top %>%
+  filter(top_n_genes == 500) %>%
   mutate(label = gtools::stars.pval(padj)) %>%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
   geom_tile() +
@@ -376,9 +503,6 @@ gsea_res_top %>%
   scale_fill_gradient2() +
   my_theme(fsize = fz, grid = "no") +
   labs(x = "Signature", y = "Gene set")
-
-
-
 ```
 
 ## Construction of unified acute and chronic genes
@@ -506,11 +630,11 @@ v <- draw.pairwise.venn(
   area1 = a1, area2 = a2, cross.area = ca,
   category = c("acute", "chronic"),
   lty = "blank",
-  cex = 1/12*fz,
+  cex = 1 / 12 * fz,
   fontfamily = rep("sans", 3),
   fill = aachen_color(c("purple", "petrol")),
   cat.col = aachen_color(c("purple", "petrol")),
-  cat.cex = 1/12*(fz+1),
+  cat.cex = 1 / 12 * (fz + 1),
   cat.fontfamily = rep("sans", 2)
 )
 ```
@@ -597,7 +721,7 @@ mat_exclusive_chronic_genes <- ranked_exclusive_chronic_genes %>%
 Heatmap(t(mat_exclusive_chronic_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
   name = "logFC",
   row_gap = unit(2.5, "mm"),
   border = T,
@@ -660,7 +784,7 @@ mat_common_genes <- ranked_common_genes %>%
 Heatmap(t(mat_common_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
   name = "logFC",
   row_gap = unit(2.5, "mm"),
   border = T,
@@ -725,7 +849,7 @@ mat_exclusive_acute_genes <- ranked_exclusive_acute_genes %>%
 Heatmap(t(mat_exclusive_acute_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
   name = "logFC",
   row_gap = unit(2.5, "mm"),
   border = T,
@@ -761,7 +885,7 @@ signatures <- bind_rows(
 
 # load gene sets of GO terms, pathways, tfs)
 genesets <- load_genesets() %>%
-  filter(confidence %in% c(NA,"A", "B", "C")) 
+  filter(confidence %in% c(NA, "A", "B", "C"))
 
 # run over-representation analysis
 ora_res <- signatures %>%
@@ -783,42 +907,49 @@ In this section significant GO terms are summarized in two different ways. i) Wh
 ### Text analysis
 GO terms are splitted into words and their frequency is counted.
 ```{r go-text-analysis}
-# list of words that will be ignored 
-stop_go_words = readRDS(here("data/annotation/stop_go_words.rds"))
+# list of words that will be ignored
+stop_go_words <- readRDS(here("data/annotation/stop_go_words.rds"))
 
-go_terms = readRDS(here(output_path, "exclusive_genes_characterization.rds")) %>%
+go_terms <- readRDS(here(output_path, "exclusive_genes_characterization.rds")) %>%
   filter(group == "go" & fdr <= 0.05) %>%
-  mutate(term = str_remove(geneset, "GO_"),
-           term = str_replace_all(term, "_", " "),
-           term = str_to_lower(term)) %>%
+  mutate(
+    term = str_remove(geneset, "GO_"),
+    term = str_replace_all(term, "_", " "),
+    term = str_to_lower(term)
+  ) %>%
   select(regulation, term, class)
 
-go_wordcounts = go_terms %>%
+go_wordcounts <- go_terms %>%
   # glue words that should be treated as one
-  mutate(term = str_replace(term, "smooth muscle", "smoothmuscle"),
-         term = str_replace(term, "amino acid", "aminoacid"),
-         term = str_replace(term, "cell cycle", "cellcycle"),
-         term = str_replace(term, "endoplasmic reticulum stress", "endoplasmicreticulumstress"),
-         term = str_replace(term, "endoplasmic reticulum", "endoplasmicreticulum")
-         ) %>%
+  mutate(
+    term = str_replace(term, "smooth muscle", "smoothmuscle"),
+    term = str_replace(term, "amino acid", "aminoacid"),
+    term = str_replace(term, "cell cycle", "cellcycle"),
+    term = str_replace(term, "endoplasmic reticulum stress", "endoplasmicreticulumstress"),
+    term = str_replace(term, "endoplasmic reticulum", "endoplasmicreticulum")
+  ) %>%
   unnest_tokens(word, term) %>%
-  anti_join(stop_words, by="word") %>%
+  anti_join(stop_words, by = "word") %>%
   # correct for abbreviations
-  mutate(word = case_when(word == "er" ~ "endoplasmicreticulum",
-                          TRUE ~ word)) %>%
-  # remove words which are pure numbers 
+  mutate(word = case_when(
+    word == "er" ~ "endoplasmicreticulum",
+    TRUE ~ word
+  )) %>%
+  # remove words which are pure numbers
   filter(!str_detect(word, "^[0-9]+")) %>%
   # count word frequency
   count(class, regulation, word, sort = T) %>%
   # dissect prior glued words
-  mutate(word = case_when(word =="smoothmuscle" ~ "smooth-muscle",
-                          word == "aminoacid" ~ "amino-acid",
-                          word == "cellcycle" ~ "cell-cycle",
-                          word == "endoplasmicreticulumstress" ~ "endoplasmic-reticulum-stress",
-                          word == "endoplasmicreticulum" ~ "endoplasmic-reticulum",
-                          TRUE ~ word)) %>%
+  mutate(word = case_when(
+    word == "smoothmuscle" ~ "smooth-muscle",
+    word == "aminoacid" ~ "amino-acid",
+    word == "cellcycle" ~ "cell-cycle",
+    word == "endoplasmicreticulumstress" ~ "endoplasmic-reticulum-stress",
+    word == "endoplasmicreticulum" ~ "endoplasmic-reticulum",
+    TRUE ~ word
+  )) %>%
   # remove meaning less words
-  anti_join(stop_go_words, by="word") 
+  anti_join(stop_go_words, by = "word")
 
 saveRDS(go_wordcounts, here(output_path, "go_wordcounts.rds"))
 
@@ -829,8 +960,8 @@ go_wordcounts %>%
   ungroup() %>%
   ggplot(aes(label = word, size = n)) +
   geom_text_wordcloud() +
-  scale_size_area(max_size = fz/(14/5)) +
-  facet_grid(class~regulation) +
+  scale_size_area(max_size = fz / (14 / 5)) +
+  facet_grid(class ~ regulation) +
   theme(axis.line = element_blank()) +
   my_theme(grid = "no", fsize = fz)
 ```
@@ -838,7 +969,7 @@ go_wordcounts %>%
 ### Cluster ranking
 Distribution of manually created GO-cluster.
 ```{r go-cluster-ranking}
-go_cluster_mapping = tribble(
+go_cluster_mapping <- tribble(
   ~cluster, ~description,
   4, "Proliferation",
   5, "Metabolism",
@@ -849,27 +980,32 @@ go_cluster_mapping = tribble(
   11, "Metabolism"
 )
 
-go_cluster_chronic = read_excel(here(data_path, "manual_go_cluster_anno.xlsx"), 
-                                sheet = "chronic") %>%
+go_cluster_chronic <- read_excel(here(data_path, "manual_go_cluster_anno.xlsx"),
+  sheet = "chronic"
+) %>%
   mutate(class = "chronic")
-go_cluster_acute = read_excel(here(data_path, "manual_go_cluster_anno.xlsx"), 
-                              sheet = "acute") %>%
+go_cluster_acute <- read_excel(here(data_path, "manual_go_cluster_anno.xlsx"),
+  sheet = "acute"
+) %>%
   mutate(class = "acute")
-go_cluster_common = read_excel(here(data_path, "manual_go_cluster_anno.xlsx"), 
-                               sheet = "common") %>%
+go_cluster_common <- read_excel(here(data_path, "manual_go_cluster_anno.xlsx"),
+  sheet = "common"
+) %>%
   mutate(class = "common")
 
-go_cluster = bind_rows(go_cluster_chronic, go_cluster_acute, go_cluster_common) %>%
+go_cluster <- bind_rows(go_cluster_chronic, go_cluster_acute, go_cluster_common) %>%
   distinct(class, regulation, term, cluster) %>%
   drop_na() %>%
   inner_join(go_cluster_mapping)
 
-go_terms_ranking = readRDS(
+go_terms_ranking <- readRDS(
   here(output_path, "exclusive_genes_characterization.rds")
-  ) %>% 
-  mutate(term = str_remove(geneset, "GO_"),
-           term = str_replace_all(term, "_", " "),
-           term = str_to_lower(term)) %>%
+) %>%
+  mutate(
+    term = str_remove(geneset, "GO_"),
+    term = str_replace_all(term, "_", " "),
+    term = str_to_lower(term)
+  ) %>%
   filter(fdr <= 0.05) %>%
   group_by(regulation, class) %>%
   mutate(rank = row_number(p.value)) %>%
@@ -877,30 +1013,36 @@ go_terms_ranking = readRDS(
   ungroup() %>%
   select(class, regulation, term, rank, max_rank)
 
-go_cluster_ranking = go_terms_ranking %>%
+go_cluster_ranking <- go_terms_ranking %>%
   inner_join(go_cluster)
 
 saveRDS(go_cluster_ranking, here(output_path, "go_cluster_ranking.rds"))
 
 go_cluster_ranking %>%
   mutate(regulation = as_factor(regulation)) %>%
-  ggplot(aes(x=rank, colour=description)) +
+  ggplot(aes(x = rank, colour = description)) +
   stat_density(geom = "line", position = "identity") +
   geom_rug() +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        legend.position = "top") +
-  labs(x=str_wrap("GO term ranking based on p-value"), y="Density",
-       color =NULL) +
-  facet_rep_wrap(~class+regulation, scales = "free", drop = T) +
-  scale_x_continuous(breaks = function(x) as.numeric(
-    gsub("^0", 1, unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))))
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    legend.position = "top"
   ) +
+  labs(
+    x = str_wrap("GO term ranking based on p-value"), y = "Density",
+    color = NULL
+  ) +
+  facet_rep_wrap(~ class + regulation, scales = "free", drop = T) +
+  scale_x_continuous(breaks = function(x) {
+    as.numeric(
+      gsub("^0", 1, unique(floor(pretty(seq(0, (max(x) + 1) * 1.1)))))
+    )
+  }) +
   my_theme(grid = "no", fsize = fz)
 ```
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
-t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
 ```
 Time spend to execute this analysis: `r t` minutes.
