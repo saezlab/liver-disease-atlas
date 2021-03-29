@@ -82,7 +82,7 @@ eset <- rma(raw_eset)
 
 # annotate microarray probes with mgi symbols
 expr <- ma_annotate(eset, platforms)
-colnames(expr) = str_remove_all(colnames(expr), "_\\(Mouse430_2\\).CEL")
+colnames(expr) <- str_remove_all(colnames(expr), "_\\(Mouse430_2\\).CEL")
 
 # save normalized expression
 saveRDS(expr, here(output_path, "normalized_expression.rds"))
@@ -98,16 +98,22 @@ meta <- colnames(expr) %>%
     str_detect(sample, "CCl4") ~ "CCl4",
     str_detect(sample, "LPS") ~ "LPS",
     str_detect(sample, str_c(c("KD1", "KFHD"), collapse = "|")) ~ "control"
-    )) %>%
-  mutate(origin = case_when(str_detect(sample, "FHD") ~ "HC",
-                            TRUE ~ "liver")) %>%
-  mutate(time = case_when(str_detect(sample, "D1") ~ 1,
-                          str_detect(sample, "D3") ~ 3)) %>%
+  )) %>%
+  mutate(origin = case_when(
+    str_detect(sample, "FHD") ~ "HC",
+    TRUE ~ "liver"
+  )) %>%
+  mutate(time = case_when(
+    str_detect(sample, "D1") ~ 1,
+    str_detect(sample, "D3") ~ 3
+  )) %>%
   unite(group, origin, treatment, time, remove = F) %>%
-  mutate(treatment = factor(treatment, levels = c("control","LPS", "CCl4")),
-         origin = factor(origin, levels = c("liver", "HC")),
-         time = ordered(time),
-         group = as_factor(group)) 
+  mutate(
+    treatment = factor(treatment, levels = c("control", "LPS", "CCl4")),
+    origin = factor(origin, levels = c("liver", "HC")),
+    time = ordered(time),
+    group = as_factor(group)
+  )
 
 # save meta data
 saveRDS(meta, here(output_path, "meta_data.rds"))
@@ -140,33 +146,33 @@ meta <- readRDS(here(output_path, "meta_data.rds"))
 stopifnot(colnames(expr) == meta$sample)
 
 # build design matrix
-design = model.matrix(~0+group, data=meta)
-rownames(design) = meta$sample
-colnames(design) = levels(meta$group)
+design <- model.matrix(~ 0 + group, data = meta)
+rownames(design) <- meta$sample
+colnames(design) <- levels(meta$group)
 
 
 # define contrasts
-contrasts = makeContrasts(
+contrasts <- makeContrasts(
   # LPS vs control in liver and hepatocytes
   inLiver_lps_vs_ctrl = liver_LPS_1 - liver_control_1,
   inHC_lps_vs_ctrl_day1 = HC_LPS_1 - HC_control_1,
-  
+
   # CCl4 vs control in hepatocytes for day 1 and 3
   inHC_ccl_vs_ctrl_day1 = HC_CCl4_1 - HC_control_1,
   inHC_ccl_vs_ctrl_day3 = HC_CCl4_3 - HC_control_1,
-  
+
   # LPS vs CCl4 in hepatocytes day 1 and 3
   inHC_ccl_vs_lps_day1 = HC_CCl4_1 - HC_LPS_1,
   inHC_ccl_vs_lps_day3 = HC_CCl4_3 - HC_LPS_1,
-  
+
   # liver tissue vs hepatocytes
   liver_vs_hc_lps = liver_LPS_1 - HC_LPS_1,
-  
+
   hc_vs_liver_ctrl = HC_control_1 - liver_control_1,
   levels = design
 )
 
-limma_result = run_limma(expr, design, contrasts) %>%
+limma_result <- run_limma(expr, design, contrasts) %>%
   assign_deg()
 
 saveRDS(limma_result, here(output_path, "limma_result.rds"))
@@ -178,12 +184,47 @@ Volcano plots visualizing the effect of LPS on gene expression.
 df <- readRDS(here(output_path, "limma_result.rds"))
 
 df %>%
-  plot_volcano() + 
+  plot_volcano() +
   my_theme(grid = "y", fsize = fz)
+```
+
+### z-scores
+```{r z-scores}
+expr <- readRDS(here(output_path, "normalized_expression.rds"))
+meta <- readRDS(here(output_path, "meta_data.rds")) %>%
+  filter(origin == "liver")
+
+# extract name of control samples
+ctrl_samples <- meta %>%
+  filter(treatment == "control") %>%
+  pull(sample)
+
+treated_samples <- meta %>%
+  filter(treatment != "control") %>%
+  pull(sample)
+
+# compute mean and standard deviation of gene expresion in control ssample
+ctrl_mean <- expr[, ctrl_samples] %>%
+  apply(1, mean)
+ctrl_sd <- expr[, ctrl_samples] %>%
+  apply(1, sd)
+
+# check whether genes are in correct order
+stopifnot(names(ctrl_mean) == colnames(t(expr)))
+stopifnot(names(ctrl_mean) == colnames(t(expr)))
+
+# z-score transformation of gene expression w.r.t control samples
+z_scores <- expr[, treated_samples] %>%
+  t() %>%
+  scale(center = ctrl_mean, scale = ctrl_sd) %>%
+  t() %>%
+  data.frame(check.names = FALSE)
+
+saveRDS(z_scores, here(output_path, "z_scores.rds"))
 ```
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
-t = print(sprintf("%02d:%02d", duration %% 3600 %/% 60,  duration %% 60 %/% 1))
+t <- print(sprintf("%02d:%02d", duration %% 3600 %/% 60, duration %% 60 %/% 1))
 ```
 Time spend to execute this analysis: `r t` minutes.
