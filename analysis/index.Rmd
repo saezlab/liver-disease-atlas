@@ -75,7 +75,7 @@ Download the zipped `data` folder unzip it and replace the existing `data` folde
 install.packages("workflowr")
 workflowr::wflow_build(republish = TRUE)
 ```
-All intermediate and final results will be saved in the `output` folder. Please make sure to run _all_ analyses in the specified order as downstream analyses depend on prior generated results.
+All intermediate and final results will be saved in the `output` folder. Please make sure to run _all_ analyses in the specified order as downstream analyses depend on previously generated results.
 
 How to cite?
 --------
