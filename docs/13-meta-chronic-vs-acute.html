@@ -544,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-02-28
+<strong>Last updated:</strong> 2021-03-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree591f2bcea6086b18fe7c44194f18fb2798f239fftargetblank591f2bca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/591f2bcea6086b18fe7c44194f18fb2798f239ff" target="_blank">591f2bc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree591f2bcea6086b18fe7c44194f18fb2798f239fftargetblank591f2bca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/591f2bcea6086b18fe7c44194f18fb2798f239ff" target="_blank">591f2bc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -667,6 +667,7 @@ Ignored files:
     Ignored:    analysis/11-human-hoang-nafld_cache/
     Ignored:    analysis/12-human-ramnath-fibrosis_cache/
     Ignored:    analysis/14-meta-mouse-vs-human_cache/
+    Ignored:    analysis/15-plot-chronic-ccl4_cache/
     Ignored:    analysis/16-plot-acute-apap_cache/
     Ignored:    analysis/17-plot-acute-ccl4_cache/
     Ignored:    analysis/18-plot-acute-ph_cache/
@@ -681,6 +682,7 @@ Ignored files:
     Ignored:    code/meta-mouse-vs-human/.DS_Store
     Ignored:    data.zip
     Ignored:    data/.DS_Store
+    Ignored:    data/Icon
     Ignored:    data/annotation/
     Ignored:    data/human-diehl-nafld/
     Ignored:    data/human-hampe13-nash/
@@ -711,7 +713,7 @@ Ignored files:
     Ignored:    figures/Figure 4.pdf
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
-    Ignored:    figures/Figure 5.png
+    Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
     Ignored:    figures/Supplementary Figure 0.1.png
@@ -754,25 +756,37 @@ Ignored files:
     Ignored:    figures/tmp/Icon
     Ignored:    geo_submission/
     Ignored:    output/.DS_Store
+    Ignored:    output/Icon
     Ignored:    output/README.html
+    Ignored:    output/human-diehl-nafld/Icon
     Ignored:    output/human-diehl-nafld/limma_result.rds
     Ignored:    output/human-diehl-nafld/meta_data.rds
     Ignored:    output/human-diehl-nafld/normalized_expression.rds
     Ignored:    output/human-diehl-nafld/pca_result.rds
+    Ignored:    output/human-diehl-nafld/z_scores.rds
+    Ignored:    output/human-hampe13-nash/Icon
     Ignored:    output/human-hampe13-nash/limma_result.rds
     Ignored:    output/human-hampe13-nash/meta_data.rds
     Ignored:    output/human-hampe13-nash/normalized_expression.rds
     Ignored:    output/human-hampe13-nash/pca_result.rds
+    Ignored:    output/human-hampe13-nash/z_scores.rds
+    Ignored:    output/human-hampe14-misc/Icon
     Ignored:    output/human-hampe14-misc/limma_result.rds
     Ignored:    output/human-hampe14-misc/meta_data.rds
     Ignored:    output/human-hampe14-misc/normalized_expression.rds
     Ignored:    output/human-hampe14-misc/pca_result.rds
+    Ignored:    output/human-hampe14-misc/z_scores.rds
+    Ignored:    output/human-hoang-nafld/Icon
     Ignored:    output/human-hoang-nafld/limma_result.rds
     Ignored:    output/human-hoang-nafld/normalized_expression.rds
     Ignored:    output/human-hoang-nafld/pca_result.rds
+    Ignored:    output/human-hoang-nafld/z_scores.rds
+    Ignored:    output/human-ramnath-fibrosis/Icon
     Ignored:    output/human-ramnath-fibrosis/limma_result.rds
     Ignored:    output/human-ramnath-fibrosis/normalized_expression.rds
     Ignored:    output/human-ramnath-fibrosis/pca_result.rds
+    Ignored:    output/human-ramnath-fibrosis/z_scores.rds
+    Ignored:    output/meta-chronic-vs-acute/Icon
     Ignored:    output/meta-chronic-vs-acute/acute_gene_pool.rds
     Ignored:    output/meta-chronic-vs-acute/chronic_gene_pool.rds
     Ignored:    output/meta-chronic-vs-acute/exclusive_genes_characterization.rds
@@ -789,6 +803,7 @@ Ignored files:
     Ignored:    output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds
     Ignored:    output/meta-chronic-vs-acute/union_acute_geneset.rds
     Ignored:    output/meta-chronic-vs-acute/union_chronic_geneset.rds
+    Ignored:    output/meta-mouse-vs-human/Icon
     Ignored:    output/meta-mouse-vs-human/chronic_mouse_deg_numbers.rds
     Ignored:    output/meta-mouse-vs-human/consistent_genes.rds
     Ignored:    output/meta-mouse-vs-human/cross_species_enrichment.rds
@@ -809,59 +824,84 @@ Ignored files:
     Ignored:    output/meta-mouse-vs-human/precision_recall_chronicity.rds
     Ignored:    output/meta-mouse-vs-human/teufel_genes.rds
     Ignored:    output/meta-mouse-vs-human/teufel_genes_hs.rds
+    Ignored:    output/meta-mouse-vs-human/z_score_pca.rds
     Ignored:    output/mouse-acute-apap/.DS_Store
+    Ignored:    output/mouse-acute-apap/Icon
     Ignored:    output/mouse-acute-apap/limma_result.rds
     Ignored:    output/mouse-acute-apap/meta_data.rds
     Ignored:    output/mouse-acute-apap/normalized_expression.rds
     Ignored:    output/mouse-acute-apap/pca_result.rds
     Ignored:    output/mouse-acute-apap/stem/.DS_Store
+    Ignored:    output/mouse-acute-apap/stem/Icon
+    Ignored:    output/mouse-acute-apap/stem/input/Icon
     Ignored:    output/mouse-acute-apap/stem/input/apap.txt
     Ignored:    output/mouse-acute-apap/stem_characterization.rds
     Ignored:    output/mouse-acute-apap/stem_result.rds
+    Ignored:    output/mouse-acute-apap/z_scores.rds
     Ignored:    output/mouse-acute-bdl/.DS_Store
+    Ignored:    output/mouse-acute-bdl/Icon
     Ignored:    output/mouse-acute-bdl/limma_result.rds
     Ignored:    output/mouse-acute-bdl/meta_data.rds
     Ignored:    output/mouse-acute-bdl/normalized_expression.rds
     Ignored:    output/mouse-acute-bdl/pca_result.rds
     Ignored:    output/mouse-acute-bdl/stem/.DS_Store
+    Ignored:    output/mouse-acute-bdl/stem/Icon
+    Ignored:    output/mouse-acute-bdl/stem/input/Icon
     Ignored:    output/mouse-acute-bdl/stem/input/bdl.txt
     Ignored:    output/mouse-acute-bdl/stem_characterization.rds
     Ignored:    output/mouse-acute-bdl/stem_result.rds
+    Ignored:    output/mouse-acute-bdl/z_scores.rds
     Ignored:    output/mouse-acute-ccl4/.DS_Store
+    Ignored:    output/mouse-acute-ccl4/Icon
     Ignored:    output/mouse-acute-ccl4/limma_result.rds
     Ignored:    output/mouse-acute-ccl4/meta_data.rds
     Ignored:    output/mouse-acute-ccl4/normalized_expression.rds
     Ignored:    output/mouse-acute-ccl4/pca_result.rds
     Ignored:    output/mouse-acute-ccl4/stem/.DS_Store
+    Ignored:    output/mouse-acute-ccl4/stem/Icon
+    Ignored:    output/mouse-acute-ccl4/stem/input/Icon
     Ignored:    output/mouse-acute-ccl4/stem/input/ccl4.txt
     Ignored:    output/mouse-acute-ccl4/stem_characterization.rds
     Ignored:    output/mouse-acute-ccl4/stem_result.rds
+    Ignored:    output/mouse-acute-ccl4/z_scores.rds
+    Ignored:    output/mouse-acute-lps/Icon
     Ignored:    output/mouse-acute-lps/limma_result.rds
     Ignored:    output/mouse-acute-lps/meta_data.rds
     Ignored:    output/mouse-acute-lps/normalized_expression.rds
     Ignored:    output/mouse-acute-lps/pca_result.rds
+    Ignored:    output/mouse-acute-lps/z_scores.rds
     Ignored:    output/mouse-acute-ph/.DS_Store
+    Ignored:    output/mouse-acute-ph/Icon
     Ignored:    output/mouse-acute-ph/limma_result.rds
     Ignored:    output/mouse-acute-ph/meta_data.rds
     Ignored:    output/mouse-acute-ph/normalized_expression.rds
     Ignored:    output/mouse-acute-ph/pca_result.rds
     Ignored:    output/mouse-acute-ph/stem/.DS_Store
+    Ignored:    output/mouse-acute-ph/stem/Icon
+    Ignored:    output/mouse-acute-ph/stem/input/Icon
     Ignored:    output/mouse-acute-ph/stem/input/hepatec.txt
     Ignored:    output/mouse-acute-ph/stem_characterization.rds
     Ignored:    output/mouse-acute-ph/stem_result.rds
+    Ignored:    output/mouse-acute-ph/z_scores.rds
+    Ignored:    output/mouse-acute-tunicamycin/Icon
     Ignored:    output/mouse-acute-tunicamycin/limma_result.rds
     Ignored:    output/mouse-acute-tunicamycin/meta_data.rds
     Ignored:    output/mouse-acute-tunicamycin/normalized_expression.rds
     Ignored:    output/mouse-acute-tunicamycin/pca_result.rds
+    Ignored:    output/mouse-acute-tunicamycin/z_scores.rds
     Ignored:    output/mouse-chronic-ccl4/.DS_Store
+    Ignored:    output/mouse-chronic-ccl4/Icon
     Ignored:    output/mouse-chronic-ccl4/limma_result.rds
     Ignored:    output/mouse-chronic-ccl4/limma_result_hs.rds
     Ignored:    output/mouse-chronic-ccl4/normalized_expression.rds
     Ignored:    output/mouse-chronic-ccl4/pca_result.rds
     Ignored:    output/mouse-chronic-ccl4/stem/.DS_Store
+    Ignored:    output/mouse-chronic-ccl4/stem/Icon
+    Ignored:    output/mouse-chronic-ccl4/stem/input/Icon
     Ignored:    output/mouse-chronic-ccl4/stem/input/pure_ccl4.txt
     Ignored:    output/mouse-chronic-ccl4/stem_characterization.rds
     Ignored:    output/mouse-chronic-ccl4/stem_result.rds
+    Ignored:    output/mouse-chronic-ccl4/z_scores.rds
     Ignored:    renv/library/
     Ignored:    renv/staging/
     Ignored:    tables/Supplementary Table 1.xlsx
@@ -869,9 +909,6 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy exclusive_common_genes.xlsx
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
-
-Unstaged changes:
-    Deleted:    analysis/15_plot-chronic-ccl4.Rmd
 
 </code></pre>
 <p>
@@ -910,6 +947,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/c5a4d0c0fccb091cc4fda8932cdc0fb2b0a4b148/analysis/13-meta-chronic-vs-acute.Rmd" target="_blank">c5a4d0c</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+added pca of z-scores
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/24c0c748ec36f408ef3729f373e5bfeda89862c7/docs/13-meta-chronic-vs-acute.html" target="_blank">24c0c74</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1090,11 +1161,15 @@ tun &lt;- readRDS(here(&quot;output/mouse-acute-tunicamycin/meta_data.rds&quot;)
 
 lps &lt;- readRDS(here(&quot;output/mouse-acute-lps/meta_data.rds&quot;)) %&gt;%
   filter(origin == &quot;liver&quot;) %&gt;%
-  transmute(sample, group = case_when(treatment == &quot;control&quot; ~ &quot;control&quot;,
-                                      TRUE ~ &quot;treated&quot;)) %&gt;%
-  mutate(treatment = &quot;lps&quot;,
-         source = &quot;godoy&quot;, 
-         class = &quot;acute&quot;)
+  transmute(sample, group = case_when(
+    treatment == &quot;control&quot; ~ &quot;control&quot;,
+    TRUE ~ &quot;treated&quot;
+  )) %&gt;%
+  mutate(
+    treatment = &quot;lps&quot;,
+    source = &quot;godoy&quot;,
+    class = &quot;acute&quot;
+  )
 #&gt; filter: removed 13 rows (62%), 8 rows remaining
 #&gt; transmute: dropped 3 variables (treatment, origin, time)
 #&gt;            converted &#39;group&#39; from factor to character (0 new NA)
@@ -1103,13 +1178,19 @@ lps &lt;- readRDS(here(&quot;output/mouse-acute-lps/meta_data.rds&quot;)) %&gt;%
 #&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
 
 acute_ccl4 &lt;- readRDS(here(&quot;output/mouse-acute-ccl4/meta_data.rds&quot;)) %&gt;%
-    mutate(group = case_when(time == 0 ~ &quot;control&quot;,
-                           TRUE ~ &quot;treated&quot;),
-         treatment = &quot;ccl4&quot;,
-         source = &quot;godoy&quot;) %&gt;%
+  mutate(
+    group = case_when(
+      time == 0 ~ &quot;control&quot;,
+      TRUE ~ &quot;treated&quot;
+    ),
+    treatment = &quot;ccl4&quot;,
+    source = &quot;godoy&quot;
+  ) %&gt;%
   select(sample, group, time, treatment, source) %&gt;%
-  mutate(time = as.character(time),
-         class = &quot;acute&quot;)
+  mutate(
+    time = as.character(time),
+    class = &quot;acute&quot;
+  )
 #&gt; mutate: converted &#39;group&#39; from factor to character (0 new NA)
 #&gt;         new variable &#39;treatment&#39; (character) with one unique value and 0% NA
 #&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
@@ -1118,13 +1199,19 @@ acute_ccl4 &lt;- readRDS(here(&quot;output/mouse-acute-ccl4/meta_data.rds&quot;)
 #&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
 
 ph &lt;- readRDS(here(&quot;output/mouse-acute-ph/meta_data.rds&quot;)) %&gt;%
-    mutate(group = case_when(time == 0 ~ &quot;control&quot;,
-                           TRUE ~ &quot;treated&quot;),
-         treatment = &quot;ph&quot;,
-         source = &quot;godoy&quot;) %&gt;%
+  mutate(
+    group = case_when(
+      time == 0 ~ &quot;control&quot;,
+      TRUE ~ &quot;treated&quot;
+    ),
+    treatment = &quot;ph&quot;,
+    source = &quot;godoy&quot;
+  ) %&gt;%
   select(-c(surgeon, year, mouse)) %&gt;%
-  mutate(time = as.character(time),
-         class = &quot;acute&quot;)
+  mutate(
+    time = as.character(time),
+    class = &quot;acute&quot;
+  )
 #&gt; mutate: converted &#39;treatment&#39; from factor to character (0 new NA)
 #&gt;         converted &#39;group&#39; from factor to character (0 new NA)
 #&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
@@ -1133,13 +1220,19 @@ ph &lt;- readRDS(here(&quot;output/mouse-acute-ph/meta_data.rds&quot;)) %&gt;%
 #&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
 
 apap &lt;- readRDS(here(&quot;output/mouse-acute-apap/meta_data.rds&quot;)) %&gt;%
-  mutate(group = case_when(time == 0 ~ &quot;control&quot;,
-                           TRUE ~ &quot;treated&quot;),
-         treatment = &quot;apap&quot;,
-         source = &quot;ghallab&quot;) %&gt;%
+  mutate(
+    group = case_when(
+      time == 0 ~ &quot;control&quot;,
+      TRUE ~ &quot;treated&quot;
+    ),
+    treatment = &quot;apap&quot;,
+    source = &quot;ghallab&quot;
+  ) %&gt;%
   select(sample, group, time, treatment, source) %&gt;%
-  mutate(time = as.character(time),
-         class = &quot;acute&quot;)
+  mutate(
+    time = as.character(time),
+    class = &quot;acute&quot;
+  )
 #&gt; mutate: converted &#39;group&#39; from factor to character (0 new NA)
 #&gt;         new variable &#39;treatment&#39; (character) with one unique value and 0% NA
 #&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
@@ -1148,13 +1241,19 @@ apap &lt;- readRDS(here(&quot;output/mouse-acute-apap/meta_data.rds&quot;)) %&gt
 #&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
 
 bdl &lt;- readRDS(here(&quot;output/mouse-acute-bdl/meta_data.rds&quot;)) %&gt;%
-  mutate(group = case_when(treatment == &quot;sham&quot; ~ &quot;control&quot;,
-                           TRUE ~ &quot;treated&quot;),
-         treatment = &quot;bdl&quot;,
-         source = &quot;ghallab&quot;) %&gt;%
+  mutate(
+    group = case_when(
+      treatment == &quot;sham&quot; ~ &quot;control&quot;,
+      TRUE ~ &quot;treated&quot;
+    ),
+    treatment = &quot;bdl&quot;,
+    source = &quot;ghallab&quot;
+  ) %&gt;%
   select(-mouse) %&gt;%
-  mutate(time = as.character(time),
-         class = &quot;acute&quot;)
+  mutate(
+    time = as.character(time),
+    class = &quot;acute&quot;
+  )
 #&gt; mutate: converted &#39;treatment&#39; from factor to character (0 new NA)
 #&gt;         converted &#39;group&#39; from factor to character (0 new NA)
 #&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
@@ -1164,13 +1263,19 @@ bdl &lt;- readRDS(here(&quot;output/mouse-acute-bdl/meta_data.rds&quot;)) %&gt;%
 
 # chronic
 chronic_ccl4 &lt;- readRDS(here(&quot;data/mouse-chronic-ccl4/meta_data.rds&quot;)) %&gt;%
-  mutate(group = case_when(treatment == &quot;ccl4&quot; ~ &quot;treated&quot;,
-                           treatment %in% c(&quot;oil&quot;, &quot;ctrl&quot;) ~ &quot;control&quot;),
-         treatment = &quot;pure_ccl4&quot;,
-         source = &quot;ghallab&quot;) %&gt;%
+  mutate(
+    group = case_when(
+      treatment == &quot;ccl4&quot; ~ &quot;treated&quot;,
+      treatment %in% c(&quot;oil&quot;, &quot;ctrl&quot;) ~ &quot;control&quot;
+    ),
+    treatment = &quot;pure_ccl4&quot;,
+    source = &quot;ghallab&quot;
+  ) %&gt;%
   select(sample, group, time, treatment, source) %&gt;%
-  mutate(time = as.character(time),
-         class = &quot;chronic&quot;)
+  mutate(
+    time = as.character(time),
+    class = &quot;chronic&quot;
+  )
 #&gt; mutate: converted &#39;treatment&#39; from factor to character (0 new NA)
 #&gt;         converted &#39;group&#39; from factor to character (0 new NA)
 #&gt;         new variable &#39;source&#39; (character) with one unique value and 0% NA
@@ -1178,8 +1283,10 @@ chronic_ccl4 &lt;- readRDS(here(&quot;data/mouse-chronic-ccl4/meta_data.rds&quot
 #&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
 #&gt;         new variable &#39;class&#39; (character) with one unique value and 0% NA
 
-combined_meta_data = bind_rows(tun, lps, acute_ccl4, ph, apap, bdl, 
-                               chronic_ccl4)
+combined_meta_data &lt;- bind_rows(
+  tun, lps, acute_ccl4, ph, apap, bdl,
+  chronic_ccl4
+)
 
 saveRDS(combined_meta_data, here(output_path, &quot;meta_data.rds&quot;))</code></pre>
 </div>
@@ -1187,7 +1294,7 @@ saveRDS(combined_meta_data, here(output_path, &quot;meta_data.rds&quot;))</code>
 <div id="number-of-mice" class="section level2">
 <h2>Number of mice</h2>
 <p>Barplot showing number of mice per study.</p>
-<pre class="r"><code>df = readRDS(here(output_path, &quot;meta_data.rds&quot;)) %&gt;%
+<pre class="r"><code>df &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;)) %&gt;%
   count(treatment, source, group, class)
 #&gt; count: now 14 rows and 5 columns, ungrouped
 
@@ -1195,77 +1302,236 @@ df %&gt;%
   ggplot(aes(
     x = n, fct_reorder(interaction(treatment, class, sep = &quot;_&quot;), n),
     group = group, fill = group
-    )) +
+  )) +
   geom_col(position = &quot;dodge&quot;) +
   labs(x = &quot;Number of mice&quot;, y = &quot;Study&quot;) +
   my_theme(grid = &quot;x&quot;, fsize = fz)</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/mouse-number-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse-number-1">
+Past versions of mouse-number-1.png
+</button>
+</p>
+<div id="fig-mouse-number-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/mouse-number-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gene-coverage" class="section level2">
 <h2>Gene coverage</h2>
 <p>Barplot showing the gene coverage of the acute and chronic mouse models.</p>
 <pre class="r"><code>contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
-  distinct(gene, treatment, source, class) %&gt;% 
+  distinct(gene, treatment, source, class) %&gt;%
   count(treatment, source, class)
 #&gt; distinct: removed 615,293 rows (81%), 141,846 rows remaining
 #&gt; count: now 7 rows and 4 columns, ungrouped
 
 contrasts %&gt;%
-  ggplot(aes(x = n, fct_reorder(interaction(class, treatment, sep = &quot;_&quot;), n),
-             group = class)) +
+  ggplot(aes(
+    x = n, fct_reorder(interaction(class, treatment, sep = &quot;_&quot;), n),
+    group = class
+  )) +
   geom_col() +
-  labs(x=&quot;Gene coverage&quot;, y=NULL) +
-  my_theme(grid = &quot;x&quot;, fsize = fz) </code></pre>
+  labs(x = &quot;Gene coverage&quot;, y = NULL) +
+  my_theme(grid = &quot;x&quot;, fsize = fz)</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/gene-coverage-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-gene-coverage-1">
+Past versions of gene-coverage-1.png
+</button>
+</p>
+<div id="fig-gene-coverage-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/gene-coverage-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="pca-of-z-scores" class="section level2">
+<h2>PCA of z-scores</h2>
+<p>To check for batch effects we check the clustering of perturbed samples in PCA space (based on z-scores)</p>
+<pre class="r"><code># load z-scores and combine into a single data frame
+z_scores_mat &lt;- list.files(here(&quot;output&quot;),
+  pattern = &quot;z_scores.rds&quot;,
+  recursive = TRUE, full.names = TRUE
+) %&gt;%
+  # discard human experiments
+  keep(str_detect(., pattern = &quot;mouse-&quot;)) %&gt;%
+  map(function(path) {
+    readRDS(path) %&gt;%
+      rownames_to_column(&quot;gene&quot;)
+  }) %&gt;%
+  reduce(.f = full_join, by = &quot;gene&quot;) %&gt;%
+  column_to_rownames(&quot;gene&quot;)
+#&gt; full_join: added 20 columns (489-928wt 1d BDL_(MoGene-2_0-st).CEL, 489-939wt 1d BDL_(MoGene-2_0-st).CEL, 489-940wt 1d BDL_(MoGene-2_0-st).CEL, 489-945wt 1d BDL_(MoGene-2_0-st).CEL, 489-956wt 1d BDL_(MoGene-2_0-st).CEL, …)
+#&gt;            &gt; rows only in x    2,663
+#&gt;            &gt; rows only in y    6,118
+#&gt;            &gt; matched rows     17,846
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       26,627
+#&gt; full_join: added 41 columns (sample_2hm1_16, sample_2hm2_17, sample_2hm3_18, sample_2hm4_19, sample_2hm5_20, …)
+#&gt;            &gt; rows only in x    6,118
+#&gt;            &gt; rows only in y        0
+#&gt;            &gt; matched rows     20,509
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       26,627
+#&gt; full_join: added 5 columns (LPSD1m2_4, LPSD1m3_5, LPSD1m4_6, LPSD1m5_7, LPSD1m6_8)
+#&gt;            &gt; rows only in x    6,118
+#&gt;            &gt; rows only in y        0
+#&gt;            &gt; matched rows     20,509
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       26,627
+#&gt; full_join: added 47 columns (Jena_DPH_03_(Mouse430_2).CEL, Jena_DPH_04_(Mouse430_2).CEL, Jena_DPH_16_(Mouse430_2).CEL, Jena_DPH_21_(Mouse430_2).CEL, Jena_DPH_22_(Mouse430_2).CEL, …)
+#&gt;            &gt; rows only in x    6,118
+#&gt;            &gt; rows only in y        0
+#&gt;            &gt; matched rows     20,509
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       26,627
+#&gt; full_join: added 4 columns (GSM740952, GSM740953, GSM740954, GSM740955)
+#&gt;            &gt; rows only in x    6,119
+#&gt;            &gt; rows only in y        0
+#&gt;            &gt; matched rows     20,508
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       26,627
+#&gt; full_join: added 18 columns (I00003, I00009, I00015, I00021, I00027, …)
+#&gt;            &gt; rows only in x   12,707
+#&gt;            &gt; rows only in y    1,418
+#&gt;            &gt; matched rows     13,920
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       28,045
+
+# remove genes with infinity or NA
+z_scores_mat &lt;- z_scores_mat[is.finite(rowSums(z_scores_mat)), ]
+
+# load meta data
+meta &lt;- readRDS(here(output_path, &quot;meta_data.rds&quot;)) %&gt;%
+  filter(group == &quot;treated&quot;)
+#&gt; filter: removed 48 rows (21%), 179 rows remaining
+
+pca_result &lt;- do_pca(z_scores_mat, meta, top_n_var_genes = NULL)
+#&gt; left_join: added 5 columns (group, treatment, source, class, time)
+#&gt;            &gt; rows only in x     0
+#&gt;            &gt; rows only in y  (  0)
+#&gt;            &gt; matched rows     179
+#&gt;            &gt;                 =====
+#&gt;            &gt; rows total       179
+
+saveRDS(pca_result, here(output_path, &quot;z_score_pca.rds&quot;))
+
+plot_pca(pca_result, feature = &quot;treatment&quot;) +
+  my_theme()</code></pre>
+<p><img src="figure/13-meta-chronic-vs-acute.Rmd/z-score-pca-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="time-point-of-maximal-liver-damage" class="section level2">
 <h2>Time point of maximal liver damage</h2>
 <p>Here we identify for the acute CCl4, APAP and PH mouse model the time point with the strongest deregulated gene expression profile, based on PCA space. This time point is considered the time point of maximal liver damage.</p>
-<pre class="r"><code>pca_result_ccl4 = readRDS(here(&quot;output/mouse-acute-ccl4/pca_result.rds&quot;)) %&gt;%
+<pre class="r"><code>pca_result_ccl4 &lt;- readRDS(here(&quot;output/mouse-acute-ccl4/pca_result.rds&quot;)) %&gt;%
   pluck(&quot;coords&quot;) %&gt;%
   select(sample, PC1, time) %&gt;%
-  mutate(treatment_abbr = &quot;CCl4&quot;,
-         time = as.character(time))
+  mutate(
+    treatment_abbr = &quot;CCl4&quot;,
+    time = as.character(time)
+  )
 #&gt; select: dropped 48 variables (PC2, PC3, PC4, PC5, PC6, …)
 #&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
 #&gt;         new variable &#39;treatment_abbr&#39; (character) with one unique value and 0% NA
 
-pca_result_apap = readRDS(here(&quot;output/mouse-acute-apap/pca_result.rds&quot;)) %&gt;%
+pca_result_apap &lt;- readRDS(here(&quot;output/mouse-acute-apap/pca_result.rds&quot;)) %&gt;%
   pluck(&quot;coords&quot;) %&gt;%
   select(sample, PC1, time) %&gt;%
-  mutate(treatment_abbr = &quot;APAP&quot;,
-         time = as.character(time))
+  mutate(
+    treatment_abbr = &quot;APAP&quot;,
+    time = as.character(time)
+  )
 #&gt; select: dropped 51 variables (PC2, PC3, PC4, PC5, PC6, …)
 #&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
 #&gt;         new variable &#39;treatment_abbr&#39; (character) with one unique value and 0% NA
 
-pca_result_ph = readRDS(here(&quot;output/mouse-acute-ph/pca_result.rds&quot;)) %&gt;%
+pca_result_ph &lt;- readRDS(here(&quot;output/mouse-acute-ph/pca_result.rds&quot;)) %&gt;%
   pluck(&quot;coords&quot;) %&gt;%
   select(sample, PC1, time) %&gt;%
-  mutate(treatment_abbr = &quot;PH&quot;,
-         time = as.character(round(24*as.numeric(as.character(time)), 0)))
+  mutate(
+    treatment_abbr = &quot;PH&quot;,
+    time = as.character(round(24 * as.numeric(as.character(time)), 0))
+  )
 #&gt; select: dropped 56 variables (PC2, PC3, PC4, PC5, PC6, …)
 #&gt; mutate: converted &#39;time&#39; from ordered factor to character (0 new NA)
 #&gt;         new variable &#39;treatment_abbr&#39; (character) with one unique value and 0% NA
 
-pca_result = bind_rows(pca_result_ccl4, pca_result_apap, pca_result_ph) %&gt;%
+pca_result &lt;- bind_rows(pca_result_ccl4, pca_result_apap, pca_result_ph) %&gt;%
   mutate(time = ordered(as.numeric(time))) %&gt;%
   arrange(treatment_abbr, time)
 #&gt; mutate: converted &#39;time&#39; from character to ordered factor (0 new NA)
 
-pca_dist = pca_result %&gt;%
+pca_dist &lt;- pca_result %&gt;%
   group_by(time, treatment_abbr) %&gt;%
   summarise(mean_pc1_coord = mean(PC1)) %&gt;%
   ungroup() %&gt;%
   arrange(treatment_abbr) %&gt;%
   mutate(control_coord = case_when(time == 0 ~ mean_pc1_coord)) %&gt;%
   fill(control_coord) %&gt;%
-  mutate(dist = abs(mean_pc1_coord -control_coord)) %&gt;%
+  mutate(dist = abs(mean_pc1_coord - control_coord)) %&gt;%
   group_by(treatment_abbr) %&gt;%
-  mutate(max = case_when(dist == max(dist) ~ &quot;yes&quot;,
-                         TRUE ~ &quot;no&quot;)) %&gt;%
+  mutate(max = case_when(
+    dist == max(dist) ~ &quot;yes&quot;,
+    TRUE ~ &quot;no&quot;
+  )) %&gt;%
   ungroup() %&gt;%
-  filter(time != 0) 
+  filter(time != 0)
 #&gt; group_by: 2 grouping variables (time, treatment_abbr)
 #&gt; summarise: now 31 rows and 3 columns, one group variable remaining (time)
 #&gt; ungroup: no grouping variables
@@ -1280,16 +1546,57 @@ pca_dist = pca_result %&gt;%
 saveRDS(pca_dist, here(output_path, &quot;pca_dist.rds&quot;))
 
 pca_dist %&gt;%
-  ggplot(aes(x=time, y=dist, fill=max)) +
+  ggplot(aes(x = time, y = dist, fill = max)) +
   geom_col() +
   my_theme(grid = &quot;y&quot;, fsize = fz) +
   scale_fill_manual(values = aachen_color(c(&quot;black50&quot;, &quot;green&quot;))) +
-  labs(x = &quot;Time in hours&quot;, 
-       y = &quot;Absolute mean distance to control along PC1&quot;) +
-  theme(legend.position = &quot;none&quot;,
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
+    x = &quot;Time in hours&quot;,
+    y = &quot;Absolute mean distance to control along PC1&quot;
+  ) +
+  theme(
+    legend.position = &quot;none&quot;,
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
   facet_rep_wrap(~treatment_abbr, scales = &quot;free&quot;)</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/time-point-max-liver-damage-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-time-point-max-liver-damage-1">
+Past versions of time-point-max-liver-damage-1.png
+</button>
+</p>
+<div id="fig-time-point-max-liver-damage-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/time-point-max-liver-damage-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="interstudy-analysis-of-acute-mouse-models" class="section level2">
 <h2>Interstudy analysis of acute mouse models</h2>
@@ -1307,16 +1614,85 @@ contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
   filter(contrast %in% contrast_of_interest)
 #&gt; filter: removed 630,631 rows (83%), 126,508 rows remaining
 
-# populate gene sets with a fixed size selected by effect size (t-value)
-mat_top &lt;- contrasts %&gt;%
-  group_by(contrast, treatment, source, class) %&gt;%
-  top_n(500, abs(statistic)) %&gt;%
-  mutate(key = row_number()) %&gt;%
-  ungroup() %&gt;%
-  unite(geneset, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
-  mutate(geneset = as_factor(geneset)) %&gt;%
-  select(geneset, gene, key) %&gt;%
-  untdy(key, geneset, gene)
+top_n_genes = seq(100, 3000, 100)
+
+j = map_dfr(top_n_genes, function(n) {
+  # populate gene sets with a fixed size selected by effect size (t-value)
+  mat_top &lt;- contrasts %&gt;%
+    group_by(contrast, treatment, source, class) %&gt;%
+    top_n(n, abs(statistic)) %&gt;%
+    mutate(key = row_number()) %&gt;%
+    ungroup() %&gt;%
+    unite(geneset, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
+    mutate(geneset = as_factor(geneset)) %&gt;%
+    select(geneset, gene, key) %&gt;%
+    untdy(key, geneset, gene)
+  
+  # usage of jaccard index for balanced set sizes
+  set_similarity(mat_top, measure = &quot;jaccard&quot;, tidy = T) %&gt;%
+    mutate(top_n_genes = n)
+  
+})
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 125,908 rows (&gt;99%), 600 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 100 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 600x3, now 100x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 125,308 rows (99%), 1,200 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 200 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 1200x3, now 200x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 124,708 rows (99%), 1,800 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 300 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 1800x3, now 300x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 124,108 rows (98%), 2,400 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 400 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 2400x3, now 400x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
 #&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
 #&gt; top_n (grouped): removed 123,508 rows (98%), 3,000 rows remaining
 #&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 500 unique values and 0% NA
@@ -1325,26 +1701,454 @@ mat_top &lt;- contrasts %&gt;%
 #&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
 #&gt; select: columns reordered (key, geneset, gene)
 #&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 3000x3, now 500x7]
-
-# usage of jaccard index for balanced set sizes
-j &lt;- set_similarity(mat_top, measure = &quot;jaccard&quot;, tidy = T)
 #&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
 #&gt; drop_na: removed 15 rows (42%), 21 rows remaining
 #&gt; filter: removed 6 rows (29%), 15 rows remaining
 #&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
 #&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
 #&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 122,908 rows (97%), 3,600 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 600 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 3600x3, now 600x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 122,308 rows (97%), 4,200 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 700 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 4200x3, now 700x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 121,708 rows (96%), 4,800 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 800 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 4800x3, now 800x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 121,108 rows (96%), 5,400 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 900 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 5400x3, now 900x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 120,508 rows (95%), 6,000 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,000 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 6000x3, now 1000x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 119,908 rows (95%), 6,600 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,100 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 6600x3, now 1100x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 119,308 rows (94%), 7,200 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,200 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 7200x3, now 1200x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 118,708 rows (94%), 7,800 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,300 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 7800x3, now 1300x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 118,108 rows (93%), 8,400 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,400 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 8400x3, now 1400x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 117,508 rows (93%), 9,000 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,500 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 9000x3, now 1500x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 116,908 rows (92%), 9,600 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,600 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 9600x3, now 1600x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 116,308 rows (92%), 10,200 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,700 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 10200x3, now 1700x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 115,708 rows (91%), 10,800 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,800 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 10800x3, now 1800x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 115,108 rows (91%), 11,400 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 1,900 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 11400x3, now 1900x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 114,508 rows (91%), 12,000 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,000 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 12000x3, now 2000x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 113,908 rows (90%), 12,600 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,100 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 12600x3, now 2100x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 113,308 rows (90%), 13,200 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,200 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 13200x3, now 2200x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 112,708 rows (89%), 13,800 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,300 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 13800x3, now 2300x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 112,108 rows (89%), 14,400 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,400 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 14400x3, now 2400x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 111,508 rows (88%), 15,000 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,500 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 15000x3, now 2500x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 110,908 rows (88%), 15,600 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,600 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 15600x3, now 2600x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 110,308 rows (87%), 16,200 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,700 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 16200x3, now 2700x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 109,708 rows (87%), 16,800 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,800 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 16800x3, now 2800x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 109,108 rows (86%), 17,400 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 2,900 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 17400x3, now 2900x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; group_by: 4 grouping variables (contrast, treatment, source, class)
+#&gt; top_n (grouped): removed 108,508 rows (86%), 18,000 rows remaining
+#&gt; mutate (grouped): new variable &#39;key&#39; (integer) with 3,000 unique values and 0% NA
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; select: columns reordered (key, geneset, gene)
+#&gt; spread: reorganized (geneset, gene) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 18000x3, now 3000x7]
+#&gt; gather: reorganized (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) into (set2, similarity) [was 6x7, now 36x3]
+#&gt; drop_na: removed 15 rows (42%), 21 rows remaining
+#&gt; filter: removed 6 rows (29%), 15 rows remaining
+#&gt; mutate_if: converted &#39;set1&#39; from character to factor (0 new NA)
+#&gt;            converted &#39;set2&#39; from character to factor (0 new NA)
+#&gt; mutate: changed 0 values (0%) of &#39;set1&#39; (0 new NA)
+#&gt; mutate: new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
 
 saveRDS(j, here(output_path, &quot;gene_set_similarity.rds&quot;))
 
+# distribution of mean jaccard index with varying gene set size
 j %&gt;%
+  group_by(top_n_genes) %&gt;%
+  summarise(mean_similarity = mean(similarity),
+            sd_similarity = sd(similarity)) %&gt;%
+  ggplot(aes(x=top_n_genes, y=mean_similarity)) +
+  geom_pointline() +
+  geom_errorbar(aes(ymin = mean_similarity - sd_similarity,
+                    ymax = mean_similarity + sd_similarity)) +
+  my_theme() +
+  labs(x = &quot;Gene set size&quot;, y=&quot;Mean Jaccard Index&quot;)
+#&gt; group_by: one grouping variable (top_n_genes)
+#&gt; summarise: now 30 rows and 3 columns, ungrouped</code></pre>
+<p><img src="figure/13-meta-chronic-vs-acute.Rmd/deg-similarity-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-deg-similarity-1">
+Past versions of deg-similarity-1.png
+</button>
+</p>
+<div id="fig-deg-similarity-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/deg-similarity-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>
+# figure with fixed gene set size
+j %&gt;%
+  filter(top_n_genes == 500) %&gt;%
   ggplot(aes(x = set1, y = set2, fill = similarity)) +
   geom_tile(color = &quot;black&quot;) +
   scale_fill_gradient(low = &quot;white&quot;, high = aachen_color(&quot;green&quot;)) +
   labs(x = NULL, y = NULL, fill = &quot;Jaccard\nIndex&quot;) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  my_theme(fsize = fz, grid = &quot;no&quot;)</code></pre>
-<p><img src="figure/13-meta-chronic-vs-acute.Rmd/deg-similarity-1.png" width="672" style="display: block; margin: auto;" /></p>
+  my_theme(fsize = fz, grid = &quot;no&quot;)
+#&gt; filter: removed 435 rows (97%), 15 rows remaining</code></pre>
+<p><img src="figure/13-meta-chronic-vs-acute.Rmd/deg-similarity-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="mutual-enrichment-of-differential-expressed-genes" class="section level3">
 <h3>Mutual enrichment of differential expressed genes</h3>
@@ -1360,26 +2164,6 @@ contrasts &lt;- readRDS(here(output_path, &quot;limma_result.rds&quot;)) %&gt;%
   filter(contrast %in% contrast_of_interest)
 #&gt; filter: removed 630,631 rows (83%), 126,508 rows remaining
 
-# populate gene sets with a fixed size selected by effect size (t-value)
-genesets_top &lt;- contrasts %&gt;%
-  mutate(direction = case_when(
-    sign(statistic) &gt;= 0 ~ &quot;up&quot;,
-    sign(statistic) &lt; 0 ~ &quot;down&quot;
-  )) %&gt;%
-  group_by(class, source, treatment, contrast, direction) %&gt;%
-  top_n(500, abs(statistic)) %&gt;%
-  ungroup() %&gt;%
-  unite(geneset, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
-  unite(geneset, geneset, direction, sep = &quot;|&quot;) %&gt;%
-  mutate(geneset = as_factor(geneset)) %&gt;%
-  select(geneset, gene)
-#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
-#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
-#&gt; top_n (grouped): removed 120,508 rows (95%), 6,000 rows remaining
-#&gt; ungroup: no grouping variables
-#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
-#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
-
 # construct signature matrix/data frame
 signature_df &lt;- contrasts %&gt;%
   unite(signature, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
@@ -1389,14 +2173,120 @@ signature_df &lt;- contrasts %&gt;%
 #&gt; select: dropped 4 variables (logFC, pval, fdr, regulation)
 #&gt; spread: reorganized (signature, statistic) into (acute-wek-tunicamycin-treat_vs_ctrl, acute-godoy-lps-inLiver_lps_vs_ctrl, acute-godoy-ccl4-ccl_24h_vs_0h, acute-ghallab-apap-apap_24h_vs_0h, acute-godoy-ph-ph_0.5d, …) [was 126508x3, now 26627x7]
 
-# run gsea
-set.seed(123)
-gsea_res_top &lt;- run_gsea(signature_df, genesets_top, tidy = T) %&gt;%
-  separate(geneset, into = c(&quot;geneset&quot;, &quot;direction&quot;), sep = &quot;[|]&quot;) %&gt;%
-  mutate(
-    signature = as_factor(signature),
-    geneset = as_factor(geneset)
-  )
+top_n_genes = c(seq(100, 1000, 100), 1500, 2000, 3000, 5000)
+
+gsea_res_top &lt;-  map_dfr(top_n_genes, function(n) {
+
+  # populate gene sets with a fixed size selected by effect size (t-value)
+  genesets_top &lt;- contrasts %&gt;%
+    mutate(direction = case_when(
+      sign(statistic) &gt;= 0 ~ &quot;up&quot;,
+      sign(statistic) &lt; 0 ~ &quot;down&quot;
+    )) %&gt;%
+    group_by(class, source, treatment, contrast, direction) %&gt;%
+    top_n(n, abs(statistic)) %&gt;%
+    ungroup() %&gt;%
+    unite(geneset, class, source, treatment, contrast, sep = &quot;-&quot;) %&gt;%
+    unite(geneset, geneset, direction, sep = &quot;|&quot;) %&gt;%
+    mutate(geneset = as_factor(geneset)) %&gt;%
+    select(geneset, gene)
+
+  # run gsea
+  set.seed(123)
+  run_gsea(signature_df, genesets_top, tidy = T) %&gt;%
+    separate(geneset, into = c(&quot;geneset&quot;, &quot;direction&quot;), sep = &quot;[|]&quot;) %&gt;%
+    mutate(
+      signature = as_factor(signature),
+      geneset = as_factor(geneset),
+      top_n_genes = n
+    )
+})
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 125,308 rows (99%), 1,200 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 1,188 rows (99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 124,108 rows (98%), 2,400 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 2,388 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 122,908 rows (97%), 3,600 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 3,588 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 121,708 rows (96%), 4,800 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 4,788 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 120,508 rows (95%), 6,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
 #&gt; group_by: one grouping variable (geneset)
 #&gt; summarise: now 12 rows and 2 columns, ungrouped
 #&gt; rename: renamed one variable (geneset)
@@ -1410,37 +2300,262 @@ gsea_res_top &lt;- run_gsea(signature_df, genesets_top, tidy = T) %&gt;%
 #&gt;            &gt; rows total       72
 #&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
 #&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 119,308 rows (94%), 7,200 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 7,188 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 118,108 rows (93%), 8,400 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 8,388 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 116,908 rows (92%), 9,600 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 9,588 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 115,708 rows (91%), 10,800 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 10,788 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 114,508 rows (91%), 12,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 11,988 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 108,508 rows (86%), 18,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 17,988 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 102,508 rows (81%), 24,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 23,988 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 90,508 rows (72%), 36,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 35,988 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
+#&gt; mutate: new variable &#39;direction&#39; (character) with 2 unique values and 0% NA
+#&gt; group_by: 5 grouping variables (class, source, treatment, contrast, direction)
+#&gt; top_n (grouped): removed 66,508 rows (53%), 60,000 rows remaining
+#&gt; ungroup: no grouping variables
+#&gt; mutate: converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt; select: dropped 5 variables (logFC, statistic, pval, fdr, regulation)
+#&gt; group_by: one grouping variable (geneset)
+#&gt; summarise: now 12 rows and 2 columns, ungrouped
+#&gt; rename: renamed one variable (geneset)
+#&gt; select: dropped one variable (gene)
+#&gt; distinct: removed 59,988 rows (&gt;99%), 12 rows remaining
+#&gt; left_join: added no columns
+#&gt;            &gt; rows only in x    0
+#&gt;            &gt; rows only in y  ( 0)
+#&gt;            &gt; matched rows     72
+#&gt;            &gt;                 ====
+#&gt;            &gt; rows total       72
+#&gt; mutate: converted &#39;signature&#39; from character to factor (0 new NA)
+#&gt;         converted &#39;geneset&#39; from character to factor (0 new NA)
+#&gt;         new variable &#39;top_n_genes&#39; (double) with one unique value and 0% NA
 
 saveRDS(gsea_res_top, here(output_path, &quot;interstudy_enrichment.rds&quot;))
 
-# individual gsea plot
-make_gsea_plot(
-  signature = signature_df %&gt;%
-    rownames_to_column(&quot;gene&quot;) %&gt;%
-    select(gene, t = `acute-wek-tunicamycin-treat_vs_ctrl`) %&gt;%
-    drop_na(),
-  geneset = genesets_top %&gt;%
-    filter(geneset == &quot;acute-godoy-ccl4-ccl_24h_vs_0h|up&quot;),
-  gene_level_stat = t
-)
-#&gt; select: renamed one variable (t) and dropped 5 variables
-#&gt; drop_na: removed 6,119 rows (23%), 20,508 rows remaining
-#&gt; rename: renamed one variable (stat)
-#&gt; transmute: changed 20,508 values (100%) of &#39;stat&#39; (0 new NA)
-#&gt;            new variable &#39;rank&#39; (integer) with 20,508 unique values and 0% NA
-#&gt; select: dropped one variable (rank)
-#&gt; filter: removed 5,500 rows (92%), 500 rows remaining
-#&gt; inner_join: added one column (geneset)
-#&gt;             &gt; rows only in x  (20,008)
-#&gt;             &gt; rows only in y  (     0)
-#&gt;             &gt; matched rows        500
-#&gt;             &gt;                 ========
-#&gt;             &gt; rows total          500
-#&gt; top_n: removed 1,001 rows (&gt;99%), one row remaining</code></pre>
-<p><img src="figure/13-meta-chronic-vs-acute.Rmd/mututal-enrichment-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>
-# summary gsea plot
+
+# distribution of mean enrichment score with varying gene set size
 gsea_res_top %&gt;%
+  filter(abs(ES) != 1) %&gt;%
+  group_by(top_n_genes, direction) %&gt;%
+  summarise(mean_es = mean(NES),
+            sd_es = sd(NES)) %&gt;%
+  ggplot(aes(x=top_n_genes, y=mean_es)) +
+  geom_pointline() +
+  geom_errorbar(aes(ymin = mean_es - sd_es,
+                    ymax = mean_es + sd_es)) +
+  geom_hline(yintercept = 0, lty = &quot;dashed&quot;) +
+  my_theme() +
+  labs(x = &quot;Gene set size&quot;, y=&quot;Mean ES&quot;) +
+  facet_rep_wrap(~direction)
+#&gt; filter: removed 168 rows (17%), 840 rows remaining
+#&gt; group_by: 2 grouping variables (top_n_genes, direction)
+#&gt; summarise: now 28 rows and 4 columns, one group variable remaining (top_n_genes)</code></pre>
+<p><img src="figure/13-meta-chronic-vs-acute.Rmd/mututal-enrichment-degs-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mututal-enrichment-degs-1">
+Past versions of mututal-enrichment-degs-1.png
+</button>
+</p>
+<div id="fig-mututal-enrichment-degs-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/mututal-enrichment-degs-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>
+
+# # individual gsea plot
+# make_gsea_plot(
+#   signature = signature_df %&gt;%
+#     rownames_to_column(&quot;gene&quot;) %&gt;%
+#     select(gene, t = `acute-wek-tunicamycin-treat_vs_ctrl`) %&gt;%
+#     drop_na(),
+#   geneset = genesets_top %&gt;%
+#     filter(geneset == &quot;acute-godoy-ccl4-ccl_24h_vs_0h|up&quot;),
+#   gene_level_stat = t
+# )
+
+# summary gsea plot with a fixed gene set size
+gsea_res_top %&gt;%
+  filter(top_n_genes == 500) %&gt;%
   mutate(label = gtools::stars.pval(padj)) %&gt;%
   ggplot(aes(x = signature, y = geneset, fill = ES)) +
   geom_tile() +
@@ -1450,8 +2565,46 @@ gsea_res_top %&gt;%
   scale_fill_gradient2() +
   my_theme(fsize = fz, grid = &quot;no&quot;) +
   labs(x = &quot;Signature&quot;, y = &quot;Gene set&quot;)
+#&gt; filter: removed 936 rows (93%), 72 rows remaining
 #&gt; mutate: new variable &#39;label&#39; (character) with 3 unique values and 0% NA</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/mututal-enrichment-degs-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mututal-enrichment-degs-2">
+Past versions of mututal-enrichment-degs-2.png
+</button>
+</p>
+<div id="fig-mututal-enrichment-degs-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/mututal-enrichment-degs-2.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="construction-of-unified-acute-and-chronic-genes" class="section level2">
@@ -1496,6 +2649,43 @@ acute_gene_pool %&gt;%
   my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; mutate: changed 28 values (&lt;1%) of &#39;statistic&#39; (0 new NA)</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/acute-pool-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-acute-pool-1">
+Past versions of acute-pool-1.png
+</button>
+</p>
+<div id="fig-acute-pool-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/acute-pool-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 saveRDS(acute_gene_pool, here(output_path, &quot;acute_gene_pool.rds&quot;))</code></pre>
 </div>
@@ -1555,6 +2745,43 @@ chronic_gene_pool %&gt;%
   my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; mutate: changed one value (&lt;1%) of &#39;statistic&#39; (0 new NA)</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/chronic-pool-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-chronic-pool-1">
+Past versions of chronic-pool-1.png
+</button>
+</p>
+<div id="fig-chronic-pool-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/chronic-pool-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>
 saveRDS(chronic_gene_pool, here(output_path, &quot;chronic_gene_pool.rds&quot;))</code></pre>
 </div>
@@ -1600,14 +2827,51 @@ v &lt;- draw.pairwise.venn(
   area1 = a1, area2 = a2, cross.area = ca,
   category = c(&quot;acute&quot;, &quot;chronic&quot;),
   lty = &quot;blank&quot;,
-  cex = 1/12*fz,
+  cex = 1 / 12 * fz,
   fontfamily = rep(&quot;sans&quot;, 3),
   fill = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;)),
   cat.col = aachen_color(c(&quot;purple&quot;, &quot;petrol&quot;)),
-  cat.cex = 1/12*(fz+1),
+  cat.cex = 1 / 12 * (fz + 1),
   cat.fontfamily = rep(&quot;sans&quot;, 2)
 )</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/overlap-unified-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-overlap-unified-genes-1">
+Past versions of overlap-unified-genes-1.png
+</button>
+</p>
+<div id="fig-overlap-unified-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/overlap-unified-genes-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="assign-membership-to-each-gene" class="section level3">
 <h3>Assign membership to each gene</h3>
@@ -1719,13 +2983,50 @@ mat_exclusive_chronic_genes &lt;- ranked_exclusive_chronic_genes %&gt;%
 Heatmap(t(mat_exclusive_chronic_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
   name = &quot;logFC&quot;,
   row_gap = unit(2.5, &quot;mm&quot;),
   border = T,
   row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
 )</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/vis-exclusive-chronic-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-exclusive-chronic-genes-1">
+Past versions of vis-exclusive-chronic-genes-1.png
+</button>
+</p>
+<div id="fig-vis-exclusive-chronic-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/vis-exclusive-chronic-genes-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="common" class="section level3">
 <h3>Common</h3>
@@ -1806,13 +3107,50 @@ mat_common_genes &lt;- ranked_common_genes %&gt;%
 Heatmap(t(mat_common_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
   name = &quot;logFC&quot;,
   row_gap = unit(2.5, &quot;mm&quot;),
   border = T,
   row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
 )</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/vis-common-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-common-genes-1">
+Past versions of vis-common-genes-1.png
+</button>
+</p>
+<div id="fig-vis-common-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/vis-common-genes-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="exclusive-acute" class="section level3">
 <h3>Exclusive acute</h3>
@@ -1893,13 +3231,50 @@ mat_exclusive_acute_genes &lt;- ranked_exclusive_acute_genes %&gt;%
 Heatmap(t(mat_exclusive_acute_genes),
   col = col_fun,
   cluster_rows = F, cluster_columns = T,
-  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz-4),
+  row_names_gp = gpar(fontsize = fz), column_names_gp = gpar(fontsize = fz - 4),
   name = &quot;logFC&quot;,
   row_gap = unit(2.5, &quot;mm&quot;),
   border = T,
   row_split = c(rep(&quot;Acute&quot;, 12), rep(&quot;Chronic&quot;, 3))
 )</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/vis-exclusive-acute-genes-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-vis-exclusive-acute-genes-1">
+Past versions of vis-exclusive-acute-genes-1.png
+</button>
+</p>
+<div id="fig-vis-exclusive-acute-genes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/vis-exclusive-acute-genes-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="characterization-of-exclusive-and-common-genes" class="section level2">
@@ -1938,7 +3313,7 @@ signatures &lt;- bind_rows(
 
 # load gene sets of GO terms, pathways, tfs)
 genesets &lt;- load_genesets() %&gt;%
-  filter(confidence %in% c(NA,&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)) 
+  filter(confidence %in% c(NA, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;))
 #&gt; filter: removed 2,340,732 rows (80%), 597,560 rows remaining
 #&gt; select: renamed one variable (gene) and dropped 2 variables
 #&gt; mutate: new variable &#39;group&#39; (character) with one unique value and 0% NA
@@ -2024,45 +3399,52 @@ saveRDS(ora_res, here(output_path, &quot;exclusive_genes_characterization.rds&qu
 <div id="text-analysis" class="section level3">
 <h3>Text analysis</h3>
 <p>GO terms are splitted into words and their frequency is counted.</p>
-<pre class="r"><code># list of words that will be ignored 
-stop_go_words = readRDS(here(&quot;data/annotation/stop_go_words.rds&quot;))
+<pre class="r"><code># list of words that will be ignored
+stop_go_words &lt;- readRDS(here(&quot;data/annotation/stop_go_words.rds&quot;))
 
-go_terms = readRDS(here(output_path, &quot;exclusive_genes_characterization.rds&quot;)) %&gt;%
+go_terms &lt;- readRDS(here(output_path, &quot;exclusive_genes_characterization.rds&quot;)) %&gt;%
   filter(group == &quot;go&quot; &amp; fdr &lt;= 0.05) %&gt;%
-  mutate(term = str_remove(geneset, &quot;GO_&quot;),
-           term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
-           term = str_to_lower(term)) %&gt;%
+  mutate(
+    term = str_remove(geneset, &quot;GO_&quot;),
+    term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
+    term = str_to_lower(term)
+  ) %&gt;%
   select(regulation, term, class)
 #&gt; filter: removed 18,154 rows (92%), 1,488 rows remaining
 #&gt; mutate: new variable &#39;term&#39; (character) with 1,131 unique values and 0% NA
 #&gt; select: dropped 8 variables (geneset, group, confidence, contingency_table, estimate, …)
 
-go_wordcounts = go_terms %&gt;%
+go_wordcounts &lt;- go_terms %&gt;%
   # glue words that should be treated as one
-  mutate(term = str_replace(term, &quot;smooth muscle&quot;, &quot;smoothmuscle&quot;),
-         term = str_replace(term, &quot;amino acid&quot;, &quot;aminoacid&quot;),
-         term = str_replace(term, &quot;cell cycle&quot;, &quot;cellcycle&quot;),
-         term = str_replace(term, &quot;endoplasmic reticulum stress&quot;, &quot;endoplasmicreticulumstress&quot;),
-         term = str_replace(term, &quot;endoplasmic reticulum&quot;, &quot;endoplasmicreticulum&quot;)
-         ) %&gt;%
+  mutate(
+    term = str_replace(term, &quot;smooth muscle&quot;, &quot;smoothmuscle&quot;),
+    term = str_replace(term, &quot;amino acid&quot;, &quot;aminoacid&quot;),
+    term = str_replace(term, &quot;cell cycle&quot;, &quot;cellcycle&quot;),
+    term = str_replace(term, &quot;endoplasmic reticulum stress&quot;, &quot;endoplasmicreticulumstress&quot;),
+    term = str_replace(term, &quot;endoplasmic reticulum&quot;, &quot;endoplasmicreticulum&quot;)
+  ) %&gt;%
   unnest_tokens(word, term) %&gt;%
-  anti_join(stop_words, by=&quot;word&quot;) %&gt;%
+  anti_join(stop_words, by = &quot;word&quot;) %&gt;%
   # correct for abbreviations
-  mutate(word = case_when(word == &quot;er&quot; ~ &quot;endoplasmicreticulum&quot;,
-                          TRUE ~ word)) %&gt;%
-  # remove words which are pure numbers 
+  mutate(word = case_when(
+    word == &quot;er&quot; ~ &quot;endoplasmicreticulum&quot;,
+    TRUE ~ word
+  )) %&gt;%
+  # remove words which are pure numbers
   filter(!str_detect(word, &quot;^[0-9]+&quot;)) %&gt;%
   # count word frequency
   count(class, regulation, word, sort = T) %&gt;%
   # dissect prior glued words
-  mutate(word = case_when(word ==&quot;smoothmuscle&quot; ~ &quot;smooth-muscle&quot;,
-                          word == &quot;aminoacid&quot; ~ &quot;amino-acid&quot;,
-                          word == &quot;cellcycle&quot; ~ &quot;cell-cycle&quot;,
-                          word == &quot;endoplasmicreticulumstress&quot; ~ &quot;endoplasmic-reticulum-stress&quot;,
-                          word == &quot;endoplasmicreticulum&quot; ~ &quot;endoplasmic-reticulum&quot;,
-                          TRUE ~ word)) %&gt;%
+  mutate(word = case_when(
+    word == &quot;smoothmuscle&quot; ~ &quot;smooth-muscle&quot;,
+    word == &quot;aminoacid&quot; ~ &quot;amino-acid&quot;,
+    word == &quot;cellcycle&quot; ~ &quot;cell-cycle&quot;,
+    word == &quot;endoplasmicreticulumstress&quot; ~ &quot;endoplasmic-reticulum-stress&quot;,
+    word == &quot;endoplasmicreticulum&quot; ~ &quot;endoplasmic-reticulum&quot;,
+    TRUE ~ word
+  )) %&gt;%
   # remove meaning less words
-  anti_join(stop_go_words, by=&quot;word&quot;) 
+  anti_join(stop_go_words, by = &quot;word&quot;)
 #&gt; mutate: changed 111 values (7%) of &#39;term&#39; (0 new NA)
 #&gt; anti_join: added no columns
 #&gt;            &gt; rows only in x   5,377
@@ -2090,19 +3472,56 @@ go_wordcounts %&gt;%
   ungroup() %&gt;%
   ggplot(aes(label = word, size = n)) +
   geom_text_wordcloud() +
-  scale_size_area(max_size = fz/(14/5)) +
-  facet_grid(class~regulation) +
+  scale_size_area(max_size = fz / (14 / 5)) +
+  facet_grid(class ~ regulation) +
   theme(axis.line = element_blank()) +
   my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; group_by: 2 grouping variables (class, regulation)
 #&gt; slice_max (grouped): removed 862 rows (90%), 92 rows remaining
 #&gt; ungroup: no grouping variables</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/go-text-analysis-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-go-text-analysis-1">
+Past versions of go-text-analysis-1.png
+</button>
+</p>
+<div id="fig-go-text-analysis-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/go-text-analysis-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="cluster-ranking" class="section level3">
 <h3>Cluster ranking</h3>
 <p>Distribution of manually created GO-cluster.</p>
-<pre class="r"><code>go_cluster_mapping = tribble(
+<pre class="r"><code>go_cluster_mapping &lt;- tribble(
   ~cluster, ~description,
   4, &quot;Proliferation&quot;,
   5, &quot;Metabolism&quot;,
@@ -2113,20 +3532,23 @@ go_wordcounts %&gt;%
   11, &quot;Metabolism&quot;
 )
 
-go_cluster_chronic = read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;), 
-                                sheet = &quot;chronic&quot;) %&gt;%
+go_cluster_chronic &lt;- read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;),
+  sheet = &quot;chronic&quot;
+) %&gt;%
   mutate(class = &quot;chronic&quot;)
 #&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
-go_cluster_acute = read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;), 
-                              sheet = &quot;acute&quot;) %&gt;%
+go_cluster_acute &lt;- read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;),
+  sheet = &quot;acute&quot;
+) %&gt;%
   mutate(class = &quot;acute&quot;)
 #&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
-go_cluster_common = read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;), 
-                               sheet = &quot;common&quot;) %&gt;%
+go_cluster_common &lt;- read_excel(here(data_path, &quot;manual_go_cluster_anno.xlsx&quot;),
+  sheet = &quot;common&quot;
+) %&gt;%
   mutate(class = &quot;common&quot;)
 #&gt; mutate: new variable &#39;class&#39; (character) with one unique value and 0% NA
 
-go_cluster = bind_rows(go_cluster_chronic, go_cluster_acute, go_cluster_common) %&gt;%
+go_cluster &lt;- bind_rows(go_cluster_chronic, go_cluster_acute, go_cluster_common) %&gt;%
   distinct(class, regulation, term, cluster) %&gt;%
   drop_na() %&gt;%
   inner_join(go_cluster_mapping)
@@ -2139,12 +3561,14 @@ go_cluster = bind_rows(go_cluster_chronic, go_cluster_acute, go_cluster_common) 
 #&gt;             &gt;                 =====
 #&gt;             &gt; rows total       415
 
-go_terms_ranking = readRDS(
+go_terms_ranking &lt;- readRDS(
   here(output_path, &quot;exclusive_genes_characterization.rds&quot;)
-  ) %&gt;% 
-  mutate(term = str_remove(geneset, &quot;GO_&quot;),
-           term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
-           term = str_to_lower(term)) %&gt;%
+) %&gt;%
+  mutate(
+    term = str_remove(geneset, &quot;GO_&quot;),
+    term = str_replace_all(term, &quot;_&quot;, &quot; &quot;),
+    term = str_to_lower(term)
+  ) %&gt;%
   filter(fdr &lt;= 0.05) %&gt;%
   group_by(regulation, class) %&gt;%
   mutate(rank = row_number(p.value)) %&gt;%
@@ -2159,7 +3583,7 @@ go_terms_ranking = readRDS(
 #&gt; ungroup: no grouping variables
 #&gt; select: dropped 8 variables (geneset, group, confidence, contingency_table, estimate, …)
 
-go_cluster_ranking = go_terms_ranking %&gt;%
+go_cluster_ranking &lt;- go_terms_ranking %&gt;%
   inner_join(go_cluster)
 #&gt; inner_join: added 2 columns (cluster, description)
 #&gt;             &gt; rows only in x  (1,178)
@@ -2172,22 +3596,65 @@ saveRDS(go_cluster_ranking, here(output_path, &quot;go_cluster_ranking.rds&quot;
 
 go_cluster_ranking %&gt;%
   mutate(regulation = as_factor(regulation)) %&gt;%
-  ggplot(aes(x=rank, colour=description)) +
+  ggplot(aes(x = rank, colour = description)) +
   stat_density(geom = &quot;line&quot;, position = &quot;identity&quot;) +
   geom_rug() +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        legend.position = &quot;top&quot;) +
-  labs(x=str_wrap(&quot;GO term ranking based on p-value&quot;), y=&quot;Density&quot;,
-       color =NULL) +
-  facet_rep_wrap(~class+regulation, scales = &quot;free&quot;, drop = T) +
-  scale_x_continuous(breaks = function(x) as.numeric(
-    gsub(&quot;^0&quot;, 1, unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))))
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    legend.position = &quot;top&quot;
   ) +
+  labs(
+    x = str_wrap(&quot;GO term ranking based on p-value&quot;), y = &quot;Density&quot;,
+    color = NULL
+  ) +
+  facet_rep_wrap(~ class + regulation, scales = &quot;free&quot;, drop = T) +
+  scale_x_continuous(breaks = function(x) {
+    as.numeric(
+      gsub(&quot;^0&quot;, 1, unique(floor(pretty(seq(0, (max(x) + 1) * 1.1)))))
+    )
+  }) +
   my_theme(grid = &quot;no&quot;, fsize = fz)
 #&gt; mutate: converted &#39;regulation&#39; from character to factor (0 new NA)</code></pre>
 <p><img src="figure/13-meta-chronic-vs-acute.Rmd/go-cluster-ranking-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Time spend to execute this analysis: 01:31 minutes.</p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-go-cluster-ranking-1">
+Past versions of go-cluster-ranking-1.png
+</button>
+</p>
+<div id="fig-go-cluster-ranking-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/13-meta-chronic-vs-acute.Rmd/go-cluster-ranking-1.png" target="_blank">3340593</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-02-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Time spend to execute this analysis: 04:12 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -2227,11 +3694,11 @@ go_cluster_ranking %&gt;%
 #&gt;  [4] rprojroot_2.0.2      GlobalOptions_0.1.2  fs_1.5.0            
 #&gt;  [7] clue_0.3-58          rstudioapi_0.13      farver_2.0.3        
 #&gt; [10] SnowballC_0.7.0      ggrepel_0.9.0        fansi_0.4.1         
-#&gt; [13] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-16    
+#&gt; [13] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-18    
 #&gt; [16] knitr_1.30           jsonlite_1.7.2       bcellViper_1.24.0   
-#&gt; [19] cluster_2.1.0        dbplyr_2.0.0         png_0.1-7           
+#&gt; [19] cluster_2.1.1        dbplyr_2.0.0         png_0.1-7           
 #&gt; [22] compiler_4.0.2       httr_1.4.2           backports_1.2.1     
-#&gt; [25] assertthat_0.2.1     Matrix_1.2-18        cli_2.2.0           
+#&gt; [25] assertthat_0.2.1     Matrix_1.3-2         cli_2.2.0           
 #&gt; [28] later_1.1.0.1        formatR_1.7          htmltools_0.5.0     
 #&gt; [31] tools_4.0.2          gtable_0.3.0         glue_1.4.2          
 #&gt; [34] fastmatch_1.1-0      Rcpp_1.0.5           Biobase_2.48.0      
