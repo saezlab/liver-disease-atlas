@@ -975,12 +975,12 @@ pr <- setup %>%
   unnest(metrics)
 
 # check how well pr improves when going from 2 to 12 months on average
-pr %>% 
-  filter(study %in% c("pure_ccl_12m_vs_0m", "pure_ccl_2m_vs_0m")) %>% 
-  select(study, regulation, recall, etiology) %>% 
-  spread(study, recall) %>% 
-  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %>% 
-  pull(diff) %>% 
+pr %>%
+  filter(study %in% c("pure_ccl_12m_vs_0m", "pure_ccl_2m_vs_0m")) %>%
+  select(study, regulation, recall, etiology) %>%
+  spread(study, recall) %>%
+  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %>%
+  pull(diff) %>%
   mean()
 
 saveRDS(pr, here(output_path, "precision_recall.rds"))
@@ -1006,27 +1006,27 @@ pr %>%
 ### PR of chronicity and etiologies
 ```{r pr-chronicity-etiology}
 # load etiology gene sets
-etiology_genesets = readRDS(here(output_path, "etiology_gene_sets.rds")) %>%
+etiology_genesets <- readRDS(here(output_path, "etiology_gene_sets.rds")) %>%
   mutate(join_var = "xy") %>%
   nest(etiology_genes = -c(etiology, regulation, join_var))
 
 # load exclusive chronic and acute and common genes
-chronic = readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds")) %>%
+chronic <- readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds")) %>%
   mutate(class = "chronic") %>%
   select(gene, rank, class, statistic = chronic_statistic)
 
-acute = readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds")) %>%
+acute <- readRDS(here("output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds")) %>%
   mutate(class = "acute") %>%
   select(gene, rank, class, statistic = acute_statistic)
 
-common = readRDS(here("output/meta-chronic-vs-acute/ranked_common_genes.rds")) %>%
+common <- readRDS(here("output/meta-chronic-vs-acute/ranked_common_genes.rds")) %>%
   mutate(class = "common") %>%
   select(gene, rank, class, statistic = chronic_statistic)
 
-chronicity = bind_rows(chronic, acute, common) %>%
+chronicity <- bind_rows(chronic, acute, common) %>%
   mutate(regulation = if_else(sign(statistic) >= 0, "up", "down"))
 
-chronicity_hgnc = chronicity %>%
+chronicity_hgnc <- chronicity %>%
   translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc", na_rm = TRUE) %>%
   distinct() %>%
   # drop genes that appear due to translation now in multiple classes
@@ -1037,32 +1037,34 @@ chronicity_hgnc = chronicity %>%
 # number of genes per regulated chronicity category
 chronicity_hgnc %>%
   count(class, regulation) %>%
-  ggplot(aes(x=class, y=n, fill = regulation)) +
+  ggplot(aes(x = class, y = n, fill = regulation)) +
   geom_col(position = "dodge") +
   geom_hline(yintercept = 120)
 
-setup = chronicity_hgnc %>%
+setup <- chronicity_hgnc %>%
   group_by(class, regulation) %>%
   slice_max(order_by = rank, n = 120, with_ties = FALSE) %>%
   mutate(join_var = "xy") %>%
   nest(mm_genes = -c(class, regulation, join_var)) %>%
   ungroup() %>%
-  inner_join(etiology_genesets, by=c("regulation", "join_var")) %>%
+  inner_join(etiology_genesets, by = c("regulation", "join_var")) %>%
   select(-join_var)
 
-pr = setup %>%
+pr <- setup %>%
   mutate(pr = map2(etiology_genes, mm_genes, function(hs_genes, mm_genes) {
     z <- inner_join(
-      select(mm_genes, gene), 
-      select(hs_genes, gene), by = "gene")
+      select(mm_genes, gene),
+      select(hs_genes, gene),
+      by = "gene"
+    )
 
     tibble(
       recall = nrow(z) / nrow(hs_genes),
       recall_ratio = glue("{nrow(z)}/{nrow(hs_genes)}"),
       precision = nrow(z) / nrow(mm_genes),
       precision_ratio = glue("{nrow(z)}/{nrow(mm_genes)}")
-    )}
-  )) %>%
+    )
+  })) %>%
   unnest(pr)
 
 saveRDS(pr, here(output_path, "precision_recall_chronicity.rds"))
@@ -1070,8 +1072,10 @@ saveRDS(pr, here(output_path, "precision_recall_chronicity.rds"))
 set.seed(123)
 pr %>%
   mutate(regulation = factor(regulation, levels = c("up", "down"))) %>%
-  ggplot(aes(x = recall, y = precision, label = class, 
-             color = class)) +
+  ggplot(aes(
+    x = recall, y = precision, label = class,
+    color = class
+  )) +
   geom_jitter(width = 0.0015, height = 0) +
   facet_rep_grid(etiology ~ regulation) +
   geom_abline(lty = "dashed") +
@@ -1081,6 +1085,74 @@ pr %>%
   scale_color_viridis_d()
 ```
 
+## Comparison of basal expression between mouse and human
+```{r basel-expression-comparison}
+# load basal samples from ccl4 mouse model
+mouse_control_samples <- readRDS(
+  here("data/mouse-chronic-ccl4/meta_data.rds")
+) %>%
+  filter(time == 0) %>%
+  select(sample)
+
+mouse_expr <- readRDS(
+  here("output/mouse-chronic-ccl4/normalized_expression.rds")
+)
+
+mouse_basal_expr <- mouse_expr %>%
+  tdy("gene", "sample", "expression") %>%
+  inner_join(mouse_control_samples) %>%
+  translate_gene_ids(from = "symbol_mgi", to = "symbol_hgnc") %>%
+  drop_na() %>%
+  # for duplicated genes, keep the one with the highest mean expression
+  group_by(sample, gene) %>%
+  slice_max(order_by = mean(expression), n = 1, with_ties = F) %>%
+  ungroup() %>%
+  mutate(organism = "mouse")
+
+# load basal expression from human
+hoang_control_samples <- readRDS(
+  here("data/human-hoang-nafld/meta_data.rds")
+) %>%
+  filter(nafld == "stage_0") %>%
+  select(sample)
+
+hoang_expr <- readRDS(
+  here("output/human-hoang-nafld/normalized_expression.rds")
+)
+
+hoang_basal_expr <- hoang_expr %>%
+  tdy("gene", "sample", "expression") %>%
+  inner_join(hoang_control_samples) %>%
+  mutate(organism = "human")
+
+# combine human and mouse data
+all_genes <- bind_rows(mouse_basal_expr, hoang_basal_expr) %>%
+  group_by(gene, organism) %>%
+  summarise(mean_expression = mean(expression)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = "organism", values_from = "mean_expression") %>%
+  drop_na()
+
+consistent_genes <- readRDS(here(
+  "output/meta-mouse-vs-human/consistent_genes.rds"
+)) %>%
+  filter(rank <= 100) %>%
+  distinct(gene)
+
+top_consistent_genes <- all_genes %>%
+  inner_join(consistent_genes, by = "gene")
+
+cor.test(all_genes$human, all_genes$mouse, method = "pearson")
+cor.test(top_consistent_genes$human,
+  top_consistent_genes$mouse,
+  method = "pearson"
+)
+
+saveRDS(
+  list(all = all_genes, top = top_consistent_genes),
+  here(output_path, "basel_gene_expression_levels.rds")
+)
+```
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
