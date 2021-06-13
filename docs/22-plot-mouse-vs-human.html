@@ -544,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-29
+<strong>Last updated:</strong> 2021-06-13
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -713,6 +713,7 @@ Ignored files:
     Ignored:    figures/Figure 4.pdf
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
+    Ignored:    figures/Figure 5.png
     Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
@@ -805,6 +806,7 @@ Ignored files:
     Ignored:    output/meta-chronic-vs-acute/union_chronic_geneset.rds
     Ignored:    output/meta-chronic-vs-acute/z_score_pca.rds
     Ignored:    output/meta-mouse-vs-human/Icon
+    Ignored:    output/meta-mouse-vs-human/basel_gene_expression_levels.rds
     Ignored:    output/meta-mouse-vs-human/chronic_mouse_deg_numbers.rds
     Ignored:    output/meta-mouse-vs-human/consistent_genes.rds
     Ignored:    output/meta-mouse-vs-human/cross_species_enrichment.rds
@@ -948,6 +950,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b749f15eba32cfaa88626b256d2d9158b9fd33f5/analysis/22-plot-mouse-vs-human.Rmd" target="_blank">b749f15</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-06-13
+</td>
+<td>
+Added basal cor analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/a8fc0b0ef33652ed884fd637049dc52f82d43982/docs/22-plot-mouse-vs-human.html" target="_blank">a8fc0b0</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1966,6 +2002,24 @@ christianholland
 </div>
 </div>
 </div>
+<div id="cross-species-correlation-of-basal-gene-expression-levels" class="section level2">
+<h2>Cross-species correlation of basal gene expression levels</h2>
+<pre class="r"><code>basal_genes &lt;- readRDS(here(output_path, &quot;basel_gene_expression_levels.rds&quot;))
+
+basal_corr_plot &lt;- map(basal_genes, function(data) {
+  data %&gt;%
+    ggplot(aes(x = human, y = mouse)) +
+    geom_point(size = 0.1) +
+    geom_abline(color = aachen_color(&quot;red&quot;)) +
+    my_theme() +
+    coord_fixed() +
+    labs(
+      x = expression(-log[&quot;2&quot;] * (CPM[&quot;Human&quot;])),
+      y = expression(-log[&quot;2&quot;] * (CPM[&quot;Mouse&quot;]))
+    )
+}) %&gt;%
+  wrap_plots()</code></pre>
+</div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
 <div id="figure-4" class="section level3">
@@ -2038,9 +2092,15 @@ ggsave(here(&quot;figures/Figure 4.png&quot;), fig4,
 </div>
 <div id="supplementary-figure-4.1" class="section level3">
 <h3>Supplementary Figure 4.1</h3>
-<p>Gene similarity of patient cohorts.</p>
-<pre class="r"><code>sfig4_1 &lt;- patient_gs_sim +
+<p>Gene similarity of patient cohorts and basal correlation plot.</p>
+<pre class="r"><code>sfig4_1 &lt;- patient_gs_sim / basal_corr_plot &amp;
   theme(
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  ) &amp;
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;))) &amp;
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
     legend.key.height = unit(11.5, &quot;pt&quot;),
     legend.key.width = unit(12.5, &quot;pt&quot;)
   )
@@ -2086,10 +2146,10 @@ christianholland
 </div>
 <pre class="r"><code>
 ggsave(here(&quot;figures/Supplementary Figure 4.1.pdf&quot;), sfig4_1,
-  width = 21, height = 10, units = c(&quot;cm&quot;)
+  width = 21, height = 15, units = c(&quot;cm&quot;)
 )
 ggsave(here(&quot;figures/Supplementary Figure 4.1.png&quot;), sfig4_1,
-  width = 21, height = 10, units = c(&quot;cm&quot;)
+  width = 21, height = 15, units = c(&quot;cm&quot;)
 )</code></pre>
 </div>
 <div id="supplementary-figure-4.2" class="section level3">
@@ -2150,7 +2210,7 @@ ggsave(here(&quot;figures/Supplementary Figure 4.2.pdf&quot;), sfig4_2,
 ggsave(here(&quot;figures/Supplementary Figure 4.2.png&quot;), sfig4_2,
   width = 21, height = 10, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 00:33 minutes.</p>
+<p>Time spend to execute this analysis: 00:41 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -2159,7 +2219,7 @@ ggsave(here(&quot;figures/Supplementary Figure 4.2.png&quot;), sfig4_2,
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()
-#&gt; R version 4.0.2 (2020-06-22)
+#&gt; R version 4.0.5 (2021-03-31)
 #&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
 #&gt; Running under: macOS Mojave 10.14.5
 #&gt; 
@@ -2192,15 +2252,15 @@ ggsave(here(&quot;figures/Supplementary Figure 4.2.png&quot;), sfig4_2,
 #&gt; [13] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-18    
 #&gt; [16] knitr_1.30           jsonlite_1.7.2       broom_0.7.3         
 #&gt; [19] cluster_2.1.1        dbplyr_2.0.0         png_0.1-7           
-#&gt; [22] compiler_4.0.2       httr_1.4.2           backports_1.2.1     
+#&gt; [22] compiler_4.0.5       httr_1.4.2           backports_1.2.1     
 #&gt; [25] assertthat_0.2.1     cli_2.2.0            later_1.1.0.1       
-#&gt; [28] formatR_1.7          htmltools_0.5.0      tools_4.0.2         
+#&gt; [28] formatR_1.7          htmltools_0.5.0      tools_4.0.5         
 #&gt; [31] gtable_0.3.0         glue_1.4.2           Rcpp_1.0.5          
 #&gt; [34] carData_3.0-4        cellranger_1.1.0     vctrs_0.3.6         
 #&gt; [37] xfun_0.19            openxlsx_4.2.3       rvest_0.3.6         
 #&gt; [40] lifecycle_0.2.0      renv_0.12.3          gtools_3.8.2        
 #&gt; [43] rstatix_0.6.0        clisymbols_1.2.0     hms_0.5.3           
-#&gt; [46] promises_1.1.1       parallel_4.0.2       lambda.r_1.2.4      
+#&gt; [46] promises_1.1.1       parallel_4.0.5       lambda.r_1.2.4      
 #&gt; [49] RColorBrewer_1.1-2   yaml_2.2.1           curl_4.3            
 #&gt; [52] stringi_1.5.3        zip_2.1.1            shape_1.4.5         
 #&gt; [55] rlang_0.4.9          pkgconfig_2.0.3      evaluate_0.14       

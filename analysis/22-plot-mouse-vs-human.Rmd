@@ -615,6 +615,27 @@ consistent_volcano_supp <- c %>%
 consistent_volcano_main + consistent_volcano_supp
 ```
 
+
+## Cross-species correlation of basal gene expression levels
+```{r basal-gene-expression-correlation}
+basal_genes <- readRDS(here(output_path, "basel_gene_expression_levels.rds"))
+
+basal_corr_plot <- map(basal_genes, function(data) {
+  data %>%
+    ggplot(aes(x = human, y = mouse)) +
+    geom_point(size = 0.1) +
+    geom_abline(color = aachen_color("red")) +
+    my_theme() +
+    coord_fixed() +
+    labs(
+      x = expression(-log["2"] * (CPM["Human"])),
+      y = expression(-log["2"] * (CPM["Mouse"]))
+    )
+}) %>%
+  wrap_plots()
+```
+
+
 ## Collage
 ### Figure 4
 Main Figure.
@@ -648,10 +669,16 @@ ggsave(here("figures/Figure 4.png"), fig4,
 ```
 
 ### Supplementary Figure 4.1
-Gene similarity of patient cohorts.
+Gene similarity of patient cohorts and basal correlation plot.
 ```{r s-fig-4-1}
-sfig4_1 <- patient_gs_sim +
+sfig4_1 <- patient_gs_sim / basal_corr_plot &
   theme(
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  ) &
+  plot_annotation(tag_levels = list(c("A", "B"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
     legend.key.height = unit(11.5, "pt"),
     legend.key.width = unit(12.5, "pt")
   )
@@ -659,10 +686,10 @@ sfig4_1 <- patient_gs_sim +
 sfig4_1
 
 ggsave(here("figures/Supplementary Figure 4.1.pdf"), sfig4_1,
-  width = 21, height = 10, units = c("cm")
+  width = 21, height = 15, units = c("cm")
 )
 ggsave(here("figures/Supplementary Figure 4.1.png"), sfig4_1,
-  width = 21, height = 10, units = c("cm")
+  width = 21, height = 15, units = c("cm")
 )
 ```
 
