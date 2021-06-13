@@ -544,7 +544,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-29
+<strong>Last updated:</strong> 2021-06-13
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +635,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -713,6 +713,7 @@ Ignored files:
     Ignored:    figures/Figure 4.pdf
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
+    Ignored:    figures/Figure 5.png
     Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
@@ -805,6 +806,7 @@ Ignored files:
     Ignored:    output/meta-chronic-vs-acute/union_chronic_geneset.rds
     Ignored:    output/meta-chronic-vs-acute/z_score_pca.rds
     Ignored:    output/meta-mouse-vs-human/Icon
+    Ignored:    output/meta-mouse-vs-human/basel_gene_expression_levels.rds
     Ignored:    output/meta-mouse-vs-human/chronic_mouse_deg_numbers.rds
     Ignored:    output/meta-mouse-vs-human/consistent_genes.rds
     Ignored:    output/meta-mouse-vs-human/cross_species_enrichment.rds
@@ -948,6 +950,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/b749f15eba32cfaa88626b256d2d9158b9fd33f5/analysis/14-meta-mouse-vs-human.Rmd" target="_blank">b749f15</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-06-13
+</td>
+<td>
+Added basal cor analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/a8fc0b0ef33652ed884fd637049dc52f82d43982/docs/14-meta-mouse-vs-human.html" target="_blank">a8fc0b0</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1382,6 +1418,43 @@ saveRDS(pca_result, here(output_path, &quot;z_score_pca.rds&quot;))
 plot_pca(pca_result, feature = &quot;phenotype&quot;) +
   my_theme()</code></pre>
 <p><img src="figure/14-meta-mouse-vs-human.Rmd/z-score-pca-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-z-score-pca-1">
+Past versions of z-score-pca-1.png
+</button>
+</p>
+<div id="fig-z-score-pca-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/a8fc0b0ef33652ed884fd637049dc52f82d43982/docs/figure/14-meta-mouse-vs-human.Rmd/z-score-pca-1.png" target="_blank">a8fc0b0</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-03-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="number-of-differential-expressed-genes" class="section level2">
 <h2>Number of differential expressed genes</h2>
@@ -3731,12 +3804,12 @@ pr &lt;- setup %&gt;%
 #&gt;             &gt; rows total          66
 
 # check how well pr improves when going from 2 to 12 months on average
-pr %&gt;% 
-  filter(study %in% c(&quot;pure_ccl_12m_vs_0m&quot;, &quot;pure_ccl_2m_vs_0m&quot;)) %&gt;% 
-  select(study, regulation, recall, etiology) %&gt;% 
-  spread(study, recall) %&gt;% 
-  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %&gt;% 
-  pull(diff) %&gt;% 
+pr %&gt;%
+  filter(study %in% c(&quot;pure_ccl_12m_vs_0m&quot;, &quot;pure_ccl_2m_vs_0m&quot;)) %&gt;%
+  select(study, regulation, recall, etiology) %&gt;%
+  spread(study, recall) %&gt;%
+  mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %&gt;%
+  pull(diff) %&gt;%
   mean()
 #&gt; filter: removed 100 rows (83%), 20 rows remaining
 #&gt; select: dropped 6 variables (class, mm_genes, hs_genes, recall_ratio, precision, …)
@@ -3804,30 +3877,30 @@ christianholland
 <div id="pr-of-chronicity-and-etiologies" class="section level3">
 <h3>PR of chronicity and etiologies</h3>
 <pre class="r"><code># load etiology gene sets
-etiology_genesets = readRDS(here(output_path, &quot;etiology_gene_sets.rds&quot;)) %&gt;%
+etiology_genesets &lt;- readRDS(here(output_path, &quot;etiology_gene_sets.rds&quot;)) %&gt;%
   mutate(join_var = &quot;xy&quot;) %&gt;%
   nest(etiology_genes = -c(etiology, regulation, join_var))
 
 # load exclusive chronic and acute and common genes
-chronic = readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds&quot;)) %&gt;%
+chronic &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_exclusive_chronic_genes.rds&quot;)) %&gt;%
   mutate(class = &quot;chronic&quot;) %&gt;%
   select(gene, rank, class, statistic = chronic_statistic)
 #&gt; select: renamed one variable (statistic) and dropped 4 variables
 
-acute = readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds&quot;)) %&gt;%
+acute &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_exclusive_acute_genes.rds&quot;)) %&gt;%
   mutate(class = &quot;acute&quot;) %&gt;%
   select(gene, rank, class, statistic = acute_statistic)
 #&gt; select: renamed one variable (statistic) and dropped 4 variables
 
-common = readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_common_genes.rds&quot;)) %&gt;%
+common &lt;- readRDS(here(&quot;output/meta-chronic-vs-acute/ranked_common_genes.rds&quot;)) %&gt;%
   mutate(class = &quot;common&quot;) %&gt;%
   select(gene, rank, class, statistic = chronic_statistic)
 #&gt; select: renamed one variable (statistic) and dropped 4 variables
 
-chronicity = bind_rows(chronic, acute, common) %&gt;%
+chronicity &lt;- bind_rows(chronic, acute, common) %&gt;%
   mutate(regulation = if_else(sign(statistic) &gt;= 0, &quot;up&quot;, &quot;down&quot;))
 
-chronicity_hgnc = chronicity %&gt;%
+chronicity_hgnc &lt;- chronicity %&gt;%
   translate_gene_ids(from = &quot;symbol_mgi&quot;, to = &quot;symbol_hgnc&quot;, na_rm = TRUE) %&gt;%
   distinct() %&gt;%
   # drop genes that appear due to translation now in multiple classes
@@ -3852,7 +3925,7 @@ chronicity_hgnc = chronicity %&gt;%
 # number of genes per regulated chronicity category
 chronicity_hgnc %&gt;%
   count(class, regulation) %&gt;%
-  ggplot(aes(x=class, y=n, fill = regulation)) +
+  ggplot(aes(x = class, y = n, fill = regulation)) +
   geom_col(position = &quot;dodge&quot;) +
   geom_hline(yintercept = 120)
 #&gt; count: now 6 rows and 3 columns, ungrouped</code></pre>
@@ -3895,13 +3968,13 @@ christianholland
 </div>
 </div>
 <pre class="r"><code>
-setup = chronicity_hgnc %&gt;%
+setup &lt;- chronicity_hgnc %&gt;%
   group_by(class, regulation) %&gt;%
   slice_max(order_by = rank, n = 120, with_ties = FALSE) %&gt;%
   mutate(join_var = &quot;xy&quot;) %&gt;%
   nest(mm_genes = -c(class, regulation, join_var)) %&gt;%
   ungroup() %&gt;%
-  inner_join(etiology_genesets, by=c(&quot;regulation&quot;, &quot;join_var&quot;)) %&gt;%
+  inner_join(etiology_genesets, by = c(&quot;regulation&quot;, &quot;join_var&quot;)) %&gt;%
   select(-join_var)
 #&gt; slice_max (grouped): removed 2,860 rows (80%), 720 rows remaining
 #&gt; ungroup: no grouping variables
@@ -3913,19 +3986,21 @@ setup = chronicity_hgnc %&gt;%
 #&gt;             &gt; rows total       30
 #&gt; select: dropped one variable (join_var)
 
-pr = setup %&gt;%
+pr &lt;- setup %&gt;%
   mutate(pr = map2(etiology_genes, mm_genes, function(hs_genes, mm_genes) {
     z &lt;- inner_join(
-      select(mm_genes, gene), 
-      select(hs_genes, gene), by = &quot;gene&quot;)
+      select(mm_genes, gene),
+      select(hs_genes, gene),
+      by = &quot;gene&quot;
+    )
 
     tibble(
       recall = nrow(z) / nrow(hs_genes),
       recall_ratio = glue(&quot;{nrow(z)}/{nrow(hs_genes)}&quot;),
       precision = nrow(z) / nrow(mm_genes),
       precision_ratio = glue(&quot;{nrow(z)}/{nrow(mm_genes)}&quot;)
-    )}
-  )) %&gt;%
+    )
+  })) %&gt;%
   unnest(pr)
 #&gt; select: dropped 2 variables (rank, statistic)
 #&gt; select: no changes
@@ -4173,8 +4248,10 @@ saveRDS(pr, here(output_path, &quot;precision_recall_chronicity.rds&quot;))
 set.seed(123)
 pr %&gt;%
   mutate(regulation = factor(regulation, levels = c(&quot;up&quot;, &quot;down&quot;))) %&gt;%
-  ggplot(aes(x = recall, y = precision, label = class, 
-             color = class)) +
+  ggplot(aes(
+    x = recall, y = precision, label = class,
+    color = class
+  )) +
   geom_jitter(width = 0.0015, height = 0) +
   facet_rep_grid(etiology ~ regulation) +
   geom_abline(lty = &quot;dashed&quot;) +
@@ -4220,7 +4297,141 @@ christianholland
 </table>
 </div>
 </div>
-<p>Time spend to execute this analysis: 03:33 minutes.</p>
+</div>
+</div>
+<div id="comparison-of-basal-expression-between-mouse-and-human" class="section level2">
+<h2>Comparison of basal expression between mouse and human</h2>
+<pre class="r"><code># load basal samples from ccl4 mouse model
+mouse_control_samples &lt;- readRDS(
+  here(&quot;data/mouse-chronic-ccl4/meta_data.rds&quot;)
+) %&gt;%
+  filter(time == 0) %&gt;%
+  select(sample)
+#&gt; filter: removed 30 rows (83%), 6 rows remaining
+#&gt; select: dropped 3 variables (time, treatment, group)
+
+mouse_expr &lt;- readRDS(
+  here(&quot;output/mouse-chronic-ccl4/normalized_expression.rds&quot;)
+)
+
+mouse_basal_expr &lt;- mouse_expr %&gt;%
+  tdy(&quot;gene&quot;, &quot;sample&quot;, &quot;expression&quot;) %&gt;%
+  inner_join(mouse_control_samples) %&gt;%
+  translate_gene_ids(from = &quot;symbol_mgi&quot;, to = &quot;symbol_hgnc&quot;) %&gt;%
+  drop_na() %&gt;%
+  # for duplicated genes, keep the one with the highest mean expression
+  group_by(sample, gene) %&gt;%
+  slice_max(order_by = mean(expression), n = 1, with_ties = F) %&gt;%
+  ungroup() %&gt;%
+  mutate(organism = &quot;mouse&quot;)
+#&gt; select: dropped 6 variables (ensembl_mgi, ensembl_v_mgi, entrez_mgi, ensembl_hgnc, ensembl_v_hgnc, …)
+#&gt; drop_na: removed 1,905 rows (6%), 30,461 rows remaining
+#&gt; gather: reorganized (I00001, I00002, I00003, I00004, I00005, …) into (sample, expression) [was 15338x37, now 552168x3]
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (460,140)
+#&gt;             &gt; rows only in y  (      0)
+#&gt;             &gt; matched rows      92,028
+#&gt;             &gt;                 =========
+#&gt;             &gt; rows total        92,028
+#&gt; rename: renamed one variable (symbol_mgi)
+#&gt; left_join: added one column (symbol_hgnc)
+#&gt;            &gt; rows only in x   11,496
+#&gt;            &gt; rows only in y  (16,094)
+#&gt;            &gt; matched rows     86,202    (includes duplicates)
+#&gt;            &gt;                 ========
+#&gt;            &gt; rows total       97,698
+#&gt; select: renamed one variable (gene) and dropped one variable
+#&gt; drop_na: removed 11,496 rows (12%), 86,202 rows remaining
+#&gt; slice_max (grouped): removed 5,664 rows (7%), 80,538 rows remaining
+#&gt; ungroup: no grouping variables
+
+# load basal expression from human
+hoang_control_samples &lt;- readRDS(
+  here(&quot;data/human-hoang-nafld/meta_data.rds&quot;)
+) %&gt;%
+  filter(nafld == &quot;stage_0&quot;) %&gt;%
+  select(sample)
+#&gt; filter: removed 74 rows (95%), 4 rows remaining
+#&gt; select: dropped 7 variables (fibrosis, lobular_inflammation, nafld, gender, steatosis, …)
+
+hoang_expr &lt;- readRDS(
+  here(&quot;output/human-hoang-nafld/normalized_expression.rds&quot;)
+)
+
+hoang_basal_expr &lt;- hoang_expr %&gt;%
+  tdy(&quot;gene&quot;, &quot;sample&quot;, &quot;expression&quot;) %&gt;%
+  inner_join(hoang_control_samples) %&gt;%
+  mutate(organism = &quot;human&quot;)
+#&gt; gather: reorganized (440349.1.X_1, 440350.1.X_1, 440351.1.X_4, 440352.1.X_4, 440353.1.X_4, …) into (sample, expression) [was 15193x79, now 1185054x3]
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,124,282)
+#&gt;             &gt; rows only in y  (        0)
+#&gt;             &gt; matched rows        60,772
+#&gt;             &gt;                 ===========
+#&gt;             &gt; rows total          60,772
+
+# combine human and mouse data
+all_genes &lt;- bind_rows(mouse_basal_expr, hoang_basal_expr) %&gt;%
+  group_by(gene, organism) %&gt;%
+  summarise(mean_expression = mean(expression)) %&gt;%
+  ungroup() %&gt;%
+  pivot_wider(names_from = &quot;organism&quot;, values_from = &quot;mean_expression&quot;) %&gt;%
+  drop_na()
+#&gt; summarise: now 28,616 rows and 3 columns, one group variable remaining (gene)
+#&gt; ungroup: no grouping variables
+#&gt; pivot_wider: reorganized (organism, mean_expression) into (human, mouse) [was 28616x3, now 15819x3]
+#&gt; drop_na: removed 3,022 rows (19%), 12,797 rows remaining
+
+consistent_genes &lt;- readRDS(here(
+  &quot;output/meta-mouse-vs-human/consistent_genes.rds&quot;
+)) %&gt;%
+  filter(rank &lt;= 100) %&gt;%
+  distinct(gene)
+#&gt; filter: removed 2,675 rows (49%), 2,744 rows remaining
+#&gt; distinct: removed 2,644 rows (96%), 100 rows remaining
+
+top_consistent_genes &lt;- all_genes %&gt;%
+  inner_join(consistent_genes, by = &quot;gene&quot;)
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (12,697)
+#&gt;             &gt; rows only in y  (     0)
+#&gt;             &gt; matched rows        100
+#&gt;             &gt;                 ========
+#&gt;             &gt; rows total          100
+
+cor.test(all_genes$human, all_genes$mouse, method = &quot;pearson&quot;)
+#&gt; 
+#&gt;  Pearson&#39;s product-moment correlation
+#&gt; 
+#&gt; data:  all_genes$human and all_genes$mouse
+#&gt; t = 108.77, df = 12795, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true correlation is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.6840018 0.7020094
+#&gt; sample estimates:
+#&gt;       cor 
+#&gt; 0.6931137
+cor.test(top_consistent_genes$human,
+  top_consistent_genes$mouse,
+  method = &quot;pearson&quot;
+)
+#&gt; 
+#&gt;  Pearson&#39;s product-moment correlation
+#&gt; 
+#&gt; data:  top_consistent_genes$human and top_consistent_genes$mouse
+#&gt; t = 10.141, df = 98, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true correlation is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.6040579 0.7996065
+#&gt; sample estimates:
+#&gt;       cor 
+#&gt; 0.7155746
+
+saveRDS(
+  list(all = all_genes, top = top_consistent_genes),
+  here(output_path, &quot;basel_gene_expression_levels.rds&quot;)
+)</code></pre>
+<p>Time spend to execute this analysis: 03:47 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -4229,7 +4440,7 @@ christianholland
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()
-#&gt; R version 4.0.2 (2020-06-22)
+#&gt; R version 4.0.5 (2021-03-31)
 #&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
 #&gt; Running under: macOS Mojave 10.14.5
 #&gt; 
@@ -4267,16 +4478,16 @@ christianholland
 #&gt; [16] lubridate_1.7.9.2    xml2_1.3.2           codetools_0.2-18    
 #&gt; [19] knitr_1.30           jsonlite_1.7.2       bcellViper_1.24.0   
 #&gt; [22] cluster_2.1.1        dbplyr_2.0.0         png_0.1-7           
-#&gt; [25] compiler_4.0.2       httr_1.4.2           backports_1.2.1     
+#&gt; [25] compiler_4.0.5       httr_1.4.2           backports_1.2.1     
 #&gt; [28] assertthat_0.2.1     Matrix_1.3-2         cli_2.2.0           
 #&gt; [31] later_1.1.0.1        formatR_1.7          htmltools_0.5.0     
-#&gt; [34] tools_4.0.2          gtable_0.3.0         fastmatch_1.1-0     
+#&gt; [34] tools_4.0.5          gtable_0.3.0         fastmatch_1.1-0     
 #&gt; [37] Rcpp_1.0.5           carData_3.0-4        Biobase_2.48.0      
 #&gt; [40] cellranger_1.1.0     vctrs_0.3.6          xfun_0.19           
 #&gt; [43] openxlsx_4.2.3       rvest_0.3.6          lifecycle_0.2.0     
 #&gt; [46] renv_0.12.3          rstatix_0.6.0        scales_1.1.1        
 #&gt; [49] clisymbols_1.2.0     hms_0.5.3            promises_1.1.1      
-#&gt; [52] parallel_4.0.2       lambda.r_1.2.4       RColorBrewer_1.1-2  
+#&gt; [52] parallel_4.0.5       lambda.r_1.2.4       RColorBrewer_1.1-2  
 #&gt; [55] curl_4.3             yaml_2.2.1           stringi_1.5.3       
 #&gt; [58] tokenizers_0.2.1     BiocGenerics_0.34.0  zip_2.1.1           
 #&gt; [61] BiocParallel_1.22.0  shape_1.4.5          rlang_0.4.9         
@@ -4290,7 +4501,6 @@ christianholland
 #&gt; [85] rmarkdown_2.6        GetoptLong_1.0.5     data.table_1.13.4   
 #&gt; [88] git2r_0.27.1         reprex_0.3.0         digest_0.6.27       
 #&gt; [91] httpuv_1.5.4         munsell_0.5.0        viridisLite_0.3.0</code></pre>
-</div>
 </div>
 </div>
 
