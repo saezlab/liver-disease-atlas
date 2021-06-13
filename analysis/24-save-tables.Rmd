@@ -88,6 +88,13 @@ l <- contrasts %>%
   nest(data = -sheet_name) %>%
   deframe()
 
+# add etiology gene sets
+etiology_gene_sets <- readRDS(here(
+  "output/meta-mouse-vs-human/etiology_gene_sets.rds"
+)) %>%
+  arrange(etiology)
+l$`Etiology gene sets` <- etiology_gene_sets
+
 write.xlsx(l, here("tables/Supplementary Table xy human_degs.xlsx"),
   keepNA = TRUE
 )
@@ -237,7 +244,6 @@ write.xlsx(
   keepNA = TRUE
 )
 ```
-
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
