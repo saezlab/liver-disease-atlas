@@ -392,6 +392,12 @@ div.tocify {
       <a href="01-mouse-chronic-ccl4.html">CCl4 (chronic)</a>
     </li>
     <li>
+      <a href="01.1-mouse-chronic-ccl4-etoh.html">CCl4 + Ethanol (chronic)</a>
+    </li>
+    <li>
+      <a href="01.2-mouse-chronic-ccl4-wtd.html">CCl4 + WTD (chronic)</a>
+    </li>
+    <li>
       <a href="02-mouse-acute-apap.html">APAP (acute)</a>
     </li>
     <li>
@@ -489,7 +495,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://doi.org/10.5281/zenodo.4568505">
+  <a href="https://doi.org/10.5281/zenodo.4407207">
     <span class="fas fa-database"></span>
      
     Get data
@@ -544,7 +550,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-13
+<strong>Last updated:</strong> 2021-07-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +641,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree668adaf840263027cfe80241739468a53596e318targetblank668adafa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/668adaf840263027cfe80241739468a53596e318" target="_blank">668adaf</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree668adaf840263027cfe80241739468a53596e318targetblank668adafa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/668adaf840263027cfe80241739468a53596e318" target="_blank">668adaf</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -655,6 +661,8 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/01-mouse-chronic-ccl4_cache/
+    Ignored:    analysis/01.1-mouse-chronic-ccl4-etoh_cache/
+    Ignored:    analysis/01.2-mouse-chronic-ccl4-wtd_cache/
     Ignored:    analysis/02-mouse-acute-apap_cache/
     Ignored:    analysis/03-mouse-acute-ccl4_cache/
     Ignored:    analysis/04-mouse-acute-ph_cache/
@@ -697,6 +705,7 @@ Ignored files:
     Ignored:    data/mouse-acute-lps/
     Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-acute-tunicamycin/
+    Ignored:    data/mouse-chronic-ccl4-wtd/
     Ignored:    data/mouse-chronic-ccl4/
     Ignored:    external_software/.DS_Store
     Ignored:    external_software/README.html
@@ -714,6 +723,7 @@ Ignored files:
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
     Ignored:    figures/Figure 5.png
+    Ignored:    figures/Figure 6.pdf
     Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
@@ -746,8 +756,10 @@ Ignored files:
     Ignored:    figures/Supplementary Figure 4.1.png
     Ignored:    figures/Supplementary Figure 4.2.pdf
     Ignored:    figures/Supplementary Figure 4.2.png
-    Ignored:    figures/Supplementary Figure 5.1.pdf
-    Ignored:    figures/Supplementary Figure 5.1.png
+    Ignored:    figures/Supplementary Figure 6.1.pdf
+    Ignored:    figures/Supplementary Figure 6.1.png
+    Ignored:    figures/Supplementary Figure 6.2.pdf
+    Ignored:    figures/Supplementary Figure 6.2.png
     Ignored:    figures/figures.key
     Ignored:    figures/histologies.key
     Ignored:    figures/panels/
@@ -913,6 +925,19 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
 
+Untracked files:
+    Untracked:  code/mouse-chronic-ccl4-etoh/
+    Untracked:  code/mouse-chronic-ccl4-wtd/
+    Untracked:  data/mouse-chronic-ccl4-etoh/
+    Untracked:  output/mouse-chronic-ccl4-etoh/
+    Untracked:  output/mouse-chronic-ccl4-wtd/
+
+Unstaged changes:
+    Modified:   README.Rmd
+    Modified:   README.md
+    Modified:   analysis/23-plot-precision-recall.Rmd
+    Modified:   analysis/_site.yml
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -950,6 +975,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/668adaf840263027cfe80241739468a53596e318/analysis/14-meta-mouse-vs-human.Rmd" target="_blank">668adaf</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-07-06
+</td>
+<td>
+pr computation for combined treated models
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/8a7548e4d9bd50b5091f114ce503aec3f0a3d9c8/docs/14-meta-mouse-vs-human.html" target="_blank">8a7548e</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-06-13
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -3052,9 +3111,42 @@ chronic &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4/limma_result_hs.rds&q
 #&gt; filter: removed 34,969 rows (87%), 5,300 rows remaining
 #&gt; distinct: no rows removed
 
+# combined effect models
+etoh &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4-etoh/limma_result_hs.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;effect&quot;) %&gt;%
+  select(gene, contrast,
+    logfc = logFC, fdr, regulation,
+    source = contrast_reference
+  ) %&gt;%
+  assign_deg(
+    fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5),
+    effect_size_id = logfc
+  ) %&gt;%
+  filter(regulation != &quot;ns&quot;) %&gt;%
+  mutate(class = &quot;etoh&quot;) %&gt;%
+  distinct(gene, study = contrast, regulation, class)
+#&gt; filter: no rows removed
+#&gt; select: renamed 2 variables (logfc, source) and dropped 2 variables
+#&gt; filter: removed 34,326 rows (91%), 3,423 rows remaining
+#&gt; distinct: no rows removed
+
+wtd &lt;- readRDS(here(&quot;output/mouse-chronic-ccl4-wtd/limma_result_hs.rds&quot;)) %&gt;%
+  filter(contrast_reference == &quot;combined_effect&quot;) %&gt;%
+  select(gene, contrast,
+    logfc = logFC, source = contrast_reference
+  ) %&gt;%
+  filter(abs(logfc) &gt;= 2) %&gt;%
+  mutate(regulation = if_else(logfc &gt;= 0, &quot;up&quot;, &quot;down&quot;)) %&gt;%
+  mutate(class = &quot;wtd&quot;) %&gt;%
+  distinct(gene, study = contrast, regulation, class)
+#&gt; filter: no rows removed
+#&gt; select: renamed 2 variables (logfc, source)
+#&gt; filter: removed 70,719 rows (95%), 3,825 rows remaining
+#&gt; distinct: no rows removed
+
 
 # merge gene pools of all chronic mouse models
-mm &lt;- bind_rows(teufel_genes, chronic)
+mm &lt;- bind_rows(teufel_genes, chronic, etoh, wtd)
 
 setup &lt;- mm %&gt;%
   mutate(key = &quot;key&quot;) %&gt;%
@@ -3065,9 +3157,9 @@ setup &lt;- mm %&gt;%
 #&gt; inner_join: added 2 columns (etiology, hs_genes)
 #&gt;             &gt; rows only in x  (  0)
 #&gt;             &gt; rows only in y  (  0)
-#&gt;             &gt; matched rows     120    (includes duplicates)
+#&gt;             &gt; matched rows     210    (includes duplicates)
 #&gt;             &gt;                 =====
-#&gt;             &gt; rows total       120
+#&gt;             &gt; rows total       210
 #&gt; select: dropped one variable (key)
 
 pr &lt;- setup %&gt;%
@@ -3802,6 +3894,546 @@ pr &lt;- setup %&gt;%
 #&gt;             &gt; matched rows        66
 #&gt;             &gt;                 =======
 #&gt;             &gt; rows total          66
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  997)
+#&gt;             &gt; rows only in y  (1,148)
+#&gt;             &gt; matched rows       189
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total         189
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (925)
+#&gt;             &gt; rows only in y  (873)
+#&gt;             &gt; matched rows     261
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total       261
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,106)
+#&gt;             &gt; rows only in y  (  404)
+#&gt;             &gt; matched rows        80
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          80
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,152)
+#&gt;             &gt; rows only in y  (  114)
+#&gt;             &gt; matched rows        34
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          34
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,168)
+#&gt;             &gt; rows only in y  (   91)
+#&gt;             &gt; matched rows        18
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          18
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (184)
+#&gt;             &gt; rows only in y  (680)
+#&gt;             &gt; matched rows      12
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        12
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (192)
+#&gt;             &gt; rows only in y  (199)
+#&gt;             &gt; matched rows       4
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         4
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (195)
+#&gt;             &gt; rows only in y  (113)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (195)
+#&gt;             &gt; rows only in y  ( 50)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (190)
+#&gt;             &gt; rows only in y  (345)
+#&gt;             &gt; matched rows       6
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         6
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (   51)
+#&gt;             &gt; rows only in y  (1,331)
+#&gt;             &gt; matched rows         6
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total           6
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (   52)
+#&gt;             &gt; rows only in y  (1,129)
+#&gt;             &gt; matched rows         5
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total           5
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 57)
+#&gt;             &gt; rows only in y  (484)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 57)
+#&gt;             &gt; rows only in y  (148)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 57)
+#&gt;             &gt; rows only in y  (109)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 30)
+#&gt;             &gt; rows only in y  (690)
+#&gt;             &gt; matched rows       2
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         2
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 31)
+#&gt;             &gt; rows only in y  (202)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 32)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (32)
+#&gt;             &gt; rows only in y  (51)
+#&gt;             &gt; matched rows      0
+#&gt;             &gt;                 ====
+#&gt;             &gt; rows total        0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 31)
+#&gt;             &gt; rows only in y  (350)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,280)
+#&gt;             &gt; rows only in y  (1,114)
+#&gt;             &gt; matched rows       223
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total         223
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,191)
+#&gt;             &gt; rows only in y  (  822)
+#&gt;             &gt; matched rows       312
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total         312
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,405)
+#&gt;             &gt; rows only in y  (  386)
+#&gt;             &gt; matched rows        98
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          98
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,463)
+#&gt;             &gt; rows only in y  (  108)
+#&gt;             &gt; matched rows        40
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          40
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (1,483)
+#&gt;             &gt; rows only in y  (   89)
+#&gt;             &gt; matched rows        20
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          20
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (403)
+#&gt;             &gt; rows only in y  (646)
+#&gt;             &gt; matched rows      46
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        46
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (439)
+#&gt;             &gt; rows only in y  (193)
+#&gt;             &gt; matched rows      10
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        10
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (447)
+#&gt;             &gt; rows only in y  (112)
+#&gt;             &gt; matched rows       2
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         2
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (444)
+#&gt;             &gt; rows only in y  ( 46)
+#&gt;             &gt; matched rows       5
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         5
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (425)
+#&gt;             &gt; rows only in y  (327)
+#&gt;             &gt; matched rows      24
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        24
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  391)
+#&gt;             &gt; rows only in y  (1,250)
+#&gt;             &gt; matched rows        87
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          87
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  394)
+#&gt;             &gt; rows only in y  (1,050)
+#&gt;             &gt; matched rows        84
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          84
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (440)
+#&gt;             &gt; rows only in y  (446)
+#&gt;             &gt; matched rows      38
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        38
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (456)
+#&gt;             &gt; rows only in y  (126)
+#&gt;             &gt; matched rows      22
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        22
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (468)
+#&gt;             &gt; rows only in y  ( 99)
+#&gt;             &gt; matched rows      10
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        10
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 84)
+#&gt;             &gt; rows only in y  (689)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 86)
+#&gt;             &gt; rows only in y  (202)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 87)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (85)
+#&gt;             &gt; rows only in y  (49)
+#&gt;             &gt; matched rows      2
+#&gt;             &gt;                 ====
+#&gt;             &gt; rows total        2
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 84)
+#&gt;             &gt; rows only in y  (348)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  550)
+#&gt;             &gt; rows only in y  (1,161)
+#&gt;             &gt; matched rows       176
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total         176
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (591)
+#&gt;             &gt; rows only in y  (999)
+#&gt;             &gt; matched rows     135
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total       135
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (651)
+#&gt;             &gt; rows only in y  (409)
+#&gt;             &gt; matched rows      75
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        75
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (701)
+#&gt;             &gt; rows only in y  (123)
+#&gt;             &gt; matched rows      25
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        25
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (719)
+#&gt;             &gt; rows only in y  (102)
+#&gt;             &gt; matched rows       7
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         7
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (152)
+#&gt;             &gt; rows only in y  (681)
+#&gt;             &gt; matched rows      11
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        11
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (160)
+#&gt;             &gt; rows only in y  (200)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (162)
+#&gt;             &gt; rows only in y  (113)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (160)
+#&gt;             &gt; rows only in y  ( 48)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (154)
+#&gt;             &gt; rows only in y  (342)
+#&gt;             &gt; matched rows       9
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         9
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  468)
+#&gt;             &gt; rows only in y  (1,239)
+#&gt;             &gt; matched rows        98
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          98
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  450)
+#&gt;             &gt; rows only in y  (1,018)
+#&gt;             &gt; matched rows       116
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total         116
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (522)
+#&gt;             &gt; rows only in y  (440)
+#&gt;             &gt; matched rows      44
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        44
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (541)
+#&gt;             &gt; rows only in y  (123)
+#&gt;             &gt; matched rows      25
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        25
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (557)
+#&gt;             &gt; rows only in y  (100)
+#&gt;             &gt; matched rows       9
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         9
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 88)
+#&gt;             &gt; rows only in y  (686)
+#&gt;             &gt; matched rows       6
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         6
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 92)
+#&gt;             &gt; rows only in y  (201)
+#&gt;             &gt; matched rows       2
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         2
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 94)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (94)
+#&gt;             &gt; rows only in y  (51)
+#&gt;             &gt; matched rows      0
+#&gt;             &gt;                 ====
+#&gt;             &gt; rows total        0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 91)
+#&gt;             &gt; rows only in y  (348)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  708)
+#&gt;             &gt; rows only in y  (1,100)
+#&gt;             &gt; matched rows       237
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total         237
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (782)
+#&gt;             &gt; rows only in y  (971)
+#&gt;             &gt; matched rows     163
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total       163
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (858)
+#&gt;             &gt; rows only in y  (397)
+#&gt;             &gt; matched rows      87
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        87
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (914)
+#&gt;             &gt; rows only in y  (117)
+#&gt;             &gt; matched rows      31
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        31
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (931)
+#&gt;             &gt; rows only in y  ( 95)
+#&gt;             &gt; matched rows      14
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        14
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (133)
+#&gt;             &gt; rows only in y  (681)
+#&gt;             &gt; matched rows      11
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        11
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (141)
+#&gt;             &gt; rows only in y  (200)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (144)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (142)
+#&gt;             &gt; rows only in y  ( 49)
+#&gt;             &gt; matched rows       2
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         2
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (135)
+#&gt;             &gt; rows only in y  (342)
+#&gt;             &gt; matched rows       9
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         9
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  171)
+#&gt;             &gt; rows only in y  (1,292)
+#&gt;             &gt; matched rows        45
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          45
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  187)
+#&gt;             &gt; rows only in y  (1,105)
+#&gt;             &gt; matched rows        29
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          29
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (200)
+#&gt;             &gt; rows only in y  (468)
+#&gt;             &gt; matched rows      16
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        16
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (211)
+#&gt;             &gt; rows only in y  (143)
+#&gt;             &gt; matched rows       5
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         5
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (213)
+#&gt;             &gt; rows only in y  (106)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 74)
+#&gt;             &gt; rows only in y  (686)
+#&gt;             &gt; matched rows       6
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         6
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 77)
+#&gt;             &gt; rows only in y  (200)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 80)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (79)
+#&gt;             &gt; rows only in y  (50)
+#&gt;             &gt; matched rows      1
+#&gt;             &gt;                 ====
+#&gt;             &gt; rows total        1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  ( 77)
+#&gt;             &gt; rows only in y  (348)
+#&gt;             &gt; matched rows       3
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         3
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  166)
+#&gt;             &gt; rows only in y  (1,299)
+#&gt;             &gt; matched rows        38
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          38
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (  183)
+#&gt;             &gt; rows only in y  (1,113)
+#&gt;             &gt; matched rows        21
+#&gt;             &gt;                 =======
+#&gt;             &gt; rows total          21
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (185)
+#&gt;             &gt; rows only in y  (465)
+#&gt;             &gt; matched rows      19
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total        19
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (198)
+#&gt;             &gt; rows only in y  (142)
+#&gt;             &gt; matched rows       6
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         6
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (202)
+#&gt;             &gt; rows only in y  (107)
+#&gt;             &gt; matched rows       2
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         2
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (113)
+#&gt;             &gt; rows only in y  (683)
+#&gt;             &gt; matched rows       9
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         9
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (121)
+#&gt;             &gt; rows only in y  (202)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (122)
+#&gt;             &gt; rows only in y  (114)
+#&gt;             &gt; matched rows       0
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         0
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (121)
+#&gt;             &gt; rows only in y  ( 50)
+#&gt;             &gt; matched rows       1
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         1
+#&gt; inner_join: added no columns
+#&gt;             &gt; rows only in x  (118)
+#&gt;             &gt; rows only in y  (347)
+#&gt;             &gt; matched rows       4
+#&gt;             &gt;                 =====
+#&gt;             &gt; rows total         4
 
 # check how well pr improves when going from 2 to 12 months on average
 pr %&gt;%
@@ -3811,9 +4443,9 @@ pr %&gt;%
   mutate(diff = pure_ccl_12m_vs_0m - pure_ccl_2m_vs_0m) %&gt;%
   pull(diff) %&gt;%
   mean()
-#&gt; filter: removed 100 rows (83%), 20 rows remaining
+#&gt; filter: removed 190 rows (90%), 20 rows remaining
 #&gt; select: dropped 6 variables (class, mm_genes, hs_genes, recall_ratio, precision, …)
-#&gt; spread: reorganized (study, recall) into (pure_ccl_2m_vs_0m, pure_ccl_12m_vs_0m) [was 20x4, now 10x4]
+#&gt; spread: reorganized (study, recall) into (pure_ccl_12m_vs_0m, pure_ccl_2m_vs_0m) [was 20x4, now 10x4]
 #&gt; [1] 0.182263
 
 saveRDS(pr, here(output_path, &quot;precision_recall.rds&quot;))</code></pre>
@@ -4431,7 +5063,7 @@ saveRDS(
   list(all = all_genes, top = top_consistent_genes),
   here(output_path, &quot;basel_gene_expression_levels.rds&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 03:47 minutes.</p>
+<p>Time spend to execute this analysis: 04:19 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
