@@ -7,7 +7,7 @@
 <!-- **Publication:** [![DOI](https://img.shields.io/badge/DOI-10.1186%2Fs13073--019--0615--0-blue.svg)][pub] -->
 
 **Data:**
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4568505.svg)](https://doi.org/10.5281/zenodo.4568505)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4407207.svg)](https://doi.org/10.5281/zenodo.4407207)
 <!-- badges: end -->
 
 This repository contains the code for the analyses presented in
