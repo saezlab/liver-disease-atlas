@@ -392,6 +392,12 @@ div.tocify {
       <a href="01-mouse-chronic-ccl4.html">CCl4 (chronic)</a>
     </li>
     <li>
+      <a href="01.1-mouse-chronic-ccl4-etoh.html">CCl4 + Ethanol (chronic)</a>
+    </li>
+    <li>
+      <a href="01.2-mouse-chronic-ccl4-wtd.html">CCl4 + WTD (chronic)</a>
+    </li>
+    <li>
       <a href="02-mouse-acute-apap.html">APAP (acute)</a>
     </li>
     <li>
@@ -489,7 +495,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://doi.org/10.5281/zenodo.4568505">
+  <a href="https://doi.org/10.5281/zenodo.4407207">
     <span class="fas fa-database"></span>
      
     Get data
@@ -544,7 +550,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-29
+<strong>Last updated:</strong> 2021-07-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -635,16 +641,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree1dfe908fbd90bc43aa5a3e244fdb6f7f21947634targetblank1dfe908a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/1dfe908fbd90bc43aa5a3e244fdb6f7f21947634" target="_blank">1dfe908</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree486340c31508276ffcdcb517fdfd4dd14fe68e80targetblank486340ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree1dfe908fbd90bc43aa5a3e244fdb6f7f21947634targetblank1dfe908a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/486340c31508276ffcdcb517fdfd4dd14fe68e80" target="_blank">486340c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/1dfe908fbd90bc43aa5a3e244fdb6f7f21947634" target="_blank">1dfe908</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -655,6 +661,8 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/01-mouse-chronic-ccl4_cache/
+    Ignored:    analysis/01.1-mouse-chronic-ccl4-etoh_cache/
+    Ignored:    analysis/01.2-mouse-chronic-ccl4-wtd_cache/
     Ignored:    analysis/02-mouse-acute-apap_cache/
     Ignored:    analysis/03-mouse-acute-ccl4_cache/
     Ignored:    analysis/04-mouse-acute-ph_cache/
@@ -697,6 +705,7 @@ Ignored files:
     Ignored:    data/mouse-acute-lps/
     Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-acute-tunicamycin/
+    Ignored:    data/mouse-chronic-ccl4-wtd/
     Ignored:    data/mouse-chronic-ccl4/
     Ignored:    external_software/.DS_Store
     Ignored:    external_software/README.html
@@ -713,6 +722,8 @@ Ignored files:
     Ignored:    figures/Figure 4.pdf
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
+    Ignored:    figures/Figure 5.png
+    Ignored:    figures/Figure 6.pdf
     Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
@@ -745,8 +756,10 @@ Ignored files:
     Ignored:    figures/Supplementary Figure 4.1.png
     Ignored:    figures/Supplementary Figure 4.2.pdf
     Ignored:    figures/Supplementary Figure 4.2.png
-    Ignored:    figures/Supplementary Figure 5.1.pdf
-    Ignored:    figures/Supplementary Figure 5.1.png
+    Ignored:    figures/Supplementary Figure 6.1.pdf
+    Ignored:    figures/Supplementary Figure 6.1.png
+    Ignored:    figures/Supplementary Figure 6.2.pdf
+    Ignored:    figures/Supplementary Figure 6.2.png
     Ignored:    figures/figures.key
     Ignored:    figures/histologies.key
     Ignored:    figures/panels/
@@ -805,6 +818,7 @@ Ignored files:
     Ignored:    output/meta-chronic-vs-acute/union_chronic_geneset.rds
     Ignored:    output/meta-chronic-vs-acute/z_score_pca.rds
     Ignored:    output/meta-mouse-vs-human/Icon
+    Ignored:    output/meta-mouse-vs-human/basel_gene_expression_levels.rds
     Ignored:    output/meta-mouse-vs-human/chronic_mouse_deg_numbers.rds
     Ignored:    output/meta-mouse-vs-human/consistent_genes.rds
     Ignored:    output/meta-mouse-vs-human/cross_species_enrichment.rds
@@ -911,6 +925,18 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
 
+Untracked files:
+    Untracked:  code/mouse-chronic-ccl4-etoh/
+    Untracked:  code/mouse-chronic-ccl4-wtd/
+    Untracked:  data/mouse-chronic-ccl4-etoh/
+    Untracked:  output/mouse-chronic-ccl4-etoh/
+    Untracked:  output/mouse-chronic-ccl4-wtd/
+
+Unstaged changes:
+    Modified:   README.Rmd
+    Modified:   README.md
+    Modified:   analysis/_site.yml
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -948,6 +974,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/1dfe908fbd90bc43aa5a3e244fdb6f7f21947634/analysis/23-plot-precision-recall.Rmd" target="_blank">1dfe908</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-07-06
+</td>
+<td>
+plot pr for combined treated models
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/a8fc0b0ef33652ed884fd637049dc52f82d43982/docs/23-plot-precision-recall.html" target="_blank">a8fc0b0</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1588,6 +1648,80 @@ christianholland
 </div>
 </div>
 </div>
+<div id="pr-scatter-plot-of-combined-mouse-models" class="section level2">
+<h2>PR scatter plot of combined mouse models</h2>
+<pre class="r"><code>keys &lt;- key_mm %&gt;%
+  distinct(study = contrast, label2)
+
+pr &lt;- readRDS(here(output_path, &quot;precision_recall.rds&quot;)) %&gt;%
+  left_join(keys, by = &quot;study&quot;) %&gt;%
+  mutate(label2 = coalesce(label2, study)) %&gt;%
+  mutate(regulation = fct_rev(str_to_title(regulation))) %&gt;%
+  mutate(x = case_when(
+    str_detect(label2, &quot;12 Month&quot;) ~ as.character(label2),
+    TRUE ~ NA_character_
+  )) %&gt;%
+  mutate(etiology = factor(etiology, levels = c(
+    &quot;NAFLD&quot;, &quot;NASH&quot;, &quot;HCV&quot;, &quot;PSC&quot;,
+    &quot;PBC&quot;
+  ))) %&gt;%
+  filter(str_detect(study, &quot;effect|ccl&quot;)) %&gt;%
+  mutate(label2 = case_when(
+    str_detect(study, &quot;ccl_effect$&quot;) ~ &quot;CCl4&quot;,
+    str_detect(study, &quot;etoh_effect&quot;) ~ &quot;EtOH&quot;,
+    str_detect(study, &quot;combined_effect$&quot;) ~ &quot;CCl4 + EtOH&quot;,
+    str_detect(study, &quot;combined_effect_12w&quot;) ~ &quot;CCl4 + WTD (12 Weeks)&quot;,
+    str_detect(study, &quot;combined_effect_24w&quot;) ~ &quot;CCl4 + WTD (24 Weeks)&quot;,
+    str_detect(study, &quot;wd_effect_12w&quot;) ~ &quot;WTD (12 Weeks)&quot;,
+    str_detect(study, &quot;wd_effect_24w&quot;) ~ &quot;WTD (24 Weeks)&quot;,
+    str_detect(study, &quot;ccl_effect_12w&quot;) ~ &quot;CCl4 (12 Weeks)&quot;,
+    str_detect(study, &quot;ccl_effect_24w&quot;) ~ &quot;CCl4 (24 Weeks)&quot;,
+    TRUE ~ as.character(label2)
+  )) %&gt;%
+  mutate(label2 = factor(label2, levels = c(
+    &quot;CCl4 (2 Months)&quot;, &quot;CCl4 (6 Months)&quot;, &quot;CCl4 (12 Months)&quot;,
+    &quot;CCl4&quot;, &quot;EtOH&quot;, &quot;CCl4 + EtOH&quot;, &quot;CCl4 (12 Weeks)&quot;, &quot;WTD (12 Weeks)&quot;,
+    &quot;CCl4 + WTD (12 Weeks)&quot;, &quot;CCl4 (24 Weeks)&quot;, &quot;WTD (24 Weeks)&quot;,
+    &quot;CCl4 + WTD (24 Weeks)&quot;
+  ))) %&gt;%
+  mutate(source = case_when(
+    str_detect(label2, &quot;Months&quot;) ~ &quot;Present study&quot;,
+    str_detect(label2, &quot;Weeks&quot;) ~ &quot;Tsuchida et al.&quot;,
+    TRUE ~ &quot;Furuya et al.&quot;
+  ))
+
+pr_plot_mm_etoh &lt;- pr %&gt;%
+  filter(source %in% c(&quot;Present study&quot;, &quot;Furuya et al.&quot;)) %&gt;%
+  ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
+  geom_point(aes(shape = source)) +
+  facet_rep_grid(regulation ~ etiology) +
+  geom_abline(lty = &quot;dashed&quot;) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = &quot;Recall&quot;, y = &quot;Precision&quot;, color = &quot;Mouse model&quot;, shape = &quot;Study&quot;) +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d(direction = -1, option = &quot;B&quot;) +
+  theme(legend.position = &quot;top&quot;) +
+  guides(col = guide_legend(order = 1, nrow = 3))
+
+pr_plot_mm_wtd &lt;- pr %&gt;%
+  filter(source == &quot;Tsuchida et al.&quot;) %&gt;%
+  ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
+  geom_point(aes(shape = source)) +
+  facet_rep_grid(regulation ~ etiology) +
+  geom_abline(lty = &quot;dashed&quot;) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = &quot;Recall&quot;, y = &quot;Precision&quot;, color = &quot;Mouse model&quot;, shape = &quot;Study&quot;) +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d(direction = -1, option = &quot;B&quot;) +
+  theme(legend.position = &quot;top&quot;) +
+  guides(col = guide_legend(order = 1, nrow = 3)) +
+  scale_x_continuous(breaks = c(0, 0.1, 0.2))
+
+pr_plot_mm_etoh</code></pre>
+<p><img src="figure/23-plot-precision-recall.Rmd/pr-scatter-plot-combined-mouse-models-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>pr_plot_mm_wtd</code></pre>
+<p><img src="figure/23-plot-precision-recall.Rmd/pr-scatter-plot-combined-mouse-models-2.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <div id="pr-scatter-plot-of-chronicity-categories" class="section level2">
 <h2>PR scatter plot of chronicity categories</h2>
 <pre class="r"><code>pr &lt;- readRDS(here(output_path, &quot;precision_recall_chronicity.rds&quot;)) %&gt;%
@@ -1663,8 +1797,8 @@ christianholland
 </div>
 <div id="collage" class="section level2">
 <h2>Collage</h2>
-<div id="figure-5" class="section level3">
-<h3>Figure 5</h3>
+<div id="figure-6" class="section level3">
+<h3>Figure 6</h3>
 <p>Main Figure.</p>
 <pre class="r"><code>upset_up &lt;- image_ggplot(image_read_pdf(here(&quot;figures/tmp/Fig5A1.pdf&quot;)),
   interpolate = TRUE
@@ -1676,7 +1810,7 @@ upset_down &lt;- image_ggplot(image_read_pdf(here(&quot;figures/tmp/Fig5A2.pdf&q
 )
 # file.remove(here(&quot;figures/tmp/Fig5A2.pdf&quot;))
 
-fig5 &lt;- (upset_up | upset_down) /
+fig6 &lt;- (upset_up | upset_down) /
   ((pr_plot_mm / pr_plot_category) + plot_layout(heights = c(1, 1))) +
   plot_layout(height = c(1, 3)) +
   plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;&quot;, &quot;B&quot;, &quot;C&quot;))) &amp;
@@ -1686,67 +1820,19 @@ fig5 &lt;- (upset_up | upset_down) /
     legend.key.width = unit(12.5, &quot;pt&quot;)
   )
 
-fig5</code></pre>
-<p><img src="figure/23-plot-precision-recall.Rmd/fig-5-1.png" width="793.92" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fig-5-1">
-Past versions of fig-5-1.png
-</button>
-</p>
-<div id="fig-fig-5-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/liver-disease-atlas/blob/f0ca2122832db17dd039a1b7fd47e5eb1f4b68f5/docs/figure/23-plot-precision-recall.Rmd/fig-5-1.png" target="_blank">f0ca212</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-03-04
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/23-plot-precision-recall.Rmd/fig-5-1.png" target="_blank">3340593</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-28
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+fig6</code></pre>
+<p><img src="figure/23-plot-precision-recall.Rmd/fig-6-1.png" width="793.92" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>
-ggsave(here(&quot;figures/Figure 5.pdf&quot;), fig5,
+ggsave(here(&quot;figures/Figure 6.pdf&quot;), fig6,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )
-ggsave(here(&quot;figures/Figure 5.png&quot;), fig5,
+ggsave(here(&quot;figures/Figure 6.png&quot;), fig6,
   width = 21, height = 29.7, units = c(&quot;cm&quot;)
 )</code></pre>
 </div>
-<div id="supplementary-figure-5.1" class="section level3">
-<h3>Supplementary Figure 5.1</h3>
-<pre class="r"><code>sfig5_1 &lt;- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) +
+<div id="supplementary-figure-6.1" class="section level3">
+<h3>Supplementary Figure 6.1</h3>
+<pre class="r"><code>sfig6_1 &lt;- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) +
   # ((tile_up + box_up) + plot_layout(width = c(4, 1), guides = &quot;collect&quot;)) /
   # ((tile_down + box_down) + plot_layout(width = c(4, 1), guides = &quot;collect&quot;)) +
   plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;&quot;, &quot;D&quot;))) &amp;
@@ -1756,53 +1842,36 @@ ggsave(here(&quot;figures/Figure 5.png&quot;), fig5,
     legend.key.width = unit(12.5, &quot;pt&quot;)
   )
 
-sfig5_1</code></pre>
-<p><img src="figure/23-plot-precision-recall.Rmd/fig-5-1-1.png" width="793.92" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-fig-5-1-1">
-Past versions of fig-5-1-1.png
-</button>
-</p>
-<div id="fig-fig-5-1-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/saezlab/liver-disease-atlas/blob/33405930060554ffa1db66f5dc43248dd861c91d/docs/figure/23-plot-precision-recall.Rmd/fig-5-1-1.png" target="_blank">3340593</a>
-</td>
-<td>
-christianholland
-</td>
-<td>
-2021-02-28
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+sfig6_1</code></pre>
+<p><img src="figure/23-plot-precision-recall.Rmd/fig-6-1-1.png" width="793.92" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>
-ggsave(here(&quot;figures/Supplementary Figure 5.1.pdf&quot;), sfig5_1,
+ggsave(here(&quot;figures/Supplementary Figure 6.1.pdf&quot;), sfig6_1,
   width = 21, height = 10, units = c(&quot;cm&quot;)
 )
-ggsave(here(&quot;figures/Supplementary Figure 5.1.png&quot;), sfig5_1,
+ggsave(here(&quot;figures/Supplementary Figure 6.1.png&quot;), sfig6_1,
   width = 21, height = 10, units = c(&quot;cm&quot;)
 )</code></pre>
-<p>Time spend to execute this analysis: 00:51 minutes.</p>
+</div>
+<div id="supplementary-figure-6.2" class="section level3">
+<h3>Supplementary Figure 6.2</h3>
+<pre class="r"><code>sfig6_2 &lt;- pr_plot_mm_etoh / pr_plot_mm_wtd &amp;
+  plot_annotation(tag_levels = list(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;&quot;, &quot;D&quot;))) &amp;
+  theme(
+    plot.tag = element_text(size = fz + 3, face = &quot;bold&quot;),
+    legend.key.height = unit(11.5, &quot;pt&quot;),
+    legend.key.width = unit(12.5, &quot;pt&quot;)
+  )
+
+sfig6_2</code></pre>
+<p><img src="figure/23-plot-precision-recall.Rmd/fig-6-2-1.png" width="793.92" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>
+ggsave(here(&quot;figures/Supplementary Figure 6.2.pdf&quot;), sfig6_2,
+  width = 21, height = 21, units = c(&quot;cm&quot;)
+)
+ggsave(here(&quot;figures/Supplementary Figure 6.2.png&quot;), sfig6_2,
+  width = 21, height = 21, units = c(&quot;cm&quot;)
+)</code></pre>
+<p>Time spend to execute this analysis: 00:59 minutes.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1811,7 +1880,7 @@ ggsave(here(&quot;figures/Supplementary Figure 5.1.png&quot;), sfig5_1,
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()
-#&gt; R version 4.0.2 (2020-06-22)
+#&gt; R version 4.0.5 (2021-03-31)
 #&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
 #&gt; Running under: macOS Mojave 10.14.5
 #&gt; 
@@ -1846,8 +1915,8 @@ ggsave(here(&quot;figures/Supplementary Figure 5.1.png&quot;), sfig5_1,
 #&gt; [29] git2r_0.27.1      farver_2.0.3      generics_0.1.0    ellipsis_0.3.1   
 #&gt; [33] withr_2.3.0       cli_2.2.0         magrittr_2.0.1    crayon_1.3.4     
 #&gt; [37] readxl_1.3.1      evaluate_0.14     fs_1.5.0          fansi_0.4.1      
-#&gt; [41] xml2_1.3.2        tools_4.0.2       hms_0.5.3         lifecycle_0.2.0  
-#&gt; [45] munsell_0.5.0     reprex_0.3.0      compiler_4.0.2    rlang_0.4.9      
+#&gt; [41] xml2_1.3.2        tools_4.0.5       hms_0.5.3         lifecycle_0.2.0  
+#&gt; [45] munsell_0.5.0     reprex_0.3.0      compiler_4.0.5    rlang_0.4.9      
 #&gt; [49] rstudioapi_0.13   labeling_0.4.2    rmarkdown_2.6     codetools_0.2-18 
 #&gt; [53] gtable_0.3.0      DBI_1.1.0         R6_2.5.0          gridExtra_2.3    
 #&gt; [57] lubridate_1.7.9.2 knitr_1.30        rprojroot_2.0.2   stringi_1.5.3    
