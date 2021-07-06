@@ -312,6 +312,12 @@ $(document).ready(function () {
       <a href="01-mouse-chronic-ccl4.html">CCl4 (chronic)</a>
     </li>
     <li>
+      <a href="01.1-mouse-chronic-ccl4-etoh.html">CCl4 + Ethanol (chronic)</a>
+    </li>
+    <li>
+      <a href="01.2-mouse-chronic-ccl4-wtd.html">CCl4 + WTD (chronic)</a>
+    </li>
+    <li>
       <a href="02-mouse-acute-apap.html">APAP (acute)</a>
     </li>
     <li>
@@ -409,7 +415,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://doi.org/10.5281/zenodo.4568505">
+  <a href="https://doi.org/10.5281/zenodo.4407207">
     <span class="fas fa-database"></span>
      
     Get data
@@ -456,7 +462,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-13
+<strong>Last updated:</strong> 2021-07-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -547,16 +553,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree23ddf4693836784286a564030f83ac52ca96086etargetblank23ddf46a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/23ddf4693836784286a564030f83ac52ca96086e" target="_blank">23ddf46</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastreeb749f15eba32cfaa88626b256d2d9158b9fd33f5targetblankb749f15a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree23ddf4693836784286a564030f83ac52ca96086etargetblank23ddf46a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/b749f15eba32cfaa88626b256d2d9158b9fd33f5" target="_blank">b749f15</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/23ddf4693836784286a564030f83ac52ca96086e" target="_blank">23ddf46</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -567,6 +573,8 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/01-mouse-chronic-ccl4_cache/
+    Ignored:    analysis/01.1-mouse-chronic-ccl4-etoh_cache/
+    Ignored:    analysis/01.2-mouse-chronic-ccl4-wtd_cache/
     Ignored:    analysis/02-mouse-acute-apap_cache/
     Ignored:    analysis/03-mouse-acute-ccl4_cache/
     Ignored:    analysis/04-mouse-acute-ph_cache/
@@ -610,6 +618,7 @@ Ignored files:
     Ignored:    data/mouse-acute-lps/
     Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-acute-tunicamycin/
+    Ignored:    data/mouse-chronic-ccl4-wtd/
     Ignored:    data/mouse-chronic-ccl4/
     Ignored:    external_software/.DS_Store
     Ignored:    external_software/README.html
@@ -627,6 +636,7 @@ Ignored files:
     Ignored:    figures/Figure 4.png
     Ignored:    figures/Figure 5.pdf
     Ignored:    figures/Figure 5.png
+    Ignored:    figures/Figure 6.pdf
     Ignored:    figures/Figure 6.png
     Ignored:    figures/Icon
     Ignored:    figures/Supplementary Figure 0.1.pdf
@@ -659,8 +669,10 @@ Ignored files:
     Ignored:    figures/Supplementary Figure 4.1.png
     Ignored:    figures/Supplementary Figure 4.2.pdf
     Ignored:    figures/Supplementary Figure 4.2.png
-    Ignored:    figures/Supplementary Figure 5.1.pdf
-    Ignored:    figures/Supplementary Figure 5.1.png
+    Ignored:    figures/Supplementary Figure 6.1.pdf
+    Ignored:    figures/Supplementary Figure 6.1.png
+    Ignored:    figures/Supplementary Figure 6.2.pdf
+    Ignored:    figures/Supplementary Figure 6.2.png
     Ignored:    figures/figures.key
     Ignored:    figures/histologies.key
     Ignored:    figures/panels/
@@ -826,6 +838,22 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
 
+Untracked files:
+    Untracked:  analysis/01.1-mouse-chronic-ccl4-etoh.Rmd
+    Untracked:  analysis/01.2-mouse-chronic-ccl4-wtd.Rmd
+    Untracked:  code/mouse-chronic-ccl4-etoh/
+    Untracked:  code/mouse-chronic-ccl4-wtd/
+    Untracked:  data/mouse-chronic-ccl4-etoh/
+    Untracked:  output/mouse-chronic-ccl4-etoh/
+    Untracked:  output/mouse-chronic-ccl4-wtd/
+
+Unstaged changes:
+    Modified:   README.Rmd
+    Modified:   README.md
+    Modified:   analysis/14-meta-mouse-vs-human.Rmd
+    Modified:   analysis/23-plot-precision-recall.Rmd
+    Modified:   analysis/_site.yml
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -863,6 +891,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/23ddf4693836784286a564030f83ac52ca96086e/analysis/index.Rmd" target="_blank">23ddf46</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-07-06
+</td>
+<td>
+minor changes
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/8a7548e4d9bd50b5091f114ce503aec3f0a3d9c8/docs/index.html" target="_blank">8a7548e</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-06-13
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1737,25 +1799,21 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<div id="transcriptomic-cross-species-analysis-of-chronic-liver-disease-reveals-a-consistent-regulation-pattern-between-humans-and-mice" class="section level1">
-<h1>Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice</h1>
-<p>The results and the analysis scripts presented on this website ensures the reproducibility of all bioinformatics related findings presented in <a href=""><em>“Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice”</em></a>. Please see below to get more information about the individual analysis and some tips on how to reproduce the results.</p>
+<div id="transcriptomic-cross-species-analysis-of-chronic-liver-disease-reveals-consistent-regulation-between-humans-and-mice" class="section level1">
+<h1>Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice</h1>
+<p>The results and the analysis scripts presented on this website ensures the reproducibility of all bioinformatics related findings presented in <a href=""><em>“Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice”</em></a>. Please see below to get more information about the individual analysis and some tips on how to reproduce the results.</p>
 <div id="abstract" class="section level2">
 <h2>Abstract</h2>
 <div id="background-and-aims" class="section level3">
 <h3>Background and aims</h3>
 <p>Mouse models are frequently used to study chronic liver diseases (CLD). To assess their translational relevance, we quantified the similarity of commonly used mouse models to human CLD based on transcriptome data.</p>
 </div>
-<div id="methods" class="section level3">
-<h3>Methods</h3>
-<p>Gene expression data from 372 patients were compared to data from acute and chronic mouse models comprising 227 mice, and additionally to nine published gene sets of chronic mouse models. Genes consistently altered in humans and mice were mapped to liver cell types based on single-cell RNA-sequencing data and validated by immunostaining.</p>
+<div id="approach-results" class="section level3">
+<h3>Approach &amp; Results</h3>
+<p>Gene expression data from 372 patients were compared to data from acute and chronic mouse models comprising 227 mice, and additionally to nine published gene sets of chronic mouse models. Genes consistently altered in humans and mice were mapped to liver cell types based on single-cell RNA-sequencing data and validated by immunostaining. Considering the top differentially expressed genes, the similarity between humans and mice varied among the mouse models and depended on the period of damage induction. The highest recall (0.4) and precision (0.33) were observed for the model with 12 months damage induction by CCl4 and by a Western diet, respectively. Genes consistently upregulated between the chronic CCl4 model and human CLD were enriched in inflammatory and developmental processes, and mostly mapped to cholangiocytes, macrophages, endothelial and mesenchymal cells. Downregulated genes were enriched in metabolic processes and mapped to hepatocytes. Immunostaining confirmed the regulation of selected genes and their cell type specificity. Genes that were upregulated in both acute and chronic models showed higher recall and precision with respect to human CLD than exclusively acute or chronic genes.</p>
 </div>
-<div id="results" class="section level3">
-<h3>Results</h3>
-<p>Considering the top differentially expressed genes, the similarity between humans and mice varied among the mouse models and depended on the period of damage induction. The highest recall (0.4) and precision (0.33) were observed for the model with 12 months damage induction by CCl4 and by a Western type damage, respectively. Genes consistently upregulated between the chronic CCl4 model and human CLD were enriched in inflammatory and developmental processes, and mapped to cholangiocytes, macrophages, endothelial and mesenchymal cells. Downregulated genes were enriched in metabolic processes and mapped to hepatocytes. Immunostaining confirmed the regulation of selected genes and their cell type specificity. Genes that were upregulated in both acute and chronic models showed higher recall and precision with respect to human CLD than exclusively acute or chronic genes.</p>
-</div>
-<div id="conclusion" class="section level3">
-<h3>Conclusion</h3>
+<div id="conclusions" class="section level3">
+<h3>Conclusions</h3>
 <p>Similarly regulated genes in human and mouse CLD were identified. Despite major interspecies differences, mouse models detected 40% of the genes significantly altered in human CLD. The translational relevance of individual genes can be assessed at <a href="https://saezlab.shinyapps.io/liverdiseaseatlas/" class="uri">https://saezlab.shinyapps.io/liverdiseaseatlas/</a>.</p>
 </div>
 </div>
@@ -1792,13 +1850,13 @@ Start workflowr project.
 <h2>How can I reproduce the analysis?</h2>
 <p>We have used the <a href="https://jdblischak.github.io/workflowr/">workflowr</a> package to organize the analysis scripts within this project so please familiarize yourself with its concept.</p>
 <ol style="list-style-type: decimal">
-<li>Clone the repository from <a href="https://github.com/saezlab/liver-disease-atlas" class="uri">https://github.com/saezlab/liver-disease-atlas</a> which automatically provides you with all analysis scripts and the correct directory structure.</li>
+<li>Clone the repository from <a href="https://github.com/saezlab/liver-disease-atlas" class="uri">https://github.com/saezlab/liver-disease-atlas</a> which automatically provides you with all analysis scripts and the directory structure.</li>
 <li>You need to install all packages that are required for the analyses. The package <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> allows you to easily install the packages with the correct versions:</li>
 </ol>
 <pre class="r"><code>install.packages(&quot;renv&quot;)
 renv::restore()</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at Zenodo <a href="https://doi.org/10.5281/zenodo.4568505"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4568505.svg" alt="DOI" /></a>. Download the zipped <code>data</code> folder unzip it and replace the existing <code>data</code> folder at the root level of the R-project.</p></li>
+<li><p>The GitHub repository contains only the analysis code and same small objects. All raw data is deposited at Zenodo <a href="https://doi.org/10.5281/zenodo.4407207"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4407207.svg" alt="DOI" /></a>. Download the zipped <code>data</code> folder unzip it and replace the existing <code>data</code> folder at the root level of the R-project.</p></li>
 <li><p>Run all analyses by running</p></li>
 </ol>
 <pre class="r"><code>install.packages(&quot;workflowr&quot;)
@@ -1808,7 +1866,7 @@ workflowr::wflow_build(republish = TRUE)</code></pre>
 <div id="how-to-cite" class="section level2">
 <h2>How to cite?</h2>
 <blockquote>
-<p>Holland CH, Ramirez Flores RO, Myllys M, Hassan R, Edlund K, Hofmann U, Marchan R, Cadenas C, Reinders J, Hoehme S, Seddek A, Dooley S, Keitel V, Godoy P, Begher-Tibbe B, Trautwein C, Rupp C, Mueller S, Longerich T, Hengstler JG<sup>#</sup>, Saez-Rodriguez J<sup>#</sup>, Ghallab A<sup>#</sup>. “Transcriptomic cross-species analysis of chronic liver disease reveals a consistent regulation pattern between humans and mice.” <em>In preparation</em>. 2021.</p>
+<p>Holland CH, Ramirez Flores RO, Myllys M, Hassan R, Edlund K, Hofmann U, Marchan R, Cadenas C, Reinders J, Hoehme S, Seddek A, Dooley S, Keitel V, Godoy P, Begher-Tibbe B, Trautwein C, Rupp C, Mueller S, Longerich T, Hengstler JG<sup>#</sup>, Saez-Rodriguez J<sup>#</sup>, Ghallab A<sup>#</sup>. “Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice.” <em>In preparation</em>. 2021.</p>
 </blockquote>
 <p><sup>#</sup><em>Shared senior authorship</em></p>
 <br>
