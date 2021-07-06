@@ -340,6 +340,79 @@ pr_plot_mm <- pr %>%
 pr_plot_mm
 ```
 
+## PR scatter plot of combined mouse models
+```{r pr-scatter-plot-combined-mouse-models}
+keys <- key_mm %>%
+  distinct(study = contrast, label2)
+
+pr <- readRDS(here(output_path, "precision_recall.rds")) %>%
+  left_join(keys, by = "study") %>%
+  mutate(label2 = coalesce(label2, study)) %>%
+  mutate(regulation = fct_rev(str_to_title(regulation))) %>%
+  mutate(x = case_when(
+    str_detect(label2, "12 Month") ~ as.character(label2),
+    TRUE ~ NA_character_
+  )) %>%
+  mutate(etiology = factor(etiology, levels = c(
+    "NAFLD", "NASH", "HCV", "PSC",
+    "PBC"
+  ))) %>%
+  filter(str_detect(study, "effect|ccl")) %>%
+  mutate(label2 = case_when(
+    str_detect(study, "ccl_effect$") ~ "CCl4",
+    str_detect(study, "etoh_effect") ~ "EtOH",
+    str_detect(study, "combined_effect$") ~ "CCl4 + EtOH",
+    str_detect(study, "combined_effect_12w") ~ "CCl4 + WTD (12 Weeks)",
+    str_detect(study, "combined_effect_24w") ~ "CCl4 + WTD (24 Weeks)",
+    str_detect(study, "wd_effect_12w") ~ "WTD (12 Weeks)",
+    str_detect(study, "wd_effect_24w") ~ "WTD (24 Weeks)",
+    str_detect(study, "ccl_effect_12w") ~ "CCl4 (12 Weeks)",
+    str_detect(study, "ccl_effect_24w") ~ "CCl4 (24 Weeks)",
+    TRUE ~ as.character(label2)
+  )) %>%
+  mutate(label2 = factor(label2, levels = c(
+    "CCl4 (2 Months)", "CCl4 (6 Months)", "CCl4 (12 Months)",
+    "CCl4", "EtOH", "CCl4 + EtOH", "CCl4 (12 Weeks)", "WTD (12 Weeks)",
+    "CCl4 + WTD (12 Weeks)", "CCl4 (24 Weeks)", "WTD (24 Weeks)",
+    "CCl4 + WTD (24 Weeks)"
+  ))) %>%
+  mutate(source = case_when(
+    str_detect(label2, "Months") ~ "Present study",
+    str_detect(label2, "Weeks") ~ "Tsuchida et al.",
+    TRUE ~ "Furuya et al."
+  ))
+
+pr_plot_mm_etoh <- pr %>%
+  filter(source %in% c("Present study", "Furuya et al.")) %>%
+  ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
+  geom_point(aes(shape = source)) +
+  facet_rep_grid(regulation ~ etiology) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision", color = "Mouse model", shape = "Study") +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d(direction = -1, option = "B") +
+  theme(legend.position = "top") +
+  guides(col = guide_legend(order = 1, nrow = 3))
+
+pr_plot_mm_wtd <- pr %>%
+  filter(source == "Tsuchida et al.") %>%
+  ggplot(aes(x = recall, y = precision, label = x, color = label2)) +
+  geom_point(aes(shape = source)) +
+  facet_rep_grid(regulation ~ etiology) +
+  geom_abline(lty = "dashed") +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "Recall", y = "Precision", color = "Mouse model", shape = "Study") +
+  my_theme(fsize = fz) +
+  scale_color_viridis_d(direction = -1, option = "B") +
+  theme(legend.position = "top") +
+  guides(col = guide_legend(order = 1, nrow = 3)) +
+  scale_x_continuous(breaks = c(0, 0.1, 0.2))
+
+pr_plot_mm_etoh
+pr_plot_mm_wtd
+```
+
 ## PR scatter plot of chronicity categories
 ```{r pr-scatter-plot-chronicity}
 pr <- readRDS(here(output_path, "precision_recall_chronicity.rds")) %>%
@@ -378,9 +451,9 @@ pr_plot_category
 
 
 ## Collage
-### Figure 5
+### Figure 6
 Main Figure.
-```{r fig-5, fig.width=8.27, fig.height=11.69}
+```{r fig-6, fig.width=8.27, fig.height=11.69}
 upset_up <- image_ggplot(image_read_pdf(here("figures/tmp/Fig5A1.pdf")),
   interpolate = TRUE
 )
@@ -391,7 +464,7 @@ upset_down <- image_ggplot(image_read_pdf(here("figures/tmp/Fig5A2.pdf")),
 )
 # file.remove(here("figures/tmp/Fig5A2.pdf"))
 
-fig5 <- (upset_up | upset_down) /
+fig6 <- (upset_up | upset_down) /
   ((pr_plot_mm / pr_plot_category) + plot_layout(heights = c(1, 1))) +
   plot_layout(height = c(1, 3)) +
   plot_annotation(tag_levels = list(c("A", "", "B", "C"))) &
@@ -401,19 +474,19 @@ fig5 <- (upset_up | upset_down) /
     legend.key.width = unit(12.5, "pt")
   )
 
-fig5
+fig6
 
-ggsave(here("figures/Figure 5.pdf"), fig5,
+ggsave(here("figures/Figure 6.pdf"), fig6,
   width = 21, height = 29.7, units = c("cm")
 )
-ggsave(here("figures/Figure 5.png"), fig5,
+ggsave(here("figures/Figure 6.png"), fig6,
   width = 21, height = 29.7, units = c("cm")
 )
 ```
 
-### Supplementary Figure 5.1
-```{r fig-5-1, fig.width=8.27, fig.height=11.69}
-sfig5_1 <- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) +
+### Supplementary Figure 6.1
+```{r fig-6-1, fig.width=8.27, fig.height=11.69}
+sfig6_1 <- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) +
   # ((tile_up + box_up) + plot_layout(width = c(4, 1), guides = "collect")) /
   # ((tile_down + box_down) + plot_layout(width = c(4, 1), guides = "collect")) +
   plot_annotation(tag_levels = list(c("A", "B", "C", "", "D"))) &
@@ -423,15 +496,36 @@ sfig5_1 <- ((num_genes | gs_sim) + plot_layout(width = c(1, 2))) +
     legend.key.width = unit(12.5, "pt")
   )
 
-sfig5_1
+sfig6_1
 
-ggsave(here("figures/Supplementary Figure 5.1.pdf"), sfig5_1,
+ggsave(here("figures/Supplementary Figure 6.1.pdf"), sfig6_1,
   width = 21, height = 10, units = c("cm")
 )
-ggsave(here("figures/Supplementary Figure 5.1.png"), sfig5_1,
+ggsave(here("figures/Supplementary Figure 6.1.png"), sfig6_1,
   width = 21, height = 10, units = c("cm")
 )
 ```
+
+### Supplementary Figure 6.2
+```{r fig-6-2, fig.width=8.27, fig.height=11.69}
+sfig6_2 <- pr_plot_mm_etoh / pr_plot_mm_wtd &
+  plot_annotation(tag_levels = list(c("A", "B", "C", "", "D"))) &
+  theme(
+    plot.tag = element_text(size = fz + 3, face = "bold"),
+    legend.key.height = unit(11.5, "pt"),
+    legend.key.width = unit(12.5, "pt")
+  )
+
+sfig6_2
+
+ggsave(here("figures/Supplementary Figure 6.2.pdf"), sfig6_2,
+  width = 21, height = 21, units = c("cm")
+)
+ggsave(here("figures/Supplementary Figure 6.2.png"), sfig6_2,
+  width = 21, height = 21, units = c("cm")
+)
+```
+
 
 ```{r wall-time-end, cache=FALSE, include=FALSE}
 duration <- abs(as.numeric(difftime(Sys.time(), start_time, units = "secs")))
