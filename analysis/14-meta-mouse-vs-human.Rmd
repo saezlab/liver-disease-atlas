@@ -950,9 +950,34 @@ chronic <- readRDS(here("output/mouse-chronic-ccl4/limma_result_hs.rds")) %>%
   mutate(class = "chronic") %>%
   distinct(gene, study = contrast, regulation, class)
 
+# combined effect models
+etoh <- readRDS(here("output/mouse-chronic-ccl4-etoh/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "effect") %>%
+  select(gene, contrast,
+    logfc = logFC, fdr, regulation,
+    source = contrast_reference
+  ) %>%
+  assign_deg(
+    fdr_cutoff = 0.05, effect_size_cutoff = log2(1.5),
+    effect_size_id = logfc
+  ) %>%
+  filter(regulation != "ns") %>%
+  mutate(class = "etoh") %>%
+  distinct(gene, study = contrast, regulation, class)
+
+wtd <- readRDS(here("output/mouse-chronic-ccl4-wtd/limma_result_hs.rds")) %>%
+  filter(contrast_reference == "combined_effect") %>%
+  select(gene, contrast,
+    logfc = logFC, source = contrast_reference
+  ) %>%
+  filter(abs(logfc) >= 2) %>%
+  mutate(regulation = if_else(logfc >= 0, "up", "down")) %>%
+  mutate(class = "wtd") %>%
+  distinct(gene, study = contrast, regulation, class)
+
 
 # merge gene pools of all chronic mouse models
-mm <- bind_rows(teufel_genes, chronic)
+mm <- bind_rows(teufel_genes, chronic, etoh, wtd)
 
 setup <- mm %>%
   mutate(key = "key") %>%

@@ -13,6 +13,7 @@ analysis/site_libs
 data/**/*.rds
 data/**/*.xlsx
 data/**/*.txt
+data/**/*.txt.gz
 data/**/stem
 data/**/*.CEL
 data/**/*.CEL.gz
@@ -33,4 +34,4 @@ figures/**/*.tiff
 
 geo_submission/*
 data.zip
-Icon[]
+Icon

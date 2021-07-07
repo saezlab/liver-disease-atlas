@@ -10,6 +10,10 @@ navbar:
     menu:
     - text: "CCl4 (chronic)"
       href: "01-mouse-chronic-ccl4.html"
+    - text: "CCl4 + Ethanol (chronic)"
+      href: "01.1-mouse-chronic-ccl4-etoh.html"
+    - text: "CCl4 + WTD (chronic)"
+      href: "01.2-mouse-chronic-ccl4-wtd.html"
     - text: "APAP (acute)"
       href: "02-mouse-acute-apap.html"
     - text: "CCl4 (acute)"
@@ -63,7 +67,7 @@ navbar:
         href: "23-plot-precision-recall.html"
   right:
   - text: "Get data"
-    href: https://doi.org/10.5281/zenodo.4568505
+    href: https://doi.org/10.5281/zenodo.4407207
     icon: fas fa-database
   - text: "Source code"
     icon: fab fa-github
