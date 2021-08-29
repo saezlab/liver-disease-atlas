@@ -13,13 +13,22 @@
 
 <title>Home</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -46,11 +55,6 @@ div.section {
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -63,32 +67,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 
@@ -99,10 +77,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -119,40 +93,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -180,7 +127,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -192,7 +139,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -203,10 +150,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -218,7 +178,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -433,7 +392,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -462,7 +421,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-07-06
+<strong>Last updated:</strong> 2021-08-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -553,16 +512,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree23ddf4693836784286a564030f83ac52ca96086etargetblank23ddf46a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/23ddf4693836784286a564030f83ac52ca96086e" target="_blank">23ddf46</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree86f5347796287e2fb5511de33c2b81966a1ae3c7targetblank86f5347a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/saezlab/liver-disease-atlas/tree/86f5347796287e2fb5511de33c2b81966a1ae3c7" target="_blank">86f5347</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree23ddf4693836784286a564030f83ac52ca96086etargetblank23ddf46a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomsaezlabliverdiseaseatlastree86f5347796287e2fb5511de33c2b81966a1ae3c7targetblank86f5347a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/23ddf4693836784286a564030f83ac52ca96086e" target="_blank">23ddf46</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/saezlab/liver-disease-atlas/tree/86f5347796287e2fb5511de33c2b81966a1ae3c7" target="_blank">86f5347</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -618,7 +577,28 @@ Ignored files:
     Ignored:    data/mouse-acute-lps/
     Ignored:    data/mouse-acute-ph/
     Ignored:    data/mouse-acute-tunicamycin/
-    Ignored:    data/mouse-chronic-ccl4-wtd/
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375272_TF-CCL4-1-41_CCl4_study_OO_0D_GCCAAT_L001.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375273_TF-CCL4-2-42_CCl4_study_OO_0D_CGTACG_L003.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375274_TF-CCL4-3-43_CCl4_study_CCl4_0D_TGACCA_L004.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375275_TF-CCL4-4-44_CCl4_study_CCl4_0D_GTGAAA_L006.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375276_TF-CCL4-5-45_CCl4_study_2-3_OO_chow_28D_GGCTAC_L005.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375277_TF-CCL4-6-46_CCl4_study_2-3_OO_HFD_EtOH_28D_AGTTCC_L002.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375278_TF-CCL4-12-52_CCl4_study_2-4_OO_OO_chow_28D_ATCACG_L004.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375279_TF-CCL4-13-53_CCl4_study_2-4_OO_OO_HFD_EtOH_28D_CAGATC_L003.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375280_TF-CCL4-14-54_CCl4_study_2-4_OO_OO_HFD_EtOH_28D_GTTTCG_L003.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375281_TF-CCL4-15-55_CCl4_study_2-4_OO_OO_HFD_EtOH_28D_CAGATC_L001.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375282_TF-CCL4-16-56_CCl4_study_2-4_CCl4_CCl4_chow_28D_ACTTGA_L003.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375283_TF-CCL4-17-57_CCl4_study_2-4_CCl4_CCl4_chow_28D_TAGCTT_L005.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375284_TF-CCL4-18-58_CCl4_study_2-4_CCl4_CCl4_HFD_EtOH_28D_AGTCAA_L002.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375285_TF-CCL4-19-59_CCl4_study_2-4_CCl4_CCl4_HFD_EtOH_28D_TTAGGC_L004.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/GSM3375286_TF-CCL4-20-60_CCl4_study_2-4_CCl4_CCl4_HFD_EtOH_28D_GTCCGC_L006.counts.txt.gz
+    Ignored:    data/mouse-chronic-ccl4-etoh/Icon
+    Ignored:    data/mouse-chronic-ccl4-etoh/count_matrix.rds
+    Ignored:    data/mouse-chronic-ccl4-etoh/meta_data.rds
+    Ignored:    data/mouse-chronic-ccl4-wtd/GSE99010-GPL17021_series_matrix.txt
+    Ignored:    data/mouse-chronic-ccl4-wtd/Icon
+    Ignored:    data/mouse-chronic-ccl4-wtd/count_matrix.rds
+    Ignored:    data/mouse-chronic-ccl4-wtd/meta_data.rds
     Ignored:    data/mouse-chronic-ccl4/
     Ignored:    external_software/.DS_Store
     Ignored:    external_software/README.html
@@ -817,6 +797,15 @@ Ignored files:
     Ignored:    output/mouse-acute-tunicamycin/normalized_expression.rds
     Ignored:    output/mouse-acute-tunicamycin/pca_result.rds
     Ignored:    output/mouse-acute-tunicamycin/z_scores.rds
+    Ignored:    output/mouse-chronic-ccl4-etoh/limma_result.rds
+    Ignored:    output/mouse-chronic-ccl4-etoh/limma_result_hs.rds
+    Ignored:    output/mouse-chronic-ccl4-etoh/normalized_expression.rds
+    Ignored:    output/mouse-chronic-ccl4-etoh/pca_result.rds
+    Ignored:    output/mouse-chronic-ccl4-wtd/Icon
+    Ignored:    output/mouse-chronic-ccl4-wtd/limma_result.rds
+    Ignored:    output/mouse-chronic-ccl4-wtd/limma_result_hs.rds
+    Ignored:    output/mouse-chronic-ccl4-wtd/normalized_expression.rds
+    Ignored:    output/mouse-chronic-ccl4-wtd/pca_result.rds
     Ignored:    output/mouse-chronic-ccl4/.DS_Store
     Ignored:    output/mouse-chronic-ccl4/Icon
     Ignored:    output/mouse-chronic-ccl4/limma_result.rds
@@ -838,21 +827,9 @@ Ignored files:
     Ignored:    tables/Supplementary Table xy human_degs.xlsx
     Ignored:    tables/Supplementary Table xy stem_results.xlsx
 
-Untracked files:
-    Untracked:  analysis/01.1-mouse-chronic-ccl4-etoh.Rmd
-    Untracked:  analysis/01.2-mouse-chronic-ccl4-wtd.Rmd
-    Untracked:  code/mouse-chronic-ccl4-etoh/
-    Untracked:  code/mouse-chronic-ccl4-wtd/
-    Untracked:  data/mouse-chronic-ccl4-etoh/
-    Untracked:  output/mouse-chronic-ccl4-etoh/
-    Untracked:  output/mouse-chronic-ccl4-wtd/
-
 Unstaged changes:
     Modified:   README.Rmd
     Modified:   README.md
-    Modified:   analysis/14-meta-mouse-vs-human.Rmd
-    Modified:   analysis/23-plot-precision-recall.Rmd
-    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -891,6 +868,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/saezlab/liver-disease-atlas/blob/86f5347796287e2fb5511de33c2b81966a1ae3c7/analysis/index.Rmd" target="_blank">86f5347</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-08-29
+</td>
+<td>
+updated link to pub
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/saezlab/liver-disease-atlas/cf7aefa3d9459066bba0b1474f023338580f14fc/docs/index.html" target="_blank">cf7aefa</a>
+</td>
+<td>
+christianholland
+</td>
+<td>
+2021-07-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1801,21 +1812,10 @@ Start workflowr project.
 </div>
 <div id="transcriptomic-cross-species-analysis-of-chronic-liver-disease-reveals-consistent-regulation-between-humans-and-mice" class="section level1">
 <h1>Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice</h1>
-<p>The results and the analysis scripts presented on this website ensures the reproducibility of all bioinformatics related findings presented in <a href=""><em>“Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice”</em></a>. Please see below to get more information about the individual analysis and some tips on how to reproduce the results.</p>
+<p>The results and the analysis scripts presented on this website ensures the reproducibility of all bioinformatics related findings presented in <a href="https://doi.org/10.1002/hep4.1797"><em>“Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice”</em></a>. Please see below to get more information about the individual analysis and instructions on how to reproduce the results.</p>
 <div id="abstract" class="section level2">
 <h2>Abstract</h2>
-<div id="background-and-aims" class="section level3">
-<h3>Background and aims</h3>
-<p>Mouse models are frequently used to study chronic liver diseases (CLD). To assess their translational relevance, we quantified the similarity of commonly used mouse models to human CLD based on transcriptome data.</p>
-</div>
-<div id="approach-results" class="section level3">
-<h3>Approach &amp; Results</h3>
-<p>Gene expression data from 372 patients were compared to data from acute and chronic mouse models comprising 227 mice, and additionally to nine published gene sets of chronic mouse models. Genes consistently altered in humans and mice were mapped to liver cell types based on single-cell RNA-sequencing data and validated by immunostaining. Considering the top differentially expressed genes, the similarity between humans and mice varied among the mouse models and depended on the period of damage induction. The highest recall (0.4) and precision (0.33) were observed for the model with 12 months damage induction by CCl4 and by a Western diet, respectively. Genes consistently upregulated between the chronic CCl4 model and human CLD were enriched in inflammatory and developmental processes, and mostly mapped to cholangiocytes, macrophages, endothelial and mesenchymal cells. Downregulated genes were enriched in metabolic processes and mapped to hepatocytes. Immunostaining confirmed the regulation of selected genes and their cell type specificity. Genes that were upregulated in both acute and chronic models showed higher recall and precision with respect to human CLD than exclusively acute or chronic genes.</p>
-</div>
-<div id="conclusions" class="section level3">
-<h3>Conclusions</h3>
-<p>Similarly regulated genes in human and mouse CLD were identified. Despite major interspecies differences, mouse models detected 40% of the genes significantly altered in human CLD. The translational relevance of individual genes can be assessed at <a href="https://saezlab.shinyapps.io/liverdiseaseatlas/" class="uri">https://saezlab.shinyapps.io/liverdiseaseatlas/</a>.</p>
-</div>
+<p>Mouse models are frequently used to study chronic liver diseases (CLDs). To assess their translational relevance, we quantified the similarity of commonly used mouse models to human CLDs based on transcriptome data. Gene‐expression data from 372 patients were compared with data from acute and chronic mouse models consisting of 227 mice, and additionally to nine published gene sets of chronic mouse models. Genes consistently altered in humans and mice were mapped to liver cell types based on single‐cell RNA‐sequencing data and validated by immunostaining. Considering the top differentially expressed genes, the similarity between humans and mice varied among the mouse models and depended on the period of damage induction. The highest recall (0.4) and precision (0.33) were observed for the model with 12‐months damage induction by CCl4 and by a Western diet, respectively. Genes consistently up‐regulated between the chronic CCl4 model and human CLDs were enriched in inflammatory and developmental processes, and mostly mapped to cholangiocytes, macrophages, and endothelial and mesenchymal cells. Down‐regulated genes were enriched in metabolic processes and mapped to hepatocytes. Immunostaining confirmed the regulation of selected genes and their cell type specificity. Genes that were up‐regulated in both acute and chronic models showed higher recall and precision with respect to human CLDs than exclusively acute or chronic genes. Conclusion: Similarly, regulated genes in human and mouse CLDs were identified. Despite major interspecies differences, mouse models detected 40% of the genes significantly altered in human CLD. The translational relevance of individual genes can be assessed at <a href="https://saezlab.shinyapps.io/liverdiseaseatlas/" class="uri">https://saezlab.shinyapps.io/liverdiseaseatlas/</a>.</p>
 </div>
 <div id="analysis" class="section level2">
 <h2>Analysis</h2>
@@ -1846,8 +1846,8 @@ Start workflowr project.
 </ul>
 <p>The tab <code>Figures</code> contains Rmarkdown scripts to generate the figures used in the manuscript.</p>
 </div>
-<div id="how-can-i-reproduce-the-analysis" class="section level2">
-<h2>How can I reproduce the analysis?</h2>
+<div id="how-can-i-reproduce-the-analyses" class="section level2">
+<h2>How can I reproduce the analyses?</h2>
 <p>We have used the <a href="https://jdblischak.github.io/workflowr/">workflowr</a> package to organize the analysis scripts within this project so please familiarize yourself with its concept.</p>
 <ol style="list-style-type: decimal">
 <li>Clone the repository from <a href="https://github.com/saezlab/liver-disease-atlas" class="uri">https://github.com/saezlab/liver-disease-atlas</a> which automatically provides you with all analysis scripts and the directory structure.</li>
@@ -1866,7 +1866,7 @@ workflowr::wflow_build(republish = TRUE)</code></pre>
 <div id="how-to-cite" class="section level2">
 <h2>How to cite?</h2>
 <blockquote>
-<p>Holland CH, Ramirez Flores RO, Myllys M, Hassan R, Edlund K, Hofmann U, Marchan R, Cadenas C, Reinders J, Hoehme S, Seddek A, Dooley S, Keitel V, Godoy P, Begher-Tibbe B, Trautwein C, Rupp C, Mueller S, Longerich T, Hengstler JG<sup>#</sup>, Saez-Rodriguez J<sup>#</sup>, Ghallab A<sup>#</sup>. “Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice.” <em>In preparation</em>. 2021.</p>
+<p>Holland CH, Ramirez Flores RO, Myllys M, Hassan R, Edlund K, Hofmann U, Marchan R, Cadenas C, Reinders J, Hoehme S, Seddek A, Dooley S, Keitel V, Godoy P, Begher-Tibbe B, Trautwein C, Rupp C, Mueller S, Longerich T, Hengstler JG<sup>#</sup>, Saez-Rodriguez J<sup>#</sup>, Ghallab A<sup>#</sup>. “Transcriptomic cross-species analysis of chronic liver disease reveals consistent regulation between humans and mice.” <em>Hepatology Communications</em>. 2021. DOI: <a href="https://doi.org/10.1002/hep4.1797">10.1002/hep4.1797</a>.</p>
 </blockquote>
 <p><sup>#</sup><em>Shared senior authorship</em></p>
 <br>
@@ -1877,13 +1877,13 @@ workflowr::wflow_build(republish = TRUE)</code></pre>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.0.5 (2021-03-31)
+<pre><code>R version 4.1.1 (2021-08-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Mojave 10.14.5
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -1895,14 +1895,12 @@ other attached packages:
 [1] workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5      rstudioapi_0.13 whisker_0.4     knitr_1.30     
- [5] magrittr_2.0.1  R6_2.5.0        rlang_0.4.9     stringr_1.4.0  
- [9] tools_4.0.5     xfun_0.19       git2r_0.27.1    htmltools_0.5.0
-[13] ellipsis_0.3.1  rprojroot_2.0.2 yaml_2.2.1      digest_0.6.27  
-[17] tibble_3.0.4    lifecycle_0.2.0 crayon_1.3.4    later_1.1.0.1  
-[21] vctrs_0.3.6     promises_1.1.1  fs_1.5.0        glue_1.4.2     
-[25] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.5 
-[29] pillar_1.4.7    httpuv_1.5.4    renv_0.12.3     pkgconfig_2.0.3</code></pre>
+ [1] Rcpp_1.0.7        rprojroot_2.0.2   digest_0.6.27     later_1.2.0      
+ [5] R6_2.5.0          git2r_0.28.0      magrittr_2.0.1    evaluate_0.14    
+ [9] stringi_1.7.3     rlang_0.4.11      renv_0.12.3       fs_1.5.0         
+[13] promises_1.2.0.1  whisker_0.4       rmarkdown_2.10    tools_4.1.1      
+[17] stringr_1.4.0     glue_1.4.2        yaml_2.2.1        httpuv_1.6.1     
+[21] xfun_0.25         compiler_4.1.1    htmltools_0.5.1.1 knitr_1.33       </code></pre>
 </div>
 </div>
 </div>
@@ -1948,7 +1946,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
